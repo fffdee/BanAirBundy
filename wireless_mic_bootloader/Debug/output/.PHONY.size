@@ -1,0 +1,2 @@
+   text (code + rodata)	   data	    bss	    dec	    hex	filename
+  31102 (27694 +   3408)	    400	   2948	  34450	   8692	wireless_mic_bootloader.adx
