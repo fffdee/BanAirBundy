@@ -1,0 +1,1031 @@
+00000000 a EILM_BEGIN
+00000000 a NDS_SAG_LMA_EILM
+00000000 W _ITB_BASE_
+00000000 W _RELAX_END_	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:127
+00000000 T _start	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:127
+00000000 t exception_vector	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:127
+000000a4 t exception_vector_end	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:347
+000000a4 T stub	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:346
+00000104 t FlashXmcResumeTimeGet
+00000120 t flash_udelay
+000001b6 t flash_delayms
+000001d0 t FshcGpioSet
+000001f2 t FshcInit
+0000020c t FshcSendCmd
+00000240 t FshcSpiIOModeCfg
+0000050a t SpiFlashResetCRM
+00000546 t SpiFlashResume
+0000057a t SpiFlashSuspend
+000005ae t SpiFlashReadId
+000007b0 t SpiFlashReadStatus
+00000856 t SpiFlashIsBusy
+00000872 t SpiFlashWriteStatus
+000009ea t SpiFlashIOModeCfg
+00000aa8 t SpiFlashDeepPowerDown
+00000ad8 t SpiFlashReleaseFromDeepPowerDown
+00000af8 t SpiFlashWriteUnLock
+00000bb0 t SpiFlashWriteLock
+00000c78 t Flash_GIE_STATE_GET
+00000cf8 t Flash_Memset
+00000e62 t flash_exit_2bitcrm
+00001764 T SpiFlashReadUniqueID
+0000194c r SpiFlash
+00001a00 T Clock_PllFreqGet
+00001a06 T Clock_APllFreqGet
+00001a0c T Clock_Bt32kTrimFreqGet
+00001a12 T Clock_CoreClkDivSet
+00001a2a T Clock_CoreClkDivGet
+00001a34 T Clock_SysClkDivGet
+00001a52 T Clock_CoreClockFreqGet
+00001abc T Clock_SysClockFreqGet
+00001af2 T Clock_SysClkDivSet
+00001b4a T GPIO_RegOneBitSet
+00001b5a T GPIO_RegOneBitClear
+00001b6c T __udelay
+00001bce T DelayMs
+00001c34 T DMA_D_Interrupt
+00001c7e T DMA_T_Interrupt
+00001cc4 T DMA_E_Interrupt
+00001d0e T GetSysTick1MsCnt
+00001d14 T PastTimeGet
+00001d28 T TimeOutSet
+00001d48 T IsTimeOut
+00001d74 W UART_Interrupt
+00001e14 T UARTS_SendByte	/cygdrive/d/BanAirBundy/bootloader/Debug/../driver/driver_api/src/uarts_interface.c:51
+00001e26 T OnDeviceCDC_BulkOutReceived	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:189
+00001e8e T D42_CDC_PollLog	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:39
+00001efa T OTG_DeviceCDC_Init	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:65
+00001f36 T OTG_DeviceCDC_DeInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:102
+00001f54 T OTG_DeviceCDC_Request	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:112
+00002154 T OTG_DeviceCDC_Receive	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:291
+000021b0 T OTG_DeviceCDC_GetRxCount	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:317
+000021b6 T OTG_DeviceCDC_PeekByte	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:329
+000021e2 T OTG_DeviceCDC_FlushTx	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:352
+00002278 T OTG_DeviceCDC_Send	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:249
+000022ec T OTG_DeviceCDC_Task	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:420
+000022ee T OTG_DeviceModeSel	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:79
+00002398 T OTG_DeviceSendResp	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:119
+000023b4 T OTG_DeviceGetDescriptor	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:129
+0000256c T OTG_DeviceStandardRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:255
+00002654 T OTG_DeviceClassRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:357
+000026c4 T OTG_DeviceOtherRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:420
+000026d8 T OTG_DeviceRequestProcess	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:434
+00002822 T OTG_DeviceFifoInit	/cygdrive/d/BanAirBundy/bootloader/Debug/../otg/otg_fifo.c:50
+00002854 t crc32_init_table	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:18
+00002896 t crc32_update	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:32
+000028d6 t is_target_firmware_valid	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:139
+000028ee t send_ack	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:146
+00002918 t send_nack	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:155
+00002942 t handle_sync	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:164
+0000295c t handle_enter_boot	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:309
+00002970 t get_active_partition	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:130
+0000298e t upgrade_compute_target	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:104
+00002a20 t handle_query	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:170
+00002aac t flash_service_usb	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:46
+00002ac2 t bl_flash_erase	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:52
+00002b3a t handle_start	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:196
+00002bc2 t bl_flash_write	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:74
+00002bda t handle_data	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:232
+00002c72 t handle_finish	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:263
+00002d30 t handle_reboot	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:315
+00002d5e t handle_jump	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:325
+00002d8c t dispatch_command	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:335
+00002e4c T App_Upgrade_Init	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:359
+00002e6c T App_Upgrade_ProcessChannel	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:366
+00002ea2 T App_Upgrade_InjectRaw	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:386
+00002ed4 T App_Upgrade_IsFinished	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:401
+00002ee0 t crc32_calc	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:67
+00002f14 t part_flag_seal	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:79
+00002f32 t part_flag_valid	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:86
+00002f5e t fw_looks_valid	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:135
+00002f8e T DualPart_GetLayout	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:16
+00002f94 T DualPart_Init	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:21
+0000300c T PartFlag_Read	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:94
+00003030 T PartFlag_Default	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:100
+0000304a T PartFlag_Write	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:110
+00003098 T Boot_JumpTo	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:123
+000030ae T Boot_CheckAndJumpIfNeeded	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:150
+00003256 t cdc_rx_avail_cb	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:26
+00003268 t cdc_tx	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:16
+0000327a t cdc_rx_read_cb	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:21
+0000328c T CDC_Upgrade_Init	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:33
+000032ca T CDC_Upgrade_EnterMode	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:45
+00003302 T CDC_Upgrade_InMode	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:64
+00003308 T CDC_Upgrade_CheckEnter	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:69
+0000336a T CDC_Upgrade_Process	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:94
+000033ba t usb_cdc_upgrade_loop	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/main.c:64
+000034bc T main	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/main.c:128
+000035d4 W BLE_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 t Default_Handler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:41
+000035d4 W FFTInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W GpioInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W HosccntInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W I2C_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W I2sInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W IR_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W PowerkeyInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W RtcInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W SDIO0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W SPDIF0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W SPDIF1_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W SPIM_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W SPIS_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W SWInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer2Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer3Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer4Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer5Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer6Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer7Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W Timer8Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W UART0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W UART1_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W WakeupInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d4 W rwbt_isr	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+000035d6 T ExceptionCommHandler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:47
+000037fe T __c_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:180
+00003832 T __cpu_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:207
+000038de T __init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:334
+000038f8 T GIE_ENABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:9
+00003902 T GIE_DISABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:14
+00003910 T GIE_STATE_GET	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:20
+00003918 T NVIC_EnableIRQ	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:64
+00003930 T NVIC_DisableIRQ	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:76
+0000394a T NVIC_SetPriority	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:105
+00003994 T putchar	/cygdrive/c/Andestech/AndeSight300RDS/toolchains/nds32le-elf-mculib-v3s/nds32le-elf/include/stdio.h:212
+000039c6 T nds_write	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:32
+000039e6 T DbgUartInit	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:41
+000039fc T permission_rule
+00003a8c T Chip_Init
+00003b52 T Clock_Config
+00003bbe T WaitOscillateWork
+00003bd8 T Clock_USBClkDivSet
+00003bea T Clock_USBClkDivGet
+00003bf4 T Clock_RcFreqGet
+00003d16 T Clock_PllLock
+00003de2 T Clock_APllLock
+00003e5a T Clock_SysClkSelect
+00003ef8 T Clock_USBClkSelect
+00003f24 T Clock_UARTClkSelect
+00003f7c T Clock_Module1Enable
+00003f8c T Clock_Module2Enable
+00003f9c T Clock_Module3Enable
+00003fac T Clock_HOSCCurrentSet
+00003fc6 T EnableMPU
+00004028 T EnableIDCache
+0000406a T DMA_ChannelAllocTableSet
+000040e6 T Efuse_ReadData
+0000414a T Set_AEN_CNT
+00004154 t Read_ModuleSwitch_EfuseStatus
+000041f4 T Read_ModuleSwitch_Status
+000042c0 T GPIO_PortAModeSet
+00004684 T OTG_PortEnableDPPullUp
+000046ae T OTG_PortDisableDPPullUp
+000046d8 T OTG_PortIsEnableDPPullUp
+000046ea T OTG_PortDisablePullDown
+00004714 T OTG_PortSetSpeed
+0000473e t OTG_DeviceWaitEnd
+000047b4 T OTG_DeviceInit
+0000487c T OTG_DeviceStallSend
+0000493e T OTG_DeviceEndpointReset
+00004a1c T OTG_DeviceAddressSet
+00004a54 T OTG_DeviceBusEventGet
+00004a60 T OTG_DeviceControlSend
+00004ad8 T OTG_DeviceControlReceive
+00004b52 T OTG_DeviceSetupReceive
+00004ba8 T OTG_DeviceBulkSend
+00004c16 T OTG_DeviceBulkReceive
+00004ca2 T UsbInterrupt
+00004d28 T OTG_EndpointInterruptEnable
+00004d94 T OtgEPInit
+00004e90 T LoadFIFOData
+00004ec2 T UnloadFIFOData
+00004f10 T Remap_AddrRemapSet
+00004ff2 T Remap_AddrRemapDisable
+00005048 T Reset_McuSystem
+00005052 T SysTickInit
+0000507c W SystickInterrupt
+00005094 T ClockFreqGet
+000050a8 T Timer_Config
+00005274 T Timer_Start
+00005304 t UART_BaudClkGet
+0000535a T UART_Init
+0000558c T UART_SendByte
+000055c2 T WDG_Disable
+000055e6 T printf
+000055f0 T puts
+00005640 t vprintf_help
+00005674 T vprintf
+000056c0 T do_printf
+00005b68 t sep_frac
+00005b9a T _printf_float
+0000626c T strcpy
+00006280 T strlen
+0000628c T abs
+00006294 T _write
+000062ac t ISR_TABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:62
+0000632c t OS_Trap_TLB_Fill	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:106
+00006340 t OS_Trap_PTE_Not_Present	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:110
+00006354 t OS_Trap_TLB_Misc	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:114
+00006368 t OS_Trap_TLB_VLPT_Miss	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:119
+0000637c t OS_Trap_Machine_Error	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:123
+00006390 t OS_Trap_Debug_Related	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:127
+000063a4 t OS_Trap_General_Exception	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:131
+000063b8 t OS_Trap_Syscall	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:135
+000063cc t OS_Trap_Int_Comm	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:138
+000064b6 t OS_Trap_Interrupt_HW0	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:148
+000064c0 t OS_Trap_Interrupt_HW1	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:153
+000064ca t OS_Trap_Interrupt_HW2	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:158
+000064d4 t OS_Trap_Interrupt_HW3	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:169
+000064de t OS_Trap_Interrupt_HW4	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:174
+000064e8 t OS_Trap_Interrupt_HW5	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:184
+000064f2 t OS_Trap_Interrupt_HW6	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:190
+000064fc t OS_Trap_Interrupt_HW7	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:195
+00006506 t OS_Trap_Interrupt_HW8	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:200
+00006510 t OS_Trap_Interrupt_HW9	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:205
+0000651a t OS_Trap_Interrupt_HW10	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:210
+00006524 t OS_Trap_Interrupt_HW11	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:215
+0000652e t OS_Trap_Interrupt_HW12	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:220
+00006538 t OS_Trap_Interrupt_HW13	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:225
+00006542 t OS_Trap_Interrupt_HW14	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:230
+0000654c t OS_Trap_Interrupt_HW15	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:235
+00006556 t OS_Trap_Interrupt_HW16	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:240
+00006560 t OS_Trap_Interrupt_HW17	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:245
+0000656a t OS_Trap_Interrupt_HW18	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:250
+00006574 t OS_Trap_Interrupt_HW19	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:255
+0000657e t OS_Trap_Interrupt_HW20	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:260
+00006588 t OS_Trap_Interrupt_HW21	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:265
+00006592 t OS_Trap_Interrupt_HW22	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:270
+0000659c t OS_Trap_Interrupt_HW23	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:275
+000065a6 t OS_Trap_Interrupt_HW24	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:280
+000065b0 t OS_Trap_Interrupt_HW25	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:285
+000065ba t OS_Trap_Interrupt_HW26	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:290
+000065c4 t OS_Trap_Interrupt_HW27	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:295
+000065ce t OS_Trap_Interrupt_HW28	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:300
+000065d8 t OS_Trap_Interrupt_HW29	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:305
+000065e2 t OS_Trap_Interrupt_HW30	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:310
+000065ec t OS_Trap_Interrupt_HW31	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:315
+000065f8 t ___start	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:331
+00006ca0 R DeviceString_LangID	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:64
+00006ca4 R DeviceQualifier	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:57
+00006cb0 R InterFaceNum_AUDIO_MIC_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:531
+00006cb8 R ConfigDescriptor_AUDIO_MIC_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:480
+00006dd4 R InterFaceNum_AUDIO_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:476
+00006ddc R ConfigDescriptor_AUDIO_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:443
+00006e88 R InterFaceNum_CDC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:439
+00006e90 R ConfigDescriptor_CDC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:413
+00006edc R InterFaceNum_HID	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:407
+00006ee4 R ConfigDescriptor_HID	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:399
+00006ef8 R InterFaceNum_AUDIO_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:395
+00006f00 R ConfigDescriptor_AUDIO_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:346
+00007014 R InterFaceNum_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:342
+0000701c R ConfigDescriptor_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:303
+000070d8 R InterFaceNum_AUDIO_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:300
+000070e0 R ConfigDescriptor_AUDIO_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:259
+00007194 R InterFaceNum_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:256
+0000719c R ConfigDescriptor_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:246
+000071bc R InterFaceNum_AUDIO_MIC_PHONE	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:243
+000071c4 R ConfigDescriptor_AUDIO_MIC_PHONE	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:199
+000072c0 R InterFaceNum_AUDIO_MIC	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:197
+000072c8 R ConfigDescriptor_AUDIO_MIC	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:153
+000073c4 R InterFaceNum_MIC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:151
+000073cc R ConfigDescriptor_MIC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:116
+00007470 R InterFaceNum_AUDIO_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:112
+00007478 R ConfigDescriptor_AUDIO_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:78
+00007514 R HidDataReportDescriptor	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:48
+00007538 R AudioCtrlReportDescriptor	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:25
+00007dbc R MPUConfigTable	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:389
+00007e9c r DMADefaultConfigTable
+00008138 A __ctxt_code_end
+00008138 A __ctxt_code_start
+00008138 A __rand_code_end
+00008138 A __rand_code_start
+00008140 A __data_lmastart
+00008288 A EILM_SIZE
+008044d0 A IsFlashBusy
+008044dc A SetFlashBusy
+008044e4 A ClearFlashBusy
+008044ec A Fshc_WDG_Feed
+008044f8 A SetgPLLWorkFreq
+008044fe A SetgAPLLWorkFreq
+00804504 A FshcResumeEraseTimeSet
+0080450e A FshcClkSwitchCallBackSet
+00804514 A FlashTaskDelayCallBackSet
+0080451a A vTaskDelayFlash
+00804530 A SpiFlashWriteLockCallBackSet
+00804536 A SpiFlashWriteUnLockCallBackSet
+0080453c A SpiFlashInitCallBackSet
+00804542 A flash_udelay_callback_set
+00804558 A FshcClkSwitch
+00804606 A SpiFlashResumDelaySet
+0080467e A SpiFlashClkSwitch
+008046bc A ByteRecombineToDword
+008046d8 A SpiFlashRead
+0080481c A SpiFlashEraseResume
+00804888 A SpiFlashWrite
+00804b52 A SpiFlashGetStatus
+00804b88 A SpiFlashFshcStatusSetIdle
+00804bd4 A SpiFlashErase
+00804d4a A FlashErase
+00804e36 A SpiFlashInit
+00804f4c A SpiFlashInfoGet
+00804f54 A SpiFlashIOCtrl
+00805034 A GetSpiFlashDriverVersion
+00805040 A spi_flash_driver_version
+00805118 a FFT_Init
+00805192 a FFT_Start
+008051b4 a FFT_IsDone
+008051c0 a FFT_DoneFlagClear
+008051ce a FFT_IsWorking
+008051e0 a FFT_InterruptEnable
+00805202 a FFT_InterruptDisable
+00805224 a FFT_InterruptFlagGet
+00805230 a FFT_InterruptFlagClear
+0080523e a FFT_Reset
+00805570 a rfft_api
+0080563e a rifft_api
+008056b4 a mv_memcpy
+008056e8 a mv_memcmp
+00805706 a mv_memmove
+00805742 a mv_memset
+00805752 a mv_mopen
+00805762 a mv_mclose
+00805772 a mv_mread_callback_set
+00805778 a mv_mread_callback_unset
+00805780 a mv_mread
+0080585a a mv_mwrite
+008058ec a mv_meom
+008058f0 a mv_msize
+00805904 a mv_mremain
+00805922 a mv_strcmp
+00805966 A __c_init_rom
+0080599e a GPIOA0Toggle
+008059d8 a bt_api
+00805cfe a bt_util_buf_lmp_tx_alloc
+00805d0a a bt_util_buf_lmp_tx_free
+00805d32 a bt_util_buf_acl_rx_alloc
+00805d3e a bt_util_buf_acl_rx_free
+00805d9e a bt_util_buf_elt_rx_get
+00805dc0 a bt_util_buf_acl_tx_alloc
+00805dfc a bt_util_buf_acl_tx_elt_get
+00805e1c a bt_util_buf_acl_tx_free
+00805e66 a bt_util_buf_sync_init
+00805f32 a bt_util_buf_sync_clear
+00805f4c a bt_util_buf_sync_tx_alloc
+00805f76 a bt_util_buf_sync_tx_elt_get
+00805fae a bt_util_buf_sync_tx_free
+00805ff2 a bt_util_buf_sync_rx_alloc
+00806018 a bt_util_buf_sync_rx_free
+00806072 a ld_core_init
+008061a2 a ld_core_reset
+0080628a a ld_rxdesc_free
+008062f6 a ld_rxdesc_check
+00806324 a ld_active_mode_set
+00806396 a ld_active_link_check
+008063ba a ld_init
+0080645a a ld_reset
+008064f4 a ld_read_clock
+00806500 a ld_bd_addr_get
+0080651a a ld_class_of_dev_get
+0080652c a ld_class_of_dev_set
+0080653e a ld_rxdesc_buf_ready
+0080657c a ld_inq_end
+008065b2 a ld_inq_rx
+0080671e a ld_inq_prog
+008067a4 a ld_inq_evt_start_cbk
+0080681e a ld_inq_sched
+008068ec a ld_inq_evt_canceled_cbk
+00806930 a ld_inq_frm_isr
+0080696c a ld_inq_frm_cbk
+008069a6 a ld_inq_init
+008069ae a ld_inq_reset
+008069c4 a ld_inq_start
+00806c44 a ld_inq_stop
+00806cc0 a ld_iscan_cleanup
+00806cd8 a ld_iscan_evt_canceled_cbk
+00806d34 a ld_iscan_prog
+00806dc0 a ld_iscan_evt_start_cbk
+00806dd8 a ld_iscan_frm_isr
+00806f52 a ld_iscan_frm_cbk
+00806f8e a ld_iscan_init
+00806fba a ld_iscan_reset
+00806ff0 a ld_iscan_start
+008073ce a ld_iscan_stop
+0080744c a ld_iscan_eir_set
+008075f0 a ld_iscan_eir_get
+00807618 a ld_page_em_init
+0080781e a ld_page_1st_pkt_rx
+00807858 a ld_page_end
+008078a0 a ld_page_evt_canceled_cbk
+0080796c a ld_page_prog
+00807ac8 a ld_page_evt_start_cbk
+00807b30 a ld_page_frm_isr
+00807e2c a ld_page_frm_cbk
+00807e66 a ld_page_init
+00807e6e a ld_page_reset
+00807e84 a ld_page_start
+0080801c a ld_page_stop
+008080b4 a ld_pscan_em_init
+00808216 a ld_pscan_fhs_rx
+008082aa a ld_pscan_1st_pkt_rx
+008082fc a ld_pscan_end
+008083a8 a ld_pscan_prog
+00808498 a ld_pscan_evt_start_cbk
+008084ae a ld_pscan_resched
+00808566 a ld_pscan_evt_canceled_cbk
+00808634 a ld_pscan_frm_isr
+0080896c a ld_pscan_frm_cbk
+008089a6 a ld_pscan_init
+008089ae a ld_pscan_reset
+008089c4 a ld_pscan_start
+00808af2 a ld_pscan_stop
+00808b98 a ld_util_bch_modulo
+00808cae a ld_util_fhs_unpk
+00808e04 a ld_util_bch_create
+00808edc a ld_util_fhs_pk
+00808ff4 a ld_util_active_master_afh_map_set
+0080900c a ld_util_active_master_afh_map_get
+00809012 a ld_util_stp_unpk
+008090ea a ld_util_stp_pk
+008091ac a sch_alarm_prog
+0080920c a sch_alarm_init
+00809218 a sch_alarm_timer_isr
+00809254 a sch_alarm_set
+008092c8 a sch_alarm_clear
+0080931a a sch_arb_phase_align_hi
+00809330 a sch_arb_conflict_check
+008093da a sch_arb_elt_cancel
+008094e4 a sch_arb_prog_timer
+00809568 a sch_arb_init
+00809582 a sch_arb_insert
+00809794 a sch_arb_remove
+008097e6 a sch_arb_event_start_isr
+008098fa a sch_arb_sw_isr
+00809926 a sch_plan_clock_wrap_offset_update
+00809948 a sch_plan_offset_chk
+00809a26 a sch_plan_offset_range_compute
+00809b38 a sch_plan_interval_req
+00809bb0 a sch_plan_init
+00809bc2 a sch_plan_set
+00809c38 a sch_plan_rem
+00809c48 a sch_plan_req
+00809c7c a sch_plan_chk
+00809c86 a sch_plan_shift
+00809d12 a sch_prog_rx_isr
+00809d2c a sch_prog_tx_isr
+00809d46 a sch_prog_rx_iso_isr
+00809d60 a sch_prog_tx_iso_isr
+00809d7a a sch_prog_skip_isr
+00809dfc a sch_prog_end_isr
+00809e7e a sch_prog_init
+00809ec4 a sch_prog_fifo_isr
+00809f1e a sch_prog_push
+0080a17a a sch_prog_enable
+0080a1c0 a sch_prog_disable
+0080a1da a sch_prog_clk_isr
+0080a1f8 a sch_slice_compute
+0080a340 a sch_slice_init
+0080a382 a sch_slice_bg_add
+0080a39a a sch_slice_bg_remove
+0080a3b4 a sch_slice_per_add
+0080a43e a sch_slice_per_remove
+0080a4c4 a co_djob_lp_evt_handler
+0080a4ea a co_djob_hp_evt_handler
+0080a510 a co_djob_isr_evt_handler
+0080a55c a co_djob_initialize
+0080a5a4 a co_djob_init
+0080a5ac a co_djob_reg
+0080a5da a co_djob_unreg
+0080a608 a co_djob_isr_reg
+0080a64e a co_list_init
+0080a656 a co_list_pool_init
+0080a67a a co_list_push_back
+0080a68e a co_list_push_back_sublist
+0080a6a2 a co_list_push_front
+0080a6ae a co_list_pop_front
+0080a6be a co_list_extract
+0080a6e6 a co_list_extract_after
+0080a6fe a co_list_extract_sublist
+0080a716 a co_list_find
+0080a72c a co_list_merge
+0080a744 a co_list_insert_before
+0080a768 a co_list_insert_after
+0080a780 a co_list_size
+0080a790 a GetBTRomCodeVersion
+0080a79a a co_util_read_array_size
+0080a7d4 a co_bdaddr_compare
+0080a7ee a co_slot_to_duration
+0080a7f6 a co_nb_good_channels
+0080a830 a co_util_pack
+0080ab28 a co_util_unpack
+0080ae32 a co_base64_encode
+0080aeda a co_base64_decode
+0080af6c a ke_flush
+0080af90 a ke_sleep_check
+0080af9c a ke_event_init
+0080afae a ke_event_callback_set
+0080afc4 a ke_event_set
+0080b004 a ke_event_clear
+0080b046 a ke_event_get
+0080b086 a ke_event_get_all
+0080b08c a ke_event_flush
+0080b094 a ke_event_schedule
+0080b0bc a ke_malloc_internal
+0080b176 a ke_mem_init
+0080b1dc a ke_mem_is_memory_heap_pool_used
+0080b22a a ke_malloc_system
+0080b244 a ke_malloc_user
+0080b24c a ke_free
+0080b304 a ke_is_free
+0080b314 a ke_msg_alloc
+0080b33c a ke_msg_send
+0080b37a a ke_msg_send_basic
+0080b388 a ke_msg_forward
+0080b39a a ke_msg_forward_new_id
+0080b3ae a ke_msg_free
+0080b3b6 a ke_msg_dest_id_get
+0080b3bc a ke_msg_src_id_get
+0080b3c2 a ke_msg_in_queue
+0080b3d0 a cmp_dest_id
+0080b3da a ke_task_saved_update
+0080b42e a ke_handler_search
+0080b47c a ke_task_handler_get
+0080b4a8 a ke_task_schedule
+0080b552 a ke_task_init
+0080b572 a ke_task_create
+0080b5ba a ke_task_delete
+0080b5f8 a ke_state_set
+0080b628 a ke_state_get
+0080b652 a ke_msg_discard
+0080b656 a ke_msg_save
+0080b65a a ke_task_msg_flush
+0080b690 a ke_task_check
+0080b6b2 a ke_timer_expired
+0080b6d6 a ke_timer_get
+0080b6f0 a ke_timer_flush
+0080b704 a ke_timer_set
+0080b748 a ke_timer_clear
+0080b76a a ke_timer_active
+0080b778 a rwip_timer_alarm_handler
+0080b792 a rwip_timer_arb_handler
+0080b7ac a rwip_timer_co_handler
+0080b7c8 a rwip_crypt_evt_handler
+0080b7f0 a rwip_sw_int_handler
+0080b804 a rwip_time_get
+0080b8ba a rwip_time_set
+0080b91a a rwip_time_adj
+0080b95c a rwip_prevent_sleep_set
+0080b994 a rwip_prevent_sleep_clear
+0080b9cc a rwip_crypt_isr_handler
+0080b9e8 a rwip_wakeup
+0080ba48 a rwip_wakeup_end
+0080bac0 a rwip_current_drift_get
+0080bad8 a rwip_max_drift_get
+0080bade a rwip_sca_get
+0080bae4 a rwip_timer_alarm_set
+0080bb1e a rwip_timer_arb_set
+0080bb56 a rwip_aes
+0080bc3c a rwip_sw_int_req
+0080bc58 a rwip_hw_error_report
+0080bc68 a rwip_btdm_isr
+0080bc8a a rwip_bt_time_to_bts
+0080bcc4 a rwip_bts_to_bt_time
+0080bd3e a rwip_timer_co_set
+0080bda4 a rwip_ch_class_ble_get
+0080be90 a rwip_ch_map_ble_get
+0080bf62 a rwip_ch_map_ble_fill
+0080bfa4 a rwip_ch_assess_data_get
+0080bfaa a rwip_channel_stat_insert
+0080c02a a rwip_channel_assess_ble
+0080c064 a rwip_channel_assess_bt
+0080c076 a rwip_ch_class_bt_get
+0080c136 a rwip_ch_map_bt_get
+0080c1c6 a rwip_activate_channels_ch_map_bt
+0080c20a a rwip_ch_ass_en_set
+0080c210 a rwip_ch_ass_en_get
+0080c216 a aes_init
+0080c23e a aes_alloc
+0080c256 a aes_start
+0080c288 a aes_encrypt
+0080c2d4 a aes_decrypt
+0080c324 a aes_rand
+0080c34c a aes_result_handler
+0080c3a0 a aes_xor_128
+0080c3ba a aes_shift_left_128
+0080c3ec a aes_ccm_continue
+0080c4cc a aes_ccm_process_e
+0080c6b0 a aes_ccm
+0080c732 a aes_cmac_continue
+0080c884 a aes_cmac_start
+0080c8b6 a aes_cmac
+0080c8de a aes_h6_continue
+0080c8e6 a aes_h6
+0080c91a a aes_h7_continue
+0080c922 a aes_h7
+0080c958 a aes_h8_continue
+0080c990 a aes_h8
+0080c9de a aes_h9_continue
+0080ca0c a aes_h9
+0080ca46 a aes_k1_continue
+0080ca7a a aes_k1
+0080cab4 a aes_k2_continue
+0080cb92 a aes_k2
+0080cbe8 a aes_k3_continue
+0080cc1e a aes_k3
+0080cc52 a aes_k4_continue
+0080cc92 a aes_k4
+0080ccc6 a aes_rpa_resolve_continue
+0080cd4c a aes_addr_gen_continue
+0080cdb6 a aes_gen_rand_addr
+0080ce00 a aes_rpa_gen
+0080ce14 a aes_rpa_resolve
+0080cec8 a aes_s1
+0080cf28 a ecc_p192_n_is_zero
+0080cf48 a ecc_p192_n_one
+0080cf66 a ecc_p192_word_highest_bit_idx
+0080cfa2 a ecc_p192_word_add
+0080cfde a ecc_p192_word_sub
+0080cff0 a ecc_p192_word_mul
+0080d052 a ecc_p192_word_mul_add
+0080d0ba a ecc_p192_word_sqr
+0080d0fc a ecc_p192_n_get_words
+0080d116 a ecc_p192_n_zero
+0080d12c a ecc_p192_n_num_bits
+0080d162 a ecc_p192_n_is_one
+0080d188 a ecc_p192_n_copy
+0080d1ca a ecc_p192_n_is_set
+0080d1e8 a ecc_p192_n192_ucmp
+0080d208 a ecc_p192_n192_384_ucmp
+0080d228 a ecc_p192_n192_384_cmp
+0080d246 a ecc_p192_n192_usub
+0080d268 a ecc_p192_n192_uadd
+0080d288 a ecc_p192_n192_sub
+0080d2ea a ecc_p192_n192_add
+0080d340 a ecc_p192_n192_lshift1
+0080d378 a ecc_p192_n192_rshift1
+0080d3ca a ecc_p192_n192_lshift
+0080d452 a ecc_p192_n192_rshift
+0080d4c0 a ecc_p192_n192_mul
+0080d548 a ecc_p192_n192_sqr
+0080d5f6 a ecc_p192_n384_192_sub
+0080d61a a ecc_p192_n192_mod_add
+0080d66a a ecc_p192_n192_mod_sub
+0080d6ac a ecc_p192_n192_n_mod
+0080d7ea a ecc_p192_n192_mod_mul
+0080d828 a ecc_p192_n192_mod_sqr
+0080d848 a ecc_p192_n192_mod_lshift1_quick
+0080d88e a ecc_p192_n192_mod_lshift_quick
+0080d91a a ecc_p192_n192_mod_inverse
+0080dacc a ecc_p192_is_point_at_inf
+0080dada a ecc_p192_is_point_valid
+0080db94 a ecc_p192_convert_u8_to_u32
+0080dbc4 a ecc_p192_convert_u32_to_u8
+0080dbfc a ecc_p192_n192_convert_wnaf
+0080dc88 a ecc_p192_point_to_inf
+0080dc98 a ecc_p192_point_jacobian_to_affine
+0080dd10 a ecc_p192_points_jacobian_to_affine
+0080de54 a ecc_p192_dbl
+0080dfd8 a ecc_p192_add
+0080e2b0 a ecc_p192_pre_compute_points
+0080e2f0 a ecc_p192_invert
+0080e326 a ecc_p192_is_valid_priv_key
+0080e364 a ecc_gen_key192
+0080e47a a ecc_gen_key192_continue
+0080e554 a ecc_p192_multiplication_event_handler
+0080e5ae a ecc_p192_init
+0080e5e6 a ecc_p192_gen_new_secret_key
+0080e6c4 a ecc_p192_gen_new_public_key
+0080e6e6 a ecc_p192_gen_dh_key
+0080e6f8 a ecc_p192_gen_key_pair
+0080e752 a ecc_p192_abort_key_gen
+0080e786 a ecc_p192_get_debug_pub_key_x
+0080e790 a ecc_p192_get_debug_pub_key_y
+0080e79a a sha_256_prepare_chunk
+0080e834 a sha_256_extends_w_and_compute_hash_for_chunk
+0080e948 a sha_256_continue_compute
+0080e9ac a sha_256_hmac_compute_chunk_for_key
+0080ea36 a sha_256_do_hmac_round
+0080ea7e a sha_256
+0080eab2 a sha_256_hmac
+0080eae0 a sha_bloom_filter_init
+0080eaf0 a sha_bloom_filter_add_key
+0080eb6c a sha_256_f1
+0080ebf2 a sha_256_g
+0080ec86 a sha_256_f2
+0080ed56 a sha_256_f3
+0080ee58 a sha_256_h3
+0080ef00 a sha_256_h4
+0080ef96 a sha_256_h5
+0080f026 a co_time_sys_timer_update
+0080f06c a co_timer_extract
+0080f096 a co_timer_insert
+0080f0d0 a co_timer_periodic_expires
+0080f0ee a co_time_get
+0080f156 a co_timer_prog
+0080f176 a co_timer_handler
+0080f1b4 a co_time_init
+0080f1ee a co_time_compensate
+0080f21a a co_timer_init
+0080f222 a co_timer_set
+0080f240 a co_timer_stop
+0080f25a a co_timer_periodic_init
+0080f26c a co_timer_periodic_set
+0080f288 a co_timer_periodic_stop
+0080f290 a ke_queue_extract
+0080f2ca a ke_queue_insert
+0080f2f8 A DataCacheInvalidAll
+0080f302 A DataCacheRangeInvalid
+00828130 a adpcm_encode_block32_mono
+008282b8 a adpcm_decode_block32_mono
+00828450 a adpcm_encode_block32_stereo
+008285d4 a adpcm_decode_block32_stereo
+0082878c a nds_cmag_s32
+00828a78 a sbc_frame_decoder_initialize
+00828bd4 a sbc_frame_decoder_decode
+00829008 a buffer_context_init
+00829134 a buffer_overflow
+00829150 a get_num_bits_left
+00829340 a skip_bits
+00829348 a align_byte
+00829354 a get_uint8
+00829368 a show_uint8
+00829374 a get_bits1
+00829394 a get_bits25
+008293bc a sbc_bit_allocation
+00829f1c a sbc_decode_frame
+0082a4c0 a sbc_find_synword
+0082a500 a PLC_bad_frame
+0082aea4 a PLC_good_frame
+0082b224 a sbc_subband_synthesis_filter
+0082b6cc a sbc_encoder_initialize
+0082b868 a sbc_encoder_encode
+008315bc a sbc_init
+008316f4 a sbc_init_msbc
+00831814 a sbc_encode
+00831f0c a sbc_finish
+00831f7c a sbc_get_frame_length
+0083200c a sbc_get_frame_duration
+0083209c a sbc_get_codesize
+008320f8 a sbc_get_implementation_info
+0083210c a sbc_reinit
+00835e70 a sbc_init_primitives
+0083a438 a nds32_cos_q15
+0083a49c a nds32_sin_q15
+0083a500 a nds32_atan2_q31
+0083a5f0 a udiv_qrnnd
+0083a620 a nds32_fudiv_qrnnd
+0083a678 a floor
+0083a7b6 a tan
+0083a816 a ceilf
+0083a8cc a cosf
+0083aae0 a floorf
+0083ab94 a log2f
+0083abac a roundf
+0083ac0c a sinf
+0083ae54 a tanf
+0083aea8 a exp
+0083afa4 a expf
+0083b1a4 a logf
+0083b364 a powf
+0083bb64 a __ieee754_exp
+0083beaa a __ieee754_rem_pio2
+0083c2b8 a __ieee754_rem_pio2f
+0083c594 a __mathlib_flt_infnan2
+0083c59c a __mathlib_flt_infnan
+0083c5a4 a __mathlib_flt_underflow
+0083c5b4 a __mathlib_flt_overflow
+0083c5c8 a __mathlib_flt_invalid
+0083c5dc a __mathlib_flt_divzero
+0083c5fc a __ieee_status
+0083c600 a __kernel_rem_pio2
+0083ccf0 a __kernel_tan
+0083d118 a __kernel_rem_pio2f
+0083d64c a __kernel_tanf
+0083d8c4 a ref__mathlib_rredf2
+0083da2c a fabs
+0083da3c a finite
+0083da4e a matherr
+0083da52 a scalbn
+0083db34 a copysignf
+0083db4c a fabsf
+0083db5a a __fpclassifyf
+0083db9c a scalbnf
+0083dc86 a copysign
+0083dca4 A __divdi3
+0083dce4 A __udivdi3
+0083dd40 A __udivmoddi4
+0083de98 a __fixsfdi
+0083df10 a __fixdfsi
+0083df64 a __floatdisf
+0083e034 a __adddf3
+0083e5c4 a __divdf3
+0083ea78 a __eqdf2
+0083ea78 a __nedf2
+0083eae2 a __gedf2
+0083eae2 a __gtdf2
+0083eb86 a __ledf2
+0083eb86 a __ltdf2
+0083ec2c a __muldf3
+0083f01c a __subdf3
+0083f5cc a __floatsidf
+0083f636 a __truncdfsf2
+0083f748 A __lshrdi3
+0083f770 A __ashldi3
+0083f796 a __errno
+0083f79c a memcmp
+0083f7d4 A memcpy
+0083f800 a memmove
+0083f8b0 A memset
+0083f8e0 A rand
+0083f91c A rwip_isr
+0083f9d0 a ld_pcm_settings_dft
+0083f9d8 a ld_acl_edr_sizes
+0083f9e8 a ld_acl_edr_types
+0083f9f0 a ld_acl_br_sizes
+0083f9fc a ld_acl_br_types
+0083fa24 a ld_sync_train_channels
+0083fa28 a ld_util_bch_ppolynom
+0083fa30 a ld_util_bch_gpolynom
+0083fa38 a co_djob_evt
+0083fa40 a bt_rom_code_version
+0083fa64 a co_base64_decoding_table
+0083fab4 a co_base64_encoding_table
+0083faf4 a co_rate_to_byte_dur_us
+0083fafc a co_phy_mask_to_rate
+0083fb04 a co_rate_to_phy_mask
+0083fb08 a co_phy_value_to_mask
+0083fb0c a co_phy_mask_to_value
+0083fb14 a co_phy_to_rate
+0083fb18 a co_rate_to_phy
+0083fb20 a co_null_key
+0083fb30 a co_null_bdaddr
+0083fb38 a co_sca2ppm
+0083fb48 a one_bits
+0083fb58 a co_default_bdaddr
+0083fb60 a ble_ch_to_phy_idx
+0083fb88 a ble_phy_to_ch_idx
+0083fbb0 a aes_cmac_zero
+0083fbc0 a aes_h9_isoc
+0083fbc4 a aes_k2_salt
+0083fbd4 a aes_k3_id64
+0083fbdc a aes_k3_salt
+0083fbec a aes_k4_id6
+0083fbf0 a aes_k4_salt
+0083fc00 a ecc_p192_max_secret_key
+0083fc18 a ecc_p192_coef_b
+0083fc34 a ecc_p192_data
+0083fca4 a ecc_p192_field
+0083fcc0 a ecc_p192_base_point_y
+0083fcd8 a ecc_p192_base_point_x
+0083fcf0 a ecc_p192_debug_pub_key_y
+0083fd08 a ecc_p192_debug_pub_key_x
+0083fd20 a ecc_p192_debug_priv_key
+0083fd38 a sha_256_hash_init_value
+0083fd58 a sha_256_k
+00840528 a LPF_COEF_TABLE
+00840570 a HPF_COEF_TABLE
+00849030 a nds32_cos_recip_table_q15_1024
+00849230 a nds32_cos_table_q15_1024
+00849db8 a cst_libm_rredf
+20000000 A SUSPEND_TIME_US
+20000000 a __data_start_rom
+20000004 A RESUME_ERASE_TIME_US
+20000008 a cst_libm_sincosf
+20000024 a cst_libm_expf
+20000050 a twotokover4bot
+20000060 a twotokover4top
+20000070 a twotokover4all
+20000080 a cst_libm_logf
+200000a0 a logalo
+200000c0 a logahi
+200000e0 a __fdlib_version
+200000e8 A _NDS32_REENT__rand_next
+200000f0 a appRfPageTxPwr
+200000f1 a time_msb
+200000f2 a rwip_prog_delay
+200000f4 a MV_feof
+200000f8 a MV_fread
+200000fc a MV_permission_rule
+20000100 A gAPLLWorkFreq
+20000104 A gPLLWorkFreq
+20000108 a ld_inq_env
+2000010c a ld_iscan_env
+20000110 a ld_iscan_eir
+20000114 a ld_page_env
+20000118 a ld_pscan_env
+2000011c a ptr_EmParam
+20000120 a sch_alarm_env
+20000128 a sch_plan_env
+20000130 a sch_slice_params
+20000138 a rwip_priority
+2000013c a ecc_p192_env
+20000144 a gEQFilterDefault
+20000154 a critical_sec_cnt
+20000158 a ke_malloc_error_report
+2000015c a BB_error_report
+20000160 a rwip_us_2_lpcycles
+20000164 a rwip_slot_2_lpcycles
+20000168 a rwip_lpcycles_2_hus
+2000016c A flash_udelay_callback
+20000170 A SpiFlashInitCallBack
+20000174 A SpiFlashWriteUnLockCallBack
+20000178 A SpiFlashWriteLockCallBack
+2000017c A FlashTaskDelayCallBack
+20000180 A FshcClkSwitchCallBack
+20000190 A _NDS32_REENT__errno
+20000194 a bt_util_buf_env
+200001c0 a ld_env
+200001e8 a ld_active_ch_map
+200001f4 a sch_arb_env
+2000020c a sch_prog_env
+20000318 a sch_slice_env
+20000350 a co_djob_env
+20000368 a ke_env
+20000398 a ke_event_env
+200003cc a ke_task_env
+2000041c a rwip_buf_pool_small
+20000c5c a rwip_buf_pool_big
+20000eb4 a rwip_rf
+20000ee8 a rwip_param
+20000ef4 a rwip_env
+200010c8 a aes_env
+200010d4 a co_time_env
+200010e8 A SpiFlashInfo
+20004000 D __data_start
+20004000 A _stack
+20004000 D gDeviceString_SerialNumber	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:73
+20004004 D gDeviceString_Manu	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:72
+20004008 D gDeviceProductString	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:71
+2000400c D InterFaceNumTab	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:551
+20004040 D ConfigDescriptorTab	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:534
+20004074 D DeviceDescriptor	/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:5
+20004088 d DmaChannelMap	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/main.c:49
+20004090 D BtHoscClkDiv
+20004094 D EfuseBt32k
+20004098 D IsDpllFreeRun
+2000409c D rc12m_clk_freq
+200040a0 D gSOCInFreq
+200040a4 d DMAChannelAllMap
+20004134 D UART_STATUS
+2000413c D SREG_UART_CTRL
+20004148 S Bt32kSofCnt
+20004148 S __bss_start
+20004148 S _edata
+2000414a S OtgPortDeviceDetectTime
+2000414c S OtgPortLinkHoldTime
+2000414e S EP1_TX_FIFO_START_ADDRESS
+20004150 S EP1_RX_FIFO_START_ADDRESS
+20004152 S EP2_RX_FIFO_END_ADDRESS
+20004154 S EP2_RX_FIFO_START_ADDRESS
+20004156 S EP2_TX_FIFO_START_ADDRESS
+20004158 S g_d42_cdc_dtr_rts	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:37
+2000415c S g_d42_cdc_baud	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:36
+20004160 S g_d42_cdc_evt	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:35
+20004164 S InterfaceNum	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:70
+20004168 S gDeviceString_Index	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:74
+2000416c S Setup	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:66
+20004174 S ConfigDescriptor	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:69
+20004178 S UsbEpFifo
+20004180 b s_ep0_zlp	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:32
+20004181 b zlp.3631
+20004182 b zlp.3615
+20004183 b zlp.3613
+20004184 b s_d42_csr_logs_this_reset	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:38
+20004188 b s_d42_last_csr_log_tick	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:37
+2000418c b s_d42_setup_err_cnt	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:36
+20004190 b s_d42_reset_cnt	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:34
+20004194 b s_d42_setup_cnt	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:33
+20004198 b s_inject_ch.3772
+200041a8 b g_upg_part	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:102
+200041ac b g_upg_max	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:101
+200041b0 b g_upg_base	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:100
+200041b4 b g_engine	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:99
+200042cc b crc32_table_init	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:16
+200042d0 b crc32_table	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:15
+200046d0 b g_layout	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:14
+200046e4 b s_cdc_ch	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:31
+200046f4 b s_upgrade_mode	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:14
+200046f8 b s_initialised	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:13
+200046fc B DebugPrintPort	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:13
+20004700 b Module
+2000471c b UsbBusEvent
+2000471d B UsbDeviceInitFlag
+2000471e b UsbIntTxEn
+2000471f b UsbIntRxEn
+20004720 b EPOffsetTable
+20004738 b XmcResumeCnt
+2000473c b FlashBusyFlag
+20004740 b EsmtFlag
+20004744 b g_dataBuf
+20004844 B gSysTick
+20004848 b output_idx
+2000484c b output_buff
+20004850 B UsbCDC	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_cdc.c:24
+20004c6c B Request	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:67
+20004d6c B hid_tx_buf	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:51
+20004e6c B UsbEpBuf	/cygdrive/d/BanAirBundy/bootloader/Debug/../otg/otg_fifo.c:31
+2000542c B FpUsbBusEventIntProcess
+2000544c B FpUsbIntProcess
+20005464 B _end
+20028000 W _FP_BASE_
+20028000 A _SDA_BASE_

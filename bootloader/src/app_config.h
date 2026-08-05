@@ -5,7 +5,9 @@
 #ifndef __APP_CONFIG_H__
 #define __APP_CONFIG_H__
 
+#ifndef CFG_APP_CONFIG
 #define CFG_APP_CONFIG
+#endif
 
 /* USB mode: CDC_ONLY (=12 in otg_device_standard_request.h) */
 #define CFG_PARA_USB_MODE   12

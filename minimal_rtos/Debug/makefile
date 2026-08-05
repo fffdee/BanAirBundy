@@ -39,9 +39,6 @@ RM := rm -rf
 -include middleware/mv_utils/src/subdir.mk
 -include src/subdir.mk
 -include startup/subdir.mk
--include middleware/roboeffect/graphics/subdir.mk
--include middleware/roboeffect/roboeffect_lib/subdir.mk
--include middleware/roboeffect/roboeffect_lib/wraps/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -68,27 +65,17 @@ GPROF_OUT += \
 
 SYMBOL_OUTPUTS += \
 $(SECONDARY_OUTPUT_PATH)/symbol.txt \
-$(SECONDARY_OUTPUT_PATH)/symbol.txt \
-$(SECONDARY_OUTPUT_PATH)/symbol.txt \
 
 READELF_OUTPUTS += \
-$(SECONDARY_OUTPUT_PATH)/readelf.txt \
-$(SECONDARY_OUTPUT_PATH)/readelf.txt \
 $(SECONDARY_OUTPUT_PATH)/readelf.txt \
 
 OBJDUMP_OUTPUTS += \
 $(SECONDARY_OUTPUT_PATH)/objdump.txt \
-$(SECONDARY_OUTPUT_PATH)/objdump.txt \
-$(SECONDARY_OUTPUT_PATH)/objdump.txt \
 
 OBJCOPY_OUTPUTS += \
 $(SECONDARY_OUTPUT_PATH)/$(BUILD_ARTIFACT_FILE_BASE_NAME).bin \
-$(SECONDARY_OUTPUT_PATH)/$(BUILD_ARTIFACT_FILE_BASE_NAME).bin \
-$(SECONDARY_OUTPUT_PATH)/$(BUILD_ARTIFACT_FILE_BASE_NAME).bin \
 
 SIZE_OUTPUTS += \
-$(SECONDARY_OUTPUT_PATH)/.PHONY.size \
-$(SECONDARY_OUTPUT_PATH)/.PHONY.size \
 $(SECONDARY_OUTPUT_PATH)/.PHONY.size \
 
 
@@ -99,7 +86,7 @@ all: minimal_rtos.adx secondary-outputs
 minimal_rtos.adx: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Andes C Linker'
-	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/E/project_and_dataset/project/wireless_mic_1532/minimal_rtos/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "minimal_rtos.adx" $(OBJS) $(USER_OBJS) $(LIBS)
+	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/minimal_rtos/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "minimal_rtos.adx" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -109,7 +96,7 @@ $(foreach subdir,$(SUBDIRS),$(wildcard $(subdir)/*.gcda) $(wildcard $(subdir)/*.
 
 $(SECONDARY_OUTPUT_PATH)/symbol.txt: $(LINKER_OUTPUTS)
 	@echo 'Invoking: NM (symbol listing)'
-	$(CROSS_COMPILE)nm -n -l -C -a "minimal_rtos.adx" > $(SECONDARY_OUTPUT_PATH)/symbol.txt
+	$(CROSS_COMPILE)nm -n -l -C "minimal_rtos.adx" > $(SECONDARY_OUTPUT_PATH)/symbol.txt
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -121,13 +108,13 @@ $(SECONDARY_OUTPUT_PATH)/readelf.txt: $(LINKER_OUTPUTS)
 
 $(SECONDARY_OUTPUT_PATH)/objdump.txt: $(LINKER_OUTPUTS)
 	@echo 'Invoking: Objdump (disassembly)'
-	$(CROSS_COMPILE)objdump -x -h -d -t -l -C "minimal_rtos.adx" > $(SECONDARY_OUTPUT_PATH)/objdump.txt
+	$(CROSS_COMPILE)objdump -x -d -C "minimal_rtos.adx" > $(SECONDARY_OUTPUT_PATH)/objdump.txt
 	@echo 'Finished building: $@'
 	@echo ' '
 
 $(SECONDARY_OUTPUT_PATH)/$(BUILD_ARTIFACT_FILE_BASE_NAME).bin: $(LINKER_OUTPUTS)
 	@echo 'Invoking: Objcopy (object content copy)'
-	$(CROSS_COMPILE)objcopy -O binary "minimal_rtos.adx" $(SECONDARY_OUTPUT_PATH)/$(BUILD_ARTIFACT_FILE_BASE_NAME).bin
+	$(CROSS_COMPILE)objcopy -S -O binary "minimal_rtos.adx" $(SECONDARY_OUTPUT_PATH)/$(BUILD_ARTIFACT_FILE_BASE_NAME).bin
 	@echo 'Finished building: $@'
 	@echo ' '
 

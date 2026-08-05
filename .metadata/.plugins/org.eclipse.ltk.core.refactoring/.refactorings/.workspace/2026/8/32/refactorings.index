@@ -1,0 +1,18 @@
+1785898952165	删除资源“bootloader/startup”
+1785898968845	删除资源“bootloader/Debug”
+1785899604836	删除资源“minimal_rtos/Debug”
+1785899852986	Delete 3 resources
+1785902267258	Delete resource 'bootloader/driver'
+1785902286427	Delete resource 'bootloader/middleware'
+1785902313070	Delete resource 'bootloader/middleware/audio'
+1785909293751	Delete resource 'bootloader/middleware/mv_utils/src/heap.c'
+1785909296562	Delete resource 'bootloader/middleware/mv_utils/inc/heap.h'
+1785909380583	Delete resource 'bootloader/startup/flash_boot.c'
+1785909384818	Delete resource 'bootloader/startup/flash_boot.h'
+1785914806466	Delete resource 'bootloader/startup'
+1785914817131	Delete resource 'bootloader/middleware'
+1785914819426	Delete resource 'bootloader/driver'
+1785915486392	Delete resource 'bootloader'
+1785915672316	Delete resource 'Example_USB/Debug'
+1785930536346	Delete resource 'Example_USB'
+1785930539521	Delete resource '@INCLUDES'

@@ -27,6 +27,35 @@ UsbCDC_t UsbCDC;
 extern uint8_t Setup[];
 extern uint8_t Request[];
 
+/* LoadFIFOData always memcpy()'s; NULL+len0 is UB on this libc → stall/crash.
+ * Use a real buffer for ZLP status stages. */
+static uint8_t s_ep0_zlp;
+
+/* #region agent log */
+volatile uint32_t g_d42_cdc_evt;
+volatile uint32_t g_d42_cdc_baud;
+volatile uint32_t g_d42_cdc_dtr_rts;
+
+void D42_CDC_PollLog(void)
+{
+	uint32_t ev = g_d42_cdc_evt;
+	if (!ev)
+		return;
+	g_d42_cdc_evt = 0;
+	if (ev & D42_CDC_SET_CONFIG)
+		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"set_config\",\"data\":{\"runId\":\"post-fix\"}}\n");
+	if (ev & D42_CDC_SET_CTRL)
+		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"set_ctrl_line\",\"data\":{\"dtr\":%u,\"rts\":%u,\"runId\":\"post-fix\"}}\n",
+			(unsigned)(g_d42_cdc_dtr_rts & 1u), (unsigned)((g_d42_cdc_dtr_rts >> 1) & 1u));
+	if (ev & D42_CDC_SET_LINE)
+		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"set_line_coding\",\"data\":{\"baud\":%u,\"runId\":\"post-fix\"}}\n",
+			(unsigned)g_d42_cdc_baud);
+	if (ev & D42_CDC_GET_LINE)
+		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"get_line_coding\",\"data\":{\"baud\":%u,\"runId\":\"post-fix\"}}\n",
+			(unsigned)g_d42_cdc_baud);
+}
+/* #endregion */
+
 // Forward declaration of interrupt callback
 void OnDeviceCDC_BulkOutReceived(void);
 
@@ -63,9 +92,7 @@ bool OTG_DeviceCDC_Init(void)
     // 注册USB Bulk OUT端点的中断回调（接收数据时自动触发）
     // 这样就不需要在Task中轮询，消除了error 001错误
     OTG_EndpointInterruptEnable(DEVICE_CDC_DATA_OUT_EP, OnDeviceCDC_BulkOutReceived);
-    
-    DBG("CDC: Interrupt mode enabled for Bulk OUT endpoint\n");
-    
+    /* No DBG here — SET_CONFIGURATION is timing-sensitive; log from SetConfig caller */
     return TRUE;
 }
 
@@ -99,13 +126,14 @@ void OTG_DeviceCDC_Request(void)
             
             // Windows打开串口时会发送SET_LINE_CODING，此时认为串口已连接
             UsbCDC.IsConnected = 1;
-            DBG("CDC: Set Line Coding - Baudrate: %u, Format: %u, Parity: %u, DataBits: %u\n", 
-                UsbCDC.LineCoding.dwDTERate, UsbCDC.LineCoding.bCharFormat,
-                UsbCDC.LineCoding.bParityType, UsbCDC.LineCoding.bDataBits);
+            OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            /* #region agent log */
+            g_d42_cdc_baud = UsbCDC.LineCoding.dwDTERate;
+            g_d42_cdc_evt |= D42_CDC_SET_LINE;
+            /* #endregion */
             break;
             
         case CDC_GET_LINE_CODING:
-            // Send current line coding data - 手动打包避免对齐问题
             {
                 uint8_t lineCodingBuf[7];
                 lineCodingBuf[0] = (uint8_t)(UsbCDC.LineCoding.dwDTERate & 0xFF);
@@ -115,27 +143,27 @@ void OTG_DeviceCDC_Request(void)
                 lineCodingBuf[4] = UsbCDC.LineCoding.bCharFormat;
                 lineCodingBuf[5] = UsbCDC.LineCoding.bParityType;
                 lineCodingBuf[6] = UsbCDC.LineCoding.bDataBits;
-                OTG_DeviceControlSend(lineCodingBuf, 7, 3);
+                OTG_DeviceControlSend(lineCodingBuf, 7, 10);
             }
-            DBG("CDC: Get Line Coding - Baudrate: %u\n", UsbCDC.LineCoding.dwDTERate);
+            /* #region agent log */
+            g_d42_cdc_baud = UsbCDC.LineCoding.dwDTERate;
+            g_d42_cdc_evt |= D42_CDC_GET_LINE;
+            /* #endregion */
             break;
             
         case CDC_SET_CONTROL_LINE_STATE:
-            // Extract DTR and RTS from wValue
             UsbCDC.ControlLineState.DTR = (Setup[2] & 0x01) ? 1 : 0;
             UsbCDC.ControlLineState.RTS = (Setup[2] & 0x02) ? 1 : 0;
-            // 注意：某些终端可能不设置DTR/RTS，但串口仍然打开
-            // 所以不要在此处将IsConnected设为0，保持之前SET_LINE_CODING设置的状态
-            DBG("CDC: Set Control Line State - DTR:%d RTS:%d Connected:%d\n", 
-                UsbCDC.ControlLineState.DTR, UsbCDC.ControlLineState.RTS, UsbCDC.IsConnected);
-            // Send ZLP (Zero Length Packet) status response
-            OTG_DeviceControlSend(NULL, 0, 3);
+            OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            /* #region agent log */
+            g_d42_cdc_dtr_rts = (uint32_t)UsbCDC.ControlLineState.DTR |
+                                ((uint32_t)UsbCDC.ControlLineState.RTS << 1);
+            g_d42_cdc_evt |= D42_CDC_SET_CTRL;
+            /* #endregion */
             break;
             
         case CDC_SEND_BREAK:
-            // Send break signal (not implemented)
-            DBG("CDC: Send Break\n");
-            OTG_DeviceControlSend(NULL, 0, 3);
+            OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
             break;
             
         case CDC_SEND_ENCAPSULATED_COMMAND:

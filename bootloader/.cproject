@@ -33,10 +33,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/firmware_upgrade}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/otg/device/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/@INCLUDES/driver/driver/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/@INCLUDES/middleware/audio/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/@INCLUDES/driver/driver_api/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/@INCLUDES/middleware/mv_utils/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/driver/driver/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/driver/driver_api/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/middleware/mv_utils/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/middleware/audio/inc}&quot;"/>
+								</option>
+								<option id="nds.c.compiler.option.preprocessor.def.symbols.1122334455" name="Defined symbols (-D)" superClass="nds.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CFG_APP_CONFIG"/>
 								</option>
 								<option id="nds.c.compiler.option.misc.other.609110243" name="Other flags" superClass="nds.c.compiler.option.misc.other" value="-c -fmessage-length=0 -ldsp -mext-dsp" valueType="string"/>
 								<option id="nds.c.compiler.option.optimization.removesections.function.879479956" name="Remove unused function sections (-ffunction-sections)" superClass="nds.c.compiler.option.optimization.removesections.function" value="true" valueType="boolean"/>
@@ -51,11 +54,9 @@
 								<option id="nds32le-elf-mculib-v3s.c.link.exe.debug.option.ldscript.1143673726" name="Linker Script (-T)" superClass="nds32le-elf-mculib-v3s.c.link.exe.debug.option.ldscript" value="../nds32-ae210p.ld" valueType="string"/>
 								<option id="nds.c.link.option.libs.294446076" name="Libraries (-l)" superClass="nds.c.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="Driver"/>
-									<listOptionValue builtIn="false" value="resampler"/>
 								</option>
 								<option id="nds.c.link.option.paths.120443891" name="Library search path (-L)" superClass="nds.c.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/@INCLUDES/driver/driver}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/@INCLUDES/middleware/audio}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/driver/driver}&quot;"/>
 								</option>
 								<option id="nds.c.link.option.nostart.286150215" name="Do not use standard start files (-nostartfiles)" superClass="nds.c.link.option.nostart" value="true" valueType="boolean"/>
 								<option id="nds.c.link.option.ldflags.1495435521" name="Linker flags" superClass="nds.c.link.option.ldflags" value="-ldsp -mext-dsp" valueType="string"/>
@@ -91,7 +92,11 @@
 						</tool>
 					</fileInfo>
 					<sourceEntries>
-						<entry excluding="otg/host|src/usb_example.c|src/audio_api.c|src/usb_audio_api.c|src/usb_audio_api.h|otg/device/src/otg_device_audio.c|otg/device/src/otg_device_stor.c|src/uarts_interface.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="host|device/src/otg_device_audio.c|device/src/otg_device_stor.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="otg"/>
+						<entry excluding="audio_api.c|usb_audio_api.c|usb_audio_api.h|usb_example.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="startup"/>
+						<entry excluding="adc_interface.c|can_interface.c|dac_interface.c|fft_api.c|flash_interface.c|i2c_host.c|i2c_interface.c|i2s_interface.c|pmu_interface.c|sadc_interface.c|sd_card.c|spim_interface.c|sw_uart.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="driver/driver_api/src"/>
+						<entry excluding="debug.c|shell.c|string_convert.c|mcu_circular_buf.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="middleware/mv_utils/src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -170,10 +175,10 @@
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/Example_USB"/>
+			<resource resourceType="PROJECT" workspacePath="/bootloader"/>
 		</configuration>
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/Example_USB"/>
+			<resource resourceType="PROJECT" workspacePath="/bootloader"/>
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>

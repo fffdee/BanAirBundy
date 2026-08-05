@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>true</eraseAll><flashDriver>E\:/project_and_dataset/project/BanAirBundy/minimal_rtos/tools/mv_download_v3.6.exe</flashDriver><imageFile>E\:/project_and_dataset/project/BanAirBundy/minimal_rtos/Debug/output/minimal_rtos.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>false</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

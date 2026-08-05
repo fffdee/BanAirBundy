@@ -4,7 +4,7 @@
  * @brief   Bootloader — USB CDC firmware upgrade only
  *
  * Flow:
- *   1. Chip / clock / UART / SPI flash init
+ *   1. Chip / clock / UART / SPI flash init (BP1540 Example_USB device path)
  *   2. DualPart_Init + Boot_CheckAndJumpIfNeeded (may jump to APP)
  *   3. Stay in bootloader: enumerate as CDC_ONLY, run upgrade protocol
  **************************************************************************************
@@ -24,18 +24,20 @@
 #include "spi_flash.h"
 #include "watchdog.h"
 #include "dma.h"
-#include "timer.h"
 #include "remap.h"
 
 #include "app_config.h"
 #include "otg_device_hcd.h"
 #include "otg_device_standard_request.h"
 #include "otg_device_cdc.h"
-#include "otg_detect.h"
+#include "timeout.h"
+#include "delay.h"
 
 #include "dual_partition.h"
 #include "app_upgrade.h"
 #include "cdc_upgrade.h"
+
+extern uint32_t gSysTick;
 
 #define BOOTLOADER_VERSION_STR  "V1.0.0"
 
@@ -54,21 +56,38 @@ static uint8_t DmaChannelMap[] =
     255,
 };
 
-void Timer2Interrupt(void)
-{
-    Timer_InterruptFlagClear(TIMER2, UPDATE_INTERRUPT_SRC);
-    OTG_PortLinkCheck();
-}
-
+/* ROM helper used by BP1540 Example_USB before clock bring-up */
+extern void __c_init_rom(void);
 extern void OTG_DeviceFifoInit(void);
+extern uint32_t OTG_PortIsEnableDPPullUp(void);
 
 static void usb_cdc_upgrade_loop(void)
 {
+    /* BP1540 Example_USB usb_device_example() sequence */
     OTG_DeviceModeSel(CDC_ONLY, BL_USB_VID, BL_USB_PID);
     OTG_DeviceFifoInit();
     OTG_DeviceInit();
     NVIC_EnableIRQ(Usb_IRQn);
     NVIC_SetPriority(Usb_IRQn, 0);
+
+    DBG("[BOOT] DP pull-up %s\n",
+        OTG_PortIsEnableDPPullUp() ? "ON" : "OFF");
+
+    /* #region agent log */
+    {
+        /* USB mux: 0x4002103c bit11 — 0=DPLL, 1=APLL; target Hz = 240M/div */
+        uint16_t usb_mux = *(volatile uint16_t *)0x4002103Cu;
+        uint32_t usb_div = Clock_USBClkDivGet();
+        uint32_t usb_mhz = usb_div ? (240u / usb_div) : 0u;
+        DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"K\",\"location\":\"usb_cdc_upgrade_loop\",\"message\":\"usb_clk\",\"data\":{\"div\":%u,\"mhz\":%u,\"apl\":%u,\"dp\":%u,\"runId\":\"post-fix\"}}\n",
+            (unsigned)usb_div, (unsigned)usb_mhz,
+            (unsigned)((usb_mux >> 11) & 1u),
+            (unsigned)OTG_PortIsEnableDPPullUp());
+    }
+    DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"F\",\"location\":\"usb_cdc_upgrade_loop\",\"message\":\"tick_baseline\",\"data\":{\"gSysTick\":%u,\"GetSysTick\":%u,\"dp\":%u}}\n",
+        (unsigned)gSysTick, (unsigned)GetSysTick1MsCnt(),
+        (unsigned)OTG_PortIsEnableDPPullUp());
+    /* #endregion */
 
     App_Upgrade_Init();
     CDC_Upgrade_Init();
@@ -77,9 +96,25 @@ static void usb_cdc_upgrade_loop(void)
     DBG("[BOOT] USB CDC upgrade ready VID=0x%04X PID=0x%04X\n",
         BL_USB_VID, BL_USB_PID);
 
+    /* #region agent log */
+    /* If SysTick is dead, tick stays 0 forever → ControlSend WaitEnd can hang */
+    {
+        uint32_t t0 = GetSysTick1MsCnt();
+        DelayMs(20);
+        uint32_t t1 = GetSysTick1MsCnt();
+        DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"F\",\"location\":\"usb_cdc_upgrade_loop\",\"message\":\"tick_after_delay20ms\",\"data\":{\"t0\":%u,\"t1\":%u,\"delta\":%u,\"alive\":%u}}\n",
+            (unsigned)t0, (unsigned)t1, (unsigned)(t1 - t0), (unsigned)(t1 != t0));
+    }
+    /* #endregion */
+
     while (1) {
         OTG_DeviceRequestProcess();
         OTG_DeviceCDC_Task();
+
+        /* #region agent log */
+        /* Deferred UART — never print inside EP0 handlers (blocks next SETUP ~15ms). */
+        D42_CDC_PollLog();
+        /* #endregion */
 
         if (!CDC_Upgrade_InMode()) {
             CDC_Upgrade_CheckEnter();
@@ -94,19 +129,27 @@ int main(void)
 {
     Chip_Init(1);
     WDG_Disable();
+    __c_init_rom();
+
+    /*
+     * Clock sequence aligned with BP1540 Example_USB (device-only path):
+     *   Config → HOSC↑ → DPLL/APLL lock → ModuleEnable → Sys/UART select → HOSC↓
+     * USB: DPLL / 5 = 48MHz (SDK clock_config.h: default div=5 for 240M DPLL).
+     * Evidence: apl 0/1 both failed with div=4 (60MHz); EP0 CSR never latched SETUP.
+     */
+    Clock_Config(1, 24000000);
+    Clock_HOSCCurrentSet(15);
+    Clock_PllLock(240 * 1000);
+    Clock_APllLock(240 * 1000);
 
     Clock_Module1Enable(ALL_MODULE1_CLK_SWITCH);
     Clock_Module2Enable(ALL_MODULE2_CLK_SWITCH);
     Clock_Module3Enable(ALL_MODULE3_CLK_SWITCH);
 
-    Clock_Config(1, 24000000);
-    Clock_HOSCCurrentSet(15);
-    Clock_PllLock(240 * 1000);
-    Clock_APllLock(240 * 1000);
     Clock_SysClkSelect(PLL_CLK_MODE);
-    Clock_UARTClkSelect(PLL_CLK_MODE);
-    Clock_USBClkDivSet(4);
-    Clock_USBClkSelect(APLL_CLK_MODE);
+    Clock_UARTClkSelect(PLL_CLK_MODE); /* Example: also leaves USB mux on DPLL */
+    Clock_USBClkDivSet(5);             /* 240/5=48MHz — NOT div=4 (60MHz) */
+    Clock_USBClkSelect(PLL_CLK_MODE);
     Clock_HOSCCurrentSet(5);
 
     /* Clear stale partition-B remap before any jump decision */
@@ -118,15 +161,14 @@ int main(void)
     SpiFlashInit(80000000, MODE_4BIT, 0, 1);
     DMA_ChannelAllocTableSet(DmaChannelMap);
 
-    GPIO_PortAModeSet(GPIOA10, 5); /* UART1 TX */
+    GPIO_PortAModeSet(GPIOA10, 5); /* UART1 TX — BP15 board default */
     GPIO_PortAModeSet(GPIOA9, 1);  /* UART1 RX */
     DbgUartInit(1, 115200, 8, 0, 1);
 
     GIE_ENABLE();
-
-    Timer_Config(TIMER2, 1000, 0);
-    Timer_Start(TIMER2);
-    NVIC_EnableIRQ(Timer2_IRQn);
+    /* Required: OTG_DeviceControlSend/WaitEnd timeouts use GetSysTick1MsCnt().
+     * Without this, tick stays 0 (log alive=0) and EP0 GET_DESCRIPTOR dies → Win Code 43. */
+    SysTickInit();
 
     DualPart_Init();
 

@@ -40,7 +40,4 @@ driver/driver_api/src \
 middleware/mv_utils/src \
 src \
 startup \
-middleware/roboeffect/graphics \
-middleware/roboeffect/roboeffect_lib \
-middleware/roboeffect/roboeffect_lib/wraps \
 

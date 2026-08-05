@@ -13,108 +13,59 @@
          U __stop_bg_evt_sub
          U xQueueCreateMutex
          U xTaskGetCurrentTaskHandle
-00000000 a 
-00000000 a ./FreeRTOS/Source/portable/os_cpu_a.o
-00000000 a ./startup/crt0.o
-00000000 n .comment	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_abbrev	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_aranges	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_frame	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_info	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_line	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_loc	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_macro	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_ranges	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 N .debug_str	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 r .rodata_*flash_boot.o	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 t .text_*flash_boot.o	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
 00000000 a EILM_BEGIN
 00000000 a NDS_SAG_LMA_EILM
 00000000 W _ITB_BASE_
-00000000 W _RELAX_END_	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:85
-00000000 a _write.o
-00000000 a abs.c
-00000000 a clk.c
-00000000 a core_d1088.c
-00000000 a dma.c
-00000000 a do_printf.c
-00000000 a flash_boot.c
-00000000 R flash_data	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/flash_boot.c:6
-00000000 a gpio.c
-00000000 a heap_5s.c
-00000000 a init-default.c
-00000000 a interrupt.c
-00000000 a lib_a-strcpy.o
-00000000 a lib_a-strlen.o
-00000000 a list.c
-00000000 a main.c
-00000000 a port.c
-00000000 a portISR.c
-00000000 a printf.c
-00000000 a printf_f.c
-00000000 a puts.c
-00000000 a queue.c
-00000000 a remap.c
-00000000 a retarget.c
-00000000 a tasks.c
-00000000 a timeout.c
-00000000 a timer.c
-00000000 a timers.c
-00000000 a uarts.c
-00000000 a vprintf.c
-00000000 a watchdog.c
-00010000 t .vector	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:47
-00010000 T _start	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:47
-00010000 t exception_vector	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:47
-000100a4 t .stub_section	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:333
-000100a4 t exception_vector_end	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:333
-000100a4 T stub	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:332
-00010108 t .startup_section	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:94
-00010108 T OS_Trap_Interrupt_SWI	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:94
-0001022c t ISR_TABLE	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:62
-000102ac t OS_Trap_TLB_Fill	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:106
-000102c0 t OS_Trap_PTE_Not_Present	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:110
-000102d4 t OS_Trap_TLB_Misc	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:114
-000102e8 t OS_Trap_TLB_VLPT_Miss	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:119
-000102fc t OS_Trap_Machine_Error	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:123
-00010310 t OS_Trap_Debug_Related	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:127
-00010324 t OS_Trap_General_Exception	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:131
-00010338 t OS_Trap_Syscall	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:135
-0001034c t OS_Trap_Int_Comm	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:138
-00010436 t OS_Trap_Interrupt_HW0	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:148
-00010440 t OS_Trap_Interrupt_HW1	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:153
-0001044a t OS_Trap_Interrupt_HW2	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:158
-00010454 t OS_Trap_Interrupt_HW3	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:169
-0001045e t OS_Trap_Interrupt_HW4	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:174
-00010468 t OS_Trap_Interrupt_HW5	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:179
-00010498 t OS_Trap_Interrupt_HW6	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:187
-000104a2 t OS_Trap_Interrupt_HW7	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:192
-000104ac t OS_Trap_Interrupt_HW8	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:197
-000104b6 t OS_Trap_Interrupt_HW9	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:202
-000104c0 t OS_Trap_Interrupt_HW10	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:207
-000104ca t OS_Trap_Interrupt_HW11	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:212
-000104d4 t OS_Trap_Interrupt_HW12	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:217
-000104de t OS_Trap_Interrupt_HW13	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:222
-000104e8 t OS_Trap_Interrupt_HW14	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:227
-000104f2 t OS_Trap_Interrupt_HW15	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:232
-000104fc t OS_Trap_Interrupt_HW16	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:237
-00010506 t OS_Trap_Interrupt_HW17	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:242
-00010510 t OS_Trap_Interrupt_HW18	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:247
-0001051a t OS_Trap_Interrupt_HW19	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:252
-00010524 t OS_Trap_Interrupt_HW20	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:257
-0001052e t OS_Trap_Interrupt_HW21	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:262
-00010538 t OS_Trap_Interrupt_HW22	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:267
-00010542 t OS_Trap_Interrupt_HW23	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:272
-0001054c t OS_Trap_Interrupt_HW24	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:277
-00010556 t OS_Trap_Interrupt_HW25	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:282
-00010560 t OS_Trap_Interrupt_HW26	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:287
-0001056a t OS_Trap_Interrupt_HW27	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:292
-00010574 t OS_Trap_Interrupt_HW28	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:297
-0001057e t OS_Trap_Interrupt_HW29	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:302
-00010588 t OS_Trap_Interrupt_HW30	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:307
-00010592 t OS_Trap_Interrupt_HW31	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:312
-0001059c t ___start	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/crt0.S:343
-000105ec t .tcm_section
+00000000 W _RELAX_END_	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/retarget.c:85
+00000000 R flash_data	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/flash_boot.c:6
+00010000 T _start	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:47
+00010000 t exception_vector	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:47
+000100a4 t exception_vector_end	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:333
+000100a4 T stub	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:332
+00010108 T OS_Trap_Interrupt_SWI	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:94
+0001022c t ISR_TABLE	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:62
+000102ac t OS_Trap_TLB_Fill	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:106
+000102c0 t OS_Trap_PTE_Not_Present	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:110
+000102d4 t OS_Trap_TLB_Misc	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:114
+000102e8 t OS_Trap_TLB_VLPT_Miss	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:119
+000102fc t OS_Trap_Machine_Error	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:123
+00010310 t OS_Trap_Debug_Related	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:127
+00010324 t OS_Trap_General_Exception	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:131
+00010338 t OS_Trap_Syscall	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:135
+0001034c t OS_Trap_Int_Comm	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:138
+00010436 t OS_Trap_Interrupt_HW0	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:148
+00010440 t OS_Trap_Interrupt_HW1	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:153
+0001044a t OS_Trap_Interrupt_HW2	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:158
+00010454 t OS_Trap_Interrupt_HW3	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:169
+0001045e t OS_Trap_Interrupt_HW4	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:174
+00010468 t OS_Trap_Interrupt_HW5	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:179
+00010498 t OS_Trap_Interrupt_HW6	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:187
+000104a2 t OS_Trap_Interrupt_HW7	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:192
+000104ac t OS_Trap_Interrupt_HW8	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:197
+000104b6 t OS_Trap_Interrupt_HW9	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:202
+000104c0 t OS_Trap_Interrupt_HW10	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:207
+000104ca t OS_Trap_Interrupt_HW11	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:212
+000104d4 t OS_Trap_Interrupt_HW12	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:217
+000104de t OS_Trap_Interrupt_HW13	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:222
+000104e8 t OS_Trap_Interrupt_HW14	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:227
+000104f2 t OS_Trap_Interrupt_HW15	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:232
+000104fc t OS_Trap_Interrupt_HW16	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:237
+00010506 t OS_Trap_Interrupt_HW17	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:242
+00010510 t OS_Trap_Interrupt_HW18	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:247
+0001051a t OS_Trap_Interrupt_HW19	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:252
+00010524 t OS_Trap_Interrupt_HW20	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:257
+0001052e t OS_Trap_Interrupt_HW21	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:262
+00010538 t OS_Trap_Interrupt_HW22	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:267
+00010542 t OS_Trap_Interrupt_HW23	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:272
+0001054c t OS_Trap_Interrupt_HW24	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:277
+00010556 t OS_Trap_Interrupt_HW25	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:282
+00010560 t OS_Trap_Interrupt_HW26	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:287
+0001056a t OS_Trap_Interrupt_HW27	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:292
+00010574 t OS_Trap_Interrupt_HW28	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:297
+0001057e t OS_Trap_Interrupt_HW29	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:302
+00010588 t OS_Trap_Interrupt_HW30	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:307
+00010592 t OS_Trap_Interrupt_HW31	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:312
+0001059c t ___start	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/crt0.S:343
 000105ec T Clock_PllFreqGet
 000105f2 T Clock_APllFreqGet
 000105f8 T Clock_Bt32kTrimFreqGet
@@ -128,8 +79,7 @@
 00010746 T GPIO_RegOneBitClear
 00010758 T __udelay
 000107ba T DelayMs
-00010820 t .driver.isr	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/portISR.c:102
-00010820 T SystickInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/portISR.c:100
+00010820 T SystickInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/portISR.c:100
 00010850 T DMA_D_Interrupt
 0001089a T DMA_T_Interrupt
 000108e0 T DMA_E_Interrupt
@@ -138,117 +88,116 @@
 00010944 T TimeOutSet
 00010964 T IsTimeOut
 00010990 W UART_Interrupt
-00010a30 t .text	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:757
-00010a30 t prvInsertBlockIntoFreeList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:750
-00010a76 T pvPortMalloc	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:170
-00010b30 T vPortFree	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:474
-00010b80 T vListInitialise	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/list.c:75
-00010b94 T vListInitialiseItem	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/list.c:95
-00010b9a T vListInsertEnd	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/list.c:102
-00010bb2 T vListInsert	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/list.c:121
-00010be0 T uxListRemove	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/list.c:179
-00010c02 t prvIsQueueFull	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1840
-00010c28 t prvIsQueueEmpty	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1801
-00010c4a t prvCopyDataToQueue	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1594
-00010cbc t prvCopyDataFromQueue	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1664
-00010cea t prvUnlockQueue	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1686
-00010d60 T xQueueGenericReset	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:255
-00010dd0 T xQueueGenericCreate	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:308
-00010e1e T xQueueGenericSend	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:593
-00010f46 T xQueueGenericSendFromISR	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1025
-00010ff0 T xQueueGenericReceive	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1169
-00011118 T vQueueAddToRegistry	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:2156
-0001113e T vQueueWaitForMessageRestricted	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:2212
-00011184 t prvResetNextTaskUnblockTime	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:3092
-000111ac t prvDeleteTCB	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:3076
-000111c6 t prvAllocateTCBAndStack	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2904
-0001120c t prvInitialiseTCBVariables	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2693
-00011260 t prvInitialiseTaskLists	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2801
-000112b6 t prvAddCurrentTaskToDelayedList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2874
-000112fc T xTaskGenericCreate	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:516
-000113ea T vTaskDelete	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:696
-00011458 T vTaskStartScheduler	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1447
-000114b0 T vTaskSuspendAll	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1536
-000114bc T xTaskGetTickCount	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1667
-000114d4 T xTaskIncrementTick	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1842
-000115da T xTaskResumeAll	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1574
-000116a0 T vTaskDelay	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:870
-000116de t prvCheckTasksWaitingTermination	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2833
-0001172c t prvIdleTask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2546
-0001174a T vTaskSwitchContext	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2107
-00011804 T vTaskPlaceOnEventList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2165
-00011846 T vTaskPlaceOnEventListRestricted	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2292
-00011874 T xTaskRemoveFromEventList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2335
-000118e6 T vTaskSetTimeOutState	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2434
-000118f8 T xTaskCheckForTimeOut	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2442
-00011952 T vTaskMissedYield	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2491
-0001195a T xTaskGetSchedulerState	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:3136
-00011972 t prvGetNextExpireTime	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:483
-0001198a t prvInsertTimerInActiveList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:532
-000119d4 t prvCheckForValidListAndQueue	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:758
-00011a2c T xTimerCreateTimerTask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:236
-00011a68 T xTimerGenericCommand	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:312
-00011ac2 t prvSwitchTimerLists	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:699
-00011b28 t prvSampleTimeNow	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:509
-00011b58 t prvProcessExpiredTimer	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:366
-00011ba6 t prvProcessTimerOrBlockTask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:430
-00011bf8 t prvProcessReceivedCommands	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:573
-00011cd0 t prvTimerTask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:406
-00011ce8 T CtxRestore	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:70
-00011d56 T vPortEndScheduler	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:242
-00011d72 T pxPortInitialiseStack	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:145
-00011e20 T xPortStartScheduler	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:227
-00011e38 T vPortYield	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:254
-00011e46 T vPortEnterCritical	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:264
-00011e74 T vPortExitCritical	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:281
-00011e9e T ulPortSetInterruptMask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:293
-00011eb6 T vPortClearInterruptMask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:314
-00011ec0 W vPortISRStartFirstTask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/portISR.c:80
-00011ed2 t vPrintTask	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../src/main.c:38
-00011ef2 T main	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../src/main.c:51
-00011f90 T vApplicationStackOverflowHook	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../src/main.c:97
-00011fa2 T vApplicationMallocFailedHook	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../src/main.c:103
-00011fb2 T vApplicationIdleHook	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../src/main.c:109
-00011fb4 W BLE_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 t Default_Handler	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:57
-00011fb4 W FFTInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W GpioInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W HosccntInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W I2C_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W I2sInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W IR_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W PowerkeyInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W RtcInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W SDIO0_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W SPDIF0_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W SPDIF1_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W SPIM_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W SPIS_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W SWInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer2Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer3Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer4Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer5Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer6Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer7Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W Timer8Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W UART0_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W UART1_Interrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W UsbInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W WakeupInterrupt	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W rwbt_isr	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb4 W rwip_isr	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:59
-00011fb6 W pcTaskGetTaskName	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:62
-00011fba T ExceptionCommHandler	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:67
-00012148 T __c_init	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:119
-00012180 T __cpu_init	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:146
-0001223c T __init	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:314
-00012256 T GIE_ENABLE	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/interrupt.c:9
-00012260 T GIE_DISABLE	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/interrupt.c:14
-0001226e T GIE_STATE_GET	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/interrupt.c:20
-00012276 T NVIC_EnableIRQ	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/interrupt.c:63
+00010a30 t prvInsertBlockIntoFreeList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:750
+00010a76 T pvPortMalloc	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:170
+00010b30 T vPortFree	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:474
+00010b80 T vListInitialise	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/list.c:75
+00010b94 T vListInitialiseItem	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/list.c:95
+00010b9a T vListInsertEnd	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/list.c:102
+00010bb2 T vListInsert	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/list.c:121
+00010be0 T uxListRemove	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/list.c:179
+00010c02 t prvIsQueueFull	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1840
+00010c28 t prvIsQueueEmpty	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1801
+00010c4a t prvCopyDataToQueue	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1594
+00010cbc t prvCopyDataFromQueue	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1664
+00010cea t prvUnlockQueue	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1686
+00010d60 T xQueueGenericReset	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:255
+00010dd0 T xQueueGenericCreate	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:308
+00010e1e T xQueueGenericSend	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:593
+00010f46 T xQueueGenericSendFromISR	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1025
+00010ff0 T xQueueGenericReceive	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:1169
+00011118 T vQueueAddToRegistry	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:2156
+0001113e T vQueueWaitForMessageRestricted	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:2212
+00011184 t prvResetNextTaskUnblockTime	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:3092
+000111ac t prvDeleteTCB	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:3076
+000111c6 t prvAllocateTCBAndStack	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2904
+0001120c t prvInitialiseTCBVariables	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2693
+00011260 t prvInitialiseTaskLists	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2801
+000112b6 t prvAddCurrentTaskToDelayedList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2874
+000112fc T xTaskGenericCreate	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:516
+000113ea T vTaskDelete	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:696
+00011458 T vTaskStartScheduler	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1447
+000114b0 T vTaskSuspendAll	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1536
+000114bc T xTaskGetTickCount	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1667
+000114d4 T xTaskIncrementTick	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1842
+000115da T xTaskResumeAll	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:1574
+000116a0 T vTaskDelay	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:870
+000116de t prvCheckTasksWaitingTermination	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2833
+0001172c t prvIdleTask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2546
+0001174a T vTaskSwitchContext	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2107
+00011804 T vTaskPlaceOnEventList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2165
+00011846 T vTaskPlaceOnEventListRestricted	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2292
+00011874 T xTaskRemoveFromEventList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2335
+000118e6 T vTaskSetTimeOutState	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2434
+000118f8 T xTaskCheckForTimeOut	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2442
+00011952 T vTaskMissedYield	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:2491
+0001195a T xTaskGetSchedulerState	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:3136
+00011972 t prvGetNextExpireTime	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:483
+0001198a t prvInsertTimerInActiveList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:532
+000119d4 t prvCheckForValidListAndQueue	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:758
+00011a2c T xTimerCreateTimerTask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:236
+00011a68 T xTimerGenericCommand	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:312
+00011ac2 t prvSwitchTimerLists	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:699
+00011b28 t prvSampleTimeNow	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:509
+00011b58 t prvProcessExpiredTimer	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:366
+00011ba6 t prvProcessTimerOrBlockTask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:430
+00011bf8 t prvProcessReceivedCommands	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:573
+00011cd0 t prvTimerTask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:406
+00011ce8 T CtxRestore	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:70
+00011d56 T vPortEndScheduler	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:242
+00011d72 T pxPortInitialiseStack	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:145
+00011e20 T xPortStartScheduler	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:227
+00011e38 T vPortYield	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:254
+00011e46 T vPortEnterCritical	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:264
+00011e74 T vPortExitCritical	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:281
+00011e9e T ulPortSetInterruptMask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:293
+00011eb6 T vPortClearInterruptMask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:314
+00011ec0 W vPortISRStartFirstTask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/portISR.c:80
+00011ed2 t vPrintTask	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../src/main.c:38
+00011ef2 T main	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../src/main.c:51
+00011f90 T vApplicationStackOverflowHook	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../src/main.c:97
+00011fa2 T vApplicationMallocFailedHook	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../src/main.c:103
+00011fb2 T vApplicationIdleHook	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../src/main.c:109
+00011fb4 W BLE_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 t Default_Handler	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:57
+00011fb4 W FFTInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W GpioInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W HosccntInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W I2C_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W I2sInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W IR_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W PowerkeyInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W RtcInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W SDIO0_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W SPDIF0_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W SPDIF1_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W SPIM_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W SPIS_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W SWInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer2Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer3Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer4Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer5Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer6Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer7Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W Timer8Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W UART0_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W UART1_Interrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W UsbInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W WakeupInterrupt	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W rwbt_isr	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb4 W rwip_isr	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:59
+00011fb6 W pcTaskGetTaskName	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:62
+00011fba T ExceptionCommHandler	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:67
+00012148 T __c_init	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:119
+00012180 T __cpu_init	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:146
+0001223c T __init	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:314
+00012256 T GIE_ENABLE	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/interrupt.c:9
+00012260 T GIE_DISABLE	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/interrupt.c:14
+0001226e T GIE_STATE_GET	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/interrupt.c:20
+00012276 T NVIC_EnableIRQ	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/interrupt.c:63
 0001228e T putchar	/cygdrive/c/Andestech/AndeSight300RDS/toolchains/nds32le-elf-mculib-v3s/nds32le-elf/include/stdio.h:212
-000122c0 T nds_write	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:64
+000122c0 T nds_write	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/retarget.c:64
 000122e0 T Clock_Config
 0001234c T Clock_RcFreqGet
 0001246e T Clock_UARTClkSelect
@@ -277,9 +226,8 @@
 00013880 T strcpy
 00013894 T abs
 0001389c T _write
-000138b4 r .rodata
 000138bc r ucExpectedStackBytes.4503
-00013bcc R MPUConfigTable	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/init-default.c:370
+00013bcc R MPUConfigTable	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/init-default.c:370
 00013cbc A __ctxt_code_end
 00013cbc A __ctxt_code_start
 00013cbc A __ram_code_end
@@ -487,7 +435,7 @@
 0083eae2 a __gtdf2
 0083eb86 a __ledf2
 0083eb86 a __ltdf2
-0083ec2c A __muldf3
+0083ec2c a __muldf3
 0083f01c a __subdf3
 0083f5cc a __floatsidf
 0083f636 a __truncdfsf2
@@ -531,10 +479,9 @@
 20000180 A FshcClkSwitchCallBack
 20000190 A _NDS32_REENT__errno
 200010e8 a SpiFlashInfo
-20002000 d .data
 20002000 D __data_start
 20002000 A _stack
-20002000 d xNextTaskUnblockTime	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:226
+20002000 d xNextTaskUnblockTime	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:226
 20002004 D BtHoscClkDiv
 20002008 D EfuseBt32k
 2000200c D rc12m_clk_freq
@@ -542,51 +489,48 @@
 20002014 d DMAChannelAllMap
 200020a4 D UART_STATUS
 200020ac D SREG_UART_CTRL
-200020b8 s .sbss_h
 200020b8 S Bt32kSofCnt
 200020b8 S __bss_start
 200020b8 S _edata
-200020bc s .sbss_w
-200020c0 b .bss
-200020c0 b xBlockAllocatedBit	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:167
-200020c4 b xMinimumEverFreeBytesRemaining	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:161
-200020c8 b xFreeBytesRemaining	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:160
-200020cc b pxEnd	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:156
-200020d0 b xStart	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:156
-200020e4 b uxSchedulerSuspended	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:236
-200020e8 b uxTaskNumber	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:225
-200020ec b xNumOfOverflows	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:224
-200020f0 b xYieldPending	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:223
-200020f4 b uxPendedTicks	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:222
-200020f8 b xSchedulerRunning	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:221
-200020fc b uxTopReadyPriority	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:220
-20002100 b xTickCount	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:219
-20002104 b uxCurrentNumberOfTasks	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:218
-20002108 b xSuspendedTaskList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:207
-2000211c b uxTasksDeleted	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:201
-20002120 b xTasksWaitingTermination	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:200
-20002134 b xPendingReadyList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:196
-20002148 b pxOverflowDelayedTaskList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:195
-2000214c b pxDelayedTaskList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:194
-20002150 b xDelayedTaskList2	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:193
-20002164 b xDelayedTaskList1	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:192
-20002178 b pxReadyTasksLists	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:191
-200021dc B pxCurrentTCB	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:188
+200020c0 b xBlockAllocatedBit	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:167
+200020c4 b xMinimumEverFreeBytesRemaining	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:161
+200020c8 b xFreeBytesRemaining	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:160
+200020cc b pxEnd	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:156
+200020d0 b xStart	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/heap_5s.c:156
+200020e4 b uxSchedulerSuspended	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:236
+200020e8 b uxTaskNumber	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:225
+200020ec b xNumOfOverflows	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:224
+200020f0 b xYieldPending	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:223
+200020f4 b uxPendedTicks	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:222
+200020f8 b xSchedulerRunning	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:221
+200020fc b uxTopReadyPriority	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:220
+20002100 b xTickCount	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:219
+20002104 b uxCurrentNumberOfTasks	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:218
+20002108 b xSuspendedTaskList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:207
+2000211c b uxTasksDeleted	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:201
+20002120 b xTasksWaitingTermination	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:200
+20002134 b xPendingReadyList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:196
+20002148 b pxOverflowDelayedTaskList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:195
+2000214c b pxDelayedTaskList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:194
+20002150 b xDelayedTaskList2	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:193
+20002164 b xDelayedTaskList1	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:192
+20002178 b pxReadyTasksLists	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:191
+200021dc B pxCurrentTCB	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/tasks.c:188
 200021e0 b xLastTime.3626
-200021e4 b xTimerQueue	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:165
-200021e8 b pxOverflowTimerList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:162
-200021ec b pxCurrentTimerList	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:161
-200021f0 b xActiveTimerList2	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:160
-20002204 b xActiveTimerList1	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:159
-20002218 B psw_1	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:263
-2000221c b psw_0	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:262
-20002220 B ulCriticalNesting	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:261
-20002224 b xPrintTaskHandle	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../src/main.c:35
-20002228 B DebugPrintPort	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../startup/retarget.c:16
+200021e4 b xTimerQueue	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:165
+200021e8 b pxOverflowTimerList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:162
+200021ec b pxCurrentTimerList	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:161
+200021f0 b xActiveTimerList2	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:160
+20002204 b xActiveTimerList1	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/timers.c:159
+20002218 B psw_1	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:263
+2000221c b psw_0	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:262
+20002220 B ulCriticalNesting	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/portable/port.c:261
+20002224 b xPrintTaskHandle	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../src/main.c:35
+20002228 B DebugPrintPort	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../startup/retarget.c:16
 2000222c B gSysTick
 20002230 b output_idx
 20002234 b output_buff
-20002238 B xQueueRegistry	/cygdrive/e/project_and_dataset/project/wireless_mic_1532/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:187
+20002238 B xQueueRegistry	/cygdrive/d/BanAirBundy/minimal_rtos/Debug/../FreeRTOS/Source/queue.c:187
 20002278 B _end
 20028000 W _FP_BASE_
 20028000 A _SDA_BASE_

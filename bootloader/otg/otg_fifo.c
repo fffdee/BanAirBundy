@@ -9,6 +9,10 @@
 #include "otg_device_hcd.h"
 #include "otg_host_hcd.h"
 #include "otg_device_standard_request.h"
+
+#ifndef MAX
+#define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+#endif
 #define  HOST_EP0_DEPTH    64
 #define  HOST_EP1_TX_DEPTH 128
 #define  HOST_EP1_RX_DEPTH 1024

@@ -19,17 +19,29 @@
 #include "otg_device_descriptor.h"
 #include "otg_device_audio.h"
 #include "otg_device_cdc.h"
+#include "timeout.h"
 
 #ifdef CFG_APP_CONFIG
 #include "app_config.h"
 #endif
 
-/* Bootloader uses CDC_ONLY �� do not enable USB audio composite path */
+/* Bootloader uses CDC_ONLY ?? do not enable USB audio composite path */
 #undef CFG_APP_USB_AUDIO_MODE_EN
+
+/* #region agent log */
+/* D42: UART NDJSON markers for host-side capture ? debug-42d04e.log */
+static uint32_t s_d42_setup_cnt;
+static uint32_t s_d42_reset_cnt;
+static uint32_t s_d42_last_bus;
+static uint32_t s_d42_setup_err_cnt;
+static uint32_t s_d42_last_csr_log_tick;
+static uint32_t s_d42_csr_logs_this_reset;
+extern uint32_t gSysTick;
+/* #endregion */
 
 
 //------------------------------------//
-// HID USB�?�?俊瀹炵�? - �?ㄤ簬PC Tool闊抽鍙傛暟璋冭�?鍜屽浐浠跺崌绾�void HIDUsb_Tx(uint8_t *buf, uint16_t len);
+// HID USB????????? - ????PC Tool??????????????????void HIDUsb_Tx(uint8_t *buf, uint16_t len);
 
 
 void HIDUsb_Rx(uint8_t *buf, uint16_t len);
@@ -74,16 +86,34 @@ void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid)
 	ConfigDescriptor = (uint8_t *)ConfigDescriptorTab[Mode];
 	InterfaceNum = (uint8_t *)InterFaceNumTab[Mode];
 
- 	gDeviceProductString		    = "BG Card audio"; 	//max length: 32bytesv bkd add
- 	gDeviceString_Manu 		        = "BanGO";			    	//max length: 32bytes
-	gDeviceString_SerialNumber      = "20250405";						//max length: 32bytes
+	/* Windows: EF/02/01 + IAD required for CDC ACM (usbser.sys) */
+	DeviceDescriptor[4] = 0xEF;
+	DeviceDescriptor[5] = 0x02;
+	DeviceDescriptor[6] = 0x01;
+
+	if (Mode == CDC_ONLY) {
+		gDeviceProductString = "BG Bootloader";
+	} else {
+		gDeviceProductString = "BG Card audio";
+	}
+
+ 	gDeviceString_Manu 		        = "BanGO";
+	gDeviceString_SerialNumber      = "20250405";
+
+	/* #region agent log */
+	DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"D\",\"location\":\"ModeSel\",\"message\":\"dev_desc\",\"data\":{\"cls\":%u,\"sub\":%u,\"proto\":%u,\"vid\":%04X,\"pid\":%04X,\"bLen\":%u,\"tick\":%u}}\n",
+		DeviceDescriptor[4], DeviceDescriptor[5], DeviceDescriptor[6],
+		(unsigned)(DeviceDescriptor[8] | (DeviceDescriptor[9] << 8)),
+		(unsigned)(DeviceDescriptor[10] | (DeviceDescriptor[11] << 8)),
+		(unsigned)DeviceDescriptor[0], (unsigned)GetSysTick1MsCnt());
+	/* #endregion */
 }
 
 
 
 /**
- * @brief  閿熸枻鎷烽敓閰靛尅鎷烽敓鐙¤揪鎷烽敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�?�閿熸帴锔兼嫹閿熸枻鎷烽敓鏂ゆ�?�閿燂拷 * @param  Resp 搴旈敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�??
- * @param  n 搴旈敓鏂ゆ�?�閿熸枻鎷烽敓鎹风鎷烽敓�?�猴綇鎷�? or 2
+ * @brief  ?????????????????????????????????????????????????????? * @param  Resp ???????????????????
+ * @param  n ???????????????????????????? or 2
  * @return NONE
  */
 void OTG_DeviceSendResp(uint16_t Resp, uint8_t n)
@@ -93,7 +123,7 @@ void OTG_DeviceSendResp(uint16_t Resp, uint8_t n)
 }
 
 /**
- * @brief  閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷峰彇閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷� * @param  NONE
+ * @brief  ?????????????????????????????????????????? * @param  NONE
  * @return NONE
  */
 void OTG_DeviceGetDescriptor(void)
@@ -159,12 +189,12 @@ void OTG_DeviceGetDescriptor(void)
 			break;
 
 		case USB_DT_INTERFACE:
-			//PC榛橀敓杈�?鎷烽敓缁撳彂閿熼叺闈╂嫹閿熸枻鎷烽敓鏂ゆ�??
+			//PC??????????????????????????????
 		//	DBG("USB_DT_INTERFACE\n");
 			break;
 
 		case USB_DT_ENDPOINT:
-			//PC榛橀敓杈�?鎷烽敓缁撳彂閿熼叺闈╂嫹閿熸枻鎷烽敓鏂ゆ�??
+			//PC??????????????????????????????
 		//DBG("USB_DT_ENDPOINT\n");
 			break;
 			
@@ -196,8 +226,19 @@ void OTG_DeviceGetDescriptor(void)
 
 		default:
 		DBG("UsbDeviceSendStall:100\n");
+			/* #region agent log */
+			DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"E\",\"location\":\"GetDescriptor\",\"message\":\"stall_unknown_dtype\",\"data\":{\"dtype\":%u}}\n",
+				(unsigned)Setup[3]);
+			/* #endregion */
 			OTG_DeviceStallSend(DEVICE_CONTROL_EP);
 			return;
+	}
+
+	if (Len == 0 || UsbSendPtr == 0) {
+		/* #region agent log */
+		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"E\",\"location\":\"GetDescriptor\",\"message\":\"empty_desc\",\"data\":{\"dtype\":%u,\"len\":%u,\"ptr\":%08X}}\n",
+			(unsigned)Setup[3], (unsigned)Len, (unsigned)(uint32_t)UsbSendPtr);
+		/* #endregion */
 	}
 
 	if(Len > (Setup[7] * 256 + Setup[6]))
@@ -205,7 +246,8 @@ void OTG_DeviceGetDescriptor(void)
 
 		Len = Setup[7] * 256 + Setup[6];
 	}
-	OTG_DeviceControlSend((uint8_t*)UsbSendPtr, Len,3);
+	/* No DBG before ControlSend ? UART print delayed EP0 and broke follow-up class reqs */
+	OTG_DeviceControlSend((uint8_t*)UsbSendPtr, Len, 10);
 }
 
 void OTG_DeviceAudioInit();
@@ -217,23 +259,28 @@ void OTG_DeviceStandardRequest()
 	switch(Setup[1])
 	{
 		case USB_REQ_GET_STATUS:
-			//OTG_DBG("GetStatus\n");
-			//閿熸枻鎷烽敓鑺備�?鎷峰彇USB閿熷�澶�?敓鎺ュ彛绔�?鎷烽敓闃跺埡锟�		Resp[0] = 0x00;
+			Resp[0] = 0x00;
 			Resp[1] = 0x00;
-			OTG_DeviceControlSend((uint8_t*)&Resp,2,10);
+			OTG_DeviceControlSend((uint8_t*)&Resp, 2, 10);
 			break;
 
 		case USB_REQ_CLEAR_FEATURE:
-			//OTG_DBG("ClearFeature\n");
-			//閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷峰�?閿熻绛揝B閿熷�澶�?0,閿熸帴鍖℃�??01,閿熷壙纰夋�??02,閿熸枻鎷锋煇浜涢敓鏂ゆ�?�閿熺殕锝忔嫹閿熸枻鎷烽敓鏂ゆ�?�閿熸嵎杈炬嫹閿熸枻鎷�			break;
+			/* Status for OUT wLength=0 ? was falling through (break stuck in comment) */
+			{
+				static uint8_t zlp;
+				OTG_DeviceControlSend(&zlp, 0, 10);
+			}
+			break;
 
 		case USB_REQ_SET_FEATURE:
-		//	OTG_DBG("SetFeature\n");
-			//閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鐭紮鎷烽敓鏂ゆ�?�浣縐SB閿熷�澶�?0,閿熸帴鍖℃�??01,閿熷壙纰夋�??02,閿熸枻鎷锋煇浜涢敓鏂ゆ�?�閿熺殕锝忔嫹閿熸枻鎷烽敓鏂ゆ�?�閿熸嵎杈炬嫹閿熸枻鎷�			OTG_DeviceStallSend(Setup[4]);
+			/* Do not stall EP0 ? previous StallSend(Setup[4]) was commented junk */
+			{
+				static uint8_t zlp;
+				OTG_DeviceControlSend(&zlp, 0, 10);
+			}
 			break;
 
 		case USB_REQ_SET_ADDRESS:
-		//	OTG_DBG("SetAddress\n");
 			OTG_DeviceAddressSet(Setup[2] & 0x7F);
 			break;
 
@@ -256,51 +303,42 @@ void OTG_DeviceStandardRequest()
 
 		case USB_REQ_SET_CONFIGURATION:
 			{
-			//	DBG("Audio_ISO sam test\n");
+				OTG_DeviceEndpointReset(DEVICE_CDC_CMD_EP, TYPE_INT_IN);
+				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_IN_EP, TYPE_BULK_IN);
+				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_OUT_EP, TYPE_BULK_OUT);
+#ifdef CFG_APP_USB_AUDIO_MODE_EN
 				OTG_DeviceEndpointReset(DEVICE_INT_IN_EP,TYPE_INT_IN);
-				OTG_DeviceEndpointReset(DEVICE_BULK_IN_EP,TYPE_BULK_IN);
-				OTG_DeviceEndpointReset(DEVICE_BULK_OUT_EP,TYPE_BULK_OUT);
 				OTG_DeviceEndpointReset(DEVICE_ISO_IN_EP,TYPE_ISO_IN);
 				OTG_DeviceEndpointReset(DEVICE_ISO_OUT_EP,TYPE_ISO_OUT);
-
-				// CDC绔偣澶嶇敤Bulk绔偣锛屾棤闇�崟鐙瑀eset
-				// OTG_DeviceEndpointReset(DEVICE_CDC_CMD_EP,TYPE_INT_IN);
-				// OTG_DeviceEndpointReset(DEVICE_CDC_DATA_IN_EP,TYPE_BULK_IN);
-				// OTG_DeviceEndpointReset(DEVICE_CDC_DATA_OUT_EP,TYPE_BULK_OUT);
-#ifdef CFG_APP_USB_AUDIO_MODE_EN
 				OTG_EndpointInterruptEnable(DEVICE_ISO_OUT_EP,OnDeviceAudioRcvIsoPacket);
 				OTG_EndpointInterruptEnable(DEVICE_ISO_IN_EP,OnDeviceAudioSendIsoPacket);
-#endif			
 				OTG_DeviceISOSend(DEVICE_ISO_IN_EP,0,0);
-#ifdef CFG_APP_USB_AUDIO_MODE_EN
 				OTG_DeviceAudioInit();
 				UsbAudioMic.InitOk = 1;
 				UsbAudioSpeaker.InitOk = 1;
 #endif
-
 				OTG_DeviceCDC_Init();
-				DBG("CDC Device Initialized\n");
+				/* no DBG inside SET_CONFIGURATION ? keep EP0 responsive for immediate class reqs */
 			}
 			break;
 
 		case USB_REQ_GET_INTERFACE:
-			OTG_DeviceControlSend((uint8_t*)&Resp, 1,3);
+			Resp[0] = 0x00;
+			OTG_DeviceControlSend((uint8_t*)&Resp, 1, 10);
 			break;
 
 		case USB_REQ_SET_INTERFACE:
 		#ifdef CFG_APP_USB_AUDIO_MODE_EN
-			//DBG("Setup[4] %d",Setup[4]);
 			if(Setup[4] == InterfaceNum[AUDIO_SRM_IN_INTERFACE_NUM])
 			{
-				//DBG("mic %d",Setup[2]);
 				UsbAudioMic.AltSet = Setup[2];
 			}
 			else if(Setup[4] == InterfaceNum[AUDIO_SRM_OUT_INTERFACE_NUM])
 			{
 				UsbAudioSpeaker.AltSet = Setup[2];
-				//DBG("speaker %d",Setup[2]);
 			}
 		#endif
+			/* Match Example_USB: no software ZLP (HW status for control OUT wLen=0) */
 			break;
 
 		case USB_REQ_SYNCH_FRAME:
@@ -316,126 +354,69 @@ void OTG_DeviceStandardRequest()
 
 uint32_t pc_upgrade = 0;
 
-//閿熷�澶�?敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�??
 void OTG_DeviceClassRequest()
 {
-	if((Setup[0] == 0x22) && (Setup[1] == 0x01))
+	uint8_t bm = Setup[0];
+	uint8_t req = Setup[1];
+	uint8_t ifn = Setup[4];
+
+	/* CRITICAL: never DBG before EP0 status/data ? UART ~15ms ? host stall pid.
+	 * (Regression: entry log before CDC_Request re-broke SET_CTRL_LINE / LINE_CODING.) */
+
+	/* Bootloader CDC_ONLY: ACM class requests by code, then IF0/IF1 */
+	if ((bm == 0x21 || bm == 0xA1) &&
+	    (req == CDC_SET_LINE_CODING || req == CDC_GET_LINE_CODING ||
+	     req == CDC_SET_CONTROL_LINE_STATE || req == CDC_SEND_BREAK ||
+	     req == CDC_SEND_ENCAPSULATED_COMMAND || req == CDC_GET_ENCAPSULATED_RESPONSE))
+	{
+		OTG_DeviceCDC_Request();
+		return;
+	}
+	if (ifn == InterfaceNum[CDC_CTL_INTERFACE_NUM] ||
+	    ifn == InterfaceNum[CDC_DATA_INTERFACE_NUM] ||
+	    ifn == 0 || ifn == 1)
+	{
+		OTG_DeviceCDC_Request();
+		return;
+	}
+
+	if ((bm == 0x22) && (req == 0x01))
 	{
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
 		OTG_DeviceAudioRequest();
 #endif
 		return;
 	}
-	if(Setup[4] == InterfaceNum[MSC_INTERFACE_NUM])
+	if (ifn == InterfaceNum[MSC_INTERFACE_NUM])
 	{
-	//	OTG_DBG("MSC_INTERFACE_NUM\n");
 		OTG_DeviceSendResp(0x0000, 1);
+		return;
 	}
-	
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
-	else if(Setup[4] ==  InterfaceNum[AUDIO_ATL_INTERFACE_NUM])
-	{
-		DBG("AUDIO_ATL_INTERFACE_NUM\n");
-		OTG_DeviceAudioRequest();
-	}
-#endif
-
-	else if(Setup[4] == InterfaceNum[AUDIO_SRM_OUT_INTERFACE_NUM])
-	{
-	//	OTG_DBG("AUDIO_SRM_OUT_INTERFACE_NUM\n");
-	}
-	else if(Setup[4] == InterfaceNum[AUDIO_SRM_IN_INTERFACE_NUM])
-	{
-	//	OTG_DBG("AUDIO_SRM_IN_INTERFACE_NUM\n");
-	}
-	else if(Setup[4] == InterfaceNum[HID_CTL_INTERFACE_NUM])
-	{
-		//OTG_DBG("HID_CTL_INTERFACE_NUM\n");
-		if(Setup[1] == 0x01)//get report
-		{
-			if(Setup[3] == 0x01)//get report
-			{
-				Setup[0] = 0;
-				OTG_DeviceControlSend((uint8_t*)Setup, 1,3);
-			}
-		}
-	}
-	else if(Setup[4] == InterfaceNum[CDC_CTL_INTERFACE_NUM] || Setup[4] == InterfaceNum[CDC_DATA_INTERFACE_NUM])
-	{
-		// CDC閹恒儱褰涚拠閿�??湴�?�跺�?�?�?		DBG("CDC_INTERFACE Request\n");
-		OTG_DeviceCDC_Request();
-	}
-	else if(Setup[4] == InterfaceNum[HID_DATA_INTERFACE_NUM])
-	{
-		//uint32_t len=0;
-		//OTG_DBG("HID_DATA_INTERFACE_NUM\n");//hid_send_data();
-		if((Setup[3] == 0x02)&&(Setup[0] == 0x21))//out
-		{
-			hid_recive_data();
-		}
-		else if((Setup[3] == 0x01)&&(Setup[0] == 0xA1))//int
-		{
-			hid_send_data();
-		}
-#ifdef CFG_APP_CONFIG
-		else if((Setup[3] == 0x03)&&(Setup[0] == 0xA1))//GetReport (Feature Report)
-		{
-			DBG("pc_upgrade start 1\n");
-			if(pc_upgrade)
-			{
-				DBG("pc_upgrade start 2\n");
-				Setup[0] = 0x55;
-				OTG_DeviceControlSend(Setup,Setup[7]*256+Setup[6],1);
-			}
-			else
-			{
-				Setup[0] = 0;
-				OTG_DeviceControlSend(Setup,Setup[7]*256+Setup[6],1);
-			}
-		}
-		else if((Setup[3] == 0x03)&&(Setup[0] == 0x21))//SetReport (Feature Report)
-		{
-			pc_upgrade = 0;
-			DBG("pc_upgrade start 0\n");
-			if(Request[0] == 0x55)//閿熸枻鎷�?ODE閿熸枻鎷烽敓鏂ゆ�?
-			{
-				//uint8_t *p = (uint8_t *)(0x10000 + 0xB8);
-				//p = Request+1;// bkd // 2019.5.7
-				if(memcmp((uint8_t*)(0x10000 + 0xB8),Request + 1,4) != 0)//閿熸枻鎷烽敓鏂ゆ嫹瑕侀敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�??
-				{
-					pc_upgrade = 1;
-				}
-			}
-			else if(Request[0] == 0xAA)//閿熸枻鎷穋ode閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�??
-			{
-				pc_upgrade = 1;
-			}
-		}
-#endif
-		else
-		{
-           // OTG_DBG("Others Cmd\n");
-		}		
-	}
-	
-#ifdef CFG_APP_USB_AUDIO_MODE_EN
-	else
+	if (ifn == InterfaceNum[AUDIO_ATL_INTERFACE_NUM] ||
+	    ifn == InterfaceNum[AUDIO_SRM_OUT_INTERFACE_NUM] ||
+	    ifn == InterfaceNum[AUDIO_SRM_IN_INTERFACE_NUM])
 	{
 		OTG_DeviceAudioRequest();
+		return;
 	}
 #endif
-
+	/* Unmatched: ACK with ZLP rather than stall EP0 (stall latches until clear) */
+	{
+		static uint8_t zlp;
+		OTG_DeviceControlSend(&zlp, 0, 10);
+	}
 }
 
 
-//閿熸枻鎷烽敓鏂ゆ嫹閿熺殕璁�?��?�閿熸枻鎷烽敓鏂ゆ�?�閿熸嵎杈炬嫹閿熸枻鎷烽敓鏂ゆ�??
+//???????????????????????????????????????????????
 void OTG_DeviceManufacturerRequest()
 {
-	//閿熸枻鎷烽敓鏂ゆ嫹閿熺殕璁�?��?�閿熸枻鎷烽敓鏂ゆ�?�閿熸嵎杈炬嫹閿熸枻鎷烽敓鏂ゆ�??
+	//???????????????????????????????????????????????
 }
 
 
-//鏈煡閿熸枻鎷烽敓鏂ゆ�??
+//??????????????
 void OTG_DeviceOtherRequest()
 {
 	//OTG_DBG("UsbDeviceSendStall\n");
@@ -447,7 +428,7 @@ void OTG_DeviceOtherRequest()
 //}
 
 /**
- * @brief  閿熸枻鎷烽敓鏂ゆ嫹PC閿熸枻鎷烽敓鏂ゆ嫹閿熶茎鍖℃嫹閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷� * @param  NONE
+ * @brief  ?????????PC??????????????????????????????? * @param  NONE
  * @return NONE
  */
 void OTG_DeviceRequestProcess(void)
@@ -456,27 +437,55 @@ void OTG_DeviceRequestProcess(void)
 	uint8_t BusEvent = OTG_DeviceBusEventGet();
 	uint32_t DataLeng;
 	uint8_t ReqType;
+	OTG_DEVICE_ERR_CODE setup_err;
 
 	if(BusEvent & 0x04)
 	{
-		OTG_DeviceAddressSet(0);
+		s_d42_reset_cnt++;
+		s_d42_csr_logs_this_reset = 0;
+		/* #region agent log */
+		{
+			volatile uint8_t *usb = (volatile uint8_t *)0x40000000u;
+			DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"G\",\"location\":\"RequestProcess\",\"message\":\"usb_reset\",\"data\":{\"cnt\":%u,\"tick\":%u,\"csr\":%u,\"addr\":%u,\"runId\":\"post-fix\"}}\n",
+				(unsigned)s_d42_reset_cnt, (unsigned)GetSysTick1MsCnt(),
+				(unsigned)usb[0x11], (unsigned)usb[0x00]);
+		}
+		/* #endregion */
+		/* Match Example_USB: do NOT call AddressSet(0) here (blocked ~20ms, bit4 never set).
+		 * Hardware clears address on bus reset. */
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
 		UsbAudioMic.InitOk = 0;
 		UsbAudioSpeaker.InitOk = 0;
 #endif
-		// CDC閸�?�鍨垫慨瀣�?
 		OTG_DeviceCDC_DeInit();
 	}
-	if(OTG_DeviceSetupReceive(Setup, 8, &DataLeng) != DEVICE_NONE_ERR)
+	setup_err = OTG_DeviceSetupReceive(Setup, 8, &DataLeng);
+	if(setup_err != DEVICE_NONE_ERR)
 	{
-//		for(i=0;i<8;i++)
-//		DBG("Setup %d is閿熸枻鎷�d\n",i,Setup[i]);
+		/* #region agent log */
+		s_d42_setup_err_cnt++;
+		{
+			uint32_t now = GetSysTick1MsCnt();
+			/* After each reset: up to 8 samples @50ms ? see if SETUP bit ever latches in CSR */
+			if (s_d42_reset_cnt && s_d42_csr_logs_this_reset < 8u &&
+			    (now - s_d42_last_csr_log_tick) >= 50u) {
+				volatile uint8_t *usb = (volatile uint8_t *)0x40000000u;
+				s_d42_last_csr_log_tick = now;
+				s_d42_csr_logs_this_reset++;
+				DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"H\",\"location\":\"RequestProcess\",\"message\":\"setup_poll\",\"data\":{\"err\":%u,\"errCnt\":%u,\"csr\":%u,\"fifoLen\":%u,\"tick\":%u,\"rst\":%u,\"n\":%u}}\n",
+					(unsigned)setup_err, (unsigned)s_d42_setup_err_cnt,
+					(unsigned)usb[0x11], (unsigned)usb[0x16],
+					(unsigned)now, (unsigned)s_d42_reset_cnt,
+					(unsigned)s_d42_csr_logs_this_reset);
+			}
+		}
+		/* #endregion */
 		return;
 	}
+	/* IMPORTANT: do NOT DBG before handling ? SET_ADDRESS status is timing-critical.
+	 * Prior logs (~15ms UART) ran before AddressSet; host then stalled with csr=16. */
+	s_d42_setup_cnt++;
 	//IsAndroid();
-	//閿熷彨鏂嚖鎷烽敓鏂ゆ�??
-	//閿熸枻鎷烽敓鏂ゆ嫹閿熺郸ut 閿熸枻鎷�?閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷烽敓鏂ゆ�?�閿熸枻鎷烽敓锟界劧閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ�??
-	//閿熸枻鎷烽敓鏂ゆ嫹閿熺�?�n閿熸枻鎷烽敓鏂ゆ嫹瑕侀敓鏂ゆ�?�鍑嗛敓鏂ゆ嫹閿熸枻鎷烽敓鎹凤綇鎷�?�劧閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ�??
 	if((Setup[0]&0x80) == 0)//out
 	{
 		//if(!((Setup[3] == 0x02)&&(Setup[0] == 0x21)&&(Setup[1] == 0x09)))//audio effect out
@@ -503,26 +512,34 @@ void OTG_DeviceRequestProcess(void)
 	switch(ReqType)
 	{
 		case 0:
-			//閿熸枻鎷峰噯閿熸枻鎷烽敓鏂ゆ�?
+			//????????????????
 			//DBG("is run");
 			OTG_DeviceStandardRequest();
 			break;
 
 		case 1:
-			//閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷�
+			//??????????????
 			OTG_DeviceClassRequest();
 			break;
 
 		case 2:
-			//閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ�??
+			//????????????????????
 			OTG_DeviceManufacturerRequest();
 			break;
 
 		case 3:
-			//閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ�??
+			//????????????????????
 			OTG_DeviceOtherRequest();
 			break;			
 	}
+	/* #region agent log */
+	/* Never DBG class/set_iface here ? delays the next EP0 transaction (~15ms UART). */
+	if (Setup[1] == USB_REQ_SET_CONFIGURATION)
+	{
+		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"A\",\"location\":\"RequestProcess\",\"message\":\"set_config_done\",\"data\":{\"tick\":%u,\"runId\":\"post-fix\"}}\n",
+			(unsigned)GetSysTick1MsCnt());
+	}
+	/* #endregion */
 }
 
 //*************************************************//
@@ -546,7 +563,7 @@ void hid_send_data(void)
 
 void IsAndroid(void)
 {
-	/////閿熷彨璁规�?�閿熻鍑ゆ嫹Android閿熻浼欐�?? "A1 01 00 01 03 00 01 00"
+	/////??????????????Android???????? "A1 01 00 01 03 00 01 00"
 	if( (Setup[0]==0xA1) && (Setup[1]==0x01) )//
 	{
 		if( (Setup[2]==0x00) && (Setup[3]==0x01) )

@@ -1,11 +1,11 @@
 banux/03_driver_framework/event/bg_event.d banux/03_driver_framework/event/bg_event.o: \
  ../banux/03_driver_framework/event/bg_event.c \
  ../banux/03_driver_framework/event/bg_event.h \
- /cygdrive/E/project_and_dataset/project/wireless_mic_1532/minimal_rtos/banux/banux_config.h \
+ /cygdrive/D/BanAirBundy/minimal_rtos/banux/banux_config.h \
  ../banux/03_driver_framework/event/bg_event_topics.h
 
 ../banux/03_driver_framework/event/bg_event.h:
 
-/cygdrive/E/project_and_dataset/project/wireless_mic_1532/minimal_rtos/banux/banux_config.h:
+/cygdrive/D/BanAirBundy/minimal_rtos/banux/banux_config.h:
 
 ../banux/03_driver_framework/event/bg_event_topics.h:
