@@ -10,7 +10,8 @@ src/firmware_upgrade/app_upgrade.d src/firmware_upgrade/app_upgrade.o: \
  /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc/timer.h \
  /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc/reset.h \
  /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_standard_request.h \
- /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_cdc.h
+ /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_cdc.h \
+ /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc/core_d1088.h
 
 ../src/firmware_upgrade/app_upgrade.h:
 
@@ -33,3 +34,5 @@ src/firmware_upgrade/app_upgrade.d src/firmware_upgrade/app_upgrade.o: \
 /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_standard_request.h:
 
 /cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc/otg_device_cdc.h:
+
+/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc/core_d1088.h:

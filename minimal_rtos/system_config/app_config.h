@@ -59,8 +59,10 @@
 #define CFG_PARA_MAX_VOLUME_NUM      (16)
 #define CFG_PARA_SYS_VOLUME_DEFAULT  (16)
 
-/* Flash boot 使能 */
-#define FLASH_BOOT_EN        1
+/* FLASH_BOOT_EN is owned by flash_config.h (0 for bootloader APP). */
+
+/* Started by BanAirBundy USB CDC bootloader @ 0x0 — skip Chip_Init/PLL in main. */
+#define HAS_BOOTLOADER           1
 
 /* 低功耗 (可选关闭) */
 /* #define CFG_LOW_POWER_MODE */
@@ -68,7 +70,7 @@
 /* 电压配置 */
 #define CFG_VDD3V3_3V
 
-/* Flash 地址配置 */
+/* Flash 地址配置 (APP 镜像内偏移，勿与 Part A 基址混淆) */
 #define CONINF_FLASH_ADDR        (0x60000)
 #define CONINF_CAP_FLASH_ADDR    (0)
 #define CONINF_CAP_FLASH_ADDR1   (0)

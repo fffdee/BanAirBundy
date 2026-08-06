@@ -1,0 +1,43 @@
+; Linker SAG for BanAirBundy APP (runs under bootloader @ Part A).
+; Flash origin: 0x00040000 (PART_A_BASE). Bootloader occupies 0x0–0x3FFFF.
+USER_SECTIONS .vector
+USER_SECTIONS .stub_section
+USER_SECTIONS .int_stack_op
+USER_SECTIONS .driver.isr
+USER_SECTIONS .tcm_section
+INCLUDE "..\tools\funlist.hhh"
+EILM 0x00040000 0x200000; APP at Part A, up to ~2MB usable
+{
+	EXEC_CODE 0x00040000
+	{
+		* KEEP(.vector LMA_FORCE_ALIGN)
+		* KEEP(.stub_section LMA_FORCE_ALIGN)
+		*spi_flash.o KEEP(+RO LMA_FORCE_ALIGN)
+		* KEEP(.int_stack_op LMA_FORCE_ALIGN)
+		* KEEP(.tcm_section LMA_FORCE_ALIGN)
+		* KEEP(.driver.isr LMA_FORCE_ALIGN)
+		* (+ISR LMA_FORCE_ALIGN,+RO LMA_FORCE_ALIGN)
+	}
+	EXEC_RAND_CODE +0
+	{
+		LOADADDR NEXT __rand_code_start
+		* (.rand.code LMA_FORCE_ALIGN)
+		LOADADDR      __rand_code_end
+	}
+
+	EXEC_CTXT_CODE +0
+	{
+		LOADADDR NEXT __ctxt_code_start
+		* (.ctxt.code LMA_FORCE_ALIGN)
+		LOADADDR      __ctxt_code_end
+	}
+
+	EXEC_SDRAM 0x20004000
+	{
+		VAR _SDA_BASE_= 0x20028000
+		LOADADDR NEXT __data_lmastart
+		ADDR     NEXT __data_start
+		STACK = 0x20004000
+		* (+RW LMA_FORCE_ALIGN,+ZI LMA_FORCE_ALIGN)
+	}
+}

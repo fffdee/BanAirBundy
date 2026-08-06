@@ -59,62 +59,35 @@ static uint8_t DmaChannelMap[] =
 /* ROM helper used by BP1540 Example_USB before clock bring-up */
 extern void __c_init_rom(void);
 extern void OTG_DeviceFifoInit(void);
-extern uint32_t OTG_PortIsEnableDPPullUp(void);
 
 static void usb_cdc_upgrade_loop(void)
 {
-    /* BP1540 Example_USB usb_device_example() sequence */
-    OTG_DeviceModeSel(CDC_ONLY, BL_USB_VID, BL_USB_PID);
-    OTG_DeviceFifoInit();
-    OTG_DeviceInit();
-    NVIC_EnableIRQ(Usb_IRQn);
-    NVIC_SetPriority(Usb_IRQn, 0);
-
-    DBG("[BOOT] DP pull-up %s\n",
-        OTG_PortIsEnableDPPullUp() ? "ON" : "OFF");
-
-    /* #region agent log */
-    {
-        /* USB mux: 0x4002103c bit11 — 0=DPLL, 1=APLL; target Hz = 240M/div */
-        uint16_t usb_mux = *(volatile uint16_t *)0x4002103Cu;
-        uint32_t usb_div = Clock_USBClkDivGet();
-        uint32_t usb_mhz = usb_div ? (240u / usb_div) : 0u;
-        DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"K\",\"location\":\"usb_cdc_upgrade_loop\",\"message\":\"usb_clk\",\"data\":{\"div\":%u,\"mhz\":%u,\"apl\":%u,\"dp\":%u,\"runId\":\"post-fix\"}}\n",
-            (unsigned)usb_div, (unsigned)usb_mhz,
-            (unsigned)((usb_mux >> 11) & 1u),
-            (unsigned)OTG_PortIsEnableDPPullUp());
-    }
-    DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"F\",\"location\":\"usb_cdc_upgrade_loop\",\"message\":\"tick_baseline\",\"data\":{\"gSysTick\":%u,\"GetSysTick\":%u,\"dp\":%u}}\n",
-        (unsigned)gSysTick, (unsigned)GetSysTick1MsCnt(),
-        (unsigned)OTG_PortIsEnableDPPullUp());
-    /* #endregion */
-
+    /* Prepare upgrade stack BEFORE D+ pull-up.
+     * Host starts enumerating the moment DP is up; RequestProcess must run then. */
     App_Upgrade_Init();
     CDC_Upgrade_Init();
     CDC_Upgrade_EnterMode();
 
-    DBG("[BOOT] USB CDC upgrade ready VID=0x%04X PID=0x%04X\n",
+    DelayMs(20);
+
+    DBG("[BOOT] USB CDC upgrade ready VID=0x%04X PID=0x%04X — attaching USB\n",
         BL_USB_VID, BL_USB_PID);
 
-    /* #region agent log */
-    /* If SysTick is dead, tick stays 0 forever → ControlSend WaitEnd can hang */
-    {
-        uint32_t t0 = GetSysTick1MsCnt();
-        DelayMs(20);
-        uint32_t t1 = GetSysTick1MsCnt();
-        DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"F\",\"location\":\"usb_cdc_upgrade_loop\",\"message\":\"tick_after_delay20ms\",\"data\":{\"t0\":%u,\"t1\":%u,\"delta\":%u,\"alive\":%u}}\n",
-            (unsigned)t0, (unsigned)t1, (unsigned)(t1 - t0), (unsigned)(t1 != t0));
-    }
-    /* #endregion */
+    OTG_DeviceModeSel(CDC_ONLY, BL_USB_VID, BL_USB_PID);
+    OTG_DeviceFifoInit();
+    OTG_DeviceInit(); /* enables DP pull-up — host may SETUP immediately */
+    NVIC_EnableIRQ(Usb_IRQn);
+    NVIC_SetPriority(Usb_IRQn, 0);
 
     while (1) {
         OTG_DeviceRequestProcess();
-        OTG_DeviceCDC_Task();
 
-        /* #region agent log */
-        /* Deferred UART — never print inside EP0 handlers (blocks next SETUP ~15ms). */
-        D42_CDC_PollLog();
-        /* #endregion */
+        /* Defer CDC_Init until SET_CONFIGURATION status is done. */
+        if (g_usb_configured && !UsbCDC.InitOk) {
+            OTG_DeviceCDC_Init();
+        }
+
+        OTG_DeviceCDC_Task();
 
         if (!CDC_Upgrade_InMode()) {
             CDC_Upgrade_CheckEnter();

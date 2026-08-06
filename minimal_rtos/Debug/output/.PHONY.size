@@ -1,2 +1,2 @@
    text (code + rodata)	   data	    bss	    dec	    hex	filename
-  81082 (14514 +  66568)	    184	    448	  81714	  13f32	minimal_rtos.adx
+  23158 (21218 +   1940)	    184	    736	  24078	   5e0e	minimal_rtos.adx

@@ -16,7 +16,6 @@
 #include <string.h>
 #include "type.h"
 #include "otg_device_hcd.h"
-#include "debug.h"
 #include "otg_device_standard_request.h"
 #include "otg_device_cdc.h"
 
@@ -31,30 +30,9 @@ extern uint8_t Request[];
  * Use a real buffer for ZLP status stages. */
 static uint8_t s_ep0_zlp;
 
-/* #region agent log */
-volatile uint32_t g_d42_cdc_evt;
-volatile uint32_t g_d42_cdc_baud;
-volatile uint32_t g_d42_cdc_dtr_rts;
-
-void D42_CDC_PollLog(void)
-{
-	uint32_t ev = g_d42_cdc_evt;
-	if (!ev)
-		return;
-	g_d42_cdc_evt = 0;
-	if (ev & D42_CDC_SET_CONFIG)
-		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"set_config\",\"data\":{\"runId\":\"post-fix\"}}\n");
-	if (ev & D42_CDC_SET_CTRL)
-		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"set_ctrl_line\",\"data\":{\"dtr\":%u,\"rts\":%u,\"runId\":\"post-fix\"}}\n",
-			(unsigned)(g_d42_cdc_dtr_rts & 1u), (unsigned)((g_d42_cdc_dtr_rts >> 1) & 1u));
-	if (ev & D42_CDC_SET_LINE)
-		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"set_line_coding\",\"data\":{\"baud\":%u,\"runId\":\"post-fix\"}}\n",
-			(unsigned)g_d42_cdc_baud);
-	if (ev & D42_CDC_GET_LINE)
-		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"Q\",\"location\":\"CDC\",\"message\":\"get_line_coding\",\"data\":{\"baud\":%u,\"runId\":\"post-fix\"}}\n",
-			(unsigned)g_d42_cdc_baud);
-}
-/* #endregion */
+/* Set after SET_CONFIGURATION status ZLP; cleared on bus reset.
+ * Main loop defers OTG_DeviceCDC_Init() until this is set. */
+volatile uint8_t g_usb_configured;
 
 // Forward declaration of interrupt callback
 void OnDeviceCDC_BulkOutReceived(void);
@@ -88,11 +66,9 @@ bool OTG_DeviceCDC_Init(void)
     UsbCDC.TxBusy = 0;
     
     UsbCDC.InitOk = 1;
-    
-    // 注册USB Bulk OUT端点的中断回调（接收数据时自动触发）
-    // 这样就不需要在Task中轮询，消除了error 001错误
-    OTG_EndpointInterruptEnable(DEVICE_CDC_DATA_OUT_EP, OnDeviceCDC_BulkOutReceived);
-    /* No DBG here — SET_CONFIGURATION is timing-sensitive; log from SetConfig caller */
+
+    /* Bootloader: do NOT enable Bulk OUT IRQ. UsbInterrupt can race with EP0
+     * ControlSend (EP index 0x0e / CSR). Poll in OTG_DeviceCDC_Task instead. */
     return TRUE;
 }
 
@@ -111,28 +87,20 @@ bool OTG_DeviceCDC_DeInit(void)
  */
 void OTG_DeviceCDC_Request(void)
 {
-    uint8_t bRequest = Setup[1];  // 重命名避免与全局Request[]数组冲突
-    
-    switch(bRequest)
+    uint8_t bRequest = Setup[1];
+
+    switch (bRequest)
     {
         case CDC_SET_LINE_CODING:
-            // Data已经在全局Request[]缓冲区中，直接解析
-            // Request[0-6]包含7字节的Line Coding数据
-            UsbCDC.LineCoding.dwDTERate = Request[0] | (Request[1] << 8) | 
+            UsbCDC.LineCoding.dwDTERate = Request[0] | (Request[1] << 8) |
                                            (Request[2] << 16) | (Request[3] << 24);
             UsbCDC.LineCoding.bCharFormat = Request[4];
             UsbCDC.LineCoding.bParityType = Request[5];
             UsbCDC.LineCoding.bDataBits = Request[6];
-            
-            // Windows打开串口时会发送SET_LINE_CODING，此时认为串口已连接
             UsbCDC.IsConnected = 1;
             OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
-            /* #region agent log */
-            g_d42_cdc_baud = UsbCDC.LineCoding.dwDTERate;
-            g_d42_cdc_evt |= D42_CDC_SET_LINE;
-            /* #endregion */
             break;
-            
+
         case CDC_GET_LINE_CODING:
             {
                 uint8_t lineCodingBuf[7];
@@ -145,39 +113,26 @@ void OTG_DeviceCDC_Request(void)
                 lineCodingBuf[6] = UsbCDC.LineCoding.bDataBits;
                 OTG_DeviceControlSend(lineCodingBuf, 7, 10);
             }
-            /* #region agent log */
-            g_d42_cdc_baud = UsbCDC.LineCoding.dwDTERate;
-            g_d42_cdc_evt |= D42_CDC_GET_LINE;
-            /* #endregion */
             break;
-            
+
         case CDC_SET_CONTROL_LINE_STATE:
             UsbCDC.ControlLineState.DTR = (Setup[2] & 0x01) ? 1 : 0;
             UsbCDC.ControlLineState.RTS = (Setup[2] & 0x02) ? 1 : 0;
             OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
-            /* #region agent log */
-            g_d42_cdc_dtr_rts = (uint32_t)UsbCDC.ControlLineState.DTR |
-                                ((uint32_t)UsbCDC.ControlLineState.RTS << 1);
-            g_d42_cdc_evt |= D42_CDC_SET_CTRL;
-            /* #endregion */
             break;
-            
+
         case CDC_SEND_BREAK:
             OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
             break;
-            
+
         case CDC_SEND_ENCAPSULATED_COMMAND:
-            // Data已经在全局Request[]缓冲区中
-            DBG("CDC: Send Encapsulated Command (length=%u)\n", Setup[6] | (Setup[7] << 8));
             break;
-            
+
         case CDC_GET_ENCAPSULATED_RESPONSE:
-            // Not implemented
             OTG_DeviceControlSend(Request, Setup[6], 3);
             break;
-            
+
         default:
-            DBG("CDC: Unknown Request 0x%02X\n", bRequest);
             break;
     }
 }
@@ -419,9 +374,28 @@ bool OTG_DeviceCDC_FlushRx(void)
  */
 void OTG_DeviceCDC_Task(void)
 {
-    // 此函数保留用于底层CDC维护
-    // 数据接收由中断完成，数据处理由Shell_Task()完成
-    // 应用层请调用Shell_Task()处理命令行
+    uint8_t tmpBuf[CDC_DATA_FS_OUT_PACKET_SIZE];
+    uint32_t actualLen = 0;
+    uint16_t i;
+    OTG_DEVICE_ERR_CODE ret;
+
+    if (!UsbCDC.InitOk)
+        return;
+
+    /* Poll Bulk OUT (no IRQ) — safe alongside EP0 RequestProcess */
+    ret = OTG_DeviceBulkReceive(DEVICE_CDC_DATA_OUT_EP, tmpBuf,
+                                CDC_DATA_FS_OUT_PACKET_SIZE, &actualLen, 0);
+    if (ret == DEVICE_NONE_ERR && actualLen > 0) {
+        for (i = 0; i < actualLen; i++) {
+            if (UsbCDC.RxCount < CDC_RX_BUFFER_SIZE) {
+                UsbCDC.RxBuffer[UsbCDC.RxHead] = tmpBuf[i];
+                UsbCDC.RxHead = (UsbCDC.RxHead + 1) % CDC_RX_BUFFER_SIZE;
+                UsbCDC.RxCount++;
+            } else {
+                break;
+            }
+        }
+    }
 }
 
 /**
@@ -462,4 +436,3 @@ bool OTG_DeviceCDC_FlushTxBuffer(void)
 {
     return OTG_DeviceCDC_FlushTx();
 }
-

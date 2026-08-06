@@ -4343,3 +4343,1362 @@ java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
 	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
 	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
 	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+!SESSION 2026-08-06 18:45:35.060 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.emf.ecore 2 0 2026-08-06 18:45:38.830
+!MESSAGE Both 'com.andestech.ide.ldsag' and 'com.andestech.ide.ldsag.xtext' register a package for 'http:///ide.andestech.com.ldsag/ldsag.ecore'
+
+!ENTRY org.eclipse.ui 2 2 2026-08-06 18:45:39.778
+!MESSAGE Invalid preference category path: org.eclipse.linuxtools.profiling.provider.MainPreferencePage (bundle: org.eclipse.linuxtools.binutils, page: org.eclipse.linuxtools.binutils.preferences)
+
+!ENTRY org.eclipse.ui 2 2 2026-08-06 18:45:39.784
+!MESSAGE Invalid preference category path: org.eclipse.linuxtools.profiling.provider.MainPreferencePage (bundle: org.eclipse.linuxtools.gcov.core, page: org.eclipse.linuxtools.gcov.core.preferences.colors)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:01:24.581
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:01:24.581
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:01:24.581
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:01:24.629
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 0 2026-08-06 19:01:29.689
+!MESSAGE Unexpected Exception
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.util.concurrent.FutureTask.get(FutureTask.java:201)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.readLine(OpenOCDTelnetClient.java:257)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:98)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 0 2026-08-06 19:01:29.874
+!MESSAGE Unexpected Exception
+!STACK 0
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:196)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:273)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:254)
+	at org.apache.commons.net.telnet.TelnetInputStream.__read(TelnetInputStream.java:141)
+	at org.apache.commons.net.telnet.TelnetInputStream.run(TelnetInputStream.java:611)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:34.800
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:34.800
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:34.800
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:34.849
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:48.721
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:48.721
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:48.721
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:03:48.770
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:03:51.847
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:03:51.848
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:03:53.904
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:03:53.905
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:03:53.905
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:03:53.905
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:08.239
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:08.239
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:08.240
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:08.288
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:20.213
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:20.214
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:20.214
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:20.262
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:32.084
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:32.085
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:32.085
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:32.133
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:35.210
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:35.210
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:37.266
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:37.266
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:37.267
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:37.267
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:46.180
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:46.180
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:46.180
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:46.228
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:49.295
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:49.295
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:51.323
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:51.324
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:51.324
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:51.324
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:52.988
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:52.989
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:52.989
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:05:53.036
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:56.059
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:05:56.060
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:06:30.887
+!MESSAGE 19:06:26.467 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: AICE ERROR! AICE is unplugged.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:06:33.156
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:06:33.156
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:06:33.156
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:06:33.204
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:13:09.404
+!MESSAGE 19:07:08.953 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: AICE ERROR! AICE is unplugged.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:13:29.869
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:13:29.869
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:13:29.869
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:13:29.917
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:33.274
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:33.274
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:33.274
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:33.322
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:46.521
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:46.521
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:46.522
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:46.570
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:58.222
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:58.223
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:58.223
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:14:58.271
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:15:15.413
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:15:15.413
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:15:15.413
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:15:15.463
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:01.040
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:01.040
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:01.041
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:01.089
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:11.971
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:11.972
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:11.972
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:12.020
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:19.705
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:19.705
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:19.705
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:19.755
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:38.209
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:38.209
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:38.209
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:16:38.258
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:16:41.328
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:16:41.329
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:21:56.362
+!MESSAGE 19:17:05.298 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:06.647
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:06.647
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:06.647
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:06.698
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:09.752
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:09.753
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:11.809
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:11.809
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:11.810
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:11.810
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:14.003
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:14.004
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:14.004
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:22:14.053
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:17.117
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:22:17.118
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:39:33.221
+!MESSAGE 19:23:01.120 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:42.438
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:42.438
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:42.438
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:42.486
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:39:45.556
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:39:45.556
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:39:47.582
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:39:47.583
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:39:47.583
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:39:47.583
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:53.107
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:53.108
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:53.108
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:39:53.157
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:49:00.187
+!MESSAGE 19:40:03.015 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:24.130
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:24.130
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:24.130
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:24.178
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:52:27.253
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:52:27.254
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:52:29.300
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:52:29.301
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:52:29.302
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 19:52:29.302
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:37.788
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:37.788
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:37.789
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:52:37.839
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:57:55.947
+!MESSAGE 19:53:02.115 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:57:59.132
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:57:59.132
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:57:59.132
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 19:57:59.181
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:58:27.229
+!MESSAGE 19:58:08.243 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 19:58:27.230
+!MESSAGE 19:58:08.229 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Insufficient security privilege to execute the debug operations.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:07.232
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:07.233
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:07.233
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:07.284
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:04:10.342
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:04:10.343
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:04:12.372
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:04:12.373
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:04:12.373
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:04:12.374
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:18.151
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:18.152
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:18.152
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:04:18.204
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 20:12:33.928
+!MESSAGE 20:04:24.152 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:12:52.877
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:12:52.877
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:12:52.877
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:12:52.931
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 20:19:21.119
+!MESSAGE 20:12:59.724 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:20:17.579
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:20:17.579
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:20:17.579
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:20:17.630
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 20:22:55.474
+!MESSAGE 20:21:55.545 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:46.792
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:46.792
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:46.792
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:46.847
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:30:49.928
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:30:49.929
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:30:51.984
+!MESSAGE Connect to telent hostAddress:192.168.92.1, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:30:51.984
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:30:51.985
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-06 20:30:51.985
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:57.405
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:57.406
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:57.406
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:30:57.456
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 20:31:26.169
+!MESSAGE 20:31:04.965 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:31:38.133
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:31:38.133
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:31:38.133
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:31:38.186
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 20:34:41.588
+!MESSAGE 20:31:44.603 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:51:25.221
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:51:25.221
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:51:25.222
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 20:51:25.271
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 21:39:29.769
+!MESSAGE 20:51:33.680 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:39:35.081
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:39:35.082
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:39:35.082
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:39:35.131
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 21:40:01.785
+!MESSAGE 21:39:44.654 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:51:21.931
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/E/project_and_dataset/project/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:51:21.931
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:51:21.931
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-06 21:51:21.982
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-06 21:52:42.663
+!MESSAGE 21:51:30.695 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)

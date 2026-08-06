@@ -3,69 +3,69 @@ ENTRY(_start)
 INCLUDE "../tools/funlist.hhh"
 SECTIONS
 {
-	PROVIDE (__executable_start = 0x000000);
-	NDS_SAG_LMA_EILM = 0x000000 ;
+	PROVIDE (__executable_start = 0x00040000);
+	NDS_SAG_LMA_EILM = 0x00040000 ;
 	EILM_BEGIN = NDS_SAG_LMA_EILM;
-	. = 0x000000;
-	".nds32_init_*flash_boot.o" 	: { KEEP(*flash_boot.o(.nds32_init )) }
-	".interp_*flash_boot.o" 	: { KEEP(*flash_boot.o(.interp )) }
-	".hash_*flash_boot.o" 	: { KEEP(*flash_boot.o(.hash )) }
-	".dynsym_*flash_boot.o" 	: { KEEP(*flash_boot.o(.dynsym )) }
-	".dynstr_*flash_boot.o" 	: { KEEP(*flash_boot.o(.dynstr )) }
-	".gnu.version_*flash_boot.o" 	: { KEEP(*flash_boot.o(.gnu.version )) }
-	".gnu.version_d_*flash_boot.o" 	: { KEEP(*flash_boot.o(.gnu.version_d )) }
-	".gnu.version_r_*flash_boot.o" 	: { KEEP(*flash_boot.o(.gnu.version_r )) }
-	".rel.init_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.init )) }
-	".rela.init_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.init )) }
-	".rel.text_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.text .rel.text.* .rel.gnu.linkonce.t.* )) }
-	".rela.text_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.text .rela.text.* .rela.gnu.linkonce.t.* )) }
-	".rel.fini_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.fini )) }
-	".rela.fini_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.fini )) }
-	".rel.rodata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.* )) }
-	".rela.rodata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.* )) }
-	".rel.data.rel.ro_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.data.rel.ro* )) }
-	".rela.data.rel.ro_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.data.rel.ro* )) }
-	".rel.data_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.data .rel.data.* .rel.gnu.linkonce.d.* )) }
-	".rela.data_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.data .rela.data.* .rela.gnu.linkonce.d.* )) }
-	".rel.tdata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.* )) }
-	".rela.tdata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.* )) }
-	".rel.tbss_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.* )) }
-	".rela.tbss_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.* )) }
-	".rel.ctors_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.ctors )) }
-	".rela.ctors_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.ctors )) }
-	".rel.dtors_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.dtors )) }
-	".rela.dtors_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.dtors )) }
-	".rela.dyn_*flash_boot.o" 	: { KEEP(*flash_boot.o(rela.dyn )) KEEP(*flash_boot.o(.rela__libc_subfreeres )) KEEP(*flash_boot.o(.rela__libc_atexit )) KEEP(*flash_boot.o(.rela__libc_thread_subfreeres )) KEEP(*flash_boot.o(.rela.init_array )) KEEP(*flash_boot.o(.rela.fini_array )) }
-	".rel.got_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.got )) }
-	".rela.got_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.got )) }
-	".rel.sdata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.* )) }
-	".rela.sdata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.* )) }
-	".rel.sbss_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.* )) }
-	".rela.sbss_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.* )) }
-	".rel.sdata2_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.* )) }
-	".rela.sdata2_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.* )) }
-	".rel.sbss2_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.* )) }
-	".rela.sbss2_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.* )) }
-	".rel.bss_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.* )) }
-	".rela.bss_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.* )) }
-	".rel.plt_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rel.plt )) }
-	".rela.plt_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rela.plt )) }
-	".init_*flash_boot.o" 	: { KEEP(*flash_boot.o(.init )) }
-	".plt_*flash_boot.o" 	: { KEEP(*flash_boot.o(.plt )) }
-	".text_*flash_boot.o" 	: { KEEP(*flash_boot.o(.text .stub .text.* .gnu.linkonce.t.* )) KEEP(*flash_boot.o(.text.*personality* )) KEEP(*flash_boot.o(.gnu.warning )) . = ALIGN(4); }
-	".fini_*flash_boot.o" 	: { KEEP(*flash_boot.o(.fini )) }
-	".ex9.itable_*flash_boot.o" 	: { KEEP(*flash_boot.o(.ex9.itable )) }
+	. = 0x00040000;
+	.vector 	: { KEEP(*(.vector )) }
+	.stub_section 	: { KEEP(*(.stub_section )) }
+	".nds32_init_*spi_flash.o" 	: { KEEP(*spi_flash.o(.nds32_init )) }
+	".interp_*spi_flash.o" 	: { KEEP(*spi_flash.o(.interp )) }
+	".hash_*spi_flash.o" 	: { KEEP(*spi_flash.o(.hash )) }
+	".dynsym_*spi_flash.o" 	: { KEEP(*spi_flash.o(.dynsym )) }
+	".dynstr_*spi_flash.o" 	: { KEEP(*spi_flash.o(.dynstr )) }
+	".gnu.version_*spi_flash.o" 	: { KEEP(*spi_flash.o(.gnu.version )) }
+	".gnu.version_d_*spi_flash.o" 	: { KEEP(*spi_flash.o(.gnu.version_d )) }
+	".gnu.version_r_*spi_flash.o" 	: { KEEP(*spi_flash.o(.gnu.version_r )) }
+	".rel.init_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.init )) }
+	".rela.init_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.init )) }
+	".rel.text_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.text .rel.text.* .rel.gnu.linkonce.t.* )) }
+	".rela.text_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.text .rela.text.* .rela.gnu.linkonce.t.* )) }
+	".rel.fini_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.fini )) }
+	".rela.fini_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.fini )) }
+	".rel.rodata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.* )) }
+	".rela.rodata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.* )) }
+	".rel.data.rel.ro_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.data.rel.ro* )) }
+	".rela.data.rel.ro_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.data.rel.ro* )) }
+	".rel.data_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.data .rel.data.* .rel.gnu.linkonce.d.* )) }
+	".rela.data_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.data .rela.data.* .rela.gnu.linkonce.d.* )) }
+	".rel.tdata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.* )) }
+	".rela.tdata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.* )) }
+	".rel.tbss_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.* )) }
+	".rela.tbss_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.* )) }
+	".rel.ctors_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.ctors )) }
+	".rela.ctors_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.ctors )) }
+	".rel.dtors_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.dtors )) }
+	".rela.dtors_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.dtors )) }
+	".rela.dyn_*spi_flash.o" 	: { KEEP(*spi_flash.o(rela.dyn )) KEEP(*spi_flash.o(.rela__libc_subfreeres )) KEEP(*spi_flash.o(.rela__libc_atexit )) KEEP(*spi_flash.o(.rela__libc_thread_subfreeres )) KEEP(*spi_flash.o(.rela.init_array )) KEEP(*spi_flash.o(.rela.fini_array )) }
+	".rel.got_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.got )) }
+	".rela.got_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.got )) }
+	".rel.sdata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.* )) }
+	".rela.sdata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.* )) }
+	".rel.sbss_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.* )) }
+	".rela.sbss_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.* )) }
+	".rel.sdata2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.* )) }
+	".rela.sdata2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.* )) }
+	".rel.sbss2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.* )) }
+	".rela.sbss2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.* )) }
+	".rel.bss_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.* )) }
+	".rela.bss_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.* )) }
+	".rel.plt_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rel.plt )) }
+	".rela.plt_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rela.plt )) }
+	".init_*spi_flash.o" 	: { KEEP(*spi_flash.o(.init )) }
+	".plt_*spi_flash.o" 	: { KEEP(*spi_flash.o(.plt )) }
+	".text_*spi_flash.o" 	: { KEEP(*spi_flash.o(.text .stub .text.* .gnu.linkonce.t.* )) KEEP(*spi_flash.o(.text.*personality* )) KEEP(*spi_flash.o(.gnu.warning )) . = ALIGN(4); }
+	".fini_*spi_flash.o" 	: { KEEP(*spi_flash.o(.fini )) }
+	".ex9.itable_*spi_flash.o" 	: { KEEP(*spi_flash.o(.ex9.itable )) }
 	PROVIDE (__etext = .);
 	PROVIDE (_etext = .);
 	PROVIDE (etext = .);
-	".rodata_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rodata .rodata.* .gnu.linkonce.r.* )) }
-	".rodata1_*flash_boot.o" 	: { KEEP(*flash_boot.o(.rodata1 )) }
-	".sdata2_*flash_boot.o" 	: { KEEP(*flash_boot.o(.sdata2 .sdata2.* .gnu.linkonce.s2.* )) }
-	".sbss2_*flash_boot.o" 	: { KEEP(*flash_boot.o(.sbss2 .sbss2.* .gnu.linkonce.sb2.* )) }
-	".eh_frame_hdr_*flash_boot.o" 	: { KEEP(*flash_boot.o(.eh_frame_hdr )) }
-	.vector 	: { KEEP(*(.vector )) }
-	.stub_section 	: { KEEP(*(.stub_section )) }
-	.startup_section 	: { KEEP(*(.startup_section )) }
+	".rodata_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rodata .rodata.* .gnu.linkonce.r.* )) }
+	".rodata1_*spi_flash.o" 	: { KEEP(*spi_flash.o(.rodata1 )) }
+	".sdata2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.sdata2 .sdata2.* .gnu.linkonce.s2.* )) }
+	".sbss2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.sbss2 .sbss2.* .gnu.linkonce.sb2.* )) }
+	".eh_frame_hdr_*spi_flash.o" 	: { KEEP(*spi_flash.o(.eh_frame_hdr )) }
+	.int_stack_op 	: { KEEP(*(.int_stack_op )) }
 	.tcm_section 	: { KEEP(*(.tcm_section )) }
 	.driver.isr 	: { KEEP(*(.driver.isr )) }
 	.nds32_vector 	: { KEEP(*(.nds32_vector )) KEEP(*(SORT(.nds32_vector.* ))) }
@@ -130,10 +130,6 @@ SECTIONS
 	.sbss2 	: { *(.sbss2 .sbss2.* .gnu.linkonce.sb2.* ) }
 	.eh_frame_hdr 	: { *(.eh_frame_hdr ) }
 	. = . + 0;
-	__ram_code_start =  LOADADDR (.ram.code);
-	.ram.code 	: { *(.ram.code ) }
-	__ram_code_end =  LOADADDR (.ram.code) + SIZEOF (.ram.code);
-	. = . + 0;
 	__rand_code_start =  LOADADDR (.rand.code);
 	.rand.code 	: { *(.rand.code ) }
 	__rand_code_end =  LOADADDR (.rand.code) + SIZEOF (.rand.code);
@@ -141,9 +137,9 @@ SECTIONS
 	__ctxt_code_start =  LOADADDR (.ctxt.code);
 	.ctxt.code 	: { *(.ctxt.code ) }
 	__ctxt_code_end =  LOADADDR (.ctxt.code) + SIZEOF (.ctxt.code);
-	. = 0x20002000;
+	. = 0x20004000;
 	_SDA_BASE_ = 0x20028000;
-	PROVIDE (_stack = 0x20002000);
+	PROVIDE (_stack = 0x20004000);
 	. = ALIGN(0x20);
 	__data_lmastart =  LOADADDR (.eh_frame);
 	__data_start = ADDR(.eh_frame);
@@ -245,4 +241,4 @@ SECTIONS
 	.debug_typenames	0 : { *(.debug_typenames) }
 	.debug_varnames	0 : { *(.debug_varnames) }
 }
-ASSERT((DEFINED (_RELAX_END_) ? EILM_SIZE : 0x0)<= 0x00900000, "EILM OVERFLOW");
+ASSERT((DEFINED (_RELAX_END_) ? EILM_SIZE : 0x0)<= 0x900000, "EILM OVERFLOW");

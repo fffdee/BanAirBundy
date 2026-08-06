@@ -1,6 +1,12 @@
 /**
  * @file  boot_decision.c
  * @brief Bootloader partition layout + jump-to-APP decision.
+ *
+ * Boot_JumpTo matches BG_Audio_Looper/BanBox + wireless_mic_bootloader:
+ *   - quiesce IRQs
+ *   - pre-copy APP .data / clear .bss via BootInfo @ +0x104
+ *   - handoff magic so APP skips flash memcpy (NDS32 XIP deadlock)
+ *   - use diag_putc after SRAM overwrite (DBG uses .data — unsafe)
  */
 #include <string.h>
 #include <nds32_intrinsic.h>
@@ -12,6 +18,17 @@
 #include "debug.h"
 
 static DualPart_Layout_t g_layout;
+
+/* UART1 TX — same as BanBox; safe after BL .data is overwritten by APP image */
+#define DIAG_UART1_STATUS  (*(volatile uint32_t *)0x40006014UL)
+#define DIAG_UART1_TX      (*(volatile uint32_t *)0x40006018UL)
+
+static inline void diag_putc(char c)
+{
+    while (!(DIAG_UART1_STATUS & (1u << 9)))
+        ;
+    DIAG_UART1_TX = (uint32_t)(unsigned char)c;
+}
 
 const DualPart_Layout_t *DualPart_GetLayout(void)
 {
@@ -85,7 +102,8 @@ static void part_flag_seal(PartFlag_t *f)
 
 static int part_flag_valid(const PartFlag_t *f)
 {
-    if (f->magic != PART_FLAG_MAGIC) return 0;
+    if (f->magic != PART_FLAG_MAGIC)
+        return 0;
     return (crc32_calc((const uint8_t *)f,
                        sizeof(PartFlag_t) - sizeof(uint32_t))
             == f->crc32) ? 1 : 0;
@@ -113,7 +131,6 @@ int PartFlag_Write(const PartFlag_t *flag)
     memcpy(&tmp, flag, sizeof(PartFlag_t));
     part_flag_seal(&tmp);
 
-    /* Use SpiFlashErase directly — FlashErase capacity check is unreliable in BL */
     SpiFlashIOCtrl(IOCTL_FLASH_UNPROTECT, "\x35\xBA\x69", 3);
     SpiFlashErase(SECTOR_ERASE, g_layout.part_flag_addr / FLASH_SECTOR_SZ, 0);
     return (SpiFlashWrite(g_layout.part_flag_addr, (uint8_t *)&tmp,
@@ -124,10 +141,57 @@ void Boot_JumpTo(uint32_t addr)
 {
     typedef void (*Entry_t)(void);
     Entry_t entry;
+    const BootInfo_t *info;
+    uint32_t i, nwords;
+    volatile uint32_t *dst;
+    const volatile uint32_t *src;
 
     WDG_Disable();
+    __nds32__mtsr(0x0, NDS32_SR_INT_MASK2);
     __nds32__setgie_dis();
+    __nds32__dsb();
+    /* Do NOT invalidate I-cache */
+    DataCacheInvalidAll();
+
+    /*
+     * Snapshot BootInfo into locals BEFORE overwriting SRAM @ 0x20004000
+     * (same VMA as BL .data). After copy, only diag_putc + register jump.
+     */
+    info = (const BootInfo_t *)(addr + BOOT_INFO_OFFSET);
+    diag_putc('P');
+
+    if (info->magic == BOOT_INFO_MAGIC) {
+        uint32_t data_lma = info->data_lma;
+        uint32_t data_vma = info->data_vma;
+        uint32_t data_end = info->data_end;
+        uint32_t bss_vma  = info->bss_vma;
+        uint32_t bss_end  = info->bss_end;
+
+        if (data_end > data_vma) {
+            nwords = (data_end - data_vma + 3u) / 4u;
+            dst = (volatile uint32_t *)data_vma;
+            src = (const volatile uint32_t *)data_lma;
+            for (i = 0; i < nwords; i++)
+                dst[i] = src[i];
+        }
+        diag_putc('d');
+
+        if (bss_end > bss_vma) {
+            nwords = (bss_end - bss_vma + 3u) / 4u;
+            dst = (volatile uint32_t *)bss_vma;
+            for (i = 0; i < nwords; i++)
+                dst[i] = 0u;
+        }
+        diag_putc('z');
+
+        *(volatile uint32_t *)BOOT_HANDOFF_ADDR = BOOT_HANDOFF_MAGIC;
+        diag_putc('H');
+    } else {
+        diag_putc('?');
+    }
+
     entry = (Entry_t)addr;
+    diag_putc('J');
     entry();
     while (1);
 }

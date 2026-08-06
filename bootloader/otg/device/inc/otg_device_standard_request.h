@@ -46,9 +46,11 @@ extern "C"{
 #define	DEVICE_ISO_IN_EP			0x84
 #define	DEVICE_ISO_OUT_EP			0x05
 // CDC Endpoints - 复用原HID的Bulk端点
-#define DEVICE_CDC_CMD_EP           0x81    // CDC Command (Interrupt IN)
-#define DEVICE_CDC_DATA_IN_EP       0x82    // CDC Data IN (Bulk IN) - 复用
-#define DEVICE_CDC_DATA_OUT_EP      0x03    // CDC Data OUT (Bulk OUT) - 复用
+#define DEVICE_CDC_CMD_EP           0x81    // CDC Command (Interrupt IN) — EP1 TX FIFO
+#define DEVICE_CDC_DATA_IN_EP       0x82    // CDC Data IN (Bulk IN) — EP2 TX FIFO
+/* Must be EP1 OUT: OtgEPInit only programs EP1/EP2 FIFOs; driver hcd.h uses 0x01.
+ * EP3 has no RX FIFO → BulkReceive always times out (ret=7, csr=0). */
+#define DEVICE_CDC_DATA_OUT_EP      0x01    // CDC Data OUT (Bulk OUT) — EP1 RX FIFO
 
 #define MSC_INTERFACE_NUM			0
 #define AUDIO_ATL_INTERFACE_NUM		1

@@ -1,4 +1,4 @@
-#include <nds32_intrinsic.h>
+ï»¿#include <nds32_intrinsic.h>
 #include "debug.h"
 #include "core_d1088.h"
 #include "remap.h"
@@ -118,29 +118,27 @@ void ExceptionCommHandler(unsigned stack, unsigned exception_num)
 extern void __c_init_rom(void);
 void __c_init()
 {
-/* Use compiler builtin memcpy and memset */
-#define MEMCPY(des, src, n) __builtin_memcpy ((des), (src), (n))
 #define MEMSET(s, c, n) __builtin_memset ((s), (c), (n))
 
 	extern char _end;
 	extern char __bss_start;
 	int size;
 
+	/* Bootloader handoff: BL already copied .data / cleared .bss. */
+	{
+		volatile uint32_t *handoff = (volatile uint32_t *)0x20000000UL;
+		if (*handoff == 0xDEADBEEFUL) {
+			*handoff = 0;
+			return;
+		}
+	}
+
+	/* ROM helper relocates .data (I-fetch from ROM â€” no XIP deadlock).
+	 * Do NOT memcpy .data from flash-resident C code. */
 	__c_init_rom();
-	/* data section will be copied before we remap.
-	 * We don't need to copy data section here. */
-	extern char __data_lmastart;
-	extern char __data_start;
-	extern char _edata;
 
-	/* Copy data section to RAM */
-	size = &_edata - &__data_start;
-	MEMCPY(&__data_start, &__data_lmastart, size);
-
-	/* Clear bss section */
 	size = &_end - &__bss_start;
 	MEMSET(&__bss_start, 0, size);
-	return;
 }
 
 void __cpu_init()
@@ -187,32 +185,12 @@ void __cpu_init()
 	 * If we use v3/v3m toolchain and want to use
 	 * assembly version please don't use USE_C_EXT
 	 * in CFLAGS */
-#if FLASH_BOOT_EN
-	//__nds32__mtsr(0x10000, NDS32_SR_IVB);
-	//__nds32__mtsr(0x20000, NDS32_SR_IVB);
-	#ifndef CFG_FUNC_BLE_OTA_EN
-		//__nds32__mtsr(0x10000 + FLASH_ADDR, NDS32_SR_IVB);
-		#ifdef CFG_DOUBLE_KEY_EN
-			__nds32__mtsr(0x20000 + FLASH_ADDR, NDS32_SR_IVB);
-		#else
-			__nds32__mtsr(0x10000 + FLASH_ADDR, NDS32_SR_IVB);
-		#endif
-	#else
-		//__nds32__mtsr(0x30000 + FLASH_ADDR, NDS32_SR_IVB);//ble,ÐèÒªÀ©Õ¹µ½192k
-		#ifdef CFG_DOUBLE_KEY_EN
-			__nds32__mtsr(0x40000 + FLASH_ADDR, NDS32_SR_IVB);
-		#else
-			__nds32__mtsr(0x30000 + FLASH_ADDR, NDS32_SR_IVB);
-		#endif
-	#endif
-#else
-	#ifdef CFG_DOUBLE_KEY_EN
-		__nds32__mtsr(0x10000, NDS32_SR_IVB);
-	#else
-		__nds32__mtsr(0x0 + FLASH_ADDR, NDS32_SR_IVB);
-	#endif
-	//__nds32__mtsr(0x0, NDS32_SR_IVB);
-#endif
+	/* IVB = APP link base (BanBox). Linked at 0x40000 so interrupts
+	 * use APP vectors, not bootloader's table at 0x0. */
+	{
+		extern char __executable_start;
+		__nds32__mtsr((uint32_t)&__executable_start & 0xFFFF0000UL, NDS32_SR_IVB);
+	}
 # endif
 #endif
 	/* Set PSW INTL to 0 */
@@ -261,7 +239,7 @@ void __cpu_init()
 	}
 #endif
 
-	__nds32__mtsr(__nds32__mfsr(NDS32_SR_INT_PEND2), NDS32_SR_INT_PEND2);  //Çå³ýpending
+	__nds32__mtsr(__nds32__mfsr(NDS32_SR_INT_PEND2), NDS32_SR_INT_PEND2);  //???pending
 
 	return;
 }
@@ -333,7 +311,7 @@ void stub(void)
 {
 	__asm__ __volatile__(
 
-		".long 0xFFFFFFFF \n\n"	//0xA4
+		".long 0x42475046 \n\n"	//0xA4 FW_VALID_MAGIC "BGPF" ?? bootloader FINISH/jump check
 		".long 0xFFFFFFFF \n\n" //0xA8
 		".long 0xFFFFFFFF \n\n" //0xAC
 		MMM(CONST_DATA_ADDR)	//0xB0 constant data @ 0x8C
@@ -355,13 +333,19 @@ void stub(void)
 		M(0xFF)
 		M(0xFF)
 		MMM(AUDIO_EFFECT_ADDR)	//0xD8 audio effect data
-		".long 0xFFFFFFFF \n\n"	//0xDC code size
-		".long 0xFFFFFFFF \n\n"	//0xE0 flashboot
-		".rept (0x100-0xE4)/4 \n\n"
+		".rept (0xFC-0xDC)/4 \n\n"
 		".long 0xFFFFFFFF \n\n"
 		".endr \n\n"
-		".long 0x00FFFFFF \n\n"
-		".short 0xFFFF \n\n"
+		".long 0x00FFFFFF \n\n"	//0xFC
+		".short 0xFFFF \n\n"	//0x100
+		".short 0xFFFF \n\n"	//0x102 pad ?? BootInfo at 0x104
+		/* BootInfo_t ?? BL copies .data/.bss before jump (avoid XIP deadlock) */
+		".long 0x42474F46 \n\n"		//0x104 magic "BGOF"
+		".long __data_lmastart \n\n"	//0x108 data_lma
+		".long __data_start \n\n"	//0x10C data_vma
+		".long _edata \n\n"		//0x110 data_end
+		".long __bss_start \n\n"	//0x114 bss_vma
+		".long _end \n\n"		//0x118 bss_end
 
     );
 }

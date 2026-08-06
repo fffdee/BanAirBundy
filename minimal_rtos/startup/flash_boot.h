@@ -8,7 +8,10 @@
 #include "flash_config.h"
 #include "nvm.h"
 
+/* Prefer flash_config.h / app_config.h — do not force flashboot mode for APP. */
+#ifndef FLASH_BOOT_EN
 #define FLASH_BOOT_EN      				1
+#endif
 
 //需要和debug.h中定义的GPIO一一对应
 typedef enum __UART_TX

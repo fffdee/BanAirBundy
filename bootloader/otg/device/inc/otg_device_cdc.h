@@ -96,6 +96,8 @@ typedef struct
     
 } UsbCDC_t;
 
+extern UsbCDC_t UsbCDC;
+
 // CDC Function Prototypes
 
 /**
@@ -116,17 +118,11 @@ bool OTG_DeviceCDC_DeInit(void);
  */
 void OTG_DeviceCDC_Request(void);
 
-/* #region agent log */
-/* Deferred CDC debug flags — set in EP0 path, printed from main loop (no UART in EP0). */
-#define D42_CDC_SET_CTRL   (1u << 0)
-#define D42_CDC_SET_LINE   (1u << 1)
-#define D42_CDC_GET_LINE   (1u << 2)
-#define D42_CDC_SET_CONFIG (1u << 3)
-extern volatile uint32_t g_d42_cdc_evt;
-extern volatile uint32_t g_d42_cdc_baud;
-extern volatile uint32_t g_d42_cdc_dtr_rts;
-void D42_CDC_PollLog(void);
-/* #endregion */
+/**
+ * @brief  Set after SET_CONFIGURATION; cleared on USB bus reset.
+ *         Main loop uses this to defer OTG_DeviceCDC_Init() past EP0 status.
+ */
+extern volatile uint8_t g_usb_configured;
 
 /**
  * @brief  CDC data received callback

@@ -19,25 +19,13 @@
 #include "otg_device_descriptor.h"
 #include "otg_device_audio.h"
 #include "otg_device_cdc.h"
-#include "timeout.h"
 
 #ifdef CFG_APP_CONFIG
 #include "app_config.h"
 #endif
 
-/* Bootloader uses CDC_ONLY ?? do not enable USB audio composite path */
+/* Bootloader uses CDC_ONLY — do not enable USB audio composite path */
 #undef CFG_APP_USB_AUDIO_MODE_EN
-
-/* #region agent log */
-/* D42: UART NDJSON markers for host-side capture ? debug-42d04e.log */
-static uint32_t s_d42_setup_cnt;
-static uint32_t s_d42_reset_cnt;
-static uint32_t s_d42_last_bus;
-static uint32_t s_d42_setup_err_cnt;
-static uint32_t s_d42_last_csr_log_tick;
-static uint32_t s_d42_csr_logs_this_reset;
-extern uint32_t gSysTick;
-/* #endregion */
 
 
 //------------------------------------//
@@ -99,14 +87,6 @@ void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid)
 
  	gDeviceString_Manu 		        = "BanGO";
 	gDeviceString_SerialNumber      = "20250405";
-
-	/* #region agent log */
-	DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"D\",\"location\":\"ModeSel\",\"message\":\"dev_desc\",\"data\":{\"cls\":%u,\"sub\":%u,\"proto\":%u,\"vid\":%04X,\"pid\":%04X,\"bLen\":%u,\"tick\":%u}}\n",
-		DeviceDescriptor[4], DeviceDescriptor[5], DeviceDescriptor[6],
-		(unsigned)(DeviceDescriptor[8] | (DeviceDescriptor[9] << 8)),
-		(unsigned)(DeviceDescriptor[10] | (DeviceDescriptor[11] << 8)),
-		(unsigned)DeviceDescriptor[0], (unsigned)GetSysTick1MsCnt());
-	/* #endregion */
 }
 
 
@@ -225,20 +205,8 @@ void OTG_DeviceGetDescriptor(void)
 			break;
 
 		default:
-		DBG("UsbDeviceSendStall:100\n");
-			/* #region agent log */
-			DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"E\",\"location\":\"GetDescriptor\",\"message\":\"stall_unknown_dtype\",\"data\":{\"dtype\":%u}}\n",
-				(unsigned)Setup[3]);
-			/* #endregion */
 			OTG_DeviceStallSend(DEVICE_CONTROL_EP);
 			return;
-	}
-
-	if (Len == 0 || UsbSendPtr == 0) {
-		/* #region agent log */
-		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"E\",\"location\":\"GetDescriptor\",\"message\":\"empty_desc\",\"data\":{\"dtype\":%u,\"len\":%u,\"ptr\":%08X}}\n",
-			(unsigned)Setup[3], (unsigned)Len, (unsigned)(uint32_t)UsbSendPtr);
-		/* #endregion */
 	}
 
 	if(Len > (Setup[7] * 256 + Setup[6]))
@@ -246,7 +214,6 @@ void OTG_DeviceGetDescriptor(void)
 
 		Len = Setup[7] * 256 + Setup[6];
 	}
-	/* No DBG before ControlSend ? UART print delayed EP0 and broke follow-up class reqs */
 	OTG_DeviceControlSend((uint8_t*)UsbSendPtr, Len, 10);
 }
 
@@ -303,6 +270,9 @@ void OTG_DeviceStandardRequest()
 
 		case USB_REQ_SET_CONFIGURATION:
 			{
+				static uint8_t zlp;
+				/* Keep EP0 path minimal: reset EPs + status ZLP only.
+				 * Do NOT CDC_Init here — defer to main after SET_CONFIG. */
 				OTG_DeviceEndpointReset(DEVICE_CDC_CMD_EP, TYPE_INT_IN);
 				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_IN_EP, TYPE_BULK_IN);
 				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_OUT_EP, TYPE_BULK_OUT);
@@ -317,8 +287,8 @@ void OTG_DeviceStandardRequest()
 				UsbAudioMic.InitOk = 1;
 				UsbAudioSpeaker.InitOk = 1;
 #endif
-				OTG_DeviceCDC_Init();
-				/* no DBG inside SET_CONFIGURATION ? keep EP0 responsive for immediate class reqs */
+				OTG_DeviceControlSend(&zlp, 0, 10);
+				g_usb_configured = 1;
 			}
 			break;
 
@@ -338,7 +308,11 @@ void OTG_DeviceStandardRequest()
 				UsbAudioSpeaker.AltSet = Setup[2];
 			}
 		#endif
-			/* Match Example_USB: no software ZLP (HW status for control OUT wLen=0) */
+			/* Control OUT wLength=0: software must finish status (ZLP + DataEnd) */
+			{
+				static uint8_t zlp;
+				OTG_DeviceControlSend(&zlp, 0, 10);
+			}
 			break;
 
 		case USB_REQ_SYNCH_FRAME:
@@ -441,16 +415,6 @@ void OTG_DeviceRequestProcess(void)
 
 	if(BusEvent & 0x04)
 	{
-		s_d42_reset_cnt++;
-		s_d42_csr_logs_this_reset = 0;
-		/* #region agent log */
-		{
-			volatile uint8_t *usb = (volatile uint8_t *)0x40000000u;
-			DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"G\",\"location\":\"RequestProcess\",\"message\":\"usb_reset\",\"data\":{\"cnt\":%u,\"tick\":%u,\"csr\":%u,\"addr\":%u,\"runId\":\"post-fix\"}}\n",
-				(unsigned)s_d42_reset_cnt, (unsigned)GetSysTick1MsCnt(),
-				(unsigned)usb[0x11], (unsigned)usb[0x00]);
-		}
-		/* #endregion */
 		/* Match Example_USB: do NOT call AddressSet(0) here (blocked ~20ms, bit4 never set).
 		 * Hardware clears address on bus reset. */
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
@@ -458,33 +422,18 @@ void OTG_DeviceRequestProcess(void)
 		UsbAudioSpeaker.InitOk = 0;
 #endif
 		OTG_DeviceCDC_DeInit();
+		g_usb_configured = 0;
 	}
 	setup_err = OTG_DeviceSetupReceive(Setup, 8, &DataLeng);
 	if(setup_err != DEVICE_NONE_ERR)
 	{
-		/* #region agent log */
-		s_d42_setup_err_cnt++;
-		{
-			uint32_t now = GetSysTick1MsCnt();
-			/* After each reset: up to 8 samples @50ms ? see if SETUP bit ever latches in CSR */
-			if (s_d42_reset_cnt && s_d42_csr_logs_this_reset < 8u &&
-			    (now - s_d42_last_csr_log_tick) >= 50u) {
-				volatile uint8_t *usb = (volatile uint8_t *)0x40000000u;
-				s_d42_last_csr_log_tick = now;
-				s_d42_csr_logs_this_reset++;
-				DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"H\",\"location\":\"RequestProcess\",\"message\":\"setup_poll\",\"data\":{\"err\":%u,\"errCnt\":%u,\"csr\":%u,\"fifoLen\":%u,\"tick\":%u,\"rst\":%u,\"n\":%u}}\n",
-					(unsigned)setup_err, (unsigned)s_d42_setup_err_cnt,
-					(unsigned)usb[0x11], (unsigned)usb[0x16],
-					(unsigned)now, (unsigned)s_d42_reset_cnt,
-					(unsigned)s_d42_csr_logs_this_reset);
-			}
-		}
-		/* #endregion */
 		return;
 	}
-	/* IMPORTANT: do NOT DBG before handling ? SET_ADDRESS status is timing-critical.
-	 * Prior logs (~15ms UART) ran before AddressSet; host then stalled with csr=16. */
-	s_d42_setup_cnt++;
+	/* Status-OUT ZLP can raise RxPktRdy with len!=8; ignore (stale Setup[]). */
+	if (DataLeng != 8u) {
+		return;
+	}
+	/* IMPORTANT: do NOT DBG before handling — SET_ADDRESS status is timing-critical. */
 	//IsAndroid();
 	if((Setup[0]&0x80) == 0)//out
 	{
@@ -532,14 +481,6 @@ void OTG_DeviceRequestProcess(void)
 			OTG_DeviceOtherRequest();
 			break;			
 	}
-	/* #region agent log */
-	/* Never DBG class/set_iface here ? delays the next EP0 transaction (~15ms UART). */
-	if (Setup[1] == USB_REQ_SET_CONFIGURATION)
-	{
-		DBG("[D42]{\"sessionId\":\"42d04e\",\"hypothesisId\":\"A\",\"location\":\"RequestProcess\",\"message\":\"set_config_done\",\"data\":{\"tick\":%u,\"runId\":\"post-fix\"}}\n",
-			(unsigned)GetSysTick1MsCnt());
-	}
-	/* #endregion */
 }
 
 //*************************************************//

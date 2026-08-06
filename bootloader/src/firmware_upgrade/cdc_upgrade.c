@@ -93,11 +93,16 @@ int CDC_Upgrade_CheckEnter(void)
 
 void CDC_Upgrade_Process(void)
 {
+    uint16_t n;
+
     if (!s_initialised || !s_upgrade_mode) {
         return;
     }
 
-    if (OTG_DeviceCDC_GetRxCount() > 0) {
+    n = OTG_DeviceCDC_GetRxCount();
+    if (n > 0) {
+        /* Do not DBG per RX burst during DATA — UART blocks USB and Windows
+         * drops CDC (ClearCommError / 设备不识别此命令). */
         App_Upgrade_ProcessChannel(&s_cdc_ch);
     }
 

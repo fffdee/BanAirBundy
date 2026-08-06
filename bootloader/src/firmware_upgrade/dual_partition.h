@@ -34,6 +34,21 @@ void DualPart_Init(void);
 #define FW_VALID_MAGIC_OFFSET   0x000000A4UL
 #define BOOT_FAIL_MAX           3
 
+/* APP stub BootInfo @ +0x104 — BL pre-copies .data/.bss before jump */
+#define BOOT_INFO_MAGIC         0x42474F46UL  /* "BGOF" */
+#define BOOT_INFO_OFFSET        0x00000104UL
+#define BOOT_HANDOFF_ADDR       0x20000000UL
+#define BOOT_HANDOFF_MAGIC      0xDEADBEEFUL
+
+typedef struct {
+    uint32_t magic;
+    uint32_t data_lma;
+    uint32_t data_vma;
+    uint32_t data_end;
+    uint32_t bss_vma;
+    uint32_t bss_end;
+} BootInfo_t;
+
 typedef struct {
     uint32_t magic;
     uint8_t  active_part;
