@@ -1,0 +1,359 @@
+16:32:48 **** Incremental Build of configuration Debug for project boot_app ****
+make -j20 all 
+Building file: ../otg/device/src/otg_device_audio.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"otg/device/src/otg_device_audio.d" -MT"otg/device/src/otg_device_audio.d otg/device/src/otg_device_audio.o" -o "otg/device/src/otg_device_audio.o" "../otg/device/src/otg_device_audio.c"
+In file included from ../otg/device/src/otg_device_audio.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
+ #define DEVICE_BULK_IN_EP   0x82
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:16:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_IN_EP   0x81
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
+ #define DEVICE_BULK_OUT_EP   0x03
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:16:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_OUT_EP   0x01
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:46:0: warning: "DEVICE_ISO_IN_EP" redefined
+ #define DEVICE_ISO_IN_EP   0x84
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:16:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_IN_EP   0x82
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:47:0: warning: "DEVICE_ISO_OUT_EP" redefined
+ #define DEVICE_ISO_OUT_EP   0x05
+ ^
+In file included from ../otg/device/src/otg_device_audio.c:16:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:46:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_OUT_EP   0x02
+ ^
+Finished building: ../otg/device/src/otg_device_audio.c
+ 
+Building file: ../otg/device/src/otg_device_cdc.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"otg/device/src/otg_device_cdc.d" -MT"otg/device/src/otg_device_cdc.d otg/device/src/otg_device_cdc.o" -o "otg/device/src/otg_device_cdc.o" "../otg/device/src/otg_device_cdc.c"
+In file included from ../otg/device/src/otg_device_cdc.c:19:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
+ #define DEVICE_BULK_IN_EP   0x82
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_IN_EP   0x81
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:19:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
+ #define DEVICE_BULK_OUT_EP   0x03
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_OUT_EP   0x01
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:19:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:46:0: warning: "DEVICE_ISO_IN_EP" redefined
+ #define DEVICE_ISO_IN_EP   0x84
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_IN_EP   0x82
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:19:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:47:0: warning: "DEVICE_ISO_OUT_EP" redefined
+ #define DEVICE_ISO_OUT_EP   0x05
+ ^
+In file included from ../otg/device/src/otg_device_cdc.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:46:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_OUT_EP   0x02
+ ^
+Finished building: ../otg/device/src/otg_device_cdc.c
+ 
+Building file: ../otg/device/src/otg_device_standard_request.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"otg/device/src/otg_device_standard_request.d" -MT"otg/device/src/otg_device_standard_request.d otg/device/src/otg_device_standard_request.o" -o "otg/device/src/otg_device_standard_request.o" "../otg/device/src/otg_device_standard_request.c"
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../otg/device/src/otg_device_standard_request.c:16:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from ../otg/device/src/otg_device_standard_request.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
+ #define DEVICE_BULK_IN_EP   0x82
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_IN_EP   0x81
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
+ #define DEVICE_BULK_OUT_EP   0x03
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_OUT_EP   0x01
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:46:0: warning: "DEVICE_ISO_IN_EP" redefined
+ #define DEVICE_ISO_IN_EP   0x84
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_IN_EP   0x82
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:18:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:47:0: warning: "DEVICE_ISO_OUT_EP" redefined
+ #define DEVICE_ISO_OUT_EP   0x05
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:17:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:46:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_OUT_EP   0x02
+ ^
+Finished building: ../otg/device/src/otg_device_standard_request.c
+ 
+Building file: ../otg/otg_fifo.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"otg/otg_fifo.d" -MT"otg/otg_fifo.d otg/otg_fifo.o" -o "otg/otg_fifo.o" "../otg/otg_fifo.c"
+In file included from ../otg/otg_fifo.c:11:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
+ #define DEVICE_BULK_IN_EP   0x82
+ ^
+In file included from ../otg/otg_fifo.c:9:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_IN_EP   0x81
+ ^
+In file included from ../otg/otg_fifo.c:11:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
+ #define DEVICE_BULK_OUT_EP   0x03
+ ^
+In file included from ../otg/otg_fifo.c:9:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_OUT_EP   0x01
+ ^
+In file included from ../otg/otg_fifo.c:11:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:46:0: warning: "DEVICE_ISO_IN_EP" redefined
+ #define DEVICE_ISO_IN_EP   0x84
+ ^
+In file included from ../otg/otg_fifo.c:9:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_IN_EP   0x82
+ ^
+In file included from ../otg/otg_fifo.c:11:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:47:0: warning: "DEVICE_ISO_OUT_EP" redefined
+ #define DEVICE_ISO_OUT_EP   0x05
+ ^
+In file included from ../otg/otg_fifo.c:9:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:46:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_OUT_EP   0x02
+ ^
+Finished building: ../otg/otg_fifo.c
+ 
+Building file: ../src/main.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.d src/main.o" -o "src/main.o" "../src/main.c"
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../src/main.c:11:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from ../src/main.c:16:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/remap.h:32:0: warning: "FLASH_ADDR" redefined
+ #define FLASH_ADDR    0x0
+ ^
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:5:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../src/main.c:11:
+/cygdrive/D/BanAirBundy/boot_app/system_config/flash_config.h:14:0: note: this is the location of the previous definition
+     #define FLASH_ADDR              0x00040000
+ ^
+In file included from ../src/main.c:31:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
+ #define DEVICE_BULK_IN_EP   0x82
+ ^
+In file included from ../src/main.c:30:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_IN_EP   0x81
+ ^
+In file included from ../src/main.c:31:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
+ #define DEVICE_BULK_OUT_EP   0x03
+ ^
+In file included from ../src/main.c:30:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
+ #define DEVICE_BULK_OUT_EP   0x01
+ ^
+In file included from ../src/main.c:31:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:46:0: warning: "DEVICE_ISO_IN_EP" redefined
+ #define DEVICE_ISO_IN_EP   0x84
+ ^
+In file included from ../src/main.c:30:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_IN_EP   0x82
+ ^
+In file included from ../src/main.c:31:0:
+/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:47:0: warning: "DEVICE_ISO_OUT_EP" redefined
+ #define DEVICE_ISO_OUT_EP   0x05
+ ^
+In file included from ../src/main.c:30:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:46:0: note: this is the location of the previous definition
+ #define DEVICE_ISO_OUT_EP   0x02
+ ^
+../src/main.c: In function 'main':
+../src/main.c:149:2: warning: null argument where non-null required (argument 1) [-Wnonnull]
+  Remap_InitTcm(0, 0, 12);
+  ^
+../src/main.c:149:2: warning: null argument where non-null required (argument 2) [-Wnonnull]
+In file included from ../src/main.c:18:0:
+../src/main.c: At top level:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:147:6: warning: inline function 'GIE_DISABLE' declared but never defined
+ void GIE_DISABLE(void);
+      ^
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:139:6: warning: inline function 'GIE_ENABLE' declared but never defined
+ void GIE_ENABLE(void);
+      ^
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:147:6: warning: inline function 'GIE_DISABLE' declared but never defined
+ void GIE_DISABLE(void);
+      ^
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:139:6: warning: inline function 'GIE_ENABLE' declared but never defined
+ void GIE_ENABLE(void);
+      ^
+Finished building: ../src/main.c
+ 
+Building file: ../src/usb_audio_api.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"src/usb_audio_api.d" -MT"src/usb_audio_api.d src/usb_audio_api.o" -o "src/usb_audio_api.o" "../src/usb_audio_api.c"
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../src/usb_audio_api.c:10:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Finished building: ../src/usb_audio_api.c
+ 
+Building file: ../startup/crt0.S
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"startup/crt0.d" -MT"startup/crt0.d startup/crt0.o" -o "startup/crt0.o" "../startup/crt0.S"
+Finished building: ../startup/crt0.S
+ 
+Building file: ../startup/flash_boot.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"startup/flash_boot.d" -MT"startup/flash_boot.d startup/flash_boot.o" -o "startup/flash_boot.o" "../startup/flash_boot.c"
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from ../startup/flash_boot.h:7,
+                 from ../startup/flash_boot.c:1:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from ../startup/flash_boot.c:1:0:
+../startup/flash_boot.h:156:0: warning: "CFG_SDK_MAGIC_NUMBER" redefined
+ #define  CFG_SDK_MAGIC_NUMBER                (0xB0BEBDC9)
+ ^
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from ../startup/flash_boot.h:7,
+                 from ../startup/flash_boot.c:1:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:41:0: note: this is the location of the previous definition
+     #define CFG_SDK_MAGIC_NUMBER 0xB0BEBDC9
+ ^
+Finished building: ../startup/flash_boot.c
+ 
+Building file: ../startup/init-default.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"startup/init-default.d" -MT"startup/init-default.d startup/init-default.o" -o "startup/init-default.o" "../startup/init-default.c"
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../startup/init-default.c:2:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from ../startup/init-default.c:4:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/remap.h:32:0: warning: "FLASH_ADDR" redefined
+ #define FLASH_ADDR    0x0
+ ^
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:5:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../startup/init-default.c:2:
+/cygdrive/D/BanAirBundy/boot_app/system_config/flash_config.h:14:0: note: this is the location of the previous definition
+     #define FLASH_ADDR              0x00040000
+ ^
+In file included from ../startup/init-default.c:5:0:
+../startup/flash_boot.h:156:0: warning: "CFG_SDK_MAGIC_NUMBER" redefined
+ #define  CFG_SDK_MAGIC_NUMBER                (0xB0BEBDC9)
+ ^
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../startup/init-default.c:2:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:41:0: note: this is the location of the previous definition
+     #define CFG_SDK_MAGIC_NUMBER 0xB0BEBDC9
+ ^
+Finished building: ../startup/init-default.c
+ 
+Building file: ../startup/interrupt.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"startup/interrupt.d" -MT"startup/interrupt.d startup/interrupt.o" -o "startup/interrupt.o" "../startup/interrupt.c"
+Finished building: ../startup/interrupt.c
+ 
+Building file: ../startup/retarget.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_param" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_state" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys_led" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"startup/retarget.d" -MT"startup/retarget.d startup/retarget.o" -o "startup/retarget.o" "../startup/retarget.c"
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/remap.h:28,
+                 from ../startup/retarget.c:11:
+/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from ../startup/retarget.c:11:0:
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/remap.h:32:0: warning: "FLASH_ADDR" redefined
+ #define FLASH_ADDR    0x0
+ ^
+In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:5:0,
+                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/remap.h:28,
+                 from ../startup/retarget.c:11:
+/cygdrive/D/BanAirBundy/boot_app/system_config/flash_config.h:14:0: note: this is the location of the previous definition
+     #define FLASH_ADDR              0x00040000
+ ^
+Finished building: ../startup/retarget.c
+ 
+Building target: boot_app.adx
+Invoking: Andes C Linker
+nds32le-elf-gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/boot_app/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx"  ./FreeRTOS/Source/event_groups.o ./FreeRTOS/Source/heap_5s.o ./FreeRTOS/Source/list.o ./FreeRTOS/Source/queue.o ./FreeRTOS/Source/tasks.o ./FreeRTOS/Source/timers.o  ./FreeRTOS/Source/portable/os_cpu_a.o ./FreeRTOS/Source/portable/port.o ./FreeRTOS/Source/portable/portISR.o  ./banux/01_hal_drivers/adc/audio_setting.o  ./banux/01_hal_drivers/psram_heap.o  ./banux/01_hal_drivers/sdio/hal_sdio.o  ./banux/01_vfs/vfs.o  ./banux/02_device_drivers/flash/BG_FlashMgr.o ./banux/02_device_drivers/flash/bg_flash_manager.o ./banux/02_device_drivers/flash/flash_bus.o ./banux/02_device_drivers/flash/flash_devices.o ./banux/02_device_drivers/flash/flash_driver.o ./banux/02_device_drivers/flash/flash_manager.o ./banux/02_device_drivers/flash/flash_nand_w25n02.o ./banux/02_device_drivers/flash/flash_nor_w25qxx.o ./banux/02_device_drivers/flash/flash_test.o ./banux/02_device_drivers/flash/psram_esp64h.o  ./banux/03_driver_framework/core/drv_device.o ./banux/03_driver_framework/core/drv_fs.o  ./banux/03_driver_framework/drivers/drv_psram.o ./banux/03_driver_framework/drivers/drv_w25n02.o ./banux/03_driver_framework/drivers/drv_w25qxx.o  ./banux/03_driver_framework/drv_init.o  ./banux/03_driver_framework/event/bg_event.o  ./banux/05_component/firmware_upgrade/app_upgrade.o ./banux/05_component/firmware_upgrade/boot_decision.o ./banux/05_component/firmware_upgrade/fw_upgrade.o  ./driver/driver_api/src/uarts_interface.o  ./middleware/mv_utils/src/debug.o ./middleware/mv_utils/src/heap.o ./middleware/mv_utils/src/mcu_circular_buf.o  ./otg/device/src/otg_device_audio.o ./otg/device/src/otg_device_cdc.o ./otg/device/src/otg_device_standard_request.o  ./otg/otg_fifo.o  ./src/main.o ./src/usb_audio_api.o  ./startup/crt0.o ./startup/flash_boot.o ./startup/init-default.o ./startup/interrupt.o ./startup/retarget.o   -lDriver
+Finished building target: boot_app.adx
+ 
+/usr/bin/make --no-print-directory post-build
+nds32le-elf-objcopy -O binary "boot_app.adx" output/boot_app.bin
+ 
+Invoking: NM (symbol listing)
+nds32le-elf-nm -n -l -C "boot_app.adx" > output/symbol.txt
+Finished building: output/symbol.txt
+ 
+Invoking: Readelf (ELF info listing)
+nds32le-elf-readelf -a "boot_app.adx" > output/readelf.txt
+Finished building: output/readelf.txt
+ 
+Invoking: Objdump (disassembly)
+nds32le-elf-objdump -x -d -C "boot_app.adx" > output/objdump.txt
+Finished building: output/objdump.txt
+ 
+Invoking: Size (section size listing)
+nds32le-elf-size  "boot_app.adx" | tee output/.PHONY.size
+   text (code + rodata)	   data	    bss	    dec	    hex	filename
+  32028 (27332 +   4696)	    320	   7828	  40176	   9cf0	boot_app.adx
+Finished building: output/.PHONY.size
+ 
+
+16:32:52 Build Finished (took 3s.792ms)
+

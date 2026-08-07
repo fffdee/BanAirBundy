@@ -5702,3 +5702,616 @@ java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
 	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
 	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
 	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+!SESSION 2026-08-07 14:33:47.900 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_76
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.emf.ecore 2 0 2026-08-07 14:34:02.856
+!MESSAGE Both 'com.andestech.ide.ldsag' and 'com.andestech.ide.ldsag.xtext' register a package for 'http:///ide.andestech.com.ldsag/ldsag.ecore'
+
+!ENTRY org.eclipse.core.resources 4 567 2026-08-07 14:34:03.099
+!MESSAGE Workspace restored, but some problems occurred.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2026-08-07 14:34:03.100
+!MESSAGE Could not read metadata for '@INCLUDES'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: The project description file (.project) for '@INCLUDES' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:902)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:882)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:733)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1588)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2386)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2157)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:463)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:771)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:764)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:721)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:941)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:318)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:571)
+	at org.eclipse.osgi.container.Module.start(Module.java:439)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:454)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:531)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:36)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:398)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at org.eclipse.emf.ecore.plugin.EcorePlugin.getWorkspaceRoot(EcorePlugin.java:1131)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.<clinit>(ExtensibleURIConverterImpl.java:393)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getURIConverter(ResourceSetImpl.java:499)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:369)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.getResource(ResourceHandler.java:351)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadResource(ResourceHandler.java:327)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel_aroundBody0(ResourceHandler.java:231)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler$AjcClosure1.run(ResourceHandler.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.andestech.ide.workbench.aspect.aj.WorkbenchXmiAspect.modifyXMI(WorkbenchXmiAspect.java:31)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:155)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:397)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:254)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:628)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:606)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.andestech.ide.deploy.AndesApplication.start(AndesApplication.java:84)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2026-08-07 14:34:03.100
+!MESSAGE The project description file (.project) for '@INCLUDES' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2026-08-07 14:34:03.100
+!MESSAGE Could not read metadata for 'Example_USB'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: The project description file (.project) for 'Example_USB' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:902)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:882)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:733)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1588)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2386)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2157)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:463)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:771)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:764)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:721)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:941)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:318)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:571)
+	at org.eclipse.osgi.container.Module.start(Module.java:439)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:454)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:531)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:36)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:398)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at org.eclipse.emf.ecore.plugin.EcorePlugin.getWorkspaceRoot(EcorePlugin.java:1131)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.<clinit>(ExtensibleURIConverterImpl.java:393)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getURIConverter(ResourceSetImpl.java:499)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:369)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.getResource(ResourceHandler.java:351)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadResource(ResourceHandler.java:327)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel_aroundBody0(ResourceHandler.java:231)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler$AjcClosure1.run(ResourceHandler.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.andestech.ide.workbench.aspect.aj.WorkbenchXmiAspect.modifyXMI(WorkbenchXmiAspect.java:31)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:155)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:397)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:254)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:628)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:606)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.andestech.ide.deploy.AndesApplication.start(AndesApplication.java:84)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2026-08-07 14:34:03.100
+!MESSAGE The project description file (.project) for 'Example_USB' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2026-08-07 14:34:03.100
+!MESSAGE Could not read metadata for 'wireless_mic_rx_sdk'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: The project description file (.project) for 'wireless_mic_rx_sdk' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:902)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:882)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:733)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1588)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2386)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2157)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:463)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:771)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:764)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:721)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:941)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:318)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:571)
+	at org.eclipse.osgi.container.Module.start(Module.java:439)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:454)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:531)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:36)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:398)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at org.eclipse.emf.ecore.plugin.EcorePlugin.getWorkspaceRoot(EcorePlugin.java:1131)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.<clinit>(ExtensibleURIConverterImpl.java:393)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getURIConverter(ResourceSetImpl.java:499)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:369)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.getResource(ResourceHandler.java:351)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadResource(ResourceHandler.java:327)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel_aroundBody0(ResourceHandler.java:231)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler$AjcClosure1.run(ResourceHandler.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.andestech.ide.workbench.aspect.aj.WorkbenchXmiAspect.modifyXMI(WorkbenchXmiAspect.java:31)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:155)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:397)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:254)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:628)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:606)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.andestech.ide.deploy.AndesApplication.start(AndesApplication.java:84)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2026-08-07 14:34:03.100
+!MESSAGE The project description file (.project) for 'wireless_mic_rx_sdk' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.ui 2 2 2026-08-07 14:34:03.872
+!MESSAGE Invalid preference category path: org.eclipse.linuxtools.profiling.provider.MainPreferencePage (bundle: org.eclipse.linuxtools.binutils, page: org.eclipse.linuxtools.binutils.preferences)
+
+!ENTRY org.eclipse.ui 2 2 2026-08-07 14:34:03.895
+!MESSAGE Invalid preference category path: org.eclipse.linuxtools.profiling.provider.MainPreferencePage (bundle: org.eclipse.linuxtools.gcov.core, page: org.eclipse.linuxtools.gcov.core.preferences.colors)
+
+!ENTRY com.andestech.ide.license.truelic 4 0 2026-08-07 14:34:07.127
+!MESSAGE Unexpected Exception
+!STACK 0
+com.andestech.ide.license.common.exception.LicenseException: There is no AndeSight license installed.
+ Please contact Andes Technology (support@andestech.com) for a new license and press the "Install now..." button to install the new license.
+	at com.andestech.ide.license.truelic.prod.AdsLicenseManager.checkout(AdsLicenseManager.java:75)
+	at com.andestech.ide.license.truelic.TruelicLicenseProviderDelegate.checkout(TruelicLicenseProviderDelegate.java:31)
+	at com.andestech.ide.license.utils.LicenseAdmin.checkOutLicense(LicenseAdmin.java:40)
+	at com.andestech.ide.license.aj.VerifyLicenseAspect.process(VerifyLicenseAspect.java:37)
+	at com.andestech.ide.license.ui.job.LicenseCheckJob.run(LicenseCheckJob.java:56)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.andestech.ide.license.ui 4 0 2026-08-07 14:34:07.141
+!MESSAGE There is no AndeSight license installed.
+ Please contact Andes Technology (support@andestech.com) for a new license and press the "Install now..." button to install the new license.
+
+!ENTRY com.andestech.ide.license.truelic 4 0 2026-08-07 14:34:31.601
+!MESSAGE Unexpected Exception
+!STACK 0
+java.lang.NullPointerException
+	at de.schlichtherle.license.LicenseManager.setLicenseKey(Unknown Source)
+	at de.schlichtherle.license.LicenseManager.uninstall(Unknown Source)
+	at com.andestech.ide.license.truelic.prod.AdsLicenseManager.remove(AdsLicenseManager.java:137)
+	at com.andestech.ide.license.truelic.TruelicLicenseProviderDelegate.uninstall(TruelicLicenseProviderDelegate.java:58)
+	at com.andestech.ide.license.utils.LicenseAdmin.uninstall(LicenseAdmin.java:96)
+	at com.andestech.ide.license.ui.preferences.IDeployPreferencePage.doInstallCheck(IDeployPreferencePage.java:66)
+	at com.andestech.ide.license.ui.preferences.Deploy4RDSPreferencePage.performDeploy(Deploy4RDSPreferencePage.java:110)
+	at com.andestech.ide.license.ui.preferences.Deploy4RDSPreferencePage.performOk(Deploy4RDSPreferencePage.java:79)
+	at org.eclipse.jface.preference.PreferenceDialog$12.run(PreferenceDialog.java:925)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.jface.preference.PreferenceDialog.okPressed(PreferenceDialog.java:909)
+	at org.eclipse.ui.internal.dialogs.FilteredPreferenceDialog.okPressed(FilteredPreferenceDialog.java:409)
+	at org.eclipse.ui.internal.dialogs.WorkbenchPreferenceDialog.okPressed(WorkbenchPreferenceDialog.java:168)
+	at org.eclipse.jface.preference.PreferenceDialog.buttonPressed(PreferenceDialog.java:233)
+	at org.eclipse.jface.dialogs.Dialog$2.widgetSelected(Dialog.java:619)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:248)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4362)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1113)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4180)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3769)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:827)
+	at org.eclipse.jface.window.Window.open(Window.java:803)
+	at org.eclipse.ui.internal.dialogs.WorkbenchPreferenceDialog.open(WorkbenchPreferenceDialog.java:211)
+	at com.andestech.ide.license.ui.listener.DefaultLicenseEventListener$1.runInUIThread(DefaultLicenseEventListener.java:59)
+	at org.eclipse.ui.progress.UIJob$1.run(UIJob.java:97)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4155)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3772)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:694)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:606)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.andestech.ide.deploy.AndesApplication.start(AndesApplication.java:84)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+
+!ENTRY org.eclipse.core.resources 4 568 2026-08-07 14:35:58.962
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: D:\BanAirBundy\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (系统找不到指定的路径。)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 568 2026-08-07 14:44:59.610
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: D:\BanAirBundy\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (系统找不到指定的路径。)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 568 2026-08-07 14:54:08.786
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: D:\BanAirBundy\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (系统找不到指定的路径。)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 15:50:41.481
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/D/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 15:50:41.481
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 15:50:41.481
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 15:50:41.545
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-07 16:05:38.471
+!MESSAGE 15:52:03.125 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 16:05:49.573
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/D/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 16:05:49.573
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 16:05:49.573
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 16:05:49.637
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 16:05:52.682
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 16:05:52.682
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 16:05:54.724
+!MESSAGE Connect to telent hostAddress:172.16.60.62, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 16:05:54.724
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 16:05:54.725
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 16:05:54.725
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.core.resources 4 568 2026-08-07 16:20:46.614
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: D:\BanAirBundy\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (系统找不到指定的路径。)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-08-07 16:20:47.669
+!MESSAGE Indexed 'boot_app' (46 sources, 163 headers) in 0.97 sec: 11,651 declarations; 25,165 references; 0 unresolved inclusions; 42 syntax errors; 148 unresolved names (0.4%)
+
+!ENTRY org.eclipse.core.resources 4 568 2026-08-07 16:25:46.701
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: D:\BanAirBundy\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (系统找不到指定的路径。)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 568 2026-08-07 16:37:49.753
+!MESSAGE Could not write metadata for '/RemoteSystemsTempFiles'.
+!STACK 0
+java.io.FileNotFoundException: D:\BanAirBundy\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap (系统找不到指定的路径。)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:11.174
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/D/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:11.174
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:11.175
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:11.241
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 17:25:14.278
+!MESSAGE Connect to telent hostName:localhost, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 17:25:14.278
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:203)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:68)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 17:25:16.342
+!MESSAGE Connect to telent hostAddress:172.16.60.62, port:9,901 is failed.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 17:25:16.343
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 17:25:16.343
+!MESSAGE Failed to connect to the telnet port.
+
+!ENTRY com.andestech.ide.tm.rse 4 4 2026-08-07 17:25:16.345
+!MESSAGE Connection refused: connect
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.commons.net.SocketClient.connect(SocketClient.java:182)
+	at com.andestech.ide.tm.rse.OpenOCDTelnetClient.<init>(OpenOCDTelnetClient.java:80)
+	at com.andestech.ide.tm.rse.model.impl.IceTargetProcessInfo.<init>(IceTargetProcessInfo.java:135)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.forkIce(LocalTargetResourceService.java:168)
+	at com.andestech.ide.tm.rse.local.LocalTargetResourceService.connectICE(LocalTargetResourceService.java:180)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.connectICE(RseFlashDriverRunnable.java:125)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.start(RseFlashDriverRunnable.java:45)
+	at com.andestech.ide.flash.driver.ui.FlashDriverRunnable.run(FlashDriverRunnable.java:30)
+	at com.andestech.ide.flash.driver.ui.rse.RseFlashDriverRunnable.run(RseFlashDriverRunnable.java:134)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:26.391
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/D/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:26.391
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:26.391
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-08-07 17:25:26.458
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-08-07 17:25:51.724
+!MESSAGE 17:25:34.378 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: TARGET ERROR! Target is disconnected with AICE.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)

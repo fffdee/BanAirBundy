@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          207448 (bytes into file)
+  Start of section headers:          206760 (bytes into file)
   Flags:                             0x32808a52, ABI2 FP+, Andes ELF V1.4, Andes Star v3.0, PERF1, FPU_SP, DSP, FPU_REG:32/16, STR
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -40,15 +40,15 @@ Section Headers:
   [16] .debug_aranges    PROGBITS        00000000 009178 0004f0 00      0   0  8
   [17] .debug_info       PROGBITS        00000000 009668 00724d 00      0   0  1
   [18] .debug_abbrev     PROGBITS        00000000 0108b5 001670 00      0   0  1
-  [19] .debug_line       PROGBITS        00000000 011f25 00562c 00      0   0  1
-  [20] .debug_frame      PROGBITS        00000000 017554 000da4 00      0   0  4
-  [21] .debug_str        PROGBITS        00000000 0182f8 01385a 01  MS  0   0  1
-  [22] .debug_loc        PROGBITS        00000000 02bb52 0024fb 00      0   0  1
-  [23] .debug_ranges     PROGBITS        00000000 02e050 000450 00      0   0  8
-  [24] .debug_macro      PROGBITS        00000000 02e4a0 004487 00      0   0  1
-  [25] .shstrtab         STRTAB          00000000 032927 000130 00      0   0  1
-  [26] .symtab           SYMTAB          00000000 032eb8 005d80 10     27 1203  4
-  [27] .strtab           STRTAB          00000000 038c38 004508 00      0   0  1
+  [19] .debug_line       PROGBITS        00000000 011f25 0053c4 00      0   0  1
+  [20] .debug_frame      PROGBITS        00000000 0172ec 000da4 00      0   0  4
+  [21] .debug_str        PROGBITS        00000000 018090 013815 01  MS  0   0  1
+  [22] .debug_loc        PROGBITS        00000000 02b8a5 0024fb 00      0   0  1
+  [23] .debug_ranges     PROGBITS        00000000 02dda0 000450 00      0   0  8
+  [24] .debug_macro      PROGBITS        00000000 02e1f0 004487 00      0   0  1
+  [25] .shstrtab         STRTAB          00000000 032677 000130 00      0   0  1
+  [26] .symtab           SYMTAB          00000000 032c08 005d80 10     27 1203  4
+  [27] .strtab           STRTAB          00000000 038988 004508 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
