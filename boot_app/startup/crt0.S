@@ -316,7 +316,7 @@ OS_Trap_Interrupt_HW31:
 ##------------------------------------------------------------------------------
 ## Startup code
 
-	.section .startup_section
+	.section .startup_section, "ax"
 	.global _start
 	.weak _call_exit
 	.weak _SDA_BASE_

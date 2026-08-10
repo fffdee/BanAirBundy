@@ -89,7 +89,9 @@ CtxRestore:
 !              g) CtxRestoreMacro	: Restore to the highest priority task's context 
 !
 !********************************************************************************************************
-.section .startup_section
+	/* Must be "ax" so this merges with crt0 .startup_section and is
+	 * KEEP'd by the linker. Bare .section made an orphan at VMA 0. */
+.section .startup_section, "ax"
 OS_Trap_Interrupt_SWI:
 	movi    $r0, 0
 	mtsr    $r0, $INT_PEND                  ! clean SWI pending

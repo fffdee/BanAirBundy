@@ -13,17 +13,16 @@
          U __stop_bg_evt_sub
          U xQueueCreateMutex
          U xTaskGetCurrentTaskHandle
-00000000 N OS_Trap_Interrupt_SWI	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:109
 00000000 W _ITB_BASE_
-00008080 A EILM_SIZE
+00008e20 A EILM_SIZE
 00040000 a EILM_BEGIN
 00040000 a NDS_SAG_LMA_EILM
-00040000 W _RELAX_END_	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:47
+00040000 W _RELAX_END_	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:47
 00040000 A __executable_start
-00040000 T _start	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:47
-00040000 t exception_vector	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:47
-000400a4 t exception_vector_end	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:311
-000400a4 T stub	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:310
+00040000 T _start	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:47
+00040000 t exception_vector	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:47
+000400a4 t exception_vector_end	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:311
+000400a4 T stub	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:310
 00040120 t FlashXmcResumeTimeGet
 0004013c t flash_udelay
 000401d2 t flash_delayms
@@ -48,302 +47,320 @@
 00040e7e t flash_exit_2bitcrm
 00041780 T SpiFlashReadUniqueID
 00041968 r SpiFlash
-00041a1c T Clock_PllFreqGet
-00041a22 T Clock_APllFreqGet
-00041a28 T Clock_Bt32kTrimFreqGet
-00041a2e T Clock_CoreClkDivSet
-00041a46 T Clock_CoreClkDivGet
-00041a50 T Clock_SysClkDivGet
-00041a6e T Clock_CoreClockFreqGet
-00041ad8 T Clock_SysClockFreqGet
-00041b0e T Clock_SysClkDivSet
-00041b66 T GPIO_RegOneBitSet
-00041b76 T GPIO_RegOneBitClear
-00041b88 T __udelay
-00041bea T DelayMs
-00041c50 T SystickInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/portISR.c:100
-00041c88 T DMA_D_Interrupt
-00041cd2 T DMA_T_Interrupt
-00041d18 T DMA_E_Interrupt
-00041d62 T GetSysTick1MsCnt
-00041d68 T PastTimeGet
-00041d7c T TimeOutSet
-00041d9c T IsTimeOut
-00041dc8 W UART_Interrupt
-00041e68 t prvInsertBlockIntoFreeList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:750
-00041eae T pvPortMalloc	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:170
-00041f68 T vPortFree	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:474
-00041fb8 T vListInitialise	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:75
-00041fcc T vListInitialiseItem	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:95
-00041fd2 T vListInsertEnd	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:102
-00041fea T vListInsert	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:121
-00042018 T uxListRemove	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:179
-0004203a t prvIsQueueFull	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1840
-00042060 t prvIsQueueEmpty	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1801
-00042082 t prvCopyDataToQueue	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1594
-000420f4 t prvCopyDataFromQueue	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1664
-00042122 t prvUnlockQueue	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1686
-00042198 T xQueueGenericReset	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:255
-00042208 T xQueueGenericCreate	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:308
-00042256 T xQueueGenericSend	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:593
-0004237e T xQueueGenericSendFromISR	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1025
-00042428 T xQueueGenericReceive	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1169
-00042550 T vQueueAddToRegistry	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:2156
-00042576 T vQueueWaitForMessageRestricted	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:2212
-000425bc t prvResetNextTaskUnblockTime	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:3092
-000425e4 t prvDeleteTCB	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:3076
-000425fe t prvAllocateTCBAndStack	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2904
-00042644 t prvInitialiseTCBVariables	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2693
-00042698 t prvInitialiseTaskLists	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2801
-000426ee t prvAddCurrentTaskToDelayedList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2874
-00042734 T xTaskGenericCreate	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:516
-00042822 T vTaskDelete	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:696
-00042890 T vTaskStartScheduler	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1447
-000428e8 T vTaskSuspendAll	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1536
-000428f4 T xTaskGetTickCount	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1667
-0004290c T xTaskIncrementTick	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1842
-00042a12 T xTaskResumeAll	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1574
-00042ad8 T vTaskDelay	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:870
-00042b16 t prvCheckTasksWaitingTermination	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2833
-00042b64 t prvIdleTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2546
-00042b82 T vTaskSwitchContext	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2107
-00042c3c T vTaskPlaceOnEventList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2165
-00042c7e T vTaskPlaceOnEventListRestricted	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2292
-00042cac T xTaskRemoveFromEventList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2335
-00042d1e T vTaskSetTimeOutState	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2434
-00042d30 T xTaskCheckForTimeOut	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2442
-00042d8a T vTaskMissedYield	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2491
-00042d92 T xTaskGetSchedulerState	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:3136
-00042daa t prvGetNextExpireTime	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:483
-00042dc2 t prvInsertTimerInActiveList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:532
-00042e0c t prvCheckForValidListAndQueue	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:758
-00042e64 T xTimerCreateTimerTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:236
-00042ea0 T xTimerGenericCommand	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:312
-00042efa t prvSwitchTimerLists	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:699
-00042f60 t prvSampleTimeNow	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:509
-00042f90 t prvProcessExpiredTimer	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:366
-00042fde t prvProcessTimerOrBlockTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:430
-00043030 t prvProcessReceivedCommands	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:573
-00043108 t prvTimerTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:406
-00043120 T CtxRestore	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:70
-0004318e T vPortEndScheduler	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:243
-000431aa T pxPortInitialiseStack	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:145
-00043258 T xPortStartScheduler	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:227
-0004326c T vPortYield	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:255
-0004327a T vPortEnterCritical	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:265
-000432a8 T vPortExitCritical	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:282
-000432d2 T ulPortSetInterruptMask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:294
-000432ea T vPortClearInterruptMask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:315
-000432f4 W vPortISRStartFirstTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/portISR.c:80
-00043306 t crc32_calc	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:95
-0004333a t part_flag_seal	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:110
-00043358 t part_flag_valid	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:117
-00043384 T DualPart_Init	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:33
-000434d0 T PartFlag_Read	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:125
-000434f4 T PartFlag_Write	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:141
-00043536 T Boot_CheckAndJump	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:182
-00043570 T Boot_ConfirmSuccess	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:200
-000435ae T FwUpgrade_BootInit	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/fw_upgrade.c:17
-000435c4 T FwUpgrade_ConfirmBootSuccess	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/fw_upgrade.c:23
-000435d6 T MCUCircular_Config	/cygdrive/d/BanAirBundy/boot_app/Debug/../middleware/mv_utils/src/mcu_circular_buf.c:20
-000435e2 t OTG_DeviceAudioStatusAck	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:45
-000435fc T OTG_DeviceAudioRequest	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:362
-00043884 T OTG_DeviceCDC_Init	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:43
-000438b6 T OTG_DeviceCDC_DeInit	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:78
-000438d4 T OTG_DeviceCDC_Request	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:88
-00043a5c T OTG_DeviceCDC_Task	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:375
-00043aca t OTG_DeviceDebugHwSnapshot	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:75
-00043aea T OTG_DeviceModeSel	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:99
-00043b50 T OTG_DeviceSendResp	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:131
-00043b6c T OTG_DeviceGetDescriptor	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:141
-00043cf8 T OTG_DeviceStandardRequest	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:254
-00043e64 T OTG_DeviceClassRequest	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:409
-00043ee6 T OTG_DeviceOtherRequest	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:477
-00043efa T OTG_DeviceRequestProcess	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:491
-0004401e T OTG_DeviceDebugDump	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:593
-0004414e T OTG_DeviceFifoInit	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/otg_fifo.c:50
-00044180 t vPrintTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:72
-000441ac t vUsbTask	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:88
-000441f0 t App_UsbInit	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:118
-000442be T main	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:164
-00044414 T vApplicationStackOverflowHook	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:246
-00044426 T vApplicationMallocFailedHook	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:253
-00044436 T vApplicationIdleHook	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:260
-00044438 T UsbDevicePlayInit	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:25
-00044486 T UsbDevicePlayResMalloc	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:46
-000444bc T AudioCoreSinkChange	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:64
-000444be T AudioCoreSourceChange	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:76
-000444de W BLE_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de t Default_Handler	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:57
-000444de W FFTInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W GpioInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W HosccntInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W I2C_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W I2sInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W IR_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W PowerkeyInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W RtcInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W SDIO0_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W SPDIF0_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W SPDIF1_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W SPIM_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W SPIS_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W SWInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer2Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer3Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer4Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer5Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer6Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer7Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W Timer8Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W UART0_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W UART1_Interrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W WakeupInterrupt	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W rwbt_isr	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444de W rwip_isr	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
-000444e0 W pcTaskGetTaskName	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:62
-000444e4 T ExceptionCommHandler	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:67
-00044672 T __c_init	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:119
-000446b0 T __cpu_init	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:144
-00044772 T __init	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:292
-0004478c T GIE_ENABLE	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:9
-00044796 T GIE_DISABLE	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:14
-000447a4 T GIE_STATE_GET	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:20
-000447ac T NVIC_EnableIRQ	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:63
-000447c4 T NVIC_DisableIRQ	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:75
-000447de T NVIC_SetPriority	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/interrupt.c:87
-00044828 T putchar	/cygdrive/c/Andestech/AndeSight300RDS/toolchains/nds32le-elf-mculib-v3s/nds32le-elf/include/stdio.h:212
-0004485a T nds_write	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/retarget.c:64
-0004487a T DbgUartInit	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/retarget.c:84
-00044892 T Clock_USBClkDivSet
-000448a4 T Clock_RcFreqGet
-000449c6 T Clock_USBClkSelect
-000449f2 T Clock_Module1Enable
-00044a02 T Clock_Module2Enable
-00044a12 T Clock_Module3Enable
-00044a22 T EnableMPU
-00044a84 T EnableIDCache
-00044ac6 T DMA_ChannelAllocTableSet
-00044b42 t OTG_DeviceWaitEnd
-00044bb8 T OTG_DeviceInit
-00044c80 T OTG_DeviceStallSend
-00044d42 T OTG_DeviceEndpointReset
-00044e20 T OTG_DeviceAddressSet
-00044e58 T OTG_DeviceBusEventGet
-00044e64 T OTG_DeviceControlSend
-00044edc T OTG_DeviceControlReceive
-00044f56 T OTG_DeviceSetupReceive
-00044fac T OTG_DeviceBulkReceive
-00045038 T UsbInterrupt
-000450be T OTG_EndpointInterruptDisable
-0004512e T OtgEPInit
-0004522a T LoadFIFOData
-0004525c T UnloadFIFOData
-000452aa T Remap_AddrRemapSet
-0004538c T SysTickInit
-000453b6 T SysTimerIntFlagClear
-000453c4 T NVIC_SystemReset
-000453ce T ClockFreqGet
-000453e0 T Timer_Config
-000455ac T Timer_Start
-0004563c t UART_BaudClkGet
-00045692 T UART_Init
-000458c4 T UART_SendByte
-000458fa T WDG_Disable
-0004591e T OTG_PortEnableDPPullUp
-00045948 T OTG_PortDisableDPPullUp
-00045972 T OTG_PortDisablePullDown
-0004599c T OTG_PortSetSpeed
-000459c6 T printf
-000459d0 T puts
-00045a20 T strlen
-00045a2c t vprintf_help
-00045a60 T vprintf
-00045aac T do_printf
-00045f54 t sep_frac
-00045f86 T _printf_float
-00046658 T strcpy
-0004666c T abs
-00046674 T _write
-0004668c t ISR_TABLE	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:62
-0004670c t OS_Trap_TLB_Fill	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:106
-00046720 t OS_Trap_PTE_Not_Present	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:110
-00046734 t OS_Trap_TLB_Misc	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:114
-00046748 t OS_Trap_TLB_VLPT_Miss	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:119
-0004675c t OS_Trap_Machine_Error	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:123
-00046770 t OS_Trap_Debug_Related	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:127
-00046784 t OS_Trap_General_Exception	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:131
-00046798 t OS_Trap_Syscall	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:135
-000467ac t OS_Trap_Int_Comm	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:138
-00046896 t OS_Trap_Interrupt_HW0	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:148
-000468a0 t OS_Trap_Interrupt_HW1	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:153
-000468aa t OS_Trap_Interrupt_HW2	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:158
-000468b4 t OS_Trap_Interrupt_HW3	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:169
-000468be t OS_Trap_Interrupt_HW4	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:174
-000468c8 t OS_Trap_Interrupt_HW5	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:179
-000468f8 t OS_Trap_Interrupt_HW6	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:187
-00046902 t OS_Trap_Interrupt_HW7	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:192
-0004690c t OS_Trap_Interrupt_HW8	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:197
-00046916 t OS_Trap_Interrupt_HW9	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:202
-00046920 t OS_Trap_Interrupt_HW10	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:207
-0004692a t OS_Trap_Interrupt_HW11	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:212
-00046934 t OS_Trap_Interrupt_HW12	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:217
-0004693e t OS_Trap_Interrupt_HW13	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:222
-00046948 t OS_Trap_Interrupt_HW14	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:227
-00046952 t OS_Trap_Interrupt_HW15	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:232
-0004695c t OS_Trap_Interrupt_HW16	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:237
-00046966 t OS_Trap_Interrupt_HW17	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:242
-00046970 t OS_Trap_Interrupt_HW18	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:247
-0004697a t OS_Trap_Interrupt_HW19	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:252
-00046984 t OS_Trap_Interrupt_HW20	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:257
-0004698e t OS_Trap_Interrupt_HW21	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:262
-00046998 t OS_Trap_Interrupt_HW22	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:267
-000469a2 t OS_Trap_Interrupt_HW23	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:272
-000469ac t OS_Trap_Interrupt_HW24	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:277
-000469b6 t OS_Trap_Interrupt_HW25	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:282
-000469c0 t OS_Trap_Interrupt_HW26	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:287
-000469ca t OS_Trap_Interrupt_HW27	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:292
-000469d4 t OS_Trap_Interrupt_HW28	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:297
-000469de t OS_Trap_Interrupt_HW29	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:302
-000469e8 t OS_Trap_Interrupt_HW30	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:307
-000469f2 t OS_Trap_Interrupt_HW31	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:312
-000469fc t ___start	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/crt0.S:343
-00046a54 r ucExpectedStackBytes.4503
-00046ef8 R DeviceString_LangID	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:51
-00046efc R DeviceQualifier	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:44
-00046f08 R InterFaceNum_AUDIO_MIC_CDC	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:537
-00046f10 R ConfigDescriptor_AUDIO_MIC_CDC	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:486
-0004702c R InterFaceNum_AUDIO_CDC	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:482
-00047034 R ConfigDescriptor_AUDIO_CDC	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:444
-000470f0 R InterFaceNum_CDC_ONLY	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:439
-000470f8 R ConfigDescriptor_CDC_ONLY	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:413
-00047144 R InterFaceNum_HID	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:407
-0004714c R ConfigDescriptor_HID	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:399
-00047160 R InterFaceNum_AUDIO_MIC_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:395
-00047168 R ConfigDescriptor_AUDIO_MIC_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:346
-0004727c R InterFaceNum_MIC_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:342
-00047284 R ConfigDescriptor_MIC_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:303
-00047340 R InterFaceNum_AUDIO_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:300
-00047348 R ConfigDescriptor_AUDIO_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:259
-000473fc R InterFaceNum_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:256
-00047404 R ConfigDescriptor_READER	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:246
-00047424 R InterFaceNum_AUDIO_MIC_PHONE	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:243
-0004742c R ConfigDescriptor_AUDIO_MIC_PHONE	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:199
-00047528 R InterFaceNum_AUDIO_MIC	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:197
-00047530 R ConfigDescriptor_AUDIO_MIC	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:153
-0004762c R InterFaceNum_MIC_ONLY	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:151
-00047634 R ConfigDescriptor_MIC_ONLY	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:116
-000476d8 R InterFaceNum_AUDIO_ONLY	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:112
-000476e0 R ConfigDescriptor_AUDIO_ONLY	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:78
-0004777c R HidDataReportDescriptor	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:48
-000477a0 R AudioCtrlReportDescriptor	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:25
-00047bc0 R MPUConfigTable	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/init-default.c:354
-00047ca0 r DMADefaultConfigTable
-00047f3c A __ctxt_code_end
-00047f3c A __ctxt_code_start
-00047f3c A __rand_code_end
-00047f3c A __rand_code_start
-00047f40 A __data_lmastart
+00041a1c T OS_Trap_Interrupt_SWI	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:96
+00041b30 t ISR_TABLE	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:62
+00041bb0 t OS_Trap_TLB_Fill	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:106
+00041bc4 t OS_Trap_PTE_Not_Present	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:110
+00041bd8 t OS_Trap_TLB_Misc	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:114
+00041bec t OS_Trap_TLB_VLPT_Miss	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:119
+00041c00 t OS_Trap_Machine_Error	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:123
+00041c14 t OS_Trap_Debug_Related	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:127
+00041c28 t OS_Trap_General_Exception	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:131
+00041c3c t OS_Trap_Syscall	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:135
+00041c50 t OS_Trap_Int_Comm	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:138
+00041d3a t OS_Trap_Interrupt_HW0	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:148
+00041d44 t OS_Trap_Interrupt_HW1	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:153
+00041d4e t OS_Trap_Interrupt_HW2	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:158
+00041d58 t OS_Trap_Interrupt_HW3	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:169
+00041d62 t OS_Trap_Interrupt_HW4	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:174
+00041d6c t OS_Trap_Interrupt_HW5	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:179
+00041d9c t OS_Trap_Interrupt_HW6	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:187
+00041da6 t OS_Trap_Interrupt_HW7	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:192
+00041db0 t OS_Trap_Interrupt_HW8	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:197
+00041dba t OS_Trap_Interrupt_HW9	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:202
+00041dc4 t OS_Trap_Interrupt_HW10	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:207
+00041dce t OS_Trap_Interrupt_HW11	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:212
+00041dd8 t OS_Trap_Interrupt_HW12	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:217
+00041de2 t OS_Trap_Interrupt_HW13	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:222
+00041dec t OS_Trap_Interrupt_HW14	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:227
+00041df6 t OS_Trap_Interrupt_HW15	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:232
+00041e00 t OS_Trap_Interrupt_HW16	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:237
+00041e0a t OS_Trap_Interrupt_HW17	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:242
+00041e14 t OS_Trap_Interrupt_HW18	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:247
+00041e1e t OS_Trap_Interrupt_HW19	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:252
+00041e28 t OS_Trap_Interrupt_HW20	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:257
+00041e32 t OS_Trap_Interrupt_HW21	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:262
+00041e3c t OS_Trap_Interrupt_HW22	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:267
+00041e46 t OS_Trap_Interrupt_HW23	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:272
+00041e50 t OS_Trap_Interrupt_HW24	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:277
+00041e5a t OS_Trap_Interrupt_HW25	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:282
+00041e64 t OS_Trap_Interrupt_HW26	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:287
+00041e6e t OS_Trap_Interrupt_HW27	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:292
+00041e78 t OS_Trap_Interrupt_HW28	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:297
+00041e82 t OS_Trap_Interrupt_HW29	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:302
+00041e8c t OS_Trap_Interrupt_HW30	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:307
+00041e96 t OS_Trap_Interrupt_HW31	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:312
+00041ea0 t ___start	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/crt0.S:343
+00041ef0 T Clock_DeepSleepSysClkSelect
+00041ff4 T Clock_PllFreqGet
+00041ffa T Clock_APllFreqGet
+00042000 T Clock_Bt32kTrimFreqGet
+00042006 T Clock_CoreClkDivSet
+0004201e T Clock_CoreClkDivGet
+00042028 T Clock_SysClkDivGet
+00042046 T Clock_CoreClockFreqGet
+000420b0 T Clock_SysClockFreqGet
+000420e6 T Clock_SysClkDivSet
+0004213e T GPIO_RegOneBitSet
+0004214e T GPIO_RegOneBitClear
+00042160 T __udelay
+000421c2 T DelayMs
+00042228 T SystickInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/portISR.c:100
+00042260 T DMA_D_Interrupt
+000422aa T DMA_T_Interrupt
+000422f0 T DMA_E_Interrupt
+0004233a T GetSysTick1MsCnt
+00042340 T PastTimeGet
+00042354 T TimeOutSet
+00042374 T IsTimeOut
+000423a0 W UART_Interrupt
+00042440 t prvInsertBlockIntoFreeList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:750
+00042486 T pvPortMalloc	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:170
+00042540 T vPortFree	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:474
+00042590 T vPortDefineHeapRegions	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:811
+0004262c T vListInitialise	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:75
+00042640 T vListInitialiseItem	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:95
+00042646 T vListInsertEnd	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:102
+0004265e T vListInsert	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:121
+0004268c T uxListRemove	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/list.c:179
+000426ae t prvIsQueueFull	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1840
+000426d4 t prvIsQueueEmpty	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1801
+000426f6 t prvCopyDataToQueue	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1594
+00042768 t prvCopyDataFromQueue	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1664
+00042796 t prvUnlockQueue	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1686
+0004280c T xQueueGenericReset	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:255
+0004287c T xQueueGenericCreate	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:308
+000428ca T xQueueGenericSend	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:593
+000429f2 T xQueueGenericSendFromISR	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1025
+00042a9c T xQueueGenericReceive	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:1169
+00042bc4 T vQueueAddToRegistry	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:2156
+00042bea T vQueueWaitForMessageRestricted	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:2212
+00042c30 t prvResetNextTaskUnblockTime	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:3092
+00042c58 t prvDeleteTCB	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:3076
+00042c72 t prvAllocateTCBAndStack	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2904
+00042cb8 t prvInitialiseTCBVariables	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2693
+00042d0c t prvInitialiseTaskLists	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2801
+00042d62 t prvAddCurrentTaskToDelayedList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2874
+00042da8 T xTaskGenericCreate	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:516
+00042e96 T vTaskDelete	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:696
+00042f04 T vTaskStartScheduler	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1447
+00042f5c T vTaskSuspendAll	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1536
+00042f68 T xTaskGetTickCount	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1667
+00042f80 T xTaskIncrementTick	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1842
+00043086 T xTaskResumeAll	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:1574
+0004314c T vTaskDelay	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:870
+0004318a t prvCheckTasksWaitingTermination	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2833
+000431d8 t prvIdleTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2546
+000431f6 T vTaskSwitchContext	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2107
+000432b0 T vTaskPlaceOnEventList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2165
+000432f2 T vTaskPlaceOnEventListRestricted	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2292
+00043320 T xTaskRemoveFromEventList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2335
+00043392 T vTaskSetTimeOutState	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2434
+000433a4 T xTaskCheckForTimeOut	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2442
+000433fe T vTaskMissedYield	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:2491
+00043406 T xTaskGetSchedulerState	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:3136
+0004341e t prvGetNextExpireTime	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:483
+00043436 t prvInsertTimerInActiveList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:532
+00043480 t prvCheckForValidListAndQueue	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:758
+000434d8 T xTimerCreateTimerTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:236
+00043514 T xTimerGenericCommand	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:312
+0004356e t prvSwitchTimerLists	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:699
+000435d4 t prvSampleTimeNow	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:509
+00043604 t prvProcessExpiredTimer	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:366
+00043652 t prvProcessTimerOrBlockTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:430
+000436a4 t prvProcessReceivedCommands	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:573
+0004377c t prvTimerTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:406
+00043794 T CtxRestore	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/os_cpu_a.S:70
+00043802 T vPortEndScheduler	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:243
+0004381e T pxPortInitialiseStack	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:145
+000438cc T xPortStartScheduler	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:227
+000438e0 T vPortYield	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:255
+000438ee T vPortEnterCritical	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:265
+0004391c T vPortExitCritical	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:282
+00043946 T ulPortSetInterruptMask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:294
+0004395e T vPortClearInterruptMask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:315
+00043968 W vPortISRStartFirstTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/portISR.c:80
+0004397a t crc32_calc	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:95
+000439ae t part_flag_seal	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:110
+000439cc t part_flag_valid	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:117
+000439f8 T DualPart_Init	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:33
+00043b44 T PartFlag_Read	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:125
+00043b68 T PartFlag_Write	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:141
+00043baa T Boot_CheckAndJump	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:182
+00043be4 T Boot_ConfirmSuccess	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:200
+00043c22 T FwUpgrade_BootInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/fw_upgrade.c:17
+00043c38 T FwUpgrade_ConfirmBootSuccess	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/fw_upgrade.c:23
+00043c4a T MCUCircular_Config	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../middleware/mv_utils/src/mcu_circular_buf.c:20
+00043c56 T MCUCircular_GetSpaceLen	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../middleware/mv_utils/src/mcu_circular_buf.c:28
+00043c74 T MCUCircular_PutData	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../middleware/mv_utils/src/mcu_circular_buf.c:45
+00043cc4 T MCUCircular_GetDataLen	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../middleware/mv_utils/src/mcu_circular_buf.c:81
+00043cea T MCUCircular_GetData	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../middleware/mv_utils/src/mcu_circular_buf.c:111
+00043d62 t OTG_DeviceAudioStatusAck	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:45
+00043d7c T UsbAudioSpeakerDataGet	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:105
+00043daa T UsbAudioSpeakerDataLenGet	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:119
+00043dd0 T UsbAudioMicDataSet	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:140
+00043dd4 T UsbAudioMicSpaceLenGet	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:154
+00043e02 T OnDeviceAudioRcvIsoPacket	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:178
+00043f14 T OnDeviceAudioSendIsoPacket	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:266
+00043f16 T OTG_DeviceAudioInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:356
+00043f18 T OTG_DeviceAudioRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:362
+000441a0 T UsbAudioTimer1msProcess	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:839
+00044210 T OTG_DeviceCDC_Init	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:55
+00044242 T OTG_DeviceCDC_DeInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:90
+00044260 T OTG_DeviceCDC_Request	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:100
+00044484 T OTG_DeviceCDC_Task	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:421
+000444f2 T OTG_DeviceModeSel	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:110
+00044558 T OTG_DeviceSendResp	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:142
+00044574 T OTG_DeviceGetDescriptor	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:152
+00044700 T OTG_DeviceStandardRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:265
+000448c4 T OTG_DeviceClassRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:420
+00044946 T OTG_DeviceOtherRequest	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:488
+0004495a T OTG_DeviceRequestProcess	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:502
+00044a82 T OTG_DeviceFifoInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/otg_fifo.c:50
+00044ab4 t vPrintTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:93
+00044b4e t vUsbTask	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:141
+00044c46 t prvInitialiseHeap	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:51
+00044c6e t App_UsbInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:204
+00044dd4 T main	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:291
+00044fc6 T vApplicationStackOverflowHook	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:410
+00044fd8 T vApplicationMallocFailedHook	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:417
+00044fe8 T vApplicationIdleHook	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:424
+00044fea T UsbDevicePlayInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:25
+00045038 T UsbDevicePlayResMalloc	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:46
+00045090 T AudioCoreSinkChange	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:64
+000450b0 T AudioCoreSourceChange	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:76
+000450d0 T UsbAudioSpeakerStreamProcess	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:88
+000450f6 T UsbAudioMicStreamProcess	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:98
+00045124 W BLE_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 t Default_Handler	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:57
+00045124 W FFTInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W GpioInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W HosccntInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W I2C_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W I2sInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W IR_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W PowerkeyInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W RtcInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W SDIO0_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W SPDIF0_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W SPDIF1_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W SPIM_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W SPIS_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W SWInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer2Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer3Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer4Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer5Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer6Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer7Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W Timer8Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W UART0_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W UART1_Interrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W WakeupInterrupt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W rwbt_isr	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045124 W rwip_isr	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:59
+00045126 W pcTaskGetTaskName	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:62
+0004512a T ExceptionCommHandler	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:67
+000452b8 T __c_init	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:119
+000452f6 T __cpu_init	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:144
+000453b8 T __init	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:292
+000453d2 T GIE_ENABLE	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/interrupt.c:9
+000453dc T GIE_DISABLE	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/interrupt.c:14
+000453ea T GIE_STATE_GET	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/interrupt.c:20
+000453f2 T NVIC_EnableIRQ	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/interrupt.c:63
+0004540a T NVIC_DisableIRQ	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/interrupt.c:75
+00045424 T NVIC_SetPriority	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/interrupt.c:87
+0004546e T putchar	/cygdrive/c/Andestech/AndeSight300RDS/toolchains/nds32le-elf-mculib-v3s/nds32le-elf/include/stdio.h:212
+000454a0 T nds_write	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/retarget.c:64
+000454c0 T DbgUartInit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/retarget.c:84
+000454d8 T Clock_USBClkDivSet
+000454ea T Clock_RcFreqGet
+0004560c T Clock_USBClkSelect
+00045638 T Clock_Module1Enable
+00045648 T Clock_Module2Enable
+00045658 T Clock_Module3Enable
+00045668 T EnableMPU
+000456ca T EnableIDCache
+0004570c T DMA_ChannelAllocTableSet
+00045788 t OTG_DeviceWaitEnd
+000457fe T OTG_DeviceInit
+000458c6 T OTG_DeviceStallSend
+00045988 T OTG_DeviceEndpointReset
+00045a66 T OTG_DeviceAddressSet
+00045a9e T OTG_DeviceBusEventGet
+00045aaa T OTG_DeviceControlSend
+00045b22 T OTG_DeviceControlReceive
+00045b9c T OTG_DeviceSetupReceive
+00045bf2 T OTG_DeviceBulkReceive
+00045c7e T OTG_DeviceISOReceive
+00045cd0 T UsbInterrupt
+00045d56 T OTG_EndpointInterruptEnable
+00045dc2 T OTG_EndpointInterruptDisable
+00045e32 T OtgEPInit
+00045f2e T LoadFIFOData
+00045f60 T UnloadFIFOData
+00045fae T Remap_AddrRemapSet
+00046090 T SysTickInit
+000460ba T SysTimerIntFlagClear
+000460c8 T NVIC_SystemReset
+000460d2 T ClockFreqGet
+000460e4 T Timer_Config
+000462b0 T Timer_Start
+00046340 t UART_BaudClkGet
+00046396 T UART_Init
+000465c8 T UART_SendByte
+000465fe T WDG_Disable
+00046622 T OTG_PortEnableDPPullUp
+0004664c T OTG_PortDisableDPPullUp
+00046676 T OTG_PortDisablePullDown
+000466a0 T OTG_PortSetSpeed
+000466ca T printf
+000466d4 T puts
+00046724 T strlen
+00046730 t vprintf_help
+00046764 T vprintf
+000467b0 T do_printf
+00046c58 t sep_frac
+00046c8a T _printf_float
+0004735c T strcpy
+00047370 T abs
+00047378 T _write
+00047398 r ucExpectedStackBytes.4503
+0004783c R DeviceString_LangID	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:51
+00047840 R DeviceQualifier	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:44
+0004784c R InterFaceNum_AUDIO_MIC_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:537
+00047854 R ConfigDescriptor_AUDIO_MIC_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:486
+00047970 R InterFaceNum_AUDIO_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:482
+00047978 R ConfigDescriptor_AUDIO_CDC	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:444
+00047a34 R InterFaceNum_CDC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:439
+00047a3c R ConfigDescriptor_CDC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:413
+00047a88 R InterFaceNum_HID	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:407
+00047a90 R ConfigDescriptor_HID	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:399
+00047aa4 R InterFaceNum_AUDIO_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:395
+00047aac R ConfigDescriptor_AUDIO_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:346
+00047bc0 R InterFaceNum_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:342
+00047bc8 R ConfigDescriptor_MIC_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:303
+00047c84 R InterFaceNum_AUDIO_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:300
+00047c8c R ConfigDescriptor_AUDIO_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:259
+00047d40 R InterFaceNum_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:256
+00047d48 R ConfigDescriptor_READER	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:246
+00047d68 R InterFaceNum_AUDIO_MIC_PHONE	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:243
+00047d70 R ConfigDescriptor_AUDIO_MIC_PHONE	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:199
+00047e6c R InterFaceNum_AUDIO_MIC	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:197
+00047e74 R ConfigDescriptor_AUDIO_MIC	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:153
+00047f70 R InterFaceNum_MIC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:151
+00047f78 R ConfigDescriptor_MIC_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:116
+0004801c R InterFaceNum_AUDIO_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:112
+00048024 R ConfigDescriptor_AUDIO_ONLY	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:78
+000480c0 R HidDataReportDescriptor	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:48
+000480e4 R AudioCtrlReportDescriptor	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:25
+00048964 R MPUConfigTable	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/init-default.c:354
+00048a44 r DMADefaultConfigTable
+00048ce0 A __ctxt_code_end
+00048ce0 A __ctxt_code_start
+00048ce0 A __data_lmastart
+00048ce0 A __rand_code_end
+00048ce0 A __rand_code_start
 0080155e a ROM1_CRC16
 00803188 a CrcCCITTTable
 008044d0 A IsFlashBusy
@@ -589,14 +606,14 @@
 200010e8 A SpiFlashInfo
 20004000 D __data_start
 20004000 A _stack
-20004000 d xNextTaskUnblockTime	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:226
-20004004 D gDeviceString_SerialNumber	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:93
-20004008 D gDeviceString_Manu	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:92
-2000400c D gDeviceProductString	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:91
-20004010 D InterFaceNumTab	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:557
-20004044 D ConfigDescriptorTab	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:540
-20004078 D DeviceDescriptor	/cygdrive/d/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:5
-2000408c d DmaChannelMap	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:49
+20004000 d xNextTaskUnblockTime	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:226
+20004004 D gDeviceString_SerialNumber	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:104
+20004008 D gDeviceString_Manu	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:103
+2000400c D gDeviceProductString	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:102
+20004010 D InterFaceNumTab	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:557
+20004044 D ConfigDescriptorTab	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:540
+20004078 D DeviceDescriptor	/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_descriptor.h:5
+2000408c d DmaChannelMap	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:70
 20004094 D EfuseBt32k
 20004098 D rc12m_clk_freq
 2000409c D gSOCInFreq
@@ -605,7 +622,7 @@
 20004138 D SREG_UART_CTRL
 20004140 S __bss_start
 20004140 S _edata
-20004140 S g_usb_configured	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:35
+20004140 S g_usb_configured	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:35
 20004142 S Bt32kSofCnt
 20004144 S EP1_TX_FIFO_START_ADDRESS
 20004146 S EP1_RX_FIFO_START_ADDRESS
@@ -614,88 +631,101 @@
 2000414c S EP2_TX_FIFO_START_ADDRESS
 2000414e S OtgPortDeviceDetectTime
 20004150 S OtgPortLinkHoldTime
-20004154 S InterfaceNum	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:57
-20004158 S gDeviceString_Index	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:94
-2000415c S Setup	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:53
-20004164 S ConfigDescriptor	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:56
-20004168 S UsbEpFifo
-20004170 b xBlockAllocatedBit	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:167
-20004174 b xMinimumEverFreeBytesRemaining	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:161
-20004178 b xFreeBytesRemaining	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:160
-2000417c b pxEnd	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:156
-20004180 b xStart	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:156
-20004194 b uxSchedulerSuspended	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:236
-20004198 b uxTaskNumber	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:225
-2000419c b xNumOfOverflows	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:224
-200041a0 b xYieldPending	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:223
-200041a4 b uxPendedTicks	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:222
-200041a8 b xSchedulerRunning	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:221
-200041ac b uxTopReadyPriority	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:220
-200041b0 b xTickCount	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:219
-200041b4 b uxCurrentNumberOfTasks	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:218
-200041b8 b xSuspendedTaskList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:207
-200041cc b uxTasksDeleted	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:201
-200041d0 b xTasksWaitingTermination	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:200
-200041e4 b xPendingReadyList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:196
-200041f8 b pxOverflowDelayedTaskList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:195
-200041fc b pxDelayedTaskList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:194
-20004200 b xDelayedTaskList2	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:193
-20004214 b xDelayedTaskList1	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:192
-20004228 b pxReadyTasksLists	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:191
-2000428c B pxCurrentTCB	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:188
-20004290 b xLastTime.3626
-20004294 b xTimerQueue	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:165
-20004298 b pxOverflowTimerList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:162
-2000429c b pxCurrentTimerList	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:161
-200042a0 b xActiveTimerList2	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:160
-200042b4 b xActiveTimerList1	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:159
-200042c8 B psw_1	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:264
-200042cc b psw_0	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:263
-200042d0 B ulCriticalNesting	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:262
-200042d4 b g_running_part2	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:156
-200042d8 b g_layout	/cygdrive/d/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:26
-200042ec b zlp.3351
-200042ed b s_ep0_zlp	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:31
-200042ee b zlp.3753
-200042ef b zlp.3744
-200042f0 b zlp.3737
-200042f1 b zlp.3731
-200042f2 b zlp.3729
-200042f4 b s_dbg_setup	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:72
-20004334 b s_dbg_first_ok_tick	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:71
-20004338 b s_dbg_first_reset_tick	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:70
-2000433c b s_dbg_last_bus_event	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:69
-20004340 b s_dbg_last_setup_err	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:68
-20004344 b s_dbg_setup_short	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:67
-20004348 b s_dbg_setup_err	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:66
-2000434c b s_dbg_setup_ok	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:65
-20004350 b s_dbg_bus_reset	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:64
-20004354 b xUsbTaskHandle	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:70
-20004358 b xPrintTaskHandle	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/main.c:69
-2000435c b UsbAudioSpeaker_PCMBuffer	/cygdrive/d/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:15
-20004f5c B DebugPrintPort	/cygdrive/d/BanAirBundy/boot_app/Debug/../startup/retarget.c:16
-20004f5d b UsbBusEvent
-20004f5e B UsbDeviceInitFlag
-20004f5f b UsbIntTxEn
-20004f60 b UsbIntRxEn
-20004f64 b EPOffsetTable
-20004f7c b XmcResumeCnt
-20004f80 b FlashBusyFlag
-20004f84 b EsmtFlag
-20004f88 b g_dataBuf
-20005088 B gSysTick
-2000508c b output_idx
-20005090 b output_buff
-20005094 B xQueueRegistry	/cygdrive/d/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:187
-200050d4 B UsbAudioSpeaker	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:39
-20005104 B UsbAudioMic	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:40
-20005134 B iso_buf	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:42
-20005294 B UsbCDC	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:23
-200056b0 B Request	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:54
-200057b0 B hid_tx_buf	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:38
-200058b0 B UsbEpBuf	/cygdrive/d/BanAirBundy/boot_app/Debug/../otg/otg_fifo.c:31
-20005e70 B FpUsbBusEventIntProcess
-20005e90 B FpUsbIntProcess
-20005ea8 B _end
+20004154 S g_d503_cdc_baud	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:43
+20004158 S g_d503_cdc_serr	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:45
+2000415c S g_d503_cdc_last_req	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:46
+20004160 S g_d503_cdc_dtr_rts	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:44
+20004164 S g_d503_cdc_evt	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:42
+20004168 S InterfaceNum	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:57
+2000416c S gDeviceString_Index	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:105
+20004170 S Setup	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:53
+20004178 S ConfigDescriptor	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:56
+2000417c S UsbEpFifo
+20004180 b xBlockAllocatedBit	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:167
+20004184 b xMinimumEverFreeBytesRemaining	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:161
+20004188 b xFreeBytesRemaining	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:160
+2000418c b pxEnd	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:156
+20004190 b xStart	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:156
+200041a4 b head	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/heap_5s.c:139
+200041b8 b uxSchedulerSuspended	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:236
+200041bc b uxTaskNumber	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:225
+200041c0 b xNumOfOverflows	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:224
+200041c4 b xYieldPending	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:223
+200041c8 b uxPendedTicks	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:222
+200041cc b xSchedulerRunning	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:221
+200041d0 b uxTopReadyPriority	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:220
+200041d4 b xTickCount	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:219
+200041d8 b uxCurrentNumberOfTasks	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:218
+200041dc b xSuspendedTaskList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:207
+200041f0 b uxTasksDeleted	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:201
+200041f4 b xTasksWaitingTermination	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:200
+20004208 b xPendingReadyList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:196
+2000421c b pxOverflowDelayedTaskList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:195
+20004220 b pxDelayedTaskList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:194
+20004224 b xDelayedTaskList2	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:193
+20004238 b xDelayedTaskList1	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:192
+2000424c b pxReadyTasksLists	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:191
+200042b0 B pxCurrentTCB	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/tasks.c:188
+200042b4 b xLastTime.3626
+200042b8 b xTimerQueue	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:165
+200042bc b pxOverflowTimerList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:162
+200042c0 b pxCurrentTimerList	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:161
+200042c4 b xActiveTimerList2	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:160
+200042d8 b xActiveTimerList1	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/timers.c:159
+200042ec B psw_1	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:264
+200042f0 b psw_0	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:263
+200042f4 B ulCriticalNesting	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/portable/port.c:262
+200042f8 b g_running_part2	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:156
+200042fc b g_layout	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../banux/05_component/firmware_upgrade/boot_decision.c:26
+20004310 b zlp.3351
+20004314 b FramCount	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:838
+20004318 b s_ep0_zlp	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:31
+20004319 b zlp.3759
+2000431a b zlp.3750
+2000431b b zlp.3743
+2000431c b zlp.3737
+2000431d b zlp.3735
+20004320 b s_dbg_setup	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:74
+200043a0 b s_dbg_setup_w	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:73
+200043a4 b s_dbg_first_ok_tick	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:72
+200043a8 b s_dbg_first_reset_tick	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:71
+200043ac b s_dbg_last_bus_event	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:70
+200043b0 b s_dbg_last_setup_err	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:69
+200043b4 b s_dbg_setup_short	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:68
+200043b8 b s_dbg_setup_err	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:67
+200043bc b s_dbg_setup_ok	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:66
+200043c0 b s_dbg_bus_reset	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:65
+200043c4 b xHeapRegions.6613
+200043d4 b xUsbTaskHandle	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:91
+200043d8 b xPrintTaskHandle	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/main.c:90
+200043dc B usb_mic_enable	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:23
+200043e0 B usb_speaker_enable	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:22
+200043e4 b s_drain_buf	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:19
+20004564 b UsbAudioMic_PCMBuffer	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:17
+20005164 b UsbAudioSpeaker_PCMBuffer	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../src/usb_audio_api.c:15
+20005d64 B DebugPrintPort	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../startup/retarget.c:16
+20005d65 b UsbBusEvent
+20005d66 B UsbDeviceInitFlag
+20005d67 b UsbIntTxEn
+20005d68 b UsbIntRxEn
+20005d6c b EPOffsetTable
+20005d84 b XmcResumeCnt
+20005d88 b FlashBusyFlag
+20005d8c b EsmtFlag
+20005d90 b g_dataBuf
+20005e90 B gSysTick
+20005e94 b output_idx
+20005e98 b output_buff
+20005e9c B xQueueRegistry	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../FreeRTOS/Source/queue.c:187
+20005edc B UsbAudioSpeaker	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:39
+20005f0c B UsbAudioMic	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:40
+20005f3c B iso_buf	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_audio.c:42
+2000609c B UsbCDC	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_cdc.c:23
+200064b8 B Request	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:54
+200065b8 B hid_tx_buf	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/device/src/otg_device_standard_request.c:38
+200066b8 B UsbEpBuf	/cygdrive/e/project_and_dataset/project/BanAirBundy/boot_app/Debug/../otg/otg_fifo.c:31
+20006c78 B FpUsbBusEventIntProcess
+20006c98 B FpUsbIntProcess
+20006cb0 B _end
 20028000 W _FP_BASE_
 20028000 A _SDA_BASE_

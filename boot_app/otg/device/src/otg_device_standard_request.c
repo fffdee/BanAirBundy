@@ -57,7 +57,8 @@ uint8_t *ConfigDescriptor;
 uint8_t *InterfaceNum;
 
 // #region agent log
-#define USB_DBG_SETUP_MAX 8
+/* Ring keeps *recent* SETUPs — first-8 only lost CDC open (0x20/0x21/0x22). */
+#define USB_DBG_SETUP_MAX 16
 typedef struct {
 	uint8_t setup[8];
 } UsbDbgSetup_t;
@@ -69,22 +70,32 @@ static volatile uint32_t s_dbg_last_setup_err;
 static volatile uint32_t s_dbg_last_bus_event;
 static volatile uint32_t s_dbg_first_reset_tick;
 static volatile uint32_t s_dbg_first_ok_tick;
+static volatile uint32_t s_dbg_setup_w;
 static UsbDbgSetup_t s_dbg_setup[USB_DBG_SETUP_MAX];
 extern unsigned int GetSysTick1MsCnt(void);
 
 static void OTG_DeviceDebugHwSnapshot(uint32_t *usb_div_minus1,
+				      uint32_t *usb_div_alt,
 				      uint32_t *usb_mux,
 				      uint32_t *dp_pwr,
-				      uint32_t *ep0_csr)
+				      uint32_t *ep0_csr,
+				      uint32_t *power,
+				      uint32_t *faddr,
+				      uint32_t *mod1,
+				      uint32_t *phy)
 {
-	/* Clock_USBClkDivSet stores (Div-1) at 0x40021010 */
-	*usb_div_minus1 = *(volatile uint32_t *)0x40021010UL;
-	/* Clock_USBClkSelect: 0x4002103C bit11 — 0=DPLL, 1=APLL */
+	/* Clock_USBClkDivSet: swi333 to 0x40021000+#0x4 stores (Div-1) */
+	*usb_div_minus1 = *(volatile uint32_t *)0x40021004UL;
+	*usb_div_alt = *(volatile uint32_t *)0x40021010UL;
 	*usb_mux = (uint32_t)(*(volatile uint16_t *)0x4002103CUL);
-	/* DP pull-up / power control live near 0x40000194 (see PortEnableDPPullUp) */
 	*dp_pwr = *(volatile uint32_t *)0x40000194UL;
-	/* EP0 CSR: RxPktRdy = bit0 @ 0x40000011 */
+	/* Select EP0 INDEX then read CSR */
+	*(volatile uint8_t *)0x4000000EUL = 0;
 	*ep0_csr = (uint32_t)(*(volatile uint8_t *)0x40000011UL);
+	*power = (uint32_t)(*(volatile uint8_t *)0x40000001UL);
+	*faddr = (uint32_t)(*(volatile uint8_t *)0x40000000UL);
+	*mod1 = *(volatile uint32_t *)0x40021044UL;
+	*phy = *(volatile uint32_t *)0x40022004UL;
 }
 // #endregion agent log
 
@@ -114,7 +125,7 @@ void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid)
 	if (Mode == CDC_ONLY) {
 		gDeviceProductString = "BG Bootloader";
 	} else {
-		gDeviceProductString = "BG Card audio";
+		gDeviceProductString = "BGaudio";
 	}
 
  	gDeviceString_Manu 		        = "BanGO";
@@ -532,8 +543,10 @@ void OTG_DeviceRequestProcess(void)
 		return;
 	}
 	// #region agent log
-	if (s_dbg_setup_ok < USB_DBG_SETUP_MAX) {
-		memcpy(s_dbg_setup[s_dbg_setup_ok].setup, Setup, sizeof(Setup));
+	{
+		uint32_t w = s_dbg_setup_w % USB_DBG_SETUP_MAX;
+		memcpy(s_dbg_setup[w].setup, Setup, 8);
+		s_dbg_setup_w++;
 	}
 	s_dbg_setup_ok++;
 	if (s_dbg_first_ok_tick == 0u)
@@ -593,39 +606,46 @@ void OTG_DeviceRequestProcess(void)
 void OTG_DeviceDebugDump(void)
 {
 	uint32_t i;
-	uint32_t count = (s_dbg_setup_ok < USB_DBG_SETUP_MAX)
-		? s_dbg_setup_ok : USB_DBG_SETUP_MAX;
-	uint32_t usb_div_m1, usb_mux, dp_pwr, ep0_csr;
+	uint32_t total = s_dbg_setup_ok;
+	uint32_t count = (total < USB_DBG_SETUP_MAX) ? total : USB_DBG_SETUP_MAX;
+	uint32_t start = (total < USB_DBG_SETUP_MAX) ? 0u : (s_dbg_setup_w % USB_DBG_SETUP_MAX);
+	uint32_t usb_div_m1, usb_div_alt, usb_mux, dp_pwr, ep0_csr;
+	uint32_t power, faddr, mod1, phy;
 	uint32_t usb_div = 0, usb_mhz = 0, apl = 0;
 
-	OTG_DeviceDebugHwSnapshot(&usb_div_m1, &usb_mux, &dp_pwr, &ep0_csr);
+	OTG_DeviceDebugHwSnapshot(&usb_div_m1, &usb_div_alt, &usb_mux,
+				 &dp_pwr, &ep0_csr, &power, &faddr, &mod1, &phy);
 	usb_div = usb_div_m1 + 1u;
 	if (usb_div)
 		usb_mhz = 240u / usb_div;
 	apl = (usb_mux & 0x800u) ? 1u : 0u;
 
-	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H6,H7,H9\","
+	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"cdc-open\",\"hypothesisId\":\"H51,H53\","
 	    "\"location\":\"otg_device_standard_request.c:OTG_DeviceDebugDump\","
 	    "\"message\":\"usb_hw\",\"data\":{\"div\":%u,\"mhz\":%u,\"apl\":%u,"
-	    "\"mux\":%u,\"dp\":%u,\"ep0csr\":%u,\"lastBus\":%u,\"lastErr\":%u,"
-	    "\"rstTick\":%u,\"okTick\":%u},\"timestamp\":%u}\n",
+	    "\"dp\":%u,\"ep0csr\":%u,\"power\":%u,\"faddr\":%u,"
+	    "\"lastErr\":%u,\"rstTick\":%u,\"okTick\":%u},"
+	    "\"timestamp\":%u}\n",
 	    (unsigned)usb_div, (unsigned)usb_mhz, (unsigned)apl,
-	    (unsigned)usb_mux, (unsigned)dp_pwr, (unsigned)ep0_csr,
-	    (unsigned)s_dbg_last_bus_event, (unsigned)s_dbg_last_setup_err,
+	    (unsigned)dp_pwr, (unsigned)ep0_csr, (unsigned)power,
+	    (unsigned)faddr,
+	    (unsigned)s_dbg_last_setup_err,
 	    (unsigned)s_dbg_first_reset_tick, (unsigned)s_dbg_first_ok_tick,
 	    (unsigned)GetSysTick1MsCnt());
+	(void)mod1;
+	(void)phy;
 
-	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H1,H5,H8\","
+	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"cdc-open\",\"hypothesisId\":\"H51,H53\","
 	    "\"location\":\"otg_device_standard_request.c:OTG_DeviceDebugDump\","
 	    "\"message\":\"usb_ep0_summary\",\"data\":{\"reset\":%u,\"setupOk\":%u,"
-	    "\"setupErr\":%u,\"short\":%u,\"configured\":%u},\"timestamp\":%u}\n",
+	    "\"setupErr\":%u,\"short\":%u,\"cfg\":%u},\"timestamp\":%u}\n",
 	    (unsigned)s_dbg_bus_reset, (unsigned)s_dbg_setup_ok,
 	    (unsigned)s_dbg_setup_err, (unsigned)s_dbg_setup_short,
 	    (unsigned)g_usb_configured, (unsigned)GetSysTick1MsCnt());
 
 	for (i = 0; i < count; i++) {
-		const uint8_t *s = s_dbg_setup[i].setup;
-		DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H2,H3,H4\","
+		const uint8_t *s = s_dbg_setup[(start + i) % USB_DBG_SETUP_MAX].setup;
+		DBG("{\"sessionId\":\"5032d7\",\"runId\":\"cdc-open\",\"hypothesisId\":\"H51\","
 		    "\"location\":\"otg_device_standard_request.c:OTG_DeviceRequestProcess\","
 		    "\"message\":\"usb_setup\",\"data\":{\"index\":%u,\"bm\":%u,\"req\":%u,"
 		    "\"wValue\":%u,\"wIndex\":%u,\"wLength\":%u},\"timestamp\":%u}\n",

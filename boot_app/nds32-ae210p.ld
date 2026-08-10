@@ -66,6 +66,11 @@ SECTIONS
 	".sbss2_*spi_flash.o" 	: { KEEP(*spi_flash.o(.sbss2 .sbss2.* .gnu.linkonce.sb2.* )) }
 	".eh_frame_hdr_*spi_flash.o" 	: { KEEP(*spi_flash.o(.eh_frame_hdr )) }
 	.int_stack_op 	: { KEEP(*(.int_stack_op )) }
+	/* FreeRTOS SWI (OS_Trap_Interrupt_SWI) + crt0 traps live here.
+	 * Without KEEP, os_cpu_a.S handler was orphaned at VMA 0 — scheduler
+	 * printed 'S' then hung on first yield (no 'T'). Match BanBox ld. */
+	.startup_section 	: { KEEP(*(.startup_section )) }
+	.deepsleep_section 	: { KEEP(*(.deepsleep_section )) }
 	.tcm_section 	: { KEEP(*(.tcm_section )) }
 	.driver.isr 	: { KEEP(*(.driver.isr )) }
 	.nds32_vector 	: { KEEP(*(.nds32_vector )) KEEP(*(SORT(.nds32_vector.* ))) }

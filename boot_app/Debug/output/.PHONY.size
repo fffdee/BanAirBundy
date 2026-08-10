@@ -1,2 +1,2 @@
    text (code + rodata)	   data	    bss	    dec	    hex	filename
-  32568 (26988 +   5580)	    320	   7528	  40416	   9de0	boot_app.adx
+  36060 (29360 +   6700)	    320	  11120	  47500	   b98c	boot_app.adx

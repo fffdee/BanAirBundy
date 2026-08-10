@@ -65,12 +65,13 @@
 #define HAS_BOOTLOADER           1
 
 /*
- * USB 枚举验证开关：
- *   CDC_ONLY(12) 先验证 APP 跳转后的 USB 时钟、EP0 与 CDC；
- *   确认通过后改为 AUDIO_CDC(9) 启用 Speaker + CDC。
+ * USB mode:
+ *   CDC_ONLY(12) — 枚举/串口验证（已通过）
+ *   AUDIO_CDC(9) — Speaker + CDC
+ *   AUDIO_MIC_CDC(11) — Speaker + Microphone + CDC（正常工作模式）
  */
 #ifndef BOOT_APP_USB_MODE
-#define BOOT_APP_USB_MODE        CDC_ONLY
+#define BOOT_APP_USB_MODE        AUDIO_MIC_CDC
 #endif
 #ifndef CFG_PARA_USB_MODE
 #define CFG_PARA_USB_MODE        BOOT_APP_USB_MODE

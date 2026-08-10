@@ -34,6 +34,18 @@ static uint8_t s_ep0_zlp;
  * Main loop defers OTG_DeviceCDC_Init() until this is set. */
 volatile uint8_t g_usb_configured;
 
+/* #region agent log — set in EP0 CDC path, printed from task (no UART in EP0) */
+#define D503_CDC_SET_CTRL   (1u << 0)
+#define D503_CDC_SET_LINE   (1u << 1)
+#define D503_CDC_GET_LINE   (1u << 2)
+#define D503_CDC_OTHER      (1u << 3)
+volatile uint32_t g_d503_cdc_evt;
+volatile uint32_t g_d503_cdc_baud;
+volatile uint32_t g_d503_cdc_dtr_rts;
+volatile uint32_t g_d503_cdc_serr;
+volatile uint32_t g_d503_cdc_last_req;
+/* #endregion */
+
 // Forward declaration of interrupt callback
 void OnDeviceCDC_BulkOutReceived(void);
 
@@ -88,6 +100,11 @@ bool OTG_DeviceCDC_DeInit(void)
 void OTG_DeviceCDC_Request(void)
 {
     uint8_t bRequest = Setup[1];
+    OTG_DEVICE_ERR_CODE serr = DEVICE_NONE_ERR;
+
+    // #region agent log
+    g_d503_cdc_last_req = bRequest;
+    // #endregion agent log
 
     switch (bRequest)
     {
@@ -98,7 +115,12 @@ void OTG_DeviceCDC_Request(void)
             UsbCDC.LineCoding.bParityType = Request[5];
             UsbCDC.LineCoding.bDataBits = Request[6];
             UsbCDC.IsConnected = 1;
-            OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            serr = OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            // #region agent log
+            g_d503_cdc_evt |= D503_CDC_SET_LINE;
+            g_d503_cdc_baud = UsbCDC.LineCoding.dwDTERate;
+            g_d503_cdc_serr = (uint32_t)serr;
+            // #endregion agent log
             break;
 
         case CDC_GET_LINE_CODING:
@@ -111,28 +133,52 @@ void OTG_DeviceCDC_Request(void)
                 lineCodingBuf[4] = UsbCDC.LineCoding.bCharFormat;
                 lineCodingBuf[5] = UsbCDC.LineCoding.bParityType;
                 lineCodingBuf[6] = UsbCDC.LineCoding.bDataBits;
-                OTG_DeviceControlSend(lineCodingBuf, 7, 10);
+                serr = OTG_DeviceControlSend(lineCodingBuf, 7, 10);
+                // #region agent log
+                g_d503_cdc_evt |= D503_CDC_GET_LINE;
+                g_d503_cdc_baud = UsbCDC.LineCoding.dwDTERate;
+                g_d503_cdc_serr = (uint32_t)serr;
+                // #endregion agent log
             }
             break;
 
         case CDC_SET_CONTROL_LINE_STATE:
             UsbCDC.ControlLineState.DTR = (Setup[2] & 0x01) ? 1 : 0;
             UsbCDC.ControlLineState.RTS = (Setup[2] & 0x02) ? 1 : 0;
-            OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            serr = OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            // #region agent log
+            g_d503_cdc_evt |= D503_CDC_SET_CTRL;
+            g_d503_cdc_dtr_rts = (uint32_t)Setup[2] | ((uint32_t)Setup[3] << 8);
+            g_d503_cdc_serr = (uint32_t)serr;
+            // #endregion agent log
             break;
 
         case CDC_SEND_BREAK:
-            OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            serr = OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
+            // #region agent log
+            g_d503_cdc_evt |= D503_CDC_OTHER;
+            g_d503_cdc_serr = (uint32_t)serr;
+            // #endregion agent log
             break;
 
         case CDC_SEND_ENCAPSULATED_COMMAND:
+            // #region agent log
+            g_d503_cdc_evt |= D503_CDC_OTHER;
+            // #endregion agent log
             break;
 
         case CDC_GET_ENCAPSULATED_RESPONSE:
-            OTG_DeviceControlSend(Request, Setup[6], 3);
+            serr = OTG_DeviceControlSend(Request, Setup[6], 3);
+            // #region agent log
+            g_d503_cdc_evt |= D503_CDC_OTHER;
+            g_d503_cdc_serr = (uint32_t)serr;
+            // #endregion agent log
             break;
 
         default:
+            // #region agent log
+            g_d503_cdc_evt |= D503_CDC_OTHER;
+            // #endregion agent log
             break;
     }
 }
