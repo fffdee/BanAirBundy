@@ -309,15 +309,27 @@ void OTG_DeviceStandardRequest()
 				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_IN_EP, TYPE_BULK_IN);
 				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_OUT_EP, TYPE_BULK_OUT);
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
-				OTG_DeviceEndpointReset(DEVICE_INT_IN_EP,TYPE_INT_IN);
-				OTG_DeviceEndpointReset(DEVICE_ISO_IN_EP,TYPE_ISO_IN);
-				OTG_DeviceEndpointReset(DEVICE_ISO_OUT_EP,TYPE_ISO_OUT);
-				OTG_EndpointInterruptEnable(DEVICE_ISO_OUT_EP,OnDeviceAudioRcvIsoPacket);
-				OTG_EndpointInterruptEnable(DEVICE_ISO_IN_EP,OnDeviceAudioSendIsoPacket);
-				OTG_DeviceISOSend(DEVICE_ISO_IN_EP,0,0);
-				OTG_DeviceAudioInit();
-				UsbAudioMic.InitOk = 1;
-				UsbAudioSpeaker.InitOk = 1;
+				/*
+				 * AUDIO_CDC has one audio endpoint only: Speaker ISO OUT 0x02.
+				 * Do not touch 0x84 here: it is absent from the descriptor and
+				 * this chip has no FIFO for it. ISO callbacks are enabled only
+				 * after SET_INTERFACE alt=1 completes.
+				 */
+				if (CFG_PARA_USB_MODE == AUDIO_CDC ||
+				    CFG_PARA_USB_MODE == AUDIO_MIC ||
+				    CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
+				    CFG_PARA_USB_MODE == AUDIO_ONLY) {
+					OTG_DeviceEndpointReset(DEVICE_ISO_OUT_EP, TYPE_ISO_OUT);
+					OTG_DeviceAudioInit();
+					UsbAudioSpeaker.InitOk = 1;
+				}
+				if (CFG_PARA_USB_MODE == AUDIO_MIC ||
+				    CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
+				    CFG_PARA_USB_MODE == MIC_ONLY ||
+				    CFG_PARA_USB_MODE == MIC_CDC) {
+					OTG_DeviceEndpointReset(DEVICE_ISO_IN_EP, TYPE_ISO_IN);
+					UsbAudioMic.InitOk = 1;
+				}
 #endif
 				OTG_DeviceControlSend(&zlp, 0, 10);
 				g_usb_configured = 1;
@@ -326,24 +338,58 @@ void OTG_DeviceStandardRequest()
 
 		case USB_REQ_GET_INTERFACE:
 			Resp[0] = 0x00;
+#ifdef CFG_APP_USB_AUDIO_MODE_EN
+			if (Setup[4] == InterfaceNum[AUDIO_SRM_OUT_INTERFACE_NUM])
+				Resp[0] = UsbAudioSpeaker.AltSet;
+			else if (Setup[4] == InterfaceNum[AUDIO_SRM_IN_INTERFACE_NUM])
+				Resp[0] = UsbAudioMic.AltSet;
+#endif
 			OTG_DeviceControlSend((uint8_t*)&Resp, 1, 10);
 			break;
 
 		case USB_REQ_SET_INTERFACE:
+			{
+				uint8_t enable_speaker_iso = 0;
+				uint8_t enable_mic_iso = 0;
+				uint8_t speaker_interface = 0;
+				uint8_t mic_interface = 0;
 		#ifdef CFG_APP_USB_AUDIO_MODE_EN
-			if(Setup[4] == InterfaceNum[AUDIO_SRM_IN_INTERFACE_NUM])
-			{
+			if (Setup[4] == InterfaceNum[AUDIO_SRM_IN_INTERFACE_NUM]) {
 				UsbAudioMic.AltSet = Setup[2];
-			}
-			else if(Setup[4] == InterfaceNum[AUDIO_SRM_OUT_INTERFACE_NUM])
-			{
+				enable_mic_iso = (Setup[2] != 0);
+				mic_interface = 1;
+			} else if (Setup[4] == InterfaceNum[AUDIO_SRM_OUT_INTERFACE_NUM]) {
 				UsbAudioSpeaker.AltSet = Setup[2];
+				enable_speaker_iso = (Setup[2] != 0);
+				speaker_interface = 1;
 			}
 		#endif
 			/* Control OUT wLength=0: software must finish status (ZLP + DataEnd) */
 			{
 				static uint8_t zlp;
 				OTG_DeviceControlSend(&zlp, 0, 10);
+			}
+#ifdef CFG_APP_USB_AUDIO_MODE_EN
+			/* Enable ISO only after EP0 status completed; it otherwise races EP0. */
+			if (speaker_interface) {
+				if (enable_speaker_iso && CFG_PARA_USB_MODE != CDC_ONLY)
+					OTG_EndpointInterruptEnable(DEVICE_ISO_OUT_EP,
+								     OnDeviceAudioRcvIsoPacket);
+				else
+					OTG_EndpointInterruptDisable(DEVICE_ISO_OUT_EP);
+			}
+			if (mic_interface) {
+				if (enable_mic_iso &&
+				    (CFG_PARA_USB_MODE == AUDIO_MIC ||
+				     CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
+				     CFG_PARA_USB_MODE == MIC_ONLY ||
+				     CFG_PARA_USB_MODE == MIC_CDC))
+					OTG_EndpointInterruptEnable(DEVICE_ISO_IN_EP,
+								     OnDeviceAudioSendIsoPacket);
+				else
+					OTG_EndpointInterruptDisable(DEVICE_ISO_IN_EP);
+			}
+#endif
 			}
 			break;
 

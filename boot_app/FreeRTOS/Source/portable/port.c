@@ -226,9 +226,10 @@ portSTACK_TYPE *pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, TaskFunctio
 
 portBASE_TYPE xPortStartScheduler( void )
 {
-	extern void SysTickInit(void);
-
-	SysTickInit();
+	/*
+	 * boot_app starts SysTick before OTG_DeviceInit so EP0 timeouts work
+	 * from the instant D+ is asserted. Do not reset it during enumeration.
+	 */
 
 	/* Start the first task. */
 	vPortISRStartFirstTask();

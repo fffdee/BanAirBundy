@@ -64,9 +64,16 @@
 /* Started by BanAirBundy USB CDC bootloader @ 0x0 — skip Chip_Init/PLL in main. */
 #define HAS_BOOTLOADER           1
 
-/* USB composite: Speaker + CDC (AUDIO_CDC=9). For mic+speaker+CDC use AUDIO_MIC_CDC=11. */
+/*
+ * USB 枚举验证开关：
+ *   CDC_ONLY(12) 先验证 APP 跳转后的 USB 时钟、EP0 与 CDC；
+ *   确认通过后改为 AUDIO_CDC(9) 启用 Speaker + CDC。
+ */
+#ifndef BOOT_APP_USB_MODE
+#define BOOT_APP_USB_MODE        CDC_ONLY
+#endif
 #ifndef CFG_PARA_USB_MODE
-#define CFG_PARA_USB_MODE        9
+#define CFG_PARA_USB_MODE        BOOT_APP_USB_MODE
 #endif
 #ifndef CFG_PARA_SAMPLE_RATE
 #define CFG_PARA_SAMPLE_RATE     SAMPLE_RATE

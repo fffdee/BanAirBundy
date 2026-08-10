@@ -40,11 +40,19 @@ UsbAudio UsbAudioSpeaker;
 UsbAudio UsbAudioMic;
 
 uint8_t iso_buf[PCM_LEN_MAX*4/3];
+
+/* Complete the status phase for UAC control OUT requests. */
+static void OTG_DeviceAudioStatusAck(void)
+{
+	static uint8_t zlp;
+
+	OTG_DeviceControlSend(&zlp, 0, 10);
+}
 /////////////////////////////////////////
 /**
- * @brief  USB声卡模式下，发送反向控制命令
- * @param  Cmd 反向控制命令
- * @return 1-成功，0-失败
+ * @brief  USB???????????????????????
+ * @param  Cmd ???????????
+ * @return 1-?????0-???
  */
 #define AUDIO_STOP        BIT(7) 
 #define AUDIO_PP          BIT(6) 
@@ -93,7 +101,7 @@ bool OTG_DeviceAudioSendPcCmd(uint8_t Cmd)
 	return TRUE;
 }
 //////////////////////////////////////////////////audio core api/////////////////////////////////////////////////////
-//pc->chip 从缓存区获取数据
+//pc->chip ??????????????
 uint16_t UsbAudioSpeakerDataGet(void *Buffer, uint16_t Len)
 {
 	uint16_t Length = 0;
@@ -107,7 +115,7 @@ uint16_t UsbAudioSpeakerDataGet(void *Buffer, uint16_t Len)
 	return Length / (sizeof(pcm_int) * PACKET_CHANNELS_NUM);
 }
 
-//pc->chip 获取缓存区数据长度
+//pc->chip ????????????????
 uint16_t UsbAudioSpeakerDataLenGet(void)
 {
 	uint16_t Len;
@@ -128,7 +136,7 @@ uint16_t UsbAudioSpeakerDepthGet(void)
 //	printf(" UsbAudioSpeaker BufDepth: %d\r\n",Len);
 	return Len;
 }
-//chip->pc 保存数据到缓存区
+//chip->pc ???????????????
 uint16_t UsbAudioMicDataSet(void *Buffer, uint16_t Len)
 {
 #ifdef CFG_RES_AUDIO_USB_OUT_EN
@@ -142,7 +150,7 @@ uint16_t UsbAudioMicDataSet(void *Buffer, uint16_t Len)
 	return Len;
 }
 
-//chip->pc 数据缓存区剩余空间
+//chip->pc ??????????????
 uint16_t UsbAudioMicSpaceLenGet(void)
 {
 	uint16_t Len;
@@ -165,8 +173,8 @@ uint16_t UsbAudioMicDepthGet(void)
 	return Len;
 }
 
-//转采样直接在中断中处理，转采样时间大约是180us。
-//注意一下需要4字节对齐
+//??????????????????????????????????180us??
+//?????????4??????
 void OnDeviceAudioRcvIsoPacket(void)
 {
 #ifdef CFG_RES_AUDIO_USB_IN_EN
@@ -235,7 +243,7 @@ void OnDeviceAudioRcvIsoPacket(void)
 	for(s = 0; s<sample/channel; s++)
 	{
 		pcm_int *pcm = (pcm_int *)iso_buf;
-		if(channel == 2)//立体声
+		if(channel == 2)//??????
 		{
 			pcm[2 * s + 0] = __nds32__clips(((((gain_int)pcm[2 * s + 0]) * left_pregain + 2048) >> 12), (USB_AUDIO_WIDTH)-1);
 			pcm[2 * s + 1] = __nds32__clips(((((gain_int)pcm[2 * s + 1]) * rigth_pregain + 2048) >> 12), (USB_AUDIO_WIDTH)-1);
@@ -303,7 +311,7 @@ void OnDeviceAudioSendIsoPacket(void)
 	for(s = 0; s<RealLen; s++)
 	{
 		pcm_int *pcm = (pcm_int *)iso_buf;
-		if(channel == 2)//立体声
+		if(channel == 2)//??????
 		{
 			pcm[2 * s + 0] = __nds32__clips(((((gain_int)pcm[2 * s + 0]) * left_pregain + 2048) >> 12), (USB_AUDIO_WIDTH)-1);
 			pcm[2 * s + 1] = __nds32__clips(((((gain_int)pcm[2 * s + 1]) * rigth_pregain + 2048) >> 12), (USB_AUDIO_WIDTH)-1);
@@ -353,9 +361,9 @@ void OTG_DeviceAudioInit()
 #if (USB_AUDIO_PROTOCOL == AUDIO_UAC_10)
 void OTG_DeviceAudioRequest(void)
 {
-	//AUDIO控制接口组件ID号定义（必须与device_stor_audio_request.c中的定义保持一致！）
+	//AUDIO?????????ID????????????device_stor_audio_request.c????????????????
 	#define AUDIO_SPEAKER_IT_ID		1
-	#define AUDIO_SPEAKER_FU_ID		2	//控制MUTE、VOLUME
+	#define AUDIO_SPEAKER_FU_ID		2	//????MUTE??VOLUME
 	#define AUDIO_SPEAKER_OT_ID		3
 //	#define AUDIO_MIC_IT_ID			4
 //	#define AUDIO_MIC_FU_ID			5
@@ -377,7 +385,7 @@ void OTG_DeviceAudioRequest(void)
 	#define SET_CUR_EP	0x2201
 	#define GET_CUR_EP	0xA281
 
-	//AUDIO类请求处理
+	//AUDIO????????
 	if(AudioCmd == SET_CUR_EP)
 	{
 		if(Setup[4] == DEVICE_ISO_IN_EP)
@@ -385,7 +393,6 @@ void OTG_DeviceAudioRequest(void)
 			if(UsbAudioMic.AudioSampleRate != SWAP_BUF_TO_U32(Request))
 			{
 				UsbAudioMic.AudioSampleRate = SWAP_BUF_TO_U32(Request);
-				printf("UsbAudioMic.AudioSampleRate:%u\n",(unsigned int)UsbAudioMic.AudioSampleRate);
 				AudioCoreSinkChange(UsbAudioMic.Channels, UsbAudioMic.AudioSampleRate);
 			}
 		}
@@ -394,10 +401,10 @@ void OTG_DeviceAudioRequest(void)
 			if(UsbAudioSpeaker.AudioSampleRate != SWAP_BUF_TO_U32(Request))
 			{
 				UsbAudioSpeaker.AudioSampleRate = SWAP_BUF_TO_U32(Request);
-				printf("UsbAudioSpeaker.AudioSampleRate:%u\n",(unsigned int)UsbAudioSpeaker.AudioSampleRate);
 				AudioCoreSourceChange(UsbAudioSpeaker.Channels, UsbAudioSpeaker.AudioSampleRate);
 			}
 		}
+		OTG_DeviceAudioStatusAck();
 		return;
 	}
 	if(AudioCmd == GET_CUR_EP)
@@ -420,7 +427,7 @@ void OTG_DeviceAudioRequest(void)
 
 	if((Entity == AUDIO_SPEAKER_FU_ID) && (Control == AUDIO_CONTROL_MUTE))
 	{
-		//Speaker mute的操作
+		//Speaker mute?????
 		if(AudioCmd == GET_CUR)
 		{
 			Setup[0] = UsbAudioSpeaker.Mute;
@@ -438,7 +445,7 @@ void OTG_DeviceAudioRequest(void)
 	}
 	else if((Entity == AUDIO_SPEAKER_FU_ID) && (Control == AUDIO_CONTROL_VOLUME))
 	{
-		//Speaker volume的操作
+		//Speaker volume?????
 		if(AudioCmd == GET_MIN)
 		{
 			//APP_DBG("Get speaker min volume\n");
@@ -487,7 +494,7 @@ void OTG_DeviceAudioRequest(void)
 	}
 	else if((Entity == AUDIO_MIC_FU_ID) && (Control == AUDIO_CONTROL_MUTE))
 	{
-		//Mic mute的操作
+		//Mic mute?????
 		if(AudioCmd == GET_CUR)
 		{
 			OTG_DeviceSendResp(UsbAudioMic.Mute, 1);
@@ -503,7 +510,7 @@ void OTG_DeviceAudioRequest(void)
 	}
 	else if((Entity == AUDIO_MIC_FU_ID) && (Control == AUDIO_CONTROL_VOLUME))
 	{
-		//Mic volume的操作
+		//Mic volume?????
 		if(AudioCmd == GET_MIN)
 		{
 			//APP_DBG("Get mic min volume\n");
@@ -511,7 +518,7 @@ void OTG_DeviceAudioRequest(void)
 		}
 		else if(AudioCmd == GET_MAX)
 		{
-			OTG_DeviceSendResp(AUDIO_MAX_VOLUME, 2);	//此处乘以4的原因请看本文件开头的注释说明
+			OTG_DeviceSendResp(AUDIO_MAX_VOLUME, 2);	//???????4???????????????????????
 		}
 		else if(AudioCmd == GET_RES)
 		{
@@ -550,7 +557,7 @@ void OTG_DeviceAudioRequest(void)
 	}
 	else if(Entity == AUDIO_MIC_SL_ID)
 	{
-		//Selector的操作
+		//Selector?????
 		if(AudioCmd == GET_CUR)
 		{
 			//APP_DBG("Get selector: 1\n");
@@ -567,14 +574,17 @@ void OTG_DeviceAudioRequest(void)
 	}	
 	else
 	{
-		//其他AUDIO类的输入请求
+		//????AUDIO???????????
 		OTG_DeviceSendResp(0x0000, 1);
 	}
+
+	if (AudioCmd == SET_CUR || AudioCmd == SET_IDLE)
+		OTG_DeviceAudioStatusAck();
 }
 #elif(USB_AUDIO_PROTOCOL == AUDIO_UAC_20)
 void OTG_DeviceAudioRequest(void)
 {
-	//AUDIO控制接口组件ID号定义（必须与device_stor_audio_request.c中的定义保持一致！）
+	//AUDIO?????????ID????????????device_stor_audio_request.c????????????????
 	#define SET_CUR		0x2101
 	#define SET_IDLE	0x210A
 	#define GET_CUR		0xA181
@@ -594,13 +604,13 @@ void OTG_DeviceAudioRequest(void)
 	#define Entity		Setup[5]
 	#define wLength		((Setup[7] << 8) | Setup[6])
 	/*
-	 * uac2.0  指令解析开始
+	 * uac2.0  ?????????
 	 */
 	if((Entity == AUDIO_FU_ID))
 	{
 		if(Control == 0x01)
 		{
-			//Speaker mute的操作
+			//Speaker mute?????
 			if(AudioCmd == GET_CUR_2)
 			{
 				Setup[0] = UsbAudioSpeaker.Mute;
@@ -666,7 +676,7 @@ void OTG_DeviceAudioRequest(void)
 	{
 		if(Control == 0x01)
 		{
-			//Speaker mute的操作
+			//Speaker mute?????
 			if(AudioCmd == GET_CUR_2)
 			{
 				Setup[0] = UsbAudioMic.Mute;
@@ -836,7 +846,7 @@ void UsbAudioTimer1msProcess(void)
 #ifdef CFG_RES_AUDIO_USB_IN_EN
 	if(UsbAudioSpeaker.AltSet)//open stream
 	{
-		if(UsbAudioSpeaker.FramCount)//正在传数据 1-2帧数据
+		if(UsbAudioSpeaker.FramCount)//????????? 1-2?????
 		{
 			if(UsbAudioSpeaker.FramCount != UsbAudioSpeaker.TempFramCount)
 			{
@@ -860,7 +870,7 @@ void UsbAudioTimer1msProcess(void)
 #ifdef CFG_RES_AUDIO_USB_IN_EN
 	if(UsbAudioMic.AltSet)//open stream
 	{
-		if(UsbAudioMic.FramCount)//正在传数据 切传输了1-2帧数据
+		if(UsbAudioMic.FramCount)//????????? ????????1-2?????
 		{
 			if(UsbAudioMic.FramCount != UsbAudioMic.TempFramCount)
 			{

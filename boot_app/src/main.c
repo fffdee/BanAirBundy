@@ -88,11 +88,6 @@ static void vPrintTask(void *pvParameters)
 static void vUsbTask(void *pvParameters)
 {
 	(void)pvParameters;
-	// #region agent log
-	TickType_t t0 = xTaskGetTickCount();
-	uint8_t dumped500 = 0;
-	uint8_t dumpedOk = 0;
-	// #endregion agent log
 
 	for (;;) {
 		OTG_DeviceRequestProcess();
@@ -106,34 +101,17 @@ static void vUsbTask(void *pvParameters)
 			OTG_DeviceCDC_Task();
 		}
 
-		UsbAudioSpeakerStreamProcess();
-		UsbAudioMicStreamProcess();
-		UsbAudioTimer1msProcess();
-
-		// #region agent log
-		/* H8/H11: observe SETUP after attach window + confirm task alive */
-		if (!dumped500 &&
-		    (xTaskGetTickCount() - t0) >= pdMS_TO_TICKS(500)) {
-			dumped500 = 1;
-			DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H8,H11\","
-			    "\"location\":\"main.c:vUsbTask\",\"message\":\"usb_task_500ms\","
-			    "\"data\":{\"cfg\":%u,\"cdc\":%u},\"timestamp\":%u}\n",
-			    (unsigned)g_usb_configured, (unsigned)UsbCDC.InitOk,
-			    (unsigned)gSysTick);
-			OTG_DeviceDebugDump();
+		if (CFG_PARA_USB_MODE != CDC_ONLY) {
+			UsbAudioSpeakerStreamProcess();
+			UsbAudioMicStreamProcess();
+			UsbAudioTimer1msProcess();
 		}
-		if (!dumpedOk && g_usb_configured) {
-			dumpedOk = 1;
-			DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H8\","
-			    "\"location\":\"main.c:vUsbTask\",\"message\":\"usb_configured\","
-			    "\"data\":{\"cdc\":%u},\"timestamp\":%u}\n",
-			    (unsigned)UsbCDC.InitOk, (unsigned)gSysTick);
-			OTG_DeviceDebugDump();
-		}
-		// #endregion agent log
 
-		/* Yield quickly so ISO IRQ / other tasks stay responsive */
-		vTaskDelay(pdMS_TO_TICKS(1));
+		/* EP0 SETUP is polled: stay responsive until configured. */
+		if (g_usb_configured)
+			vTaskDelay(pdMS_TO_TICKS(1));
+		else
+			taskYIELD();
 	}
 }
 
@@ -159,7 +137,7 @@ static void App_UsbInit(void)
 	/* Starts Timer0 1ms + GIE + Systick IRQ (safe with scheduler guard). */
 	SysTickInit();
 
-	DBG("[USB] Mode=%u VID=0x%04X PID=0x%04X (AUDIO_CDC composite)\n",
+	DBG("[USB] Mode=%u VID=0x%04X PID=0x%04X\n",
 	    (unsigned)CFG_PARA_USB_MODE, APP_USB_VID, APP_USB_PID);
 
 	/* Prepare stack, then attach — host may SETUP immediately after DP up. */
@@ -180,9 +158,7 @@ static void App_UsbInit(void)
 	}
 	DBG("[USB] attach done tick=%u cfg=%u cdc=%u\n",
 	    (unsigned)gSysTick, (unsigned)g_usb_configured, (unsigned)UsbCDC.InitOk);
-	// #region agent log
 	OTG_DeviceDebugDump();
-	// #endregion agent log
 }
 
 int main(void)

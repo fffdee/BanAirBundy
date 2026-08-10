@@ -1,0 +1,11 @@
+# Eclipse / AndeSight workspace state
+.metadata/
+RemoteSystemsTempFiles/
+
+# Managed-build outputs
+**/Debug/
+**/Release/
+
+# Tool-generated temporary files outside configuration directories
+*.pdom
+*.log
