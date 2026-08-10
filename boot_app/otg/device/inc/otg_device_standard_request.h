@@ -43,13 +43,20 @@ extern "C"{
 #define	DEVICE_INT_IN_EP			0x81
 #define	DEVICE_BULK_IN_EP			0x82
 #define	DEVICE_BULK_OUT_EP			0x03
+/*
+ * Hardware FIFO map (OtgEPInit / otg_fifo.c): only EP1 + EP2.
+ * AUDIO_CDC (speaker+CDC) uses:
+ *   EP1 IN  0x81 — CDC interrupt CMD
+ *   EP1 OUT 0x01 — CDC bulk OUT
+ *   EP2 IN  0x82 — CDC bulk IN
+ *   EP2 OUT 0x02 — Speaker ISO OUT (must NOT be 0x05 — no RX FIFO on EP5)
+ * Mic ISO IN (0x84) is for mic modes only; not used by AUDIO_CDC.
+ */
 #define	DEVICE_ISO_IN_EP			0x84
-#define	DEVICE_ISO_OUT_EP			0x05
-// CDC Endpoints - 复用原HID的Bulk端点
+#define	DEVICE_ISO_OUT_EP			0x02
+// CDC Endpoints
 #define DEVICE_CDC_CMD_EP           0x81    // CDC Command (Interrupt IN) — EP1 TX FIFO
 #define DEVICE_CDC_DATA_IN_EP       0x82    // CDC Data IN (Bulk IN) — EP2 TX FIFO
-/* Must be EP1 OUT: OtgEPInit only programs EP1/EP2 FIFOs; driver hcd.h uses 0x01.
- * EP3 has no RX FIFO → BulkReceive always times out (ret=7, csr=0). */
 #define DEVICE_CDC_DATA_OUT_EP      0x01    // CDC Data OUT (Bulk OUT) — EP1 RX FIFO
 
 #define MSC_INTERFACE_NUM			0
@@ -85,6 +92,7 @@ extern "C"{
 
 void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid);
 void OTG_DeviceRequestProcess(void);
+void OTG_DeviceDebugDump(void);
 
 
 #ifdef __cplusplus

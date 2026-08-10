@@ -55,6 +55,39 @@ uint8_t Request[256];
 
 uint8_t *ConfigDescriptor;
 uint8_t *InterfaceNum;
+
+// #region agent log
+#define USB_DBG_SETUP_MAX 8
+typedef struct {
+	uint8_t setup[8];
+} UsbDbgSetup_t;
+static volatile uint32_t s_dbg_bus_reset;
+static volatile uint32_t s_dbg_setup_ok;
+static volatile uint32_t s_dbg_setup_err;
+static volatile uint32_t s_dbg_setup_short;
+static volatile uint32_t s_dbg_last_setup_err;
+static volatile uint32_t s_dbg_last_bus_event;
+static volatile uint32_t s_dbg_first_reset_tick;
+static volatile uint32_t s_dbg_first_ok_tick;
+static UsbDbgSetup_t s_dbg_setup[USB_DBG_SETUP_MAX];
+extern unsigned int GetSysTick1MsCnt(void);
+
+static void OTG_DeviceDebugHwSnapshot(uint32_t *usb_div_minus1,
+				      uint32_t *usb_mux,
+				      uint32_t *dp_pwr,
+				      uint32_t *ep0_csr)
+{
+	/* Clock_USBClkDivSet stores (Div-1) at 0x40021010 */
+	*usb_div_minus1 = *(volatile uint32_t *)0x40021010UL;
+	/* Clock_USBClkSelect: 0x4002103C bit11 — 0=DPLL, 1=APLL */
+	*usb_mux = (uint32_t)(*(volatile uint16_t *)0x4002103CUL);
+	/* DP pull-up / power control live near 0x40000194 (see PortEnableDPPullUp) */
+	*dp_pwr = *(volatile uint32_t *)0x40000194UL;
+	/* EP0 CSR: RxPktRdy = bit0 @ 0x40000011 */
+	*ep0_csr = (uint32_t)(*(volatile uint8_t *)0x40000011UL);
+}
+// #endregion agent log
+
 const char *gDeviceProductString ="BG Card audio";		//max length: 32bytes
 const char *gDeviceString_Manu ="BanGO";		//max length: 32bytes
 const char *gDeviceString_SerialNumber ="20250405";//max length: 32bytes
@@ -336,7 +369,7 @@ void OTG_DeviceClassRequest()
 	/* CRITICAL: never DBG before EP0 status/data ? UART ~15ms ? host stall pid.
 	 * (Regression: entry log before CDC_Request re-broke SET_CTRL_LINE / LINE_CODING.) */
 
-	/* Bootloader CDC_ONLY: ACM class requests by code, then IF0/IF1 */
+	/* CDC ACM by request code (works for any IF numbering) */
 	if ((bm == 0x21 || bm == 0xA1) &&
 	    (req == CDC_SET_LINE_CODING || req == CDC_GET_LINE_CODING ||
 	     req == CDC_SET_CONTROL_LINE_STATE || req == CDC_SEND_BREAK ||
@@ -345,9 +378,14 @@ void OTG_DeviceClassRequest()
 		OTG_DeviceCDC_Request();
 		return;
 	}
+	/*
+	 * Route by InterfaceNum table ONLY.
+	 * Do NOT hardcode ifn==0/1 → CDC: that breaks AUDIO_CDC where IF0/IF1
+	 * are Audio Control/Stream (Windows then fails with Unknown Device).
+	 * CDC_ONLY maps CDC_CTL=0 / CDC_DATA=1 via InterFaceNum_Tab, so it still works.
+	 */
 	if (ifn == InterfaceNum[CDC_CTL_INTERFACE_NUM] ||
-	    ifn == InterfaceNum[CDC_DATA_INTERFACE_NUM] ||
-	    ifn == 0 || ifn == 1)
+	    ifn == InterfaceNum[CDC_DATA_INTERFACE_NUM])
 	{
 		OTG_DeviceCDC_Request();
 		return;
@@ -412,8 +450,16 @@ void OTG_DeviceRequestProcess(void)
 	uint8_t ReqType;
 	OTG_DEVICE_ERR_CODE setup_err;
 
+	// #region agent log
+	s_dbg_last_bus_event = BusEvent;
+	// #endregion agent log
 	if(BusEvent & 0x04)
 	{
+		// #region agent log
+		s_dbg_bus_reset++;
+		if (s_dbg_first_reset_tick == 0u)
+			s_dbg_first_reset_tick = GetSysTick1MsCnt();
+		// #endregion agent log
 		/* Match Example_USB: do NOT call AddressSet(0) here (blocked ~20ms, bit4 never set).
 		 * Hardware clears address on bus reset. */
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
@@ -426,12 +472,27 @@ void OTG_DeviceRequestProcess(void)
 	setup_err = OTG_DeviceSetupReceive(Setup, 8, &DataLeng);
 	if(setup_err != DEVICE_NONE_ERR)
 	{
+		// #region agent log
+		s_dbg_setup_err++;
+		s_dbg_last_setup_err = (uint32_t)setup_err;
+		// #endregion agent log
 		return;
 	}
 	/* Status-OUT ZLP can raise RxPktRdy with len!=8; ignore (stale Setup[]). */
 	if (DataLeng != 8u) {
+		// #region agent log
+		s_dbg_setup_short++;
+		// #endregion agent log
 		return;
 	}
+	// #region agent log
+	if (s_dbg_setup_ok < USB_DBG_SETUP_MAX) {
+		memcpy(s_dbg_setup[s_dbg_setup_ok].setup, Setup, sizeof(Setup));
+	}
+	s_dbg_setup_ok++;
+	if (s_dbg_first_ok_tick == 0u)
+		s_dbg_first_ok_tick = GetSysTick1MsCnt();
+	// #endregion agent log
 	/* IMPORTANT: do NOT DBG before handling — SET_ADDRESS status is timing-critical. */
 	//IsAndroid();
 	if((Setup[0]&0x80) == 0)//out
@@ -481,6 +542,55 @@ void OTG_DeviceRequestProcess(void)
 			break;			
 	}
 }
+
+// #region agent log
+void OTG_DeviceDebugDump(void)
+{
+	uint32_t i;
+	uint32_t count = (s_dbg_setup_ok < USB_DBG_SETUP_MAX)
+		? s_dbg_setup_ok : USB_DBG_SETUP_MAX;
+	uint32_t usb_div_m1, usb_mux, dp_pwr, ep0_csr;
+	uint32_t usb_div = 0, usb_mhz = 0, apl = 0;
+
+	OTG_DeviceDebugHwSnapshot(&usb_div_m1, &usb_mux, &dp_pwr, &ep0_csr);
+	usb_div = usb_div_m1 + 1u;
+	if (usb_div)
+		usb_mhz = 240u / usb_div;
+	apl = (usb_mux & 0x800u) ? 1u : 0u;
+
+	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H6,H7,H9\","
+	    "\"location\":\"otg_device_standard_request.c:OTG_DeviceDebugDump\","
+	    "\"message\":\"usb_hw\",\"data\":{\"div\":%u,\"mhz\":%u,\"apl\":%u,"
+	    "\"mux\":%u,\"dp\":%u,\"ep0csr\":%u,\"lastBus\":%u,\"lastErr\":%u,"
+	    "\"rstTick\":%u,\"okTick\":%u},\"timestamp\":%u}\n",
+	    (unsigned)usb_div, (unsigned)usb_mhz, (unsigned)apl,
+	    (unsigned)usb_mux, (unsigned)dp_pwr, (unsigned)ep0_csr,
+	    (unsigned)s_dbg_last_bus_event, (unsigned)s_dbg_last_setup_err,
+	    (unsigned)s_dbg_first_reset_tick, (unsigned)s_dbg_first_ok_tick,
+	    (unsigned)GetSysTick1MsCnt());
+
+	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H1,H5,H8\","
+	    "\"location\":\"otg_device_standard_request.c:OTG_DeviceDebugDump\","
+	    "\"message\":\"usb_ep0_summary\",\"data\":{\"reset\":%u,\"setupOk\":%u,"
+	    "\"setupErr\":%u,\"short\":%u,\"configured\":%u},\"timestamp\":%u}\n",
+	    (unsigned)s_dbg_bus_reset, (unsigned)s_dbg_setup_ok,
+	    (unsigned)s_dbg_setup_err, (unsigned)s_dbg_setup_short,
+	    (unsigned)g_usb_configured, (unsigned)GetSysTick1MsCnt());
+
+	for (i = 0; i < count; i++) {
+		const uint8_t *s = s_dbg_setup[i].setup;
+		DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H2,H3,H4\","
+		    "\"location\":\"otg_device_standard_request.c:OTG_DeviceRequestProcess\","
+		    "\"message\":\"usb_setup\",\"data\":{\"index\":%u,\"bm\":%u,\"req\":%u,"
+		    "\"wValue\":%u,\"wIndex\":%u,\"wLength\":%u},\"timestamp\":%u}\n",
+		    (unsigned)i, (unsigned)s[0], (unsigned)s[1],
+		    (unsigned)((uint16_t)s[2] | ((uint16_t)s[3] << 8)),
+		    (unsigned)((uint16_t)s[4] | ((uint16_t)s[5] << 8)),
+		    (unsigned)((uint16_t)s[6] | ((uint16_t)s[7] << 8)),
+		    (unsigned)GetSysTick1MsCnt());
+	}
+}
+// #endregion agent log
 
 //*************************************************//
 //*************************************************//

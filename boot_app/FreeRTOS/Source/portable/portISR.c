@@ -104,6 +104,16 @@ void SystickInterrupt(void)
 	SysTimerIntFlagClear();
 	gSysTick++;
 
+	/*
+	 * USB EP0 timeouts need gSysTick before the scheduler starts.
+	 * Do NOT call xTaskIncrementTick() until FreeRTOS is running —
+	 * that caused General Exception / reboot loops when App_UsbInit
+	 * enabled SysTick prior to vTaskStartScheduler().
+	 */
+	if (xTaskGetSchedulerState() != taskSCHEDULER_RUNNING) {
+		return;
+	}
+
 	msk =  portSET_INTERRUPT_MASK_FROM_ISR();
 	/* Increment the tick count - this may wake a task. */
 	if ( xTaskIncrementTick() == pdTRUE )
@@ -116,21 +126,14 @@ void SystickInterrupt(void)
 }
 #else
 {
-	uint32_t msk;
 	ClearTimer1IntFlag();
 	gSysTick++;
 
-	/* The cooperative scheduler requires a normal IRQ service routine to
-	simply increment the system tick. */
-	{
-		unsigned long ulDummy;
-
-		/* Increment the tick count - which may wake some tasks but as the
-		preemptive scheduler is not being used any woken task is not given
-		processor time no matter what its priority. */
-		xTaskIncrementTick();
-
+	if (xTaskGetSchedulerState() != taskSCHEDULER_RUNNING) {
+		return;
 	}
+
+	xTaskIncrementTick();
 }
 #endif
 

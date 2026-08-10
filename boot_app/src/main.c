@@ -31,6 +31,7 @@
 #include "otg_device_standard_request.h"
 #include "otg_device_cdc.h"
 #include "usb_audio_api.h"
+#include "delay.h"
 
 /* FreeRTOS */
 #include "FreeRTOS.h"
@@ -38,6 +39,8 @@
 #include "queue.h"
 
 extern void OTG_DeviceFifoInit(void);
+extern void SysTickInit(void);
+extern volatile uint32_t gSysTick;
 
 /* APP USB identity (distinct from bootloader 0x8888/0x1722) */
 #define APP_USB_VID   0x8888
@@ -85,6 +88,11 @@ static void vPrintTask(void *pvParameters)
 static void vUsbTask(void *pvParameters)
 {
 	(void)pvParameters;
+	// #region agent log
+	TickType_t t0 = xTaskGetTickCount();
+	uint8_t dumped500 = 0;
+	uint8_t dumpedOk = 0;
+	// #endregion agent log
 
 	for (;;) {
 		OTG_DeviceRequestProcess();
@@ -102,6 +110,28 @@ static void vUsbTask(void *pvParameters)
 		UsbAudioMicStreamProcess();
 		UsbAudioTimer1msProcess();
 
+		// #region agent log
+		/* H8/H11: observe SETUP after attach window + confirm task alive */
+		if (!dumped500 &&
+		    (xTaskGetTickCount() - t0) >= pdMS_TO_TICKS(500)) {
+			dumped500 = 1;
+			DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H8,H11\","
+			    "\"location\":\"main.c:vUsbTask\",\"message\":\"usb_task_500ms\","
+			    "\"data\":{\"cfg\":%u,\"cdc\":%u},\"timestamp\":%u}\n",
+			    (unsigned)g_usb_configured, (unsigned)UsbCDC.InitOk,
+			    (unsigned)gSysTick);
+			OTG_DeviceDebugDump();
+		}
+		if (!dumpedOk && g_usb_configured) {
+			dumpedOk = 1;
+			DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H8\","
+			    "\"location\":\"main.c:vUsbTask\",\"message\":\"usb_configured\","
+			    "\"data\":{\"cdc\":%u},\"timestamp\":%u}\n",
+			    (unsigned)UsbCDC.InitOk, (unsigned)gSysTick);
+			OTG_DeviceDebugDump();
+		}
+		// #endregion agent log
+
 		/* Yield quickly so ISO IRQ / other tasks stay responsive */
 		vTaskDelay(pdMS_TO_TICKS(1));
 	}
@@ -109,10 +139,13 @@ static void vUsbTask(void *pvParameters)
 
 static void App_UsbInit(void)
 {
+	int i;
+
 	/*
-	 * USB clock: DPLL/5 = 48MHz (same as bootloader).
-	 * Re-select even under HAS_BOOTLOADER — BL may have left USB unused
-	 * after jumping to APP, or APP standalone path never set it.
+	 * USB clock: DPLL/5 = 48MHz (same proven path as bootloader).
+	 * EP0 ControlSend timeouts use GetSysTick1MsCnt() — tick MUST run
+	 * before D+ pull-up, or Windows shows "Unknown device".
+	 * SystickInterrupt is guarded: only gSysTick++ until scheduler runs.
 	 */
 	Clock_Module1Enable(ALL_MODULE1_CLK_SWITCH);
 	Clock_Module2Enable(ALL_MODULE2_CLK_SWITCH);
@@ -120,20 +153,36 @@ static void App_UsbInit(void)
 	Clock_USBClkDivSet(5);
 	Clock_USBClkSelect(PLL_CLK_MODE);
 
-	GIE_ENABLE();
-	SysTickInit();
-
 	UsbDevicePlayInit();
 	UsbDevicePlayResMalloc();
+
+	/* Starts Timer0 1ms + GIE + Systick IRQ (safe with scheduler guard). */
+	SysTickInit();
 
 	DBG("[USB] Mode=%u VID=0x%04X PID=0x%04X (AUDIO_CDC composite)\n",
 	    (unsigned)CFG_PARA_USB_MODE, APP_USB_VID, APP_USB_PID);
 
+	/* Prepare stack, then attach — host may SETUP immediately after DP up. */
 	OTG_DeviceModeSel(CFG_PARA_USB_MODE, APP_USB_VID, APP_USB_PID);
 	OTG_DeviceFifoInit();
 	OTG_DeviceInit();
-	NVIC_EnableIRQ(Usb_IRQn);
 	NVIC_SetPriority(Usb_IRQn, 0);
+	NVIC_EnableIRQ(Usb_IRQn);
+
+	/* Drain early control transfers before FreeRTOS takes the CPU. */
+	for (i = 0; i < 100; i++) {
+		OTG_DeviceRequestProcess();
+		if (g_usb_configured && !UsbCDC.InitOk)
+			OTG_DeviceCDC_Init();
+		if (UsbCDC.InitOk)
+			OTG_DeviceCDC_Task();
+		DelayMs(1);
+	}
+	DBG("[USB] attach done tick=%u cfg=%u cdc=%u\n",
+	    (unsigned)gSysTick, (unsigned)g_usb_configured, (unsigned)UsbCDC.InitOk);
+	// #region agent log
+	OTG_DeviceDebugDump();
+	// #endregion agent log
 }
 
 int main(void)
@@ -141,6 +190,8 @@ int main(void)
 #if HAS_BOOTLOADER
 	diag_putc('M');
 	WDG_Disable();
+	/* Keep IRQs masked until FreeRTOS owns SysTick (BL left tick running). */
+	__nds32__setgie_dis();
 	diag_putc('1');
 
 	DbgUartInit(1, 115200, 8, 0, 1);
@@ -200,6 +251,12 @@ int main(void)
 		    tskIDLE_PRIORITY + 1,
 		    &xPrintTaskHandle);
 
+	// #region agent log
+	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"pre-fix\",\"hypothesisId\":\"H11\","
+	    "\"location\":\"main.c:main\",\"message\":\"pre_scheduler\","
+	    "\"data\":{\"tick\":%u},\"timestamp\":%u}\n",
+	    (unsigned)gSysTick, (unsigned)gSysTick);
+	// #endregion agent log
 	DBG("Starting FreeRTOS scheduler...\n");
 	vTaskStartScheduler();
 

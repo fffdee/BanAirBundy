@@ -88,7 +88,7 @@ all: boot_app.adx secondary-outputs
 boot_app.adx: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Andes C Linker'
-	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/boot_app/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx" $(OBJS) $(USER_OBJS) $(LIBS)
+	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
