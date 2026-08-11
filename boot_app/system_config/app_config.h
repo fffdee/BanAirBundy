@@ -65,13 +65,13 @@
 #define HAS_BOOTLOADER           1
 
 /*
- * USB mode:
- *   CDC_ONLY(12) — 枚举/串口验证（已通过）
- *   AUDIO_CDC(9) — Speaker + CDC
- *   AUDIO_MIC_CDC(11) — Speaker + Microphone + CDC（正常工作模式）
+ * USB mode (this chip OtgEPInit / otg_fifo.c: only EP1+EP2 FIFOs):
+ *   CDC_ONLY(12)     — CDC only（已通过）
+ *   AUDIO_CDC(9)     — Speaker(0x02)+CDC(0x81/0x01/0x82) — 与 FIFO 匹配
+ *   AUDIO_MIC_CDC(11)— 需 Mic ISO 0x84，无 EP4 FIFO；日志见 dtr=0 且声卡不可用
  */
 #ifndef BOOT_APP_USB_MODE
-#define BOOT_APP_USB_MODE        AUDIO_MIC_CDC
+#define BOOT_APP_USB_MODE        AUDIO_CDC
 #endif
 #ifndef CFG_PARA_USB_MODE
 #define CFG_PARA_USB_MODE        BOOT_APP_USB_MODE

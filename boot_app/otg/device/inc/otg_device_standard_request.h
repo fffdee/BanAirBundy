@@ -92,7 +92,6 @@ extern "C"{
 
 void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid);
 void OTG_DeviceRequestProcess(void);
-void OTG_DeviceDebugDump(void);
 
 
 #ifdef __cplusplus

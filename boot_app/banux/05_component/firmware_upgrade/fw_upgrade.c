@@ -8,7 +8,11 @@
 #include "dual_partition.h"
 #include "spi_flash.h"
 #include "reset.h"
+#include "debug.h"
 #include "banux_config.h"
+#include "irqn.h"
+#include "core_d1088.h"
+#include <nds32_intrinsic.h>
 
 #if HW_DRV_USB_CDC_EN
 #include "cdc_upgrade.h"
@@ -90,16 +94,38 @@ int FwUpgrade_GetInfo(FwUpgradeInfo_t *info)
 void FwUpgrade_RebootToBootloader(void)
 {
     uint32_t magic = BURN_FLAG_MAGIC;
+    uint32_t rb_mmio = 0;
+    uint32_t rb_spi = 0;
 
+    /*
+     * Match PartFlag_Write: FlashErase + SpiFlashWrite(IsSuspend=0), IRQs off,
+     * verify via SpiFlashRead (not stale D-cache MMIO).
+     */
+    GIE_DISABLE();
     SpiFlashIOCtrl(IOCTL_FLASH_UNPROTECT, "\x35\xBA\x69", 3);
-    SpiFlashErase(SECTOR_ERASE, BURN_FLAG_SECTOR, 1);
-    SpiFlashWrite(BURN_FLAG_ADDR, (uint8_t *)&magic, sizeof(magic), 100);
+    (void)FlashErase(BURN_FLAG_ADDR, FLASH_SECTOR_SZ);
+    (void)SpiFlashWrite(BURN_FLAG_ADDR, (uint8_t *)&magic, sizeof(magic), 0);
+    (void)SpiFlashRead(BURN_FLAG_ADDR, (uint8_t *)&rb_spi, sizeof(rb_spi), 100);
+    DataCacheInvalidAll();
+    __nds32__dsb();
+    rb_mmio = *(volatile const uint32_t *)BURN_FLAG_ADDR;
+    GIE_ENABLE();
+
+    if (rb_spi != magic && rb_mmio != magic) {
+        DBG("[BOOT] burn flag verify FAILED — not rebooting\n");
+        return;
+    }
+
     Reset_McuSystem();
 }
 
 uint32_t FwUpgrade_GetBootloaderFlag(void)
 {
-    return *(volatile const uint32_t *)BURN_FLAG_ADDR;
+    uint32_t val = 0;
+
+    if (SpiFlashRead(BURN_FLAG_ADDR, (uint8_t *)&val, sizeof(val), 100) != FLASH_NONE_ERR)
+        return *(volatile const uint32_t *)BURN_FLAG_ADDR;
+    return val;
 }
 
 int FwUpgrade_IsBootloaderFlagSet(void)

@@ -30,14 +30,14 @@ S_UPPER_DEPS += \
 startup/%.o: ../startup/%.S
 	@echo 'Building file: $<'
 	@echo 'Invoking: Andes C Compiler'
-	$(CROSS_COMPILE)gcc -DCFG_APP_CONFIG -I"/cygdrive/D/BanAirBundy/bootloader/src" -I"/cygdrive/D/BanAirBundy/bootloader/src/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/bootloader/otg/device/inc" -I"/cygdrive/D/BanAirBundy/bootloader/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/bootloader/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/bootloader/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/bootloader/middleware/audio/inc" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d) $(@:%.o=%.o)" -o "$@" "$<"
+	$(CROSS_COMPILE)gcc -DCFG_APP_CONFIG -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/src/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/middleware/audio/inc" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d) $(@:%.o=%.o)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 startup/%.o: ../startup/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Andes C Compiler'
-	$(CROSS_COMPILE)gcc -DCFG_APP_CONFIG -I"/cygdrive/D/BanAirBundy/bootloader/src" -I"/cygdrive/D/BanAirBundy/bootloader/src/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/bootloader/otg/device/inc" -I"/cygdrive/D/BanAirBundy/bootloader/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/bootloader/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/bootloader/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/bootloader/middleware/audio/inc" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d) $(@:%.o=%.o)" -o "$@" "$<"
+	$(CROSS_COMPILE)gcc -DCFG_APP_CONFIG -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/src/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/middleware/audio/inc" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d) $(@:%.o=%.o)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

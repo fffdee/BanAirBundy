@@ -213,15 +213,18 @@ static int fw_looks_valid(uint32_t base)
 
 void Boot_CheckAndJumpIfNeeded(void)
 {
-    uint32_t flag_val = *(volatile const uint32_t *)BURN_FLAG_ADDR;
+    uint32_t flag_val;
+
+    /* Soft reset may leave D-cache stale — invalidate before burn-flag read. */
+    DataCacheInvalidAll();
+    __nds32__dsb();
+
+    flag_val = *(volatile const uint32_t *)BURN_FLAG_ADDR;
     if (flag_val == BURN_FLAG_MAGIC) {
         DBG("[BOOT] Burn flag set — stay in upgrade mode\n");
         SpiFlashErase(SECTOR_ERASE, BURN_FLAG_SECTOR, 0);
         return;
     }
-
-    DataCacheInvalidAll();
-    __nds32__dsb();
 
     if (!g_layout.is_dual) {
         if (!fw_looks_valid(PART_A_BASE)) {

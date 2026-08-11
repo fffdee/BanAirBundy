@@ -88,211 +88,211 @@
 00002f32 T App_Upgrade_ProcessChannel	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:475
 00002fa8 T App_Upgrade_InjectRaw	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:521
 00002fea T App_Upgrade_IsFinished	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:545
-00002ff6 t crc32_calc	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:84
-0000302a t part_flag_seal	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:96
-00003048 t part_flag_valid	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:103
-00003074 t fw_looks_valid	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:199
-000030a4 T DualPart_GetLayout	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:33
-000030aa T DualPart_Init	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:38
-00003122 T PartFlag_Read	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:112
-00003146 T PartFlag_Default	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:118
-00003160 T PartFlag_Write	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:128
-000031ae T Boot_JumpTo	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:140
-000032ba T Boot_CheckAndJumpIfNeeded	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:214
-00003462 t cdc_rx_avail_cb	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:26
-00003474 t cdc_tx	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:16
-00003486 t cdc_rx_read_cb	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:21
-00003498 T CDC_Upgrade_Init	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:33
-000034d6 T CDC_Upgrade_EnterMode	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:45
-0000350e T CDC_Upgrade_InMode	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:64
-00003514 T CDC_Upgrade_CheckEnter	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:69
-00003576 T CDC_Upgrade_Process	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:94
-000035c6 t usb_cdc_upgrade_loop	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:63
-00003646 T main	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:101
-0000375e W BLE_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e t Default_Handler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:41
-0000375e W FFTInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W GpioInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W HosccntInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W I2C_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W I2sInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W IR_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W PowerkeyInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W RtcInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W SDIO0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W SPDIF0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W SPDIF1_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W SPIM_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W SPIS_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W SWInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer2Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer3Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer4Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer5Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer6Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer7Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W Timer8Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W UART0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W UART1_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W WakeupInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-0000375e W rwbt_isr	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
-00003760 T ExceptionCommHandler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:47
-00003988 T __c_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:180
-000039bc T __cpu_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:207
-00003a68 T __init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:334
-00003a82 T GIE_ENABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:9
-00003a8c T GIE_DISABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:14
-00003a9a T GIE_STATE_GET	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:20
-00003aa2 T NVIC_EnableIRQ	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:64
-00003aba T NVIC_DisableIRQ	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:76
-00003ad4 T NVIC_SetPriority	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:105
-00003b1e T putchar	/cygdrive/c/Andestech/AndeSight300RDS/toolchains/nds32le-elf-mculib-v3s/nds32le-elf/include/stdio.h:212
-00003b50 T nds_write	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:32
-00003b70 T DbgUartInit	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:41
-00003b86 T permission_rule
-00003c16 T Chip_Init
-00003cdc T Clock_Config
-00003d48 T WaitOscillateWork
-00003d62 T Clock_USBClkDivSet
-00003d74 T Clock_RcFreqGet
-00003e96 T Clock_PllLock
-00003f62 T Clock_APllLock
-00003fda T Clock_SysClkSelect
-00004078 T Clock_USBClkSelect
-000040a4 T Clock_UARTClkSelect
-000040fc T Clock_Module1Enable
-0000410c T Clock_Module2Enable
-0000411c T Clock_Module3Enable
-0000412c T Clock_HOSCCurrentSet
-00004146 T EnableMPU
-000041a8 T EnableIDCache
-000041ea T DMA_ChannelAllocTableSet
-00004266 T Efuse_ReadData
-000042ca T Set_AEN_CNT
-000042d4 t Read_ModuleSwitch_EfuseStatus
-00004374 T Read_ModuleSwitch_Status
-00004440 T GPIO_PortAModeSet
-00004804 t OTG_DeviceWaitEnd
-0000487a T OTG_DeviceInit
-00004942 T OTG_DeviceStallSend
-00004a04 T OTG_DeviceEndpointReset
-00004ae2 T OTG_DeviceAddressSet
-00004b1a T OTG_DeviceBusEventGet
-00004b26 T OTG_DeviceControlSend
-00004b9e T OTG_DeviceControlReceive
-00004c18 T OTG_DeviceSetupReceive
-00004c6e T OTG_DeviceBulkSend
-00004cdc T OTG_DeviceBulkReceive
-00004d68 T UsbInterrupt
-00004dee T OtgEPInit
-00004eea T LoadFIFOData
-00004f1c T UnloadFIFOData
-00004f6a T Remap_AddrRemapSet
-0000504c T Remap_AddrRemapDisable
-000050a2 T Reset_McuSystem
-000050ac T SysTickInit
-000050d6 W SystickInterrupt
-000050ee T ClockFreqGet
-00005100 T Timer_Config
-000052cc T Timer_Start
-0000535c t UART_BaudClkGet
-000053b2 T UART_Init
-000055e4 T UART_SendByte
-0000561a T WDG_Disable
-0000563e T OTG_PortEnableDPPullUp
-00005668 T OTG_PortDisableDPPullUp
-00005692 T OTG_PortDisablePullDown
-000056bc T OTG_PortSetSpeed
-000056e6 T printf
-000056f0 T puts
-00005740 t vprintf_help
-00005774 T vprintf
-000057c0 T do_printf
-00005c68 t sep_frac
-00005c9a T _printf_float
-0000636c T strcpy
-00006380 T strlen
-0000638c T abs
-00006394 T _write
-000063ac t ISR_TABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:62
-0000642c t OS_Trap_TLB_Fill	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:106
-00006440 t OS_Trap_PTE_Not_Present	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:110
-00006454 t OS_Trap_TLB_Misc	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:114
-00006468 t OS_Trap_TLB_VLPT_Miss	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:119
-0000647c t OS_Trap_Machine_Error	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:123
-00006490 t OS_Trap_Debug_Related	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:127
-000064a4 t OS_Trap_General_Exception	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:131
-000064b8 t OS_Trap_Syscall	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:135
-000064cc t OS_Trap_Int_Comm	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:138
-000065b6 t OS_Trap_Interrupt_HW0	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:148
-000065c0 t OS_Trap_Interrupt_HW1	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:153
-000065ca t OS_Trap_Interrupt_HW2	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:158
-000065d4 t OS_Trap_Interrupt_HW3	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:169
-000065de t OS_Trap_Interrupt_HW4	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:174
-000065e8 t OS_Trap_Interrupt_HW5	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:184
-000065f2 t OS_Trap_Interrupt_HW6	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:190
-000065fc t OS_Trap_Interrupt_HW7	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:195
-00006606 t OS_Trap_Interrupt_HW8	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:200
-00006610 t OS_Trap_Interrupt_HW9	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:205
-0000661a t OS_Trap_Interrupt_HW10	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:210
-00006624 t OS_Trap_Interrupt_HW11	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:215
-0000662e t OS_Trap_Interrupt_HW12	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:220
-00006638 t OS_Trap_Interrupt_HW13	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:225
-00006642 t OS_Trap_Interrupt_HW14	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:230
-0000664c t OS_Trap_Interrupt_HW15	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:235
-00006656 t OS_Trap_Interrupt_HW16	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:240
-00006660 t OS_Trap_Interrupt_HW17	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:245
-0000666a t OS_Trap_Interrupt_HW18	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:250
-00006674 t OS_Trap_Interrupt_HW19	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:255
-0000667e t OS_Trap_Interrupt_HW20	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:260
-00006688 t OS_Trap_Interrupt_HW21	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:265
-00006692 t OS_Trap_Interrupt_HW22	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:270
-0000669c t OS_Trap_Interrupt_HW23	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:275
-000066a6 t OS_Trap_Interrupt_HW24	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:280
-000066b0 t OS_Trap_Interrupt_HW25	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:285
-000066ba t OS_Trap_Interrupt_HW26	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:290
-000066c4 t OS_Trap_Interrupt_HW27	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:295
-000066ce t OS_Trap_Interrupt_HW28	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:300
-000066d8 t OS_Trap_Interrupt_HW29	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:305
-000066e2 t OS_Trap_Interrupt_HW30	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:310
-000066ec t OS_Trap_Interrupt_HW31	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:315
-000066f8 t ___start	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:331
-00006794 R DeviceString_LangID	/cygdrive/d/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:52
-00006798 R DeviceQualifier	/cygdrive/d/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:45
-000067a4 R InterFaceNum_AUDIO_MIC_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:531
-000067ac R ConfigDescriptor_AUDIO_MIC_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:480
-000068c8 R InterFaceNum_AUDIO_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:476
-000068d0 R ConfigDescriptor_AUDIO_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:443
-0000697c R InterFaceNum_CDC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:439
-00006984 R ConfigDescriptor_CDC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:413
-000069d0 R InterFaceNum_HID	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:407
-000069d8 R ConfigDescriptor_HID	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:399
-000069ec R InterFaceNum_AUDIO_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:395
-000069f4 R ConfigDescriptor_AUDIO_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:346
-00006b08 R InterFaceNum_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:342
-00006b10 R ConfigDescriptor_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:303
-00006bcc R InterFaceNum_AUDIO_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:300
-00006bd4 R ConfigDescriptor_AUDIO_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:259
-00006c88 R InterFaceNum_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:256
-00006c90 R ConfigDescriptor_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:246
-00006cb0 R InterFaceNum_AUDIO_MIC_PHONE	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:243
-00006cb8 R ConfigDescriptor_AUDIO_MIC_PHONE	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:199
-00006db4 R InterFaceNum_AUDIO_MIC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:197
-00006dbc R ConfigDescriptor_AUDIO_MIC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:153
-00006eb8 R InterFaceNum_MIC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:151
-00006ec0 R ConfigDescriptor_MIC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:116
-00006f64 R InterFaceNum_AUDIO_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:112
-00006f6c R ConfigDescriptor_AUDIO_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:78
-00007008 R HidDataReportDescriptor	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:48
-0000702c R AudioCtrlReportDescriptor	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:25
-000076fc R MPUConfigTable	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:389
-000077dc r DMADefaultConfigTable
-00007a78 A __ctxt_code_end
-00007a78 A __ctxt_code_start
-00007a78 A __rand_code_end
-00007a78 A __rand_code_start
-00007a80 A __data_lmastart
-00007bc8 A EILM_SIZE
+00002ff6 t crc32_calc	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:84
+0000302a t part_flag_seal	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:96
+00003048 t part_flag_valid	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:103
+00003074 t fw_looks_valid	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:199
+000030a4 T DualPart_GetLayout	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:33
+000030aa T DualPart_Init	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:38
+00003122 T PartFlag_Read	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:112
+00003146 T PartFlag_Default	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:118
+00003160 T PartFlag_Write	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:128
+000031ae T Boot_JumpTo	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:140
+000032ba T Boot_CheckAndJumpIfNeeded	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:214
+0000346e t cdc_rx_avail_cb	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:26
+00003480 t cdc_tx	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:16
+00003492 t cdc_rx_read_cb	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:21
+000034a4 T CDC_Upgrade_Init	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:33
+000034e2 T CDC_Upgrade_EnterMode	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:45
+0000351a T CDC_Upgrade_InMode	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:64
+00003520 T CDC_Upgrade_CheckEnter	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:69
+00003582 T CDC_Upgrade_Process	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:94
+000035d2 t usb_cdc_upgrade_loop	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:63
+00003652 T main	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:101
+0000376a W BLE_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a t Default_Handler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:41
+0000376a W FFTInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W GpioInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W HosccntInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W I2C_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W I2sInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W IR_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W PowerkeyInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W RtcInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W SDIO0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W SPDIF0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W SPDIF1_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W SPIM_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W SPIS_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W SWInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer2Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer3Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer4Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer5Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer6Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer7Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W Timer8Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W UART0_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W UART1_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W WakeupInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376a W rwbt_isr	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
+0000376c T ExceptionCommHandler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:47
+00003994 T __c_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:180
+000039c8 T __cpu_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:207
+00003a74 T __init	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:334
+00003a8e T GIE_ENABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:9
+00003a98 T GIE_DISABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:14
+00003aa6 T GIE_STATE_GET	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:20
+00003aae T NVIC_EnableIRQ	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:64
+00003ac6 T NVIC_DisableIRQ	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:76
+00003ae0 T NVIC_SetPriority	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/interrupt.c:105
+00003b2a T putchar	/cygdrive/c/Andestech/AndeSight300RDS/toolchains/nds32le-elf-mculib-v3s/nds32le-elf/include/stdio.h:212
+00003b5c T nds_write	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:32
+00003b7c T DbgUartInit	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/retarget.c:41
+00003b92 T permission_rule
+00003c22 T Chip_Init
+00003ce8 T Clock_Config
+00003d54 T WaitOscillateWork
+00003d6e T Clock_USBClkDivSet
+00003d80 T Clock_RcFreqGet
+00003ea2 T Clock_PllLock
+00003f6e T Clock_APllLock
+00003fe6 T Clock_SysClkSelect
+00004084 T Clock_USBClkSelect
+000040b0 T Clock_UARTClkSelect
+00004108 T Clock_Module1Enable
+00004118 T Clock_Module2Enable
+00004128 T Clock_Module3Enable
+00004138 T Clock_HOSCCurrentSet
+00004152 T EnableMPU
+000041b4 T EnableIDCache
+000041f6 T DMA_ChannelAllocTableSet
+00004272 T Efuse_ReadData
+000042d6 T Set_AEN_CNT
+000042e0 t Read_ModuleSwitch_EfuseStatus
+00004380 T Read_ModuleSwitch_Status
+0000444c T GPIO_PortAModeSet
+00004810 t OTG_DeviceWaitEnd
+00004886 T OTG_DeviceInit
+0000494e T OTG_DeviceStallSend
+00004a10 T OTG_DeviceEndpointReset
+00004aee T OTG_DeviceAddressSet
+00004b26 T OTG_DeviceBusEventGet
+00004b32 T OTG_DeviceControlSend
+00004baa T OTG_DeviceControlReceive
+00004c24 T OTG_DeviceSetupReceive
+00004c7a T OTG_DeviceBulkSend
+00004ce8 T OTG_DeviceBulkReceive
+00004d74 T UsbInterrupt
+00004dfa T OtgEPInit
+00004ef6 T LoadFIFOData
+00004f28 T UnloadFIFOData
+00004f76 T Remap_AddrRemapSet
+00005058 T Remap_AddrRemapDisable
+000050ae T Reset_McuSystem
+000050b8 T SysTickInit
+000050e2 W SystickInterrupt
+000050fa T ClockFreqGet
+0000510c T Timer_Config
+000052d8 T Timer_Start
+00005368 t UART_BaudClkGet
+000053be T UART_Init
+000055f0 T UART_SendByte
+00005626 T WDG_Disable
+0000564a T OTG_PortEnableDPPullUp
+00005674 T OTG_PortDisableDPPullUp
+0000569e T OTG_PortDisablePullDown
+000056c8 T OTG_PortSetSpeed
+000056f2 T printf
+000056fc T puts
+0000574c t vprintf_help
+00005780 T vprintf
+000057cc T do_printf
+00005c74 t sep_frac
+00005ca6 T _printf_float
+00006378 T strcpy
+0000638c T strlen
+00006398 T abs
+000063a0 T _write
+000063b8 t ISR_TABLE	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:62
+00006438 t OS_Trap_TLB_Fill	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:106
+0000644c t OS_Trap_PTE_Not_Present	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:110
+00006460 t OS_Trap_TLB_Misc	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:114
+00006474 t OS_Trap_TLB_VLPT_Miss	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:119
+00006488 t OS_Trap_Machine_Error	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:123
+0000649c t OS_Trap_Debug_Related	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:127
+000064b0 t OS_Trap_General_Exception	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:131
+000064c4 t OS_Trap_Syscall	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:135
+000064d8 t OS_Trap_Int_Comm	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:138
+000065c2 t OS_Trap_Interrupt_HW0	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:148
+000065cc t OS_Trap_Interrupt_HW1	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:153
+000065d6 t OS_Trap_Interrupt_HW2	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:158
+000065e0 t OS_Trap_Interrupt_HW3	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:169
+000065ea t OS_Trap_Interrupt_HW4	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:174
+000065f4 t OS_Trap_Interrupt_HW5	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:184
+000065fe t OS_Trap_Interrupt_HW6	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:190
+00006608 t OS_Trap_Interrupt_HW7	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:195
+00006612 t OS_Trap_Interrupt_HW8	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:200
+0000661c t OS_Trap_Interrupt_HW9	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:205
+00006626 t OS_Trap_Interrupt_HW10	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:210
+00006630 t OS_Trap_Interrupt_HW11	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:215
+0000663a t OS_Trap_Interrupt_HW12	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:220
+00006644 t OS_Trap_Interrupt_HW13	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:225
+0000664e t OS_Trap_Interrupt_HW14	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:230
+00006658 t OS_Trap_Interrupt_HW15	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:235
+00006662 t OS_Trap_Interrupt_HW16	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:240
+0000666c t OS_Trap_Interrupt_HW17	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:245
+00006676 t OS_Trap_Interrupt_HW18	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:250
+00006680 t OS_Trap_Interrupt_HW19	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:255
+0000668a t OS_Trap_Interrupt_HW20	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:260
+00006694 t OS_Trap_Interrupt_HW21	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:265
+0000669e t OS_Trap_Interrupt_HW22	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:270
+000066a8 t OS_Trap_Interrupt_HW23	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:275
+000066b2 t OS_Trap_Interrupt_HW24	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:280
+000066bc t OS_Trap_Interrupt_HW25	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:285
+000066c6 t OS_Trap_Interrupt_HW26	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:290
+000066d0 t OS_Trap_Interrupt_HW27	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:295
+000066da t OS_Trap_Interrupt_HW28	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:300
+000066e4 t OS_Trap_Interrupt_HW29	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:305
+000066ee t OS_Trap_Interrupt_HW30	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:310
+000066f8 t OS_Trap_Interrupt_HW31	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:315
+00006704 t ___start	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/crt0.S:331
+000067a0 R DeviceString_LangID	/cygdrive/d/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:52
+000067a4 R DeviceQualifier	/cygdrive/d/BanAirBundy/bootloader/Debug/../otg/device/src/otg_device_standard_request.c:45
+000067b0 R InterFaceNum_AUDIO_MIC_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:531
+000067b8 R ConfigDescriptor_AUDIO_MIC_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:480
+000068d4 R InterFaceNum_AUDIO_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:476
+000068dc R ConfigDescriptor_AUDIO_CDC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:443
+00006988 R InterFaceNum_CDC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:439
+00006990 R ConfigDescriptor_CDC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:413
+000069dc R InterFaceNum_HID	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:407
+000069e4 R ConfigDescriptor_HID	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:399
+000069f8 R InterFaceNum_AUDIO_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:395
+00006a00 R ConfigDescriptor_AUDIO_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:346
+00006b14 R InterFaceNum_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:342
+00006b1c R ConfigDescriptor_MIC_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:303
+00006bd8 R InterFaceNum_AUDIO_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:300
+00006be0 R ConfigDescriptor_AUDIO_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:259
+00006c94 R InterFaceNum_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:256
+00006c9c R ConfigDescriptor_READER	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:246
+00006cbc R InterFaceNum_AUDIO_MIC_PHONE	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:243
+00006cc4 R ConfigDescriptor_AUDIO_MIC_PHONE	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:199
+00006dc0 R InterFaceNum_AUDIO_MIC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:197
+00006dc8 R ConfigDescriptor_AUDIO_MIC	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:153
+00006ec4 R InterFaceNum_MIC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:151
+00006ecc R ConfigDescriptor_MIC_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:116
+00006f70 R InterFaceNum_AUDIO_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:112
+00006f78 R ConfigDescriptor_AUDIO_ONLY	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:78
+00007014 R HidDataReportDescriptor	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:48
+00007038 R AudioCtrlReportDescriptor	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:25
+0000774c R MPUConfigTable	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:389
+0000782c r DMADefaultConfigTable
+00007ac8 A __ctxt_code_end
+00007ac8 A __ctxt_code_start
+00007ac8 A __rand_code_end
+00007ac8 A __rand_code_start
+00007ae0 A __data_lmastart
+00007c28 A EILM_SIZE
 008044d0 A IsFlashBusy
 008044dc A SetFlashBusy
 008044e4 A ClearFlashBusy
@@ -992,7 +992,7 @@
 200042b8 b g_engine	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:139
 200042d4 b crc32_table_init	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:22
 200042d8 b crc32_table	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/app_upgrade.c:21
-200046d8 b g_layout	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:20
+200046d8 b g_layout	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/boot_decision.c:20
 200046ec b s_cdc_ch	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:31
 200046fc b s_upgrade_mode	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:14
 20004700 b s_initialised	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:13

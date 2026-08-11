@@ -56,49 +56,6 @@ uint8_t Request[256];
 uint8_t *ConfigDescriptor;
 uint8_t *InterfaceNum;
 
-// #region agent log
-/* Ring keeps *recent* SETUPs — first-8 only lost CDC open (0x20/0x21/0x22). */
-#define USB_DBG_SETUP_MAX 16
-typedef struct {
-	uint8_t setup[8];
-} UsbDbgSetup_t;
-static volatile uint32_t s_dbg_bus_reset;
-static volatile uint32_t s_dbg_setup_ok;
-static volatile uint32_t s_dbg_setup_err;
-static volatile uint32_t s_dbg_setup_short;
-static volatile uint32_t s_dbg_last_setup_err;
-static volatile uint32_t s_dbg_last_bus_event;
-static volatile uint32_t s_dbg_first_reset_tick;
-static volatile uint32_t s_dbg_first_ok_tick;
-static volatile uint32_t s_dbg_setup_w;
-static UsbDbgSetup_t s_dbg_setup[USB_DBG_SETUP_MAX];
-extern unsigned int GetSysTick1MsCnt(void);
-
-static void OTG_DeviceDebugHwSnapshot(uint32_t *usb_div_minus1,
-				      uint32_t *usb_div_alt,
-				      uint32_t *usb_mux,
-				      uint32_t *dp_pwr,
-				      uint32_t *ep0_csr,
-				      uint32_t *power,
-				      uint32_t *faddr,
-				      uint32_t *mod1,
-				      uint32_t *phy)
-{
-	/* Clock_USBClkDivSet: swi333 to 0x40021000+#0x4 stores (Div-1) */
-	*usb_div_minus1 = *(volatile uint32_t *)0x40021004UL;
-	*usb_div_alt = *(volatile uint32_t *)0x40021010UL;
-	*usb_mux = (uint32_t)(*(volatile uint16_t *)0x4002103CUL);
-	*dp_pwr = *(volatile uint32_t *)0x40000194UL;
-	/* Select EP0 INDEX then read CSR */
-	*(volatile uint8_t *)0x4000000EUL = 0;
-	*ep0_csr = (uint32_t)(*(volatile uint8_t *)0x40000011UL);
-	*power = (uint32_t)(*(volatile uint8_t *)0x40000001UL);
-	*faddr = (uint32_t)(*(volatile uint8_t *)0x40000000UL);
-	*mod1 = *(volatile uint32_t *)0x40021044UL;
-	*phy = *(volatile uint32_t *)0x40022004UL;
-}
-// #endregion agent log
-
 const char *gDeviceProductString ="BG Card audio";		//max length: 32bytes
 const char *gDeviceString_Manu ="BanGO";		//max length: 32bytes
 const char *gDeviceString_SerialNumber ="20250405";//max length: 32bytes
@@ -314,23 +271,37 @@ void OTG_DeviceStandardRequest()
 		case USB_REQ_SET_CONFIGURATION:
 			{
 				static uint8_t zlp;
-				/* Keep EP0 path minimal: reset EPs + status ZLP only.
-				 * Do NOT CDC_Init here — defer to main after SET_CONFIG. */
+				/* EP0 minimal: reset EPs + status ZLP, then audio init.
+				 * Do NOT CDC_Init here — defer to task after SET_CONFIG. */
 				OTG_DeviceEndpointReset(DEVICE_CDC_CMD_EP, TYPE_INT_IN);
 				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_IN_EP, TYPE_BULK_IN);
 				OTG_DeviceEndpointReset(DEVICE_CDC_DATA_OUT_EP, TYPE_BULK_OUT);
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
 				/*
-				 * AUDIO_CDC has one audio endpoint only: Speaker ISO OUT 0x02.
-				 * Do not touch 0x84 here: it is absent from the descriptor and
-				 * this chip has no FIFO for it. ISO callbacks are enabled only
-				 * after SET_INTERFACE alt=1 completes.
+				 * AUDIO_CDC: Speaker ISO OUT 0x02 only (EP2 RX FIFO).
+				 * Never touch 0x84 here — no EP4 FIFO on this chip.
+				 * ISO callbacks enabled only after SET_INTERFACE alt=1.
 				 */
 				if (CFG_PARA_USB_MODE == AUDIO_CDC ||
 				    CFG_PARA_USB_MODE == AUDIO_MIC ||
 				    CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
 				    CFG_PARA_USB_MODE == AUDIO_ONLY) {
 					OTG_DeviceEndpointReset(DEVICE_ISO_OUT_EP, TYPE_ISO_OUT);
+				}
+				if (CFG_PARA_USB_MODE == AUDIO_MIC ||
+				    CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
+				    CFG_PARA_USB_MODE == MIC_ONLY ||
+				    CFG_PARA_USB_MODE == MIC_CDC) {
+					OTG_DeviceEndpointReset(DEVICE_ISO_IN_EP, TYPE_ISO_IN);
+				}
+#endif
+				OTG_DeviceControlSend(&zlp, 0, 10);
+				g_usb_configured = 1;
+#ifdef CFG_APP_USB_AUDIO_MODE_EN
+				if (CFG_PARA_USB_MODE == AUDIO_CDC ||
+				    CFG_PARA_USB_MODE == AUDIO_MIC ||
+				    CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
+				    CFG_PARA_USB_MODE == AUDIO_ONLY) {
 					OTG_DeviceAudioInit();
 					UsbAudioSpeaker.InitOk = 1;
 				}
@@ -338,12 +309,9 @@ void OTG_DeviceStandardRequest()
 				    CFG_PARA_USB_MODE == AUDIO_MIC_CDC ||
 				    CFG_PARA_USB_MODE == MIC_ONLY ||
 				    CFG_PARA_USB_MODE == MIC_CDC) {
-					OTG_DeviceEndpointReset(DEVICE_ISO_IN_EP, TYPE_ISO_IN);
 					UsbAudioMic.InitOk = 1;
 				}
 #endif
-				OTG_DeviceControlSend(&zlp, 0, 10);
-				g_usb_configured = 1;
 			}
 			break;
 
@@ -507,16 +475,8 @@ void OTG_DeviceRequestProcess(void)
 	uint8_t ReqType;
 	OTG_DEVICE_ERR_CODE setup_err;
 
-	// #region agent log
-	s_dbg_last_bus_event = BusEvent;
-	// #endregion agent log
 	if(BusEvent & 0x04)
 	{
-		// #region agent log
-		s_dbg_bus_reset++;
-		if (s_dbg_first_reset_tick == 0u)
-			s_dbg_first_reset_tick = GetSysTick1MsCnt();
-		// #endregion agent log
 		/* Match Example_USB: do NOT call AddressSet(0) here (blocked ~20ms, bit4 never set).
 		 * Hardware clears address on bus reset. */
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
@@ -529,29 +489,12 @@ void OTG_DeviceRequestProcess(void)
 	setup_err = OTG_DeviceSetupReceive(Setup, 8, &DataLeng);
 	if(setup_err != DEVICE_NONE_ERR)
 	{
-		// #region agent log
-		s_dbg_setup_err++;
-		s_dbg_last_setup_err = (uint32_t)setup_err;
-		// #endregion agent log
 		return;
 	}
 	/* Status-OUT ZLP can raise RxPktRdy with len!=8; ignore (stale Setup[]). */
 	if (DataLeng != 8u) {
-		// #region agent log
-		s_dbg_setup_short++;
-		// #endregion agent log
 		return;
 	}
-	// #region agent log
-	{
-		uint32_t w = s_dbg_setup_w % USB_DBG_SETUP_MAX;
-		memcpy(s_dbg_setup[w].setup, Setup, 8);
-		s_dbg_setup_w++;
-	}
-	s_dbg_setup_ok++;
-	if (s_dbg_first_ok_tick == 0u)
-		s_dbg_first_ok_tick = GetSysTick1MsCnt();
-	// #endregion agent log
 	/* IMPORTANT: do NOT DBG before handling — SET_ADDRESS status is timing-critical. */
 	//IsAndroid();
 	if((Setup[0]&0x80) == 0)//out
@@ -601,62 +544,6 @@ void OTG_DeviceRequestProcess(void)
 			break;			
 	}
 }
-
-// #region agent log
-void OTG_DeviceDebugDump(void)
-{
-	uint32_t i;
-	uint32_t total = s_dbg_setup_ok;
-	uint32_t count = (total < USB_DBG_SETUP_MAX) ? total : USB_DBG_SETUP_MAX;
-	uint32_t start = (total < USB_DBG_SETUP_MAX) ? 0u : (s_dbg_setup_w % USB_DBG_SETUP_MAX);
-	uint32_t usb_div_m1, usb_div_alt, usb_mux, dp_pwr, ep0_csr;
-	uint32_t power, faddr, mod1, phy;
-	uint32_t usb_div = 0, usb_mhz = 0, apl = 0;
-
-	OTG_DeviceDebugHwSnapshot(&usb_div_m1, &usb_div_alt, &usb_mux,
-				 &dp_pwr, &ep0_csr, &power, &faddr, &mod1, &phy);
-	usb_div = usb_div_m1 + 1u;
-	if (usb_div)
-		usb_mhz = 240u / usb_div;
-	apl = (usb_mux & 0x800u) ? 1u : 0u;
-
-	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"cdc-open\",\"hypothesisId\":\"H51,H53\","
-	    "\"location\":\"otg_device_standard_request.c:OTG_DeviceDebugDump\","
-	    "\"message\":\"usb_hw\",\"data\":{\"div\":%u,\"mhz\":%u,\"apl\":%u,"
-	    "\"dp\":%u,\"ep0csr\":%u,\"power\":%u,\"faddr\":%u,"
-	    "\"lastErr\":%u,\"rstTick\":%u,\"okTick\":%u},"
-	    "\"timestamp\":%u}\n",
-	    (unsigned)usb_div, (unsigned)usb_mhz, (unsigned)apl,
-	    (unsigned)dp_pwr, (unsigned)ep0_csr, (unsigned)power,
-	    (unsigned)faddr,
-	    (unsigned)s_dbg_last_setup_err,
-	    (unsigned)s_dbg_first_reset_tick, (unsigned)s_dbg_first_ok_tick,
-	    (unsigned)GetSysTick1MsCnt());
-	(void)mod1;
-	(void)phy;
-
-	DBG("{\"sessionId\":\"5032d7\",\"runId\":\"cdc-open\",\"hypothesisId\":\"H51,H53\","
-	    "\"location\":\"otg_device_standard_request.c:OTG_DeviceDebugDump\","
-	    "\"message\":\"usb_ep0_summary\",\"data\":{\"reset\":%u,\"setupOk\":%u,"
-	    "\"setupErr\":%u,\"short\":%u,\"cfg\":%u},\"timestamp\":%u}\n",
-	    (unsigned)s_dbg_bus_reset, (unsigned)s_dbg_setup_ok,
-	    (unsigned)s_dbg_setup_err, (unsigned)s_dbg_setup_short,
-	    (unsigned)g_usb_configured, (unsigned)GetSysTick1MsCnt());
-
-	for (i = 0; i < count; i++) {
-		const uint8_t *s = s_dbg_setup[(start + i) % USB_DBG_SETUP_MAX].setup;
-		DBG("{\"sessionId\":\"5032d7\",\"runId\":\"cdc-open\",\"hypothesisId\":\"H51\","
-		    "\"location\":\"otg_device_standard_request.c:OTG_DeviceRequestProcess\","
-		    "\"message\":\"usb_setup\",\"data\":{\"index\":%u,\"bm\":%u,\"req\":%u,"
-		    "\"wValue\":%u,\"wIndex\":%u,\"wLength\":%u},\"timestamp\":%u}\n",
-		    (unsigned)i, (unsigned)s[0], (unsigned)s[1],
-		    (unsigned)((uint16_t)s[2] | ((uint16_t)s[3] << 8)),
-		    (unsigned)((uint16_t)s[4] | ((uint16_t)s[5] << 8)),
-		    (unsigned)((uint16_t)s[6] | ((uint16_t)s[7] << 8)),
-		    (unsigned)GetSysTick1MsCnt());
-	}
-}
-// #endregion agent log
 
 //*************************************************//
 //*************************************************//
