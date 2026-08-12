@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>false</eraseAll><flashDriver>D\:/05SVN/B5/trunk/B5_Code/MVsB5_Base_SDK/tools/mv_download_bp1x_v3.2.exe</flashDriver><imageFile>D\:\\05SVN\\B5\\trunk\\B5_Code\\MVsB5_Base_SDK\\examples\\Example_PMU\\Debug\\output\\Example_PMU.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>true</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

@@ -16,6 +16,7 @@
 uint8_t DebugPrintPort = UART_PORT0;
 
 #include "uarts.h"
+#include "cdc_debug.h"
 //#include "rtos_api.h"
 #ifdef DEBUG_LOG_INTERRUPT
 	#include "nds32_intrinsic.h"
@@ -39,6 +40,8 @@ int putchar(int c)
 #ifndef DEBUG_LOG_EN//注意，app_config.h中的宏定义，防止打印宏关闭之后引起异常
 	return c;
 #endif
+	/* log -e：把 DBG/printf 镜像到 USB CDC，便于无 UART 时调试 */
+	CdcDbg_MirrorChar(c);
 	{
 		if (c == '\n')
 		{

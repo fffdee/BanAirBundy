@@ -48,9 +48,22 @@
 #define DECODE_QUALITY       AUDIO_QUALITY
 #define ENCODE_CH            0
 
-/* 角色: master */
+/* 角色: master = RX 主机 */
 #define WIRELESS_SDK_ROLE    MVWIRE2_MASTER_ROLE
 #define ROLE_TAG             master
+
+/*
+ * wireless_lib 接入开关：
+ *   BOOT_APP_WIRELESS_EN=1 编译并启动无线任务（当前为骨架 stub）
+ *   BOOT_APP_WIRELESS_ROLE_TX=0 RX/Master；=1 TX/Slave
+ * 工程排除：TX 时排除 wireless_rx.c，RX 时排除 wireless_tx.c
+ */
+#ifndef BOOT_APP_WIRELESS_EN
+#define BOOT_APP_WIRELESS_EN         1
+#endif
+#ifndef BOOT_APP_WIRELESS_ROLE_TX
+#define BOOT_APP_WIRELESS_ROLE_TX    0
+#endif
 
 /* 多项式阶数 */
 #define POLYNOMIAL_ORDER     2

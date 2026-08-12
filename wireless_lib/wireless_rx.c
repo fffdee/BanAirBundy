@@ -12,6 +12,9 @@
 #include "wireless_config.h"
 #include <string.h>
 
+/* boot_app: only one of TX/RX may provide Wireless_* symbols. */
+#if !defined(BOOT_APP_WIRELESS_ROLE_TX) || (BOOT_APP_WIRELESS_ROLE_TX == 0)
+
 /*===========================================================================
  * 内部状态
  *===========================================================================*/
@@ -118,7 +121,7 @@ static void rx_audio_process(void)
     }
 
     /* 6. 写入DAC DMA FIFO */
-    AudioDAC_DataSet(AUDIO_DAC0, s_rx.dac_pcm_buf, frame_size * 2);
+    WlAudioDac_DataSet(AUDIO_DAC0, s_rx.dac_pcm_buf, frame_size * 2);
 }
 
 /*===========================================================================
@@ -137,11 +140,11 @@ int Wireless_Init(const WirelessConfig_t *config)
     AudioDriver_Init(AUDIO_ROLE_RX);
 
     /* 2. 初始化DAC */
-    AudioDAC_Init(AUDIO_DAC0, config->sample_rate, AUDIO_WIDTH_16BIT,
+    WlAudioDac_Init(AUDIO_DAC0, config->sample_rate, AUDIO_WIDTH_16BIT,
                   s_rx.dac_pcm_buf, DAC_FIFO_SAMPLES(config->frame_size));
 
     /* 3. 设置DAC音量 */
-    AudioDAC_VolSet(AUDIO_DAC0, DAC_VOLUME_DEFAULT, DAC_VOLUME_DEFAULT);
+    WlAudioDac_VolSet(AUDIO_DAC0, DAC_VOLUME_DEFAULT, DAC_VOLUME_DEFAULT);
 
     /* 4. 初始化SBC解码器 (2个, 对应2个TX设备) */
     for (int i = 0; i < 2; i++) {
@@ -283,3 +286,5 @@ void AudioCodec_RxProcess(void)
 {
     rx_audio_process();
 }
+
+#endif /* !BOOT_APP_WIRELESS_ROLE_TX */

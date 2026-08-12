@@ -30,11 +30,11 @@ extern "C" {
 #endif
 
 #ifndef SYS_LED_EN
-#define SYS_LED_EN                  1   /* 系统状态 LED */
+#define SYS_LED_EN                  0   /* boot_app 未编译 sys_led */
 #endif
 
 #ifndef EFFECT_GRAPHICS_EN
-#define EFFECT_GRAPHICS_EN          1   /* 效果图组件 */
+#define EFFECT_GRAPHICS_EN          0   /* boot_app 未编译效果图组件 */
 #endif
 
 /*===========================================================================
@@ -68,7 +68,11 @@ extern "C" {
 #endif
 
 #ifndef SHELL_EN
-#define SHELL_EN                    0   /* Shell 命令系统 */
+#define SHELL_EN                    1   /* USB CDC BanUX Shell */
+#endif
+
+#ifndef CDC_DEBUG_EN
+#define CDC_DEBUG_EN                1   /* CDC 模块化调试输出 (log 命令控制) */
 #endif
 
 /*===========================================================================

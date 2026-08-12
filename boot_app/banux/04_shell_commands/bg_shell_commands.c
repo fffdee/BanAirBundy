@@ -36,8 +36,6 @@
 
 #include "audio_setting.h"
 
-/* 鏁堟灉鍣ㄥ懡浠ゆā鍧�*/
-#include "shell_cmd_effect.h"
 #include "shell_cmd_graph.h"
 
 /* 鍙傛暟淇濆瓨妯″潡 */
@@ -48,14 +46,6 @@
 
 /* Chain Graph Apply 妯″潡 */
 #include "chain_graph_apply.h"
-
-/* FAT32 文件系统命令 */
-#include "shell_cmd_fat.h"
-
-#if HW_CMD_PSRAM_EN
-/* PSRAM 内存管理命令 */
-#include "shell_cmd_psram.h"
-#endif
 
 /*============================================================================
  * Common save function for modules
@@ -3279,10 +3269,6 @@ DEFINE_MODULE(ble_send, "Send string via BLE", MOD_CAT_SYSTEM, ble_send_opts);
 /*============================================================================
  * Module registration
  *===========================================================================*/
-    /* 鍙傛暟淇濆瓨鍛戒护 */
-    extern void ShellCmd_Param_Init(void);
-    /* 鐢甸姘斿簳婀濃垂昭正功能 */
-    extern void ShellCmd_BattCalib_Init(void);
     /* 音源管理命令 */
     extern int ShellCmdSoundbank_Register(void);
 void Shell_RegisterAllModules(void)
@@ -3313,13 +3299,7 @@ void Shell_RegisterAllModules(void)
     REGISTER_MODULE(drivers);
     REGISTER_MODULE(ble_send);
     /* 鏁堟灉鍥惧拰鏁堟灉鍣ㄥ懡浠�*/
-    ShellCmdEffect_Register();   /* effect 鍛戒护 */
     ShellCmdGraph_Register();    /* graph 鍜fx 鍛戒护 */
-
-
-    ShellCmd_Param_Init();       /* param 鍛戒护 */
-
-    ShellCmd_BattCalib_Init();   /* batt calib 命令 */
 
     /* 提示音测试命令 */
     extern void ShellCmdRemind_Register(void);
@@ -3327,31 +3307,6 @@ void Shell_RegisterAllModules(void)
     ShellCmdMetronome_Register();
 
     ShellCmdRemind_Register();   /* remind 提示音测试命令 */
-
-    /* 硬件相关命令 - 根据板子硬件能力条件编译 */
-#if HW_CMD_FAT_EN
-    /* FAT32 文件系统命令 */
-    extern int ShellCmdFat_Register(void);
-    ShellCmdFat_Register();
-#endif
-
-#if HW_CMD_PSRAM_EN
-    /* PSRAM 堆内存查看命令 */
-    extern int ShellCmdPsram_Register(void);
-    ShellCmdPsram_Register();
-#endif
-
-#if FAT32_EN && HW_DRV_FLASH_NAND_EN
-    /* WAV 文件导出和管理命令 */
-    extern void ShellCmdWav_Register(void);
-    ShellCmdWav_Register();
-#endif
-
-    /* WAV BLE export test command */
-    {
-        extern void ShellCmdWavBle_Register(void);
-        ShellCmdWavBle_Register();
-    }
 
     /* 低功耗控制命令 */
     {

@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>true</eraseAll><flashDriver>E\:/b5/MVsB5_BT_Audio_SDK_V0.2.8_SVN1246/BT_Audio_APP/tools/mv_download_bp1x_v3.1.exe</flashDriver><imageFile>E\:\\b5\\MVsB5_BT_Audio_SDK_V0.2.8_SVN1246\\Examples\\examples\\Example_SDIO\\Debug\\output\\Example_SDIO.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>false</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

@@ -12,6 +12,9 @@
 #include "wireless_config.h"
 #include <string.h>
 
+/* boot_app: only one of TX/RX may provide Wireless_* symbols. */
+#if defined(BOOT_APP_WIRELESS_ROLE_TX) && (BOOT_APP_WIRELESS_ROLE_TX == 1)
+
 /*===========================================================================
  * 内部状态
  *===========================================================================*/
@@ -59,12 +62,12 @@ static void tx_audio_process(void)
     frame_size = s_tx.config.frame_size;
 
     /* 1. 检查DMA FIFO是否有足够数据 */
-    samples_available = AudioADC_DataLenGet(AUDIO_ADC1);
+    samples_available = WlAudioAdc_DataLenGet(AUDIO_ADC1);
     if (samples_available < frame_size)
         return;
 
     /* 2. 从ADC读取PCM数据 */
-    AudioADC_DataGet(AUDIO_ADC1, s_tx.mic_pcm_buf, frame_size);
+    WlAudioAdc_DataGet(AUDIO_ADC1, s_tx.mic_pcm_buf, frame_size);
 
     /* 3. 单声道转立体声 (SBC编码器需要立体声输入) */
     for (int16_t i = frame_size - 1; i >= 0; i--) {
@@ -106,15 +109,15 @@ int Wireless_Init(const WirelessConfig_t *config)
     AudioDriver_Init(AUDIO_ROLE_TX);
 
     /* 2. 初始化麦克风ADC */
-    AudioADC_AnaInit(AUDIO_ADC1, AUDIO_CHANNEL_LEFT, AUDIO_INPUT_MIC,
+    WlAudioAdc_AnaInit(AUDIO_ADC1, AUDIO_CHANNEL_LEFT, AUDIO_INPUT_MIC,
                      AUDIO_MODE_SINGLE, MIC_PGA_GAIN_DEFAULT);
-    AudioADC_DigitalInit(AUDIO_ADC1, config->sample_rate,
+    WlAudioAdc_DigitalInit(AUDIO_ADC1, config->sample_rate,
                          AUDIO_WIDTH_16BIT,
                          s_tx.mic_pcm_buf,
                          MIC_FIFO_SAMPLES(config->frame_size));
 
     /* 3. 设置ADC音量 */
-    AudioADC_VolSet(AUDIO_ADC1, DAC_VOLUME_DEFAULT, DAC_VOLUME_DEFAULT);
+    WlAudioAdc_VolSet(AUDIO_ADC1, DAC_VOLUME_DEFAULT, DAC_VOLUME_DEFAULT);
 
     /* 4. 初始化SBC编码器 */
     s_tx.sbc_encoder = AudioCodec_EncoderInit(
@@ -259,3 +262,5 @@ void AudioCodec_TxProcess(void)
 {
     tx_audio_process();
 }
+
+#endif /* BOOT_APP_WIRELESS_ROLE_TX == 1 */

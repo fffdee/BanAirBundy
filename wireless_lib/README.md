@@ -1,5 +1,18 @@
 # wireless_lib - 无线麦克风音频收发最小代码库
 
+# 移植到 boot_app
+
+`boot_app` 已通过链接资源 `wireless_lib/` 接入本库：
+
+1. `app_config.h`：`BOOT_APP_WIRELESS_EN` / `BOOT_APP_WIRELESS_ROLE_TX`
+2. `src/wireless_app.c`：FreeRTOS 任务周期调用 `Wireless_Schedule()`
+3. 角色二选一：`ROLE_TX=0` 编译 RX（`wireless_rx.c`），`=1` 编译 TX（`wireless_tx.c`）
+
+当前为 **Phase 0 骨架**：ADC/DAC/SBC/MVWIRE2 仍为 stub，可先验证任务与链接。
+后续按 `porting_guide.md` 对接 `libDriver` / SBC / BtStack。
+
+---
+
 ## 概述
 
 本文件夹从 `wireless_mic_tx_sdk` 和 `wireless_mic_rx_sdk` 中提炼了**无线音频收发**的核心最小代码集，
@@ -121,8 +134,9 @@ while (1) {
 
 详见 `porting_guide.md`。核心需要实现以下平台相关函数:
 
-1. **ADC驱动**: `AudioADC_AnaInit()`, `AudioADC_DigitalInit()`, `AudioADC_DataGet()`
-2. **DAC驱动**: `AudioDAC_Init()`, `AudioDAC_DataSet()`
+1. **ADC驱动**: `WlAudioAdc_AnaInit()`, `WlAudioAdc_DigitalInit()`, `WlAudioAdc_DataGet()`
+2. **DAC驱动**: `WlAudioDac_Init()`, `WlAudioDac_DataSet()`
+   （`Wl*` 前缀避免与 `libDriver` 的 `AudioADC_*` / `AudioDAC_*` 冲突）
 3. **无线驱动**: `MVWIRE2_Init()`, `lld_con_wireless_tx_send()`, `Wireless_TransBufRead()`
 4. **SBC编解码**: `sbc_encoder_init()`, `sbc_encoder()`, `sbc_decoder_init()`, `sbc_decoder()`
 5. **DMA配置**: `Dma_Init()`, `Dma_ChannelEnable()`

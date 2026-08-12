@@ -27,6 +27,7 @@
 #include "remap.h"
 
 #include "app_config.h"
+#include "usb_identity.h"
 #include "otg_device_hcd.h"
 #include "otg_device_standard_request.h"
 #include "otg_device_cdc.h"
@@ -40,10 +41,6 @@
 extern uint32_t gSysTick;
 
 #define BOOTLOADER_VERSION_STR  "V1.0.0"
-
-/* Bootloader CDC identity (host tools identify upgrade mode by VID/PID) */
-#define BL_USB_VID   0x8888
-#define BL_USB_PID   0x1722
 
 /* 本平台仅 6 路 DMA：下标=通道号，值为外设 ID（255=空闲） */
 static uint8_t DmaChannelMap[] =

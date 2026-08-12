@@ -13,6 +13,9 @@
 #include <stdarg.h>
 #include "bg_shell.h"
 #include "shell_io_ble.h"
+#include "shell_cmd_boot.h"
+#include "shell_cmd_log.h"
+#include "shell_cmd_sys.h"
 #include "debug.h"
 
 /*******************************************************************************
@@ -44,7 +47,7 @@ static char     g_SavedInput[SHELL_CMD_MAX_LEN]; /* 浏览历史时暂存当前�
 static uint8_t  g_EscState = 0;
 
 static const char *g_CatNames[MOD_CAT_MAX] = {
-    "System", "Hardware", "Parameter", "Debug"
+    "System", "Hardware", "Audio", "Parameter", "Debug"
 };
 
 /*******************************************************************************
@@ -120,6 +123,17 @@ static const ShellModule_t g_HelpModule = {
     "help", "Help and system info", MOD_CAT_SYSTEM, g_HelpOpts, 7
 };
 
+/*
+ * Commands compiled into boot_app are declared here.  The table is static,
+ * so adding a module does not require a per-module registration call in
+ * main.c or in transport/task code.
+ */
+static const ShellModule_t * const g_StaticModules[] = {
+    &g_ShellCmdSysModule,
+    &g_ShellCmdBootModule,
+    &g_ShellCmdLogModule,
+};
+
 /*******************************************************************************
  * Common functionsMTU
  ******************************************************************************/
@@ -137,6 +151,12 @@ bool Shell_Init(void)
     
     // Register default help module
     Shell_RegisterModule(&g_HelpModule);
+    {
+        uint8_t i;
+
+        for (i = 0; i < (sizeof(g_StaticModules) / sizeof(g_StaticModules[0])); ++i)
+            Shell_RegisterModule(g_StaticModules[i]);
+    }
     
     g_Init = TRUE;
     

@@ -29,7 +29,6 @@ extern "C" {
 #include "drv_init.h"
 
 /* Shell命令集成 */
-/* 注意: ShellFs_RegisterCommands() 需要在shell_fs_commands.c中实现 */
 
 /*******************************************************************************
  * 框架初始化

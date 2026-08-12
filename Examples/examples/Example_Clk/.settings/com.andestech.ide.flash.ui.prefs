@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>false</eraseAll><flashDriver>E\:/B5X_work/example/tools/b1_download_v2.5.exe</flashDriver><imageFile>E\:\\B5X_work\\example\\examples\\Example_Clk\\Debug\\output\\Example_Clk.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>true</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>false</eraseAll><flashDriver>D\:/work_chenhao/B5/1233/MVsB5_Base_SDK/tools/b1_download_v2.5.exe</flashDriver><imageFile>D\:/BP15_SDK/Examples/examples/Example_UART/Debug/output/Example_UART.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>false</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

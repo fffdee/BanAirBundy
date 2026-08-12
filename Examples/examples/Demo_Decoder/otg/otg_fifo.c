@@ -1,0 +1,53 @@
+/*
+ * otg_fifo.c
+ *
+ *  Created on: Jan 13, 2021
+ *      Author: peter
+ */
+
+#include "type.h"
+#include "otg_device_hcd.h"
+#include "otg_host_hcd.h"
+#include "chip_info.h"
+
+
+#define  HOST_EP0_DEPTH    64
+#define  HOST_EP1_TX_DEPTH 128
+#define  HOST_EP1_RX_DEPTH 1024
+#define  HOST_EP2_TX_DEPTH 128
+#define  HOST_EP2_RX_DEPTH 128
+
+
+#define HOST_FIFO_SIZE (HOST_EP0_DEPTH+HOST_EP1_TX_DEPTH+HOST_EP1_RX_DEPTH+HOST_EP2_TX_DEPTH+HOST_EP2_RX_DEPTH)
+#define DEVICE_FIFO_SIZE (DEVICE_EP0_DEPTH+DEVICE_EP1_TX_DEPTH+DEVICE_EP1_RX_DEPTH+DEVICE_EP2_TX_DEPTH+DEVICE_EP2_RX_DEPTH)
+
+uint32_t UsbEpBuf[(HOST_FIFO_SIZE)/4];
+
+extern uint16_t  EP1_TX_FIFO_START_ADDRESS;
+extern uint16_t  EP1_RX_FIFO_START_ADDRESS;
+extern uint16_t  EP2_TX_FIFO_START_ADDRESS;
+extern uint16_t  EP2_RX_FIFO_START_ADDRESS;
+extern uint16_t  EP2_RX_FIFO_END_ADDRESS;
+extern uint8_t   *UsbEpFifo;
+
+void OTG_HostFifoInit(void)
+{
+	uint8_t xmem_index;
+
+	EP1_TX_FIFO_START_ADDRESS = (HOST_EP0_DEPTH);
+	EP1_RX_FIFO_START_ADDRESS = (HOST_EP0_DEPTH+HOST_EP1_TX_DEPTH);
+	EP2_TX_FIFO_START_ADDRESS = (HOST_EP0_DEPTH+HOST_EP1_TX_DEPTH+HOST_EP1_RX_DEPTH);
+	EP2_RX_FIFO_START_ADDRESS = (HOST_EP0_DEPTH+HOST_EP1_TX_DEPTH+HOST_EP1_RX_DEPTH+HOST_EP2_TX_DEPTH);
+	EP2_RX_FIFO_END_ADDRESS =   (HOST_EP0_DEPTH+HOST_EP1_TX_DEPTH+HOST_EP1_RX_DEPTH+HOST_EP2_TX_DEPTH+HOST_EP2_RX_DEPTH);
+	UsbEpFifo = (uint8_t *)UsbEpBuf;
+
+	xmem_index = ((uint32_t)UsbEpBuf - 0x20000000) / (64*1024);
+	if(xmem_index < 3)
+	{
+		Chip_MemARBSet(1 << xmem_index);
+	}
+}
+
+
+
+

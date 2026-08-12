@@ -15,7 +15,6 @@
 #include "drv_w25qxx.h"
 #include "drv_w25n02.h"
 #include "drv_psram.h"
-#include "shell_fs.h"
 
 #if HW_DRV_SDCARD_EN
 #include "drv_sdcard.h"
@@ -225,16 +224,7 @@ int DrvFramework_Init(void)
         return -2;
     }
     
-#if SHELL_EN
-    /* 3. 初始化Shell文件系统（创建/bin目录） */
-    ret = ShellFs_Init();
-    if (ret != VFS_OK) {
-        DBG("[DrvInit] ShellFs init failed!\n");
-        return -3;
-    }
-#endif
-    
-    /* 4. 初始化设备管理系统 */
+    /* 3. 初始化设备管理系统 */
     ret = DrvDevice_Init();
     if (ret != 0) {
         return -4;
@@ -295,13 +285,6 @@ int DrvFramework_RegisterAll(void)
         }
     }
     
-#if SHELL_EN
-    /* 注册系统命令到 /bin */
-    DBG("[DrvInit] Registering /bin commands...\n");
-    ShellFs_RegisterAllCommands();
-    DBG("[DrvInit] /bin commands registered OK\n");
-#endif
-
     /* EffectGraph VFS 和 ShellCmdAudioVfs 初始化已移至 main.c（05_component 层），
      * 解耦 03_driver_framework 对 05_component 的直接依赖 */
 

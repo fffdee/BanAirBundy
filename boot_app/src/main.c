@@ -1,8 +1,9 @@
 /**
  * @file    main.c
- * @brief   boot_app — FreeRTOS APP with USB CDC + Audio composite
+ * @brief   boot_app — FreeRTOS APP with BanUX + USB CDC/Audio
  *
- * USB mode: AUDIO_CDC (Speaker + CDC ACM), see usb_audio_api.h.
+ * BanUX: event bus, VFS/driver framework, CDC Shell (help/boot).
+ * USB: AUDIO_CDC or CDC_ONLY via usb_audio_api.h / app_config.h.
  * Boot path mirrors BanBox HAS_BOOTLOADER (skip Chip_Init/PLL when from BL).
  */
 #include <stdlib.h>
@@ -32,6 +33,13 @@
 #include "otg_device_cdc.h"
 #include "usb_audio_api.h"
 #include "delay.h"
+#include "bg_event.h"
+#include "drv_init.h"
+#include "bg_shell.h"
+#include "shell_io_cdc.h"
+#include "cdc_debug.h"
+#include "sys_nv.h"
+#include "wireless_app.h"
 
 /* FreeRTOS */
 #include "FreeRTOS.h"
@@ -76,55 +84,41 @@ static uint8_t DmaChannelMap[] =
 	((TickType_t)(((TickType_t)(xTimeInMs) * (TickType_t)configTICK_RATE_HZ) / (TickType_t)1000))
 #endif
 
-static TaskHandle_t xPrintTaskHandle = NULL;
 static TaskHandle_t xUsbTaskHandle = NULL;
 
-/*
- * Host update_tool sends ASCII "boot\r\n" from "Enter Boot mode".
- * Consume that command from the APP CDC stream and reboot via burn-flag.
+/**
+ * BanUX framework bring-up for boot_app:
+ * event bus + VFS/driver core + CDC Shell + CDC debug log.
+ * Keep HW_DRV_USB_CDC_EN=0 so composite USB stays on otg_device_cdc.
  */
-static void App_CdcBootCommandProcess(void)
+static void App_BanuxInit(void)
 {
-	static const char boot_cmd[] = "boot";
-	static uint8_t match;
-	uint8_t byte;
+	int ret;
 
-	while (OTG_DeviceCDC_Receive(&byte, 1) == 1u) {
-		if (byte == '\r' || byte == '\n') {
-			if (match == (sizeof(boot_cmd) - 1u)) {
-				static const uint8_t reply[] = "[BOOT] entering bootloader\r\n";
+	CdcDbg_Init();
+	/* Restore log (and future sys settings) from power-loss NVM. */
+	SysNv_Init();
+	BG_Event_Init();
 
-				OTG_DeviceCDC_Send((uint8_t *)reply,
-						  (uint16_t)(sizeof(reply) - 1u));
-				FwUpgrade_RebootToBootloader();
-			}
-			match = 0;
-			continue;
-		}
-
-		if (byte == (uint8_t)boot_cmd[match]) {
-			match++;
-			if (match >= sizeof(boot_cmd))
-				match = 0;
+	ret = DrvFramework_Init();
+	if (ret != 0) {
+		DBG("[BanUX] DrvFramework_Init failed: %d\n", ret);
+		CDC_DBG_BANUX("DrvFramework_Init failed: %d\r\n", ret);
+	} else {
+		ret = DrvFramework_RegisterAll();
+		if (ret != 0) {
+			DBG("[BanUX] DrvFramework_RegisterAll failed: %d\n", ret);
+			CDC_DBG_BANUX("DrvFramework_RegisterAll failed: %d\r\n", ret);
 		} else {
-			match = (byte == (uint8_t)boot_cmd[0]) ? 1u : 0u;
+			DBG("[BanUX] framework ready (VFS + drivers)\n");
+			CDC_DBG_BANUX("framework ready (VFS + drivers)\r\n");
 		}
 	}
-}
 
-static void vPrintTask(void *pvParameters)
-{
-	(void)pvParameters;
-	int count = 0;
-
-	for (;;) {
-		DBG("boot_app running... count=%d mode=%u cfg=%u cdc=%u dtr=%u spk=%u\n",
-		    count++, (unsigned)CFG_PARA_USB_MODE,
-		    (unsigned)g_usb_configured, (unsigned)UsbCDC.InitOk,
-		    (unsigned)UsbCDC.ControlLineState.DTR,
-		    (unsigned)UsbAudioSpeaker.InitOk);
-		vTaskDelay(pdMS_TO_TICKS(1000));
-	}
+	Shell_Init();
+	Shell_SetIO(ShellIO_CDC_Get());
+	DBG("[BanUX] Shell IO = %s\n", Shell_GetIOName());
+	CDC_DBG_BANUX("Shell IO = %s\r\n", Shell_GetIOName());
 }
 
 /**
@@ -141,11 +135,15 @@ static void vUsbTask(void *pvParameters)
 		if (g_usb_configured && !UsbCDC.InitOk) {
 			OTG_DeviceCDC_Init();
 			DBG("[USB] CDC InitOk\n");
+			CDC_DBG_USB("CDC InitOk\r\n");
 		}
 
 		if (UsbCDC.InitOk) {
 			OTG_DeviceCDC_Task();
-			App_CdcBootCommandProcess();
+			/* Restore persisted log only after CDC is up (waits DTR if ON). */
+			SysNv_ApplyLogDeferred();
+			/* CDC RX has exactly one consumer: the Shell transport. */
+			Shell_Process();
 		}
 
 		if (CFG_PARA_USB_MODE != CDC_ONLY) {
@@ -269,10 +267,14 @@ int main(void)
 	/* Must precede xTaskCreate — heap_5s assert/hang otherwise. */
 	prvInitialiseHeap();
 
-	/* USB enum first, then tasks — heap now valid. */
+	/* USB enum first, then BanUX + tasks — heap now valid. */
 	App_UsbInit();
+	App_BanuxInit();
 
 	GIE_ENABLE();
+
+	if (App_WirelessStart() != 0)
+		DBG("[WL] App_WirelessStart failed — continue without RF\n");
 
 	xTaskCreate(vUsbTask,
 		    "USB",
@@ -280,13 +282,6 @@ int main(void)
 		    NULL,
 		    tskIDLE_PRIORITY + 3,
 		    &xUsbTaskHandle);
-
-	xTaskCreate(vPrintTask,
-		    "Print",
-		    configMINIMAL_STACK_SIZE * 4,
-		    NULL,
-		    tskIDLE_PRIORITY + 1,
-		    &xPrintTaskHandle);
 
 	/* FreeRTOS yield/tick switch via OS_Trap_Interrupt_SWI. */
 	NVIC_EnableIRQ(SWI_IRQn);

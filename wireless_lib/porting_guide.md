@@ -12,24 +12,24 @@
 
 #### ADC (TX端麦克风采集)
 
-| 函数 | 平台SDK对应 | 说明 |
+| wireless_lib 函数 | 平台 SDK 对应 | 说明 |
 |------|------------|------|
-| `AudioADC_AnaInit()` | `AudioADC_AnaInit()` | 配置PGA增益、输入通道、上电 |
-| `AudioADC_DigitalInit()` | `AudioADC_DigitalInit()` | 配置采样率、DMA FIFO |
-| `AudioADC_VolSet()` | `AudioADC_VolSet()` | 数字音量 (0x001~0xFFF) |
-| `AudioADC_DataLenGet()` | `AudioADC1_DataLenGet()` | DMA FIFO可读数据量 |
-| `AudioADC_DataGet()` | `AudioADC1_DataGet()` | 从DMA FIFO读取PCM |
+| `WlAudioAdc_AnaInit()` | `AudioADC_AnaInit()` | 配置PGA增益、输入通道、上电 |
+| `WlAudioAdc_DigitalInit()` | `AudioADC_DigitalInit()` | 配置采样率、DMA FIFO |
+| `WlAudioAdc_VolSet()` | `AudioADC_VolSet()` | 数字音量 (0x001~0xFFF) |
+| `WlAudioAdc_DataLenGet()` | `AudioADC1_DataLenGet()` | DMA FIFO可读数据量 |
+| `WlAudioAdc_DataGet()` | `AudioADC1_DataGet()` | 从DMA FIFO读取PCM |
 
-**PGA增益注意**: 硬件值 = `31 - 逻辑值`，即 `pga_gain=31` → 硬件值 `0` = 最大增益 +26.5dB
+**注意**: wireless_lib 使用 `WlAudio*` 前缀，避免与 `libDriver.a` 中的 SDK 符号重名。
 
 #### DAC (RX端音频输出)
 
-| 函数 | 平台SDK对应 | 说明 |
+| wireless_lib 函数 | 平台 SDK 对应 | 说明 |
 |------|------------|------|
-| `AudioDAC_Init()` | `AudioDAC_Init()` | 配置采样率、DMA FIFO、上电 |
-| `AudioDAC_VolSet()` | `AudioDAC_VolSet()` | 数字音量 (0~0x3FFF) |
-| `AudioDAC_DataSet()` | `AudioDAC0_DataSet()` | 写入PCM到DMA FIFO |
-| `AudioDAC_Mute()` | `AudioDAC_SoftMute()` | 软静音 |
+| `WlAudioDac_Init()` | `AudioDAC_Init()` | 配置采样率、DMA FIFO、上电 |
+| `WlAudioDac_VolSet()` | `AudioDAC_VolSet()` | 数字音量 (0~0x3FFF) |
+| `WlAudioDac_DataSet()` | `AudioDAC0_DataSet()` | 写入PCM到DMA FIFO |
+| `WlAudioDac_Mute()` | `AudioDAC_SoftMute()` | 软静音 |
 
 ### 2. 实现SBC编解码 (`audio_codec_api.c`)
 

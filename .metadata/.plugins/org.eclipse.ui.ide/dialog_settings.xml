@@ -42,10 +42,11 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\BanAirBundy\bootloader"/>
+			<item value="D:\BanAirBundy\boot_app"/>
 			<item value="E:\project_and_dataset\project\BP1540\BP1540\sdk\progA\MVsB5_BT_Audio_SDK_V1.1.1\Examples\examples\Example_USB"/>
 			<item value="E:\project_and_dataset\project\BP1540\BP1540\sdk\progA\MVsB5_BT_Audio_SDK_V1.1.1\Examples\examples\@INCLUDES"/>
 			<item value="E:\project_and_dataset\project\wireless_mic_1532\wireless_mic_rx_sdk"/>
-			<item value="D:\BanAirBundy\bootloader"/>
 			<item value="D:\资料\no_bt\no_bt\B\B\MVsB5_BT_Audio_SDK_V1.1.1\Examples\examples\Example_USB"/>
 			<item value="D:\资料\BanAirBundy\minimal_rtos"/>
 			<item value="D:\资料\BanAirBundy\bootloader"/>

@@ -34,13 +34,17 @@ RM := rm -rf
 -include banux/03_driver_framework/drivers/subdir.mk
 -include banux/03_driver_framework/subdir.mk
 -include banux/03_driver_framework/event/subdir.mk
+-include banux/04_shell_commands/subdir.mk
+-include banux/05_component/cdc_debug/subdir.mk
 -include banux/05_component/firmware_upgrade/subdir.mk
+-include banux/05_component/sys/subdir.mk
 -include driver/driver_api/src/subdir.mk
 -include middleware/mv_utils/src/subdir.mk
 -include otg/device/src/subdir.mk
 -include otg/subdir.mk
 -include src/subdir.mk
 -include startup/subdir.mk
+-include wireless_lib/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -88,7 +92,7 @@ all: boot_app.adx secondary-outputs
 boot_app.adx: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Andes C Linker'
-	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx" $(OBJS) $(USER_OBJS) $(LIBS)
+	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/boot_app/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>false</eraseAll><flashDriver>C\:\\Users\\Mike\\Desktop\\mv_ads_downloader_v1.2.1\\flash_downloader\\mv_download_bp1x_v3.1.exe</flashDriver><imageFile>C\:\\Users\\Mike\\Desktop\\B5_Code\\MVsB5_Base_SDK\\examples\\Example_AudioADC\\Debug\\output\\Example_AudioADC.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>true</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

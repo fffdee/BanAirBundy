@@ -3,7 +3,7 @@
  * @file    wireless_config.h
  * @brief   无线麦克风系统配置
  *
- * 从 system_config/app_config.h 中提炼的核心配置宏
+ * 板级 app_config.h 可覆盖同名宏；本文件只提供默认值。
  ******************************************************************************
  */
 #ifndef __WIRELESS_CONFIG_H__
@@ -16,92 +16,136 @@ extern "C" {
 /*===========================================================================
  * 系统方案选择
  *===========================================================================*/
-/* 无线Turnkey方案: 2T1R (2个发射 + 1个接收, 单向单声道) */
+#ifndef WIRELESS_TURNKEY2_6
 #define WIRELESS_TURNKEY2_6
+#endif
 
 /*===========================================================================
  * 音频参数配置
  *===========================================================================*/
-/* 采样率 */
+#ifndef SAMPLE_RATE
 #define SAMPLE_RATE              44100
+#endif
 
-/* 每帧采样数 (一帧音频的处理单位) */
+#ifndef ONE_FRAME
 #define ONE_FRAME                128
+#endif
 
-/* SBC编码配置 */
-#define SBC_CHANNEL_MODE         SBC_MODE_MONO      /* 单声道 */
-#define SBC_ALLOCATION_METHOD    SBC_ALLOCATION_SNR /* SNR分配 */
-#define SBC_SUB_BANDS            8                   /* 子带数 */
-#define SBC_BLOCK_SIZE           16                  /* 块大小 */
-#define SBC_BITPOOL              31                  /* 位池 (音质/码率平衡) */
+/* SBC 参数数值与 audio_codec_api.h 中 enum 对齐 */
+#ifndef SBC_CHANNEL_MODE
+#define SBC_CHANNEL_MODE         0   /* SBC_MODE_MONO */
+#endif
 
-/* 编码声道数 (1=单声道, 2=立体声) */
+#ifndef SBC_ALLOCATION_METHOD
+#define SBC_ALLOCATION_METHOD    1   /* SBC_ALLOCATION_SNR */
+#endif
+
+#ifndef SBC_SUB_BANDS
+#define SBC_SUB_BANDS            8
+#endif
+
+#ifndef SBC_BLOCK_SIZE
+#define SBC_BLOCK_SIZE           16
+#endif
+
+#ifndef SBC_BITPOOL
+#define SBC_BITPOOL              31
+#endif
+
+#ifndef ENCODE_CH
 #define ENCODE_CH                1
+#endif
 
 /*===========================================================================
  * 无线协议配置
+ * 角色枚举见 wireless_core.h: WIRELESS_ROLE_MASTER / WIRELESS_ROLE_SLAVE
  *===========================================================================*/
-/* 设备角色 */
-#define WIRELESS_ROLE_MASTER     0   /* RX端: 主机 */
-#define WIRELESS_ROLE_SLAVE      1   /* TX端: 从机 */
-
-/* 无线配对密钥 */
+#ifndef COMPANY_BYTE0
 #define COMPANY_BYTE0            0x77
+#endif
+#ifndef COMPANY_BYTE1
 #define COMPANY_BYTE1            0x88
+#endif
+#ifndef COMPANY_BYTE2
 #define COMPANY_BYTE2            0x99
+#endif
+#ifndef COMPANY_BYTE3
 #define COMPANY_BYTE3            0xAA
+#endif
+
+#ifndef WIRELESS_LINK_KEY0
 #define WIRELESS_LINK_KEY0       0x12
+#endif
+#ifndef WIRELESS_LINK_KEY1
 #define WIRELESS_LINK_KEY1       0x34
+#endif
 
-/* 无线RF配置 */
-#define RF_FREQ_BAND             0   /* 0=2.4GHz, 1=2.3GHz */
-#define RF_CHANNEL_NUM           40  /* 频道数 */
-#define RF_INTERVAL              6   /* RF间隔(ms) */
+#ifndef RF_FREQ_BAND
+#define RF_FREQ_BAND             0
+#endif
+#ifndef RF_CHANNEL_NUM
+#define RF_CHANNEL_NUM           40
+#endif
+#ifndef RF_INTERVAL
+#define RF_INTERVAL              6
+#endif
 
-/* EM内存大小 (基带事件内存) */
+#ifndef BB_EM_SIZE
 #define BB_EM_SIZE               (16 * 1024)
+#endif
 
 /*===========================================================================
  * 音频缓冲区配置
  *===========================================================================*/
-/* 无线音频传输包长度 (SBC编码后) */
+#ifndef RFAUDIO_TRANS_A
 #define RFAUDIO_TRANS_A          120
+#endif
 
-/* 麦克风FIFO采样数 */
+#ifndef MIC_FIFO_SAMPLES
 #define MIC_FIFO_SAMPLES(frame)  ((frame) * 4)
+#endif
 
-/* DAC FIFO采样数 */
+#ifndef DAC_FIFO_SAMPLES
 #define DAC_FIFO_SAMPLES(frame)  ((frame) * 4)
+#endif
 
-/* 无线发送包数 (每个音频帧的RF分包数) */
+#ifndef NPACK_DEFAULT
 #define NPACK_DEFAULT            3
+#endif
 
 /*===========================================================================
  * 功能开关
  *===========================================================================*/
-/* 双向音频通道 (TX端也能接收RX端的反向音频) */
+#ifndef PACKET_AUDIO_CH_BACKWARD
 #define PACKET_AUDIO_CH_BACKWARD 2
+#endif
 
-/* 音效处理 (本最小库不包含, 设为0) */
+#ifndef CFG_FUNC_AUDIO_EFFECT_EN
 #define CFG_FUNC_AUDIO_EFFECT_EN 0
+#endif
 
-/* 音效参数覆盖Codec设置 (本最小库不包含) */
+#ifndef CFG_FUNC_AUDIO_EFFECT_SET_CODEC_EN
 #define CFG_FUNC_AUDIO_EFFECT_SET_CODEC_EN 0
+#endif
 
 /*===========================================================================
  * 音量/增益默认值
  *===========================================================================*/
-/* 系统音量等级数 */
+#ifndef CFG_PARA_MAX_VOLUME_NUM
 #define CFG_PARA_MAX_VOLUME_NUM  32
+#endif
 
-/* 默认音量等级 (0~CFG_PARA_MAX_VOLUME_NUM) */
+#ifndef CFG_PARA_SYS_VOLUME_DEFAULT
 #define CFG_PARA_SYS_VOLUME_DEFAULT  (CFG_PARA_MAX_VOLUME_NUM)
+#endif
 
-/* 麦克风PGA增益 (0~31, 31=最大+26.5dB) */
+#ifndef MIC_PGA_GAIN_DEFAULT
 #define MIC_PGA_GAIN_DEFAULT     31
+#endif
 
-/* DAC输出音量 (0~0x3FFF, 0x3FFF=最大) */
+#ifndef DAC_VOLUME_DEFAULT
 #define DAC_VOLUME_DEFAULT       0x3FFF
+#endif
 
 #ifdef __cplusplus
 }

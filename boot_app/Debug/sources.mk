@@ -35,11 +35,15 @@ banux/03_driver_framework/core \
 banux/03_driver_framework/drivers \
 banux/03_driver_framework \
 banux/03_driver_framework/event \
+banux/04_shell_commands \
+banux/05_component/cdc_debug \
 banux/05_component/firmware_upgrade \
+banux/05_component/sys \
 driver/driver_api/src \
 middleware/mv_utils/src \
 otg/device/src \
 otg \
 src \
 startup \
+wireless_lib \
 

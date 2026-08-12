@@ -15,7 +15,7 @@ src/main.d src/main.o: ../src/main.c \
  /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/spi_flash.h \
  /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/watchdog.h \
  /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/remap.h \
- ../src/app_config.h \
+ ../src/app_config.h ../src/usb_identity.h \
  /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_hcd.h \
  /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_standard_request.h \
  /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_cdc.h \
@@ -59,6 +59,8 @@ src/main.d src/main.o: ../src/main.c \
 /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/remap.h:
 
 ../src/app_config.h:
+
+../src/usb_identity.h:
 
 /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_hcd.h:
 

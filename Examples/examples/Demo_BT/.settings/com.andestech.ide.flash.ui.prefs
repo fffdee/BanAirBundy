@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>false</eraseAll><flashDriver>mv_download_bp1x_v3.3T.exe</flashDriver><imageFile>D\:\\2_CodeSpace\\1_SDK\\B5\\B5_SDK_work\\B5_SDK_24Bit_V3\\Examples\\examples\\Demo_BT\\Debug\\output\\Demo_BT.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>false</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

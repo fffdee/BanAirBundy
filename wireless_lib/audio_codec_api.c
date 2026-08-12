@@ -10,6 +10,7 @@
 #include "audio_codec_api.h"
 #include "wireless_config.h"
 #include <string.h>
+#include <stdlib.h>
 #include <math.h>
 
 /*===========================================================================

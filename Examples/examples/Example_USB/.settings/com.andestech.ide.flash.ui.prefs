@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>true</eraseAll><flashDriver>D\:/BanAirBundy/minimal_rtos/tools/mv_download_v3.6.exe</flashDriver><imageFile>D\:\\no_bt\\no_bt\\B\\B\\MVsB5_BT_Audio_SDK_V1.1.1\\Examples\\examples\\Example_USB\\Debug\\output\\Example_USB.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>false</verify></rseFlashDriverModel>
+eclipse.preferences.version=1

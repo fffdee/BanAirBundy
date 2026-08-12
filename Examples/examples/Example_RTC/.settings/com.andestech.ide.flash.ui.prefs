@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>true</eraseAll><flashDriver>D\:/BP15_SDK/BT_Audio_APP/tools/mv_download_bp1x_v3.1.exe</flashDriver><imageFile>D\:\\BP15_SDK\\Examples\\examples\\Example_RTC\\Debug\\output\\Example_RTC.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>false</verify></rseFlashDriverModel>
+eclipse.preferences.version=1
