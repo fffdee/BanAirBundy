@@ -1,9 +1,6 @@
 /**
  * @file  wireless_app.c
- * @brief FreeRTOS integration for wireless_lib skeleton.
- *
- * Phase 0: schedule stub Wireless_Schedule() in a dedicated task.
- * RF/SBC/ADC/DAC remain TODO inside wireless_lib until platform ports land.
+ * @brief FreeRTOS integration for wireless_lib (MVWIRE Turnkey 2_6).
  */
 #include "wireless_app.h"
 
@@ -20,7 +17,13 @@
 	((TickType_t)(((TickType_t)(xTimeInMs) * (TickType_t)configTICK_RATE_HZ) / (TickType_t)1000))
 #endif
 
+/* Static stack: avoid heap adjacency smash into TCB when Assoc/SBC deep-calls. */
+#ifndef WL_TASK_STACK_WORDS
+#define WL_TASK_STACK_WORDS  4096u
+#endif
+
 static TaskHandle_t s_wl_task;
+static StackType_t s_wl_stack[WL_TASK_STACK_WORDS];
 
 static void WirelessApp_OnConnected(uint8_t device_index)
 {
@@ -36,13 +39,31 @@ static void WirelessApp_OnDisconnected(uint8_t device_index)
 
 static void vWirelessTask(void *pvParameters)
 {
+	unsigned n = 0;
+
 	(void)pvParameters;
 
-	DBG("[WL] schedule task running (role=%s)\n",
-	    BOOT_APP_WIRELESS_ROLE_TX ? "TX/Slave" : "RX/Master");
+	DBG("[WL] schedule task running (role=%s) stk=%u words (static)\n",
+	    BOOT_APP_WIRELESS_ROLE_TX ? "TX/Slave" : "RX/Master",
+	    (unsigned)WL_TASK_STACK_WORDS);
 
 	for (;;) {
+		if (n < 3u)
+			DBG("[WL] sched #%u enter\n", n);
+
 		Wireless_Schedule();
+
+		if (n < 3u) {
+			DBG("[WL] sched #%u ok hwm=%u\n",
+			    n,
+			    (unsigned)uxTaskGetStackHighWaterMark(NULL));
+		} else if ((n % 1000u) == 0u) {
+			DBG("[WL] alive n=%u hwm=%u\n",
+			    n,
+			    (unsigned)uxTaskGetStackHighWaterMark(NULL));
+		}
+		n++;
+
 		/* Yield frequently so USB/CDC Shell stay responsive. */
 		vTaskDelay(pdMS_TO_TICKS(1));
 	}
@@ -76,20 +97,27 @@ int App_WirelessStart(void)
 		return ret;
 	}
 
-	if (xTaskCreate(vWirelessTask,
-			"WL",
-			configMINIMAL_STACK_SIZE * 6,
-			NULL,
-			tskIDLE_PRIORITY + 2,
-			&s_wl_task) != pdPASS) {
+	/*
+	 * Use xTaskGenericCreate with a BSS stack buffer so overflow of the
+	 * deep AudioAssociation/SBC path does not immediately smash a heap TCB.
+	 */
+	if (xTaskGenericCreate(vWirelessTask,
+			       "WL",
+			       (uint16_t)WL_TASK_STACK_WORDS,
+			       NULL,
+			       tskIDLE_PRIORITY + 2,
+			       &s_wl_task,
+			       s_wl_stack,
+			       NULL) != pdPASS) {
 		DBG("[WL] create task failed\n");
 		return -1;
 	}
 
-	DBG("[WL] started role=%u sr=%u frame=%u\n",
+	DBG("[WL] started role=%u sr=%u frame=%u stk=%u\n",
 	    (unsigned)cfg.role,
 	    (unsigned)cfg.sample_rate,
-	    (unsigned)cfg.frame_size);
+	    (unsigned)cfg.frame_size,
+	    (unsigned)WL_TASK_STACK_WORDS);
 	CDC_DBG_SYS("WL started role=%u\r\n", (unsigned)cfg.role);
 	return 0;
 }

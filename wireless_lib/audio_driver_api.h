@@ -16,7 +16,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
-#include <stdbool.h>
+#include "type.h"
 
 /*===========================================================================
  * 音频角色
@@ -90,11 +90,25 @@ int WlAudioDac_Init(AudioDacModule_t module, uint32_t sample_rate,
 
 void WlAudioDac_VolSet(AudioDacModule_t module, uint16_t left_vol, uint16_t right_vol);
 
+/* DAC wrapper lengths are interleaved int16 sample counts (L+R). */
 uint16_t WlAudioDac_DataLenGet(AudioDacModule_t module);
 
 uint16_t WlAudioDac_DataSet(AudioDacModule_t module, const int16_t *buf, uint16_t samples);
 
 void WlAudioDac_Mute(AudioDacModule_t module, bool mute);
+
+/*===========================================================================
+ * Shared DAC0 mixer
+ *
+ * USB Speaker and decoded wireless PCM are independent producers.  The USB
+ * task calls WlAudioOutput_Process() and is the only DAC FIFO writer.
+ *===========================================================================*/
+void WlAudioOutput_SetRole(AudioRole_t role);
+uint16_t WlAudioOutput_PushUsb(const int16_t *stereo_pcm,
+                               uint16_t stereo_samples);
+uint16_t WlAudioOutput_PushWireless(const int16_t *stereo_pcm,
+                                    uint16_t stereo_samples);
+void WlAudioOutput_Process(void);
 
 #ifdef __cplusplus
 }

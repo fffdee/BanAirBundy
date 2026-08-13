@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -lDriver
+LIBS := -lwirelessStack -lwireless2 -laudio_association -lAudioDecoderLibrary -lplc128 -lDriver -lm
 

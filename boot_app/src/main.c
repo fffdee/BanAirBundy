@@ -47,18 +47,20 @@
 #include "queue.h"
 
 /*
- * heap_5s requires vPortDefineHeapRegions() before any pvPortMalloc /
- * xTaskCreate. Do NOT use _end..BP15_HEAP_END (~197KB): USB enum + TCM/BB
- * reserved RAM corrupt the freelist. Use a fixed mid-SRAM window above BSS
- * and below TCM remap (0x20037000).
+ * heap_5s: place FreeRTOS heap AFTER linker BSS (_end), below TCM/BB EM.
+ * Fixed 0x20010000 overlapped wireless BSS (rwip_heap_* … _end≈0x20019ea4)
+ * after linking libwireless*, which corrupted the freelist → crash in pvPortMalloc.
  */
-#define BOOT_APP_HEAP_START  0x20010000UL
-#define BOOT_APP_HEAP_SIZE   0x20000UL   /* 128KB -> ends 0x20030000 */
+extern char _end;
+#define BOOT_APP_HEAP_START  ((((uint32_t)&_end) + 31u) & ~31u)
+#define BOOT_APP_HEAP_END    ((uint32_t)BP15_HEAP_END)
+#define BOOT_APP_HEAP_SIZE   (BOOT_APP_HEAP_END - BOOT_APP_HEAP_START)
 
 static void prvInitialiseHeap(void)
 {
 	static HeapRegion_t xHeapRegions[2];
 
+	configASSERT(BOOT_APP_HEAP_END > BOOT_APP_HEAP_START);
 	xHeapRegions[0].pucStartAddress = (uint8_t *)BOOT_APP_HEAP_START;
 	xHeapRegions[0].xSizeInBytes = (size_t)BOOT_APP_HEAP_SIZE;
 	xHeapRegions[1].pucStartAddress = NULL;
@@ -76,7 +78,9 @@ extern volatile uint32_t gSysTick;
 
 static uint8_t DmaChannelMap[] =
 {
-	255, 255, 255, 255, 255, 255,
+	PERIPHERAL_ID_AUDIO_ADC1_RX,
+	PERIPHERAL_ID_AUDIO_DAC0_TX,
+	255, 255, 255, 255,
 };
 
 #ifndef pdMS_TO_TICKS
@@ -142,8 +146,13 @@ static void vUsbTask(void *pvParameters)
 			OTG_DeviceCDC_Task();
 			/* Restore persisted log only after CDC is up (waits DTR if ON). */
 			SysNv_ApplyLogDeferred();
-			/* CDC RX has exactly one consumer: the Shell transport. */
-			Shell_Process();
+			/*
+			 * Shell welcome/TX needs host DTR (COM open). Sending Bulk-IN
+			 * before that makes libDriver print "SEND ERROR" and can disturb
+			 * Windows CDC open.
+			 */
+			if (UsbCDC.ControlLineState.DTR)
+				Shell_Process();
 		}
 
 		if (CFG_PARA_USB_MODE != CDC_ONLY) {
@@ -259,7 +268,11 @@ int main(void)
 #endif
 
 	DBG("DPLL: %d kHz, APLL: %d kHz\n", SYS_CORE_DPLL_FREQ, SYS_CORE_APLL_FREQ);
-	DBG("FreeRTOS heap: %d bytes\n", (int)configTOTAL_HEAP_SIZE);
+	DBG("FreeRTOS heap: %lu bytes @ 0x%08lX..0x%08lX (_end=0x%08lX)\n",
+	    (unsigned long)BOOT_APP_HEAP_SIZE,
+	    (unsigned long)BOOT_APP_HEAP_START,
+	    (unsigned long)BOOT_APP_HEAP_END,
+	    (unsigned long)(uint32_t)&_end);
 
 	FwUpgrade_BootInit();
 	FwUpgrade_ConfirmBootSuccess();
@@ -278,7 +291,7 @@ int main(void)
 
 	xTaskCreate(vUsbTask,
 		    "USB",
-		    configMINIMAL_STACK_SIZE * 4,
+		    configMINIMAL_STACK_SIZE * 8,
 		    NULL,
 		    tskIDLE_PRIORITY + 3,
 		    &xUsbTaskHandle);
@@ -297,7 +310,16 @@ int main(void)
 
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
-	DBG("STACK OVERFLOW in %s\n", pcTaskName);
+	const unsigned char *p = (const unsigned char *)pcTaskName;
+	DBG("STACK OVERFLOW task=%p name='%s' hex=%02X %02X %02X %02X\n",
+	    (void *)xTask,
+	    (pcTaskName && pcTaskName[0] >= 0x20 && pcTaskName[0] < 0x7F)
+		    ? pcTaskName
+		    : "?",
+	    p ? p[0] : 0,
+	    p ? p[1] : 0,
+	    p ? p[2] : 0,
+	    p ? p[3] : 0);
 	for (;;)
 		;
 }

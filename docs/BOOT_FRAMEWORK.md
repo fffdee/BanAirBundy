@@ -453,6 +453,14 @@ APP USB (AUDIO_CDC):   VID 0x8888 / PID 0x1720
 - BL 跳 APP 后若无任务调度：检查 SWI 链接段与 `NVIC_EnableIRQ(SWI_IRQn)`  
 - USB 枚举失败：优先核对 USB 48 MHz 时钟与 PID/模式  
 
+### 12.6 USB 串号（多板区分）
+
+Windows 用 `VID + PID + iSerialNumber` 绑定 COM 口。固件通过 `Chip_IDGet()` 生成每片唯一的 16 位十六进制串号（不再使用固定 `20250405`）。
+
+上位机串口列表会显示 `[序列号]`，例如：`COM5  —  USB Serial Device (COM5)  [A1B2C3D4E5F60718]`。
+
+烧录新固件后若仍混淆，可拔插 USB 或在设备管理器中卸载旧 COM 实例后再枚举。
+
 ---
 
 ## 13. 修订记录
@@ -460,3 +468,5 @@ APP USB (AUDIO_CDC):   VID 0x8888 / PID 0x1720
 | 日期 | 说明 |
 |------|------|
 | 2026-08-11 | 初版：基于当前 bootloader / boot_app / update_tool 源码整理 |
+| 2026-08-12 | 补充 USB 唯一串号（Chip_IDGet）与上位机 SN 显示 |
+

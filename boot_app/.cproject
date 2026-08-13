@@ -36,6 +36,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/system_config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/wireless_lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/wireless_lib/sbc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/wireless_mv/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/otg/device/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/driver/driver_api/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/driver/driver/inc}&quot;"/>
@@ -71,6 +73,7 @@
 									<listOptionValue builtIn="false" value="CFG_CHIP_CONFIG"/>
 									<listOptionValue builtIn="false" value="BOOT_APP_WIRELESS_EN=1"/>
 									<listOptionValue builtIn="false" value="BOOT_APP_WIRELESS_ROLE_TX=0"/>
+									<listOptionValue builtIn="false" value="BOOT_APP_MVWIRE_EN=1"/>
 								</option>
 								<option id="nds.c.compiler.option.optimization.lto.1299640613" name="Link Time Optimization (-flto)" superClass="nds.c.compiler.option.optimization.lto" value="false" valueType="boolean"/>
 								<option id="nds.c.compiler.option.optimization.removesections.function.642468704" name="Remove unused function sections (-ffunction-sections)" superClass="nds.c.compiler.option.optimization.removesections.function" value="true" valueType="boolean"/>
@@ -80,10 +83,17 @@
 							</tool>
 							<tool id="tool.nds32le-elf-mculib-v3s.c.linker.exe.debug.1485094752" name="Andes C Linker" superClass="tool.nds32le-elf-mculib-v3s.c.linker.exe.debug">
 								<option id="nds.c.link.option.libs.568895408" name="Libraries (-l)" superClass="nds.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="wirelessStack"/>
+									<listOptionValue builtIn="false" value="wireless2"/>
+									<listOptionValue builtIn="false" value="audio_association"/>
+									<listOptionValue builtIn="false" value="AudioDecoderLibrary"/>
+									<listOptionValue builtIn="false" value="plc128"/>
 									<listOptionValue builtIn="false" value="Driver"/>
+									<listOptionValue builtIn="false" value="m"/>
 								</option>
 								<option id="nds.c.link.option.paths.488327009" name="Library search path (-L)" superClass="nds.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/driver/driver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/wireless_mv/lib}&quot;"/>
 								</option>
 								<option defaultValue="-O0" id="nds.c.link.option.optimization.level.1768301097" name="Optimization Level" superClass="nds.c.link.option.optimization.level" value="-Og" valueType="string"/>
 								<option defaultValue="true" id="nds32le-elf-mculib-v3s.c.link.option.noshared.base.94131748" name="No shared libraries (-static)" superClass="nds32le-elf-mculib-v3s.c.link.option.noshared.base" valueType="boolean"/>
@@ -116,7 +126,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="otg/host/**|otg/device/src/otg_device_stor.c|banux/02_driver_framework/**|banux/02_device_drivers/flash/flash_test.c|banux/04_shell_commands/bg_shell_commands.c|banux/04_shell_commands/shell_io_manager.c|banux/05_component/sys_state/**|banux/05_component/sys_param/**|banux/05_component/sys_led/**|banux/05_component/fat32/**|wireless_lib/README.md|wireless_lib/porting_guide.md" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="otg/host/**|otg/device/src/otg_device_stor.c|banux/02_driver_framework/**|banux/02_device_drivers/flash/flash_test.c|banux/04_shell_commands/bg_shell_commands.c|banux/04_shell_commands/shell_io_manager.c|banux/05_component/sys_state/**|banux/05_component/sys_param/**|banux/05_component/sys_led/**|banux/05_component/fat32/**|wireless_lib/README.md|wireless_lib/porting_guide.md|wireless_mv/**" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

@@ -554,14 +554,24 @@ def identify_port(device: str) -> Optional[dict]:
                 return None
             info = dict(info)
             info["device"] = p.device
-            info["description"] = p.description or p.device
+            info["description"] = _port_label(p)
+            info["serial_number"] = getattr(p, "serial_number", None) or ""
             return info
     return None
 
 
+def _port_label(p) -> str:
+    """COM 显示名：描述 + USB 序列号（多板同 VID/PID 时靠 SN 区分）。"""
+    desc = p.description or p.device
+    sn = getattr(p, "serial_number", None) or ""
+    if sn:
+        return f"{desc}  [{sn}]"
+    return desc
+
+
 def list_ports():
     """返回 [(device, description), ...] 列表。"""
-    return [(p.device, p.description or p.device)
+    return [(p.device, _port_label(p))
             for p in sorted(serial.tools.list_ports.comports())]
 
 
@@ -572,7 +582,7 @@ def list_bootloader_ports():
         vid = getattr(p, "vid", None)
         pid = getattr(p, "pid", None)
         if identify_usb_ids(vid, pid) is not None:
-            result.append((p.device, p.description or p.device))
+            result.append((p.device, _port_label(p)))
     return sorted(result)
 
 
@@ -585,7 +595,8 @@ def list_bootloader_devices():
             continue
         item = dict(info)
         item["device"] = p.device
-        item["description"] = p.description or p.device
+        item["description"] = _port_label(p)
+        item["serial_number"] = getattr(p, "serial_number", None) or ""
         result.append(item)
     return sorted(result, key=lambda x: x["device"])
 

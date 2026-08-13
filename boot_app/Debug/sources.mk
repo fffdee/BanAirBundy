@@ -46,4 +46,5 @@ otg \
 src \
 startup \
 wireless_lib \
+wireless_lib/sbc \
 

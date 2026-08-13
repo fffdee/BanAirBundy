@@ -107,8 +107,8 @@
 0000350e T CDC_Upgrade_InMode	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:64
 00003514 T CDC_Upgrade_CheckEnter	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:69
 00003576 T CDC_Upgrade_Process	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/firmware_upgrade/cdc_upgrade.c:94
-000035c6 t usb_cdc_upgrade_loop	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:60
-00003642 T main	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:98
+000035c6 t usb_cdc_upgrade_loop	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/main.c:60
+00003642 T main	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/main.c:98
 0000375a W BLE_Interrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
 0000375a t Default_Handler	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:41
 0000375a W FFTInterrupt	/cygdrive/d/BanAirBundy/bootloader/Debug/../startup/init-default.c:43
@@ -950,7 +950,7 @@
 2000400c D InterFaceNumTab	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:551
 20004040 D ConfigDescriptorTab	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:534
 20004074 D DeviceDescriptor	/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h:5
-20004088 d DmaChannelMap	/cygdrive/d/BanAirBundy/bootloader/Debug/../src/main.c:46
+20004088 d DmaChannelMap	/cygdrive/e/project_and_dataset/project/BanAirBundy/bootloader/Debug/../src/main.c:46
 20004090 D BtHoscClkDiv
 20004094 D EfuseBt32k
 20004098 D IsDpllFreeRun

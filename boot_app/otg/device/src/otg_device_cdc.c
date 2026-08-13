@@ -315,6 +315,12 @@ bool OTG_DeviceCDC_FlushTx(void)
     {
         return FALSE;
     }
+
+    /* No host reader yet — keep data queued; avoid libDriver "SEND ERROR". */
+    if (!UsbCDC.ControlLineState.DTR)
+    {
+        return FALSE;
+    }
     
     // Determine how many bytes to send
     len = UsbCDC.TxCount;
@@ -397,6 +403,10 @@ void OTG_DeviceCDC_Task(void)
             }
         }
     }
+
+    /* Flush any TX queued while COM was closed (DTR was 0). */
+    if (UsbCDC.ControlLineState.DTR && UsbCDC.TxCount > 0 && !UsbCDC.TxBusy)
+        OTG_DeviceCDC_FlushTx();
 }
 
 /**

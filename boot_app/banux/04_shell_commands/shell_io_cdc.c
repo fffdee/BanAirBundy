@@ -7,7 +7,8 @@
 
 static uint16_t ShellIO_CDC_Send(uint8_t *data, uint16_t len)
 {
-    if (!data || !len || !UsbCDC.InitOk)
+    /* DTR=0 means host has not opened COM — Bulk-IN would time out. */
+    if (!data || !len || !UsbCDC.InitOk || !UsbCDC.ControlLineState.DTR)
         return 0;
 
     return OTG_DeviceCDC_Send(data, len);

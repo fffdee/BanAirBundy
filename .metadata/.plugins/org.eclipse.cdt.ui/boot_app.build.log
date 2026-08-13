@@ -1,113 +1,681 @@
-17:14:54 **** Incremental Build of configuration Debug for project boot_app ****
-make -j20 all 
-Building file: ../banux/05_component/cdc_debug/cdc_debug.c
+22:53:32 **** Incremental Build of configuration Debug for project boot_app ****
+make -j24 all 
+Building file: ../FreeRTOS/Source/event_groups.c
 Invoking: Andes C Compiler
-nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/05_component/cdc_debug/cdc_debug.d" -MT"banux/05_component/cdc_debug/cdc_debug.d banux/05_component/cdc_debug/cdc_debug.o" -o "banux/05_component/cdc_debug/cdc_debug.o" "../banux/05_component/cdc_debug/cdc_debug.c"
-Finished building: ../banux/05_component/cdc_debug/cdc_debug.c
- 
-Building file: ../banux/05_component/cdc_debug/shell_cmd_log.c
-Invoking: Andes C Compiler
-nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/05_component/cdc_debug/shell_cmd_log.d" -MT"banux/05_component/cdc_debug/shell_cmd_log.d banux/05_component/cdc_debug/shell_cmd_log.o" -o "banux/05_component/cdc_debug/shell_cmd_log.o" "../banux/05_component/cdc_debug/shell_cmd_log.c"
-Finished building: ../banux/05_component/cdc_debug/shell_cmd_log.c
- 
-Building file: ../banux/05_component/sys/shell_cmd_sys.c
-Invoking: Andes C Compiler
-nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/05_component/sys/shell_cmd_sys.d" -MT"banux/05_component/sys/shell_cmd_sys.d banux/05_component/sys/shell_cmd_sys.o" -o "banux/05_component/sys/shell_cmd_sys.o" "../banux/05_component/sys/shell_cmd_sys.c"
-Finished building: ../banux/05_component/sys/shell_cmd_sys.c
- 
-Building file: ../banux/05_component/sys/sys_nv.c
-Invoking: Andes C Compiler
-nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/05_component/sys/sys_nv.d" -MT"banux/05_component/sys/sys_nv.d banux/05_component/sys/sys_nv.o" -o "banux/05_component/sys/sys_nv.o" "../banux/05_component/sys/sys_nv.c"
-In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
-                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
-                 from ../banux/05_component/sys/sys_nv.c:9:
-/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/event_groups.d" -MT"FreeRTOS/Source/event_groups.d FreeRTOS/Source/event_groups.o" -o "FreeRTOS/Source/event_groups.o" "../FreeRTOS/Source/event_groups.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/event_groups.c:75:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
  #define CFG_CHIP_CONFIG
  ^
 <command-line>:0:0: note: this is the location of the previous definition
-In file included from ../banux/05_component/sys/sys_nv.c:9:0:
-/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:99:0: warning: "DBG" redefined
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/event_groups.c:75:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/event_groups.c
+ 
+Building file: ../FreeRTOS/Source/heap_5s.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/heap_5s.d" -MT"FreeRTOS/Source/heap_5s.d FreeRTOS/Source/heap_5s.o" -o "FreeRTOS/Source/heap_5s.o" "../FreeRTOS/Source/heap_5s.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/heap_5s.c:115:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/heap_5s.c:115:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/heap_5s.c
+ 
+Building file: ../FreeRTOS/Source/list.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/list.d" -MT"FreeRTOS/Source/list.d FreeRTOS/Source/list.o" -o "FreeRTOS/Source/list.o" "../FreeRTOS/Source/list.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/list.c:68:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/list.c:68:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/list.c
+ 
+Building file: ../FreeRTOS/Source/queue.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/queue.d" -MT"FreeRTOS/Source/queue.d FreeRTOS/Source/queue.o" -o "FreeRTOS/Source/queue.o" "../FreeRTOS/Source/queue.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/queue.c:74:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/queue.c:74:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/queue.c
+ 
+Building file: ../FreeRTOS/Source/tasks.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/tasks.d" -MT"FreeRTOS/Source/tasks.d FreeRTOS/Source/tasks.o" -o "FreeRTOS/Source/tasks.o" "../FreeRTOS/Source/tasks.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/tasks.c:76:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/tasks.c:76:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/tasks.c
+ 
+Building file: ../FreeRTOS/Source/timers.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/timers.d" -MT"FreeRTOS/Source/timers.d FreeRTOS/Source/timers.o" -o "FreeRTOS/Source/timers.o" "../FreeRTOS/Source/timers.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/timers.c:74:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/timers.c:74:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/timers.c
+ 
+Building file: ../FreeRTOS/Source/portable/os_cpu_a.S
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/portable/os_cpu_a.d" -MT"FreeRTOS/Source/portable/os_cpu_a.d FreeRTOS/Source/portable/os_cpu_a.o" -o "FreeRTOS/Source/portable/os_cpu_a.o" "../FreeRTOS/Source/portable/os_cpu_a.S"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from ../FreeRTOS/Source/portable/os_cpu_a.S:20:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Finished building: ../FreeRTOS/Source/portable/os_cpu_a.S
+ 
+Building file: ../FreeRTOS/Source/portable/port.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/portable/port.d" -MT"FreeRTOS/Source/portable/port.d FreeRTOS/Source/portable/port.o" -o "FreeRTOS/Source/portable/port.o" "../FreeRTOS/Source/portable/port.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/portable/port.c:72:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/portable/port.c:72:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/portable/port.c
+ 
+Building file: ../FreeRTOS/Source/portable/portISR.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"FreeRTOS/Source/portable/portISR.d" -MT"FreeRTOS/Source/portable/portISR.d FreeRTOS/Source/portable/portISR.o" -o "FreeRTOS/Source/portable/portISR.o" "../FreeRTOS/Source/portable/portISR.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOSConfig.h:4,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:106,
+                 from ../FreeRTOS/Source/portable/portISR.c:68:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../FreeRTOS/Source/portable/portISR.c:68:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../FreeRTOS/Source/portable/portISR.c
+ 
+Building file: ../banux/02_device_drivers/flash/BG_FlashMgr.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/02_device_drivers/flash/BG_FlashMgr.d" -MT"banux/02_device_drivers/flash/BG_FlashMgr.d banux/02_device_drivers/flash/BG_FlashMgr.o" -o "banux/02_device_drivers/flash/BG_FlashMgr.o" "../banux/02_device_drivers/flash/BG_FlashMgr.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../banux/02_device_drivers/flash/BG_FlashMgr.c:8:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from ../banux/02_device_drivers/flash/BG_FlashMgr.c:8:0:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:99:0: warning: "DBG" redefined
  #define DBG(format, ...)  printf(format, ##__VA_ARGS__)
  ^
-In file included from /cygdrive/D/BanAirBundy/boot_app/banux/05_component/cdc_debug/cdc_debug.h:15:0,
-                 from ../banux/05_component/sys/sys_nv.c:6:
-/cygdrive/D/BanAirBundy/boot_app/banux/banux_config.h:251:0: note: this is the location of the previous definition
+In file included from ../banux/02_device_drivers/flash/flash_devices.h:14:0,
+                 from ../banux/02_device_drivers/flash/BG_FlashMgr.c:6:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/banux_config.h:251:0: note: this is the location of the previous definition
  #define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
  ^
-Finished building: ../banux/05_component/sys/sys_nv.c
+../banux/02_device_drivers/flash/BG_FlashMgr.c:29:1: warning: missing braces around initializer [-Wmissing-braces]
+ static BG_FlashMgrStatus_t g_flash_status = {0};
+ ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:29:1: warning: (near initialization for 'g_flash_status.flash0') [-Wmissing-braces]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_init':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:135:5: warning: format '%d' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+     FLASHMGR_LOG("  Flash0: %s (ID=%d, Size=%dMB)\n",
+     ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:135:5: warning: format '%d' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:139:5: warning: format '%d' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+     FLASHMGR_LOG("  Flash1: %s (ID=%d, Size=%dMB)\n",
+     ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:139:5: warning: format '%d' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_read_system':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:187:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         FLASHMGR_LOG("System read out of range: offset=0x%X, size=%d\n", offset, size);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:187:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:187:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:187:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_write_system':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:219:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         FLASHMGR_LOG("System write out of range: offset=0x%X, size=%d\n", offset, size);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:219:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:219:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:219:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_read_looper':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:282:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         FLASHMGR_LOG("Looper read out of range: offset=0x%X, size=%d\n", offset, size);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:282:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:282:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:282:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_write_looper':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:314:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         FLASHMGR_LOG("Looper write out of range: offset=0x%X, size=%d\n", offset, size);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:314:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:314:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:314:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_erase_looper_all':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:412:13: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+             FLASHMGR_LOG("Erase failed at offset 0x%X\n", offset);
+             ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:412:13: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:421:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+             FLASHMGR_LOG("  Erased %d MB...\n", offset / (1024*1024));
+             ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:421:13: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_read_storage':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:448:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         FLASHMGR_LOG("Storage read out of range: offset=0x%X, size=%d\n", offset, size);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:448:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:448:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:448:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_write_storage':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:480:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         FLASHMGR_LOG("Storage write out of range: offset=0x%X, size=%d\n", offset, size);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:480:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:480:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:480:9: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_print_info':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:673:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+         DBG("  Total Size: %d MB\n", status.flash0.total_size / (1024*1024));
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:673:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:674:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' [-Wformat=]
+         DBG("  Error Count: %d\n", status.flash0.error_count);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:674:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:682:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+         DBG("  Total Size: %d MB\n", status.flash1.total_size / (1024*1024));
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:682:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:683:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' [-Wformat=]
+         DBG("  Error Count: %d\n", status.flash1.error_count);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:683:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:689:5: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+     DBG("  Looper: %d KB\n", bg_flash_get_looper_free_space() / 1024);
+     ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:689:5: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c:690:5: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+     DBG("  Storage: %d KB\n", bg_flash_get_storage_free_space() / 1024);
+     ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:690:5: warning: format '%d' expects argument of type 'int', but argument 2 has type 'long unsigned int' [-Wformat=]
+../banux/02_device_drivers/flash/BG_FlashMgr.c: In function 'bg_flash_format':
+../banux/02_device_drivers/flash/BG_FlashMgr.c:718:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'int32_t' [-Wformat=]
+         FLASHMGR_LOG("Format failed: %d\n", ret);
+         ^
+../banux/02_device_drivers/flash/BG_FlashMgr.c:718:9: warning: format '%d' expects argument of type 'int', but argument 2 has type 'int32_t' [-Wformat=]
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/rtos_api.h:9,
+                 from ../banux/02_device_drivers/flash/BG_FlashMgr.c:9:
+../banux/02_device_drivers/flash/BG_FlashMgr.c: At top level:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../banux/02_device_drivers/flash/BG_FlashMgr.c
+ 
+Building file: ../banux/02_device_drivers/flash/flash_nand_w25n02.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/02_device_drivers/flash/flash_nand_w25n02.d" -MT"banux/02_device_drivers/flash/flash_nand_w25n02.d banux/02_device_drivers/flash/flash_nand_w25n02.o" -o "banux/02_device_drivers/flash/flash_nand_w25n02.o" "../banux/02_device_drivers/flash/flash_nand_w25n02.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../banux/02_device_drivers/flash/flash_nand_w25n02.c:18:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+../banux/02_device_drivers/flash/flash_nand_w25n02.c: In function 'nand_load_page_to_cache':
+../banux/02_device_drivers/flash/flash_nand_w25n02.c:231:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         NAND_LOG("ECC uncorrectable error at page 0x%04X\n", page_addr);
+         ^
+../banux/02_device_drivers/flash/flash_nand_w25n02.c:231:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+../banux/02_device_drivers/flash/flash_nand_w25n02.c: In function 'nand_program_execute':
+../banux/02_device_drivers/flash/flash_nand_w25n02.c:304:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+         NAND_LOG("Program failed at page 0x%04X\n", page_addr);
+         ^
+../banux/02_device_drivers/flash/flash_nand_w25n02.c:304:9: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/rtos_api.h:9,
+                 from ../banux/02_device_drivers/flash/flash_nand_w25n02.c:19:
+../banux/02_device_drivers/flash/flash_nand_w25n02.c: At top level:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+../banux/02_device_drivers/flash/flash_nand_w25n02.c:318:16: warning: 'nand_read_oob0' defined but not used [-Wunused-function]
+ static uint8_t nand_read_oob0(FlashDevice_t *dev, uint16_t block_addr)
+                ^
+Finished building: ../banux/02_device_drivers/flash/flash_nand_w25n02.c
+ 
+Building file: ../banux/02_device_drivers/flash/flash_nor_w25qxx.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/02_device_drivers/flash/flash_nor_w25qxx.d" -MT"banux/02_device_drivers/flash/flash_nor_w25qxx.d banux/02_device_drivers/flash/flash_nor_w25qxx.o" -o "banux/02_device_drivers/flash/flash_nor_w25qxx.o" "../banux/02_device_drivers/flash/flash_nor_w25qxx.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../banux/02_device_drivers/flash/flash_nor_w25qxx.c:13:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+../banux/02_device_drivers/flash/flash_nor_w25qxx.c: In function 'W25Qxx_Init':
+../banux/02_device_drivers/flash/flash_nor_w25qxx.c:256:5: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+     W25QXX_LOG("Init OK: %s - MfgID=0x%02X, MemType=0x%02X, DevID=0x%02X, Size=%dMB\n",
+     ^
+../banux/02_device_drivers/flash/flash_nor_w25qxx.c:256:5: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/rtos_api.h:9,
+                 from ../banux/02_device_drivers/flash/flash_nor_w25qxx.c:14:
+../banux/02_device_drivers/flash/flash_nor_w25qxx.c: At top level:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../banux/02_device_drivers/flash/flash_nor_w25qxx.c
+ 
+Building file: ../banux/02_device_drivers/flash/psram_esp64h.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"banux/02_device_drivers/flash/psram_esp64h.d" -MT"banux/02_device_drivers/flash/psram_esp64h.d banux/02_device_drivers/flash/psram_esp64h.o" -o "banux/02_device_drivers/flash/psram_esp64h.o" "../banux/02_device_drivers/flash/psram_esp64h.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from ../banux/02_device_drivers/flash/psram_esp64h.c:19:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/rtos_api.h:9,
+                 from ../banux/02_device_drivers/flash/psram_esp64h.c:20:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../banux/02_device_drivers/flash/psram_esp64h.c
  
 Building file: ../src/main.c
 Invoking: Andes C Compiler
-nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.d src/main.o" -o "src/main.o" "../src/main.c"
-In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:4:0,
-                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.d src/main.o" -o "src/main.o" "../src/main.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
                  from ../src/main.c:12:
-/cygdrive/D/BanAirBundy/boot_app/system_config/chip_config.h:44:0: warning: "CFG_CHIP_CONFIG" redefined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
  #define CFG_CHIP_CONFIG
  ^
 <command-line>:0:0: note: this is the location of the previous definition
 In file included from ../src/main.c:17:0:
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/remap.h:32:0: warning: "FLASH_ADDR" redefined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/remap.h:32:0: warning: "FLASH_ADDR" redefined
  #define FLASH_ADDR    0x0
  ^
-In file included from /cygdrive/D/BanAirBundy/boot_app/system_config/app_config.h:5:0,
-                 from /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:5:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
                  from ../src/main.c:12:
-/cygdrive/D/BanAirBundy/boot_app/system_config/flash_config.h:14:0: note: this is the location of the previous definition
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/flash_config.h:14:0: note: this is the location of the previous definition
      #define FLASH_ADDR              0x00040000
  ^
 In file included from ../src/main.c:32:0:
-/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:44:0: warning: "DEVICE_BULK_IN_EP" redefined
  #define DEVICE_BULK_IN_EP   0x82
  ^
 In file included from ../src/main.c:31:0:
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:41:0: note: this is the location of the previous definition
  #define DEVICE_BULK_IN_EP   0x81
  ^
 In file included from ../src/main.c:32:0:
-/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:45:0: warning: "DEVICE_BULK_OUT_EP" redefined
  #define DEVICE_BULK_OUT_EP   0x03
  ^
 In file included from ../src/main.c:31:0:
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:42:0: note: this is the location of the previous definition
  #define DEVICE_BULK_OUT_EP   0x01
  ^
 In file included from ../src/main.c:32:0:
-/cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:55:0: warning: "DEVICE_ISO_IN_EP" redefined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h:55:0: warning: "DEVICE_ISO_IN_EP" redefined
  #define DEVICE_ISO_IN_EP   0x84
  ^
 In file included from ../src/main.c:31:0:
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:45:0: note: this is the location of the previous definition
  #define DEVICE_ISO_IN_EP   0x82
  ^
 ../src/main.c: In function 'prvInitialiseHeap':
-../src/main.c:66:2: warning: implicit declaration of function 'vPortDefineHeapRegions' [-Wimplicit-function-declaration]
+../src/main.c:68:2: warning: implicit declaration of function 'vPortDefineHeapRegions' [-Wimplicit-function-declaration]
   vPortDefineHeapRegions(xHeapRegions);
   ^
 ../src/main.c: In function 'main':
-../src/main.c:231:2: warning: null argument where non-null required (argument 1) [-Wnonnull]
+../src/main.c:240:2: warning: null argument where non-null required (argument 1) [-Wnonnull]
   Remap_InitTcm(0, 0, 12);
   ^
-../src/main.c:231:2: warning: null argument where non-null required (argument 2) [-Wnonnull]
+../src/main.c:240:2: warning: null argument where non-null required (argument 2) [-Wnonnull]
 In file included from ../src/main.c:19:0:
 ../src/main.c: At top level:
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:147:6: warning: inline function 'GIE_DISABLE' declared but never defined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/irqn.h:147:6: warning: inline function 'GIE_DISABLE' declared but never defined
  void GIE_DISABLE(void);
       ^
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:139:6: warning: inline function 'GIE_ENABLE' declared but never defined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/irqn.h:139:6: warning: inline function 'GIE_ENABLE' declared but never defined
  void GIE_ENABLE(void);
       ^
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:147:6: warning: inline function 'GIE_DISABLE' declared but never defined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/irqn.h:147:6: warning: inline function 'GIE_DISABLE' declared but never defined
  void GIE_DISABLE(void);
       ^
-/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/irqn.h:139:6: warning: inline function 'GIE_ENABLE' declared but never defined
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc/irqn.h:139:6: warning: inline function 'GIE_ENABLE' declared but never defined
  void GIE_ENABLE(void);
       ^
 Finished building: ../src/main.c
  
+Building file: ../src/wireless_app.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"src/wireless_app.d" -MT"src/wireless_app.d src/wireless_app.o" -o "src/wireless_app.o" "../src/wireless_app.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from ../src/wireless_app.h:8,
+                 from ../src/wireless_app.c:5:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/os_cpu.h:12:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portmacro.h:126,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/portable.h:329,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/FreeRTOS.h:115,
+                 from ../src/wireless_app.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:23:20: warning: inline function 'GIE_DISABLE' declared but never defined
+ extern inline void GIE_DISABLE(); //defined @startup interrupt.c
+                    ^
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include/n12_def.h:22:20: warning: inline function 'GIE_ENABLE' declared but never defined
+ extern inline void GIE_ENABLE(); //defined @startup interrupt.c
+                    ^
+Finished building: ../src/wireless_app.c
+ 
+Building file: /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c
+Invoking: Andes C Compiler
+nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -DBOOT_APP_WIRELESS_EN=1 -DBOOT_APP_WIRELESS_ROLE_TX=0 -DBOOT_APP_MVWIRE_EN=1 -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/startup" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/adc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/gpio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/spi" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_hal_drivers/sdio" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/01_vfs" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/02_device_drivers/flash" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/core" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/drivers" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/03_driver_framework/event" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/04_shell_commands" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/cdc_debug" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/sys" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/banux/05_component/fat32" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"wireless_lib/wireless_rx.d" -MT"wireless_lib/wireless_rx.d wireless_lib/wireless_rx.o" -o "wireless_lib/wireless_rx.o" "/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c"
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:38:0: warning: "BB_EM_SIZE" redefined
+     #define BB_EM_SIZE    (16*1024)
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_core.h:18:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_api.h:18,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:7:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_config.h:84:0: note: this is the location of the previous definition
+ #define BB_EM_SIZE               (16 * 1024)
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:4:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/chip_config.h:45:0: warning: "CFG_CHIP_CONFIG" redefined
+ #define CFG_CHIP_CONFIG
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:39:0: warning: "WIRELESS_LINK_KEY0" redefined
+ #define WIRELESS_LINK_KEY0   (0x21)
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_core.h:18:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_api.h:18,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:7:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_config.h:67:0: note: this is the location of the previous definition
+ #define WIRELESS_LINK_KEY0       0x21
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:40:0: warning: "WIRELESS_LINK_KEY1" redefined
+ #define WIRELESS_LINK_KEY1   (0x56)
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_core.h:18:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_api.h:18,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:7:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_config.h:70:0: note: this is the location of the previous definition
+ #define WIRELESS_LINK_KEY1       0x56
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:71:0: warning: "ENCODE_CH" redefined
+ #define ENCODE_CH            0
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_core.h:18:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_api.h:18,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:7:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_config.h:50:0: note: this is the location of the previous definition
+ #define ENCODE_CH                1
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:81:0: warning: "CFG_PARA_MAX_VOLUME_NUM" redefined
+ #define CFG_PARA_MAX_VOLUME_NUM      (16)
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_core.h:18:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_api.h:18,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:7:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_config.h:120:0: note: this is the location of the previous definition
+ #define CFG_PARA_MAX_VOLUME_NUM  16
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:32:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:12:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/system_config/app_config.h:82:0: warning: "CFG_PARA_SYS_VOLUME_DEFAULT" redefined
+ #define CFG_PARA_SYS_VOLUME_DEFAULT  (16)
+ ^
+In file included from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_core.h:18:0,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_api.h:18,
+                 from /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c:7:
+/cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_config.h:124:0: note: this is the location of the previous definition
+ #define CFG_PARA_SYS_VOLUME_DEFAULT  (CFG_PARA_MAX_VOLUME_NUM)
+ ^
+Finished building: /cygdrive/E/project_and_dataset/project/BanAirBundy/wireless_lib/wireless_rx.c
+ 
 Building target: boot_app.adx
 Invoking: Andes C Linker
-nds32le-elf-gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/boot_app/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx"  ./FreeRTOS/Source/event_groups.o ./FreeRTOS/Source/heap_5s.o ./FreeRTOS/Source/list.o ./FreeRTOS/Source/queue.o ./FreeRTOS/Source/tasks.o ./FreeRTOS/Source/timers.o  ./FreeRTOS/Source/portable/os_cpu_a.o ./FreeRTOS/Source/portable/port.o ./FreeRTOS/Source/portable/portISR.o  ./banux/01_hal_drivers/adc/audio_setting.o  ./banux/01_hal_drivers/psram_heap.o  ./banux/01_hal_drivers/sdio/hal_sdio.o  ./banux/01_vfs/vfs.o  ./banux/02_device_drivers/flash/BG_FlashMgr.o ./banux/02_device_drivers/flash/bg_flash_manager.o ./banux/02_device_drivers/flash/flash_bus.o ./banux/02_device_drivers/flash/flash_devices.o ./banux/02_device_drivers/flash/flash_driver.o ./banux/02_device_drivers/flash/flash_manager.o ./banux/02_device_drivers/flash/flash_nand_w25n02.o ./banux/02_device_drivers/flash/flash_nor_w25qxx.o ./banux/02_device_drivers/flash/psram_esp64h.o  ./banux/03_driver_framework/core/drv_device.o ./banux/03_driver_framework/core/drv_fs.o  ./banux/03_driver_framework/drivers/drv_psram.o ./banux/03_driver_framework/drivers/drv_w25n02.o ./banux/03_driver_framework/drivers/drv_w25qxx.o  ./banux/03_driver_framework/drv_init.o  ./banux/03_driver_framework/event/bg_event.o  ./banux/04_shell_commands/bg_shell.o ./banux/04_shell_commands/shell_io_ble.o ./banux/04_shell_commands/shell_io_cdc.o  ./banux/05_component/cdc_debug/cdc_debug.o ./banux/05_component/cdc_debug/shell_cmd_log.o  ./banux/05_component/firmware_upgrade/app_upgrade.o ./banux/05_component/firmware_upgrade/boot_decision.o ./banux/05_component/firmware_upgrade/fw_upgrade.o ./banux/05_component/firmware_upgrade/shell_cmd_boot.o  ./banux/05_component/sys/shell_cmd_sys.o ./banux/05_component/sys/sys_nv.o  ./driver/driver_api/src/uarts_interface.o  ./middleware/mv_utils/src/debug.o ./middleware/mv_utils/src/heap.o ./middleware/mv_utils/src/mcu_circular_buf.o  ./otg/device/src/otg_device_audio.o ./otg/device/src/otg_device_cdc.o ./otg/device/src/otg_device_standard_request.o  ./otg/otg_fifo.o  ./src/main.o ./src/usb_audio_api.o ./src/wireless_app.o  ./startup/crt0.o ./startup/flash_boot.o ./startup/init-default.o ./startup/interrupt.o ./startup/retarget.o  ./wireless_lib/audio_codec_api.o ./wireless_lib/audio_driver_api.o ./wireless_lib/wireless_rx.o ./wireless_lib/wireless_tx.o   -lDriver
+nds32le-elf-gcc -Og -nostartfiles -static -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver" -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/lib" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx"  ./FreeRTOS/Source/event_groups.o ./FreeRTOS/Source/heap_5s.o ./FreeRTOS/Source/list.o ./FreeRTOS/Source/queue.o ./FreeRTOS/Source/tasks.o ./FreeRTOS/Source/timers.o  ./FreeRTOS/Source/portable/os_cpu_a.o ./FreeRTOS/Source/portable/port.o ./FreeRTOS/Source/portable/portISR.o  ./banux/01_hal_drivers/adc/audio_setting.o  ./banux/01_hal_drivers/psram_heap.o  ./banux/01_hal_drivers/sdio/hal_sdio.o  ./banux/01_vfs/vfs.o  ./banux/02_device_drivers/flash/BG_FlashMgr.o ./banux/02_device_drivers/flash/bg_flash_manager.o ./banux/02_device_drivers/flash/flash_bus.o ./banux/02_device_drivers/flash/flash_devices.o ./banux/02_device_drivers/flash/flash_driver.o ./banux/02_device_drivers/flash/flash_manager.o ./banux/02_device_drivers/flash/flash_nand_w25n02.o ./banux/02_device_drivers/flash/flash_nor_w25qxx.o ./banux/02_device_drivers/flash/psram_esp64h.o  ./banux/03_driver_framework/core/drv_device.o ./banux/03_driver_framework/core/drv_fs.o  ./banux/03_driver_framework/drivers/drv_psram.o ./banux/03_driver_framework/drivers/drv_w25n02.o ./banux/03_driver_framework/drivers/drv_w25qxx.o  ./banux/03_driver_framework/drv_init.o  ./banux/03_driver_framework/event/bg_event.o  ./banux/04_shell_commands/bg_shell.o ./banux/04_shell_commands/shell_io_ble.o ./banux/04_shell_commands/shell_io_cdc.o  ./banux/05_component/cdc_debug/cdc_debug.o ./banux/05_component/cdc_debug/shell_cmd_log.o  ./banux/05_component/firmware_upgrade/app_upgrade.o ./banux/05_component/firmware_upgrade/boot_decision.o ./banux/05_component/firmware_upgrade/fw_upgrade.o ./banux/05_component/firmware_upgrade/shell_cmd_boot.o  ./banux/05_component/sys/shell_cmd_sys.o ./banux/05_component/sys/sys_nv.o  ./driver/driver_api/src/adc_interface.o ./driver/driver_api/src/dac_interface.o ./driver/driver_api/src/uarts_interface.o  ./middleware/mv_utils/src/debug.o ./middleware/mv_utils/src/heap.o ./middleware/mv_utils/src/mcu_circular_buf.o  ./otg/device/src/otg_device_audio.o ./otg/device/src/otg_device_cdc.o ./otg/device/src/otg_device_standard_request.o  ./otg/otg_fifo.o  ./src/main.o ./src/usb_audio_api.o ./src/wireless_app.o  ./startup/crt0.o ./startup/flash_boot.o ./startup/init-default.o ./startup/interrupt.o ./startup/retarget.o  ./wireless_lib/audio_codec_api.o ./wireless_lib/audio_driver_api.o ./wireless_lib/mvwire_assoc.o ./wireless_lib/mvwire_stack.o ./wireless_lib/mvwire_transbuf.o ./wireless_lib/sbc_api.o ./wireless_lib/wireless_rx.o ./wireless_lib/wireless_tx.o  ./wireless_lib/sbc/sbc_analysis.o ./wireless_lib/sbc/sbc_dct.o ./wireless_lib/sbc/sbc_dct_coeffs.o ./wireless_lib/sbc/sbc_enc_bit_alloc_mono.o ./wireless_lib/sbc/sbc_enc_bit_alloc_ste.o ./wireless_lib/sbc/sbc_enc_coeffs.o ./wireless_lib/sbc/sbc_encoder.o ./wireless_lib/sbc/sbc_packing.o   -lwirelessStack -lwireless2 -laudio_association -lAudioDecoderLibrary -lplc128 -lDriver -lm
 Finished building target: boot_app.adx
  
 /usr/bin/make --no-print-directory post-build
@@ -128,9 +696,9 @@ Finished building: output/objdump.txt
 Invoking: Size (section size listing)
 nds32le-elf-size  "boot_app.adx" | tee output/.PHONY.size
    text (code + rodata)	   data	    bss	    dec	    hex	filename
-  44944 (36080 +   8864)	    328	  31804	  77076	  12d14	boot_app.adx
+ 113310 (96418 +  16892)	   2056	 104084	 219450	  3593a	boot_app.adx
 Finished building: output/.PHONY.size
  
 
-17:14:56 Build Finished (took 2s.584ms)
+22:53:39 Build Finished (took 6s.940ms)
 

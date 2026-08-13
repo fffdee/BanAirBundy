@@ -31,6 +31,7 @@
     #define CFG_SDK_VER_CHIPID		0x15
     #define CHIP_USE_DCDC
     #define CHIP_LINEIN_CHANNEL		0
+    #define CHIP_AUDIODAC_DOUT_MODE		MODE1
     #define CFG_D16K_MEM16K_EN		0
     #define CFG_D16KMEM16K_RAM_SIZE	0
     #define CFG_CHIP_RAM_SIZE		(256*1024)

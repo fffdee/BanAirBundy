@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
-#include <stdbool.h>
+#include "type.h"
 #include "wireless_config.h"
 
 /*===========================================================================

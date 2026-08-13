@@ -43,7 +43,7 @@
 #define configUSE_TIMERS				1
 #define configTIMER_TASK_PRIORITY		(3)
 #define configTIMER_QUEUE_LENGTH		10
-#define configTIMER_TASK_STACK_DEPTH	(configMINIMAL_STACK_SIZE * 2)
+#define configTIMER_TASK_STACK_DEPTH	(configMINIMAL_STACK_SIZE * 4)
 
 /* API function inclusion */
 #define INCLUDE_vTaskPrioritySet		1
@@ -55,6 +55,7 @@
 #define INCLUDE_vTaskDelay				1
 #define INCLUDE_xTaskGetSchedulerState	1
 #define INCLUDE_xTimerPendFunctionCall	1
+#define INCLUDE_uxTaskGetStackHighWaterMark	1
 
 /* Interrupt priority */
 #ifdef __NVIC_PRIO_BITS

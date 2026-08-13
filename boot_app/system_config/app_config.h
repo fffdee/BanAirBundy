@@ -43,26 +43,35 @@
 #define PACKET_CRC_LEN       (2)
 #define PACKET_CNT_LEN       (2)
 
-/* 编解码配置 */
-#define DECODE_CH            PACKET_AUDIO_CH
-#define DECODE_QUALITY       AUDIO_QUALITY
-#define ENCODE_CH            0
-
-/* 角色: master = RX 主机 */
-#define WIRELESS_SDK_ROLE    MVWIRE2_MASTER_ROLE
-#define ROLE_TAG             master
-
 /*
  * wireless_lib 接入开关：
- *   BOOT_APP_WIRELESS_EN=1 编译并启动无线任务（当前为骨架 stub）
+ *   BOOT_APP_WIRELESS_EN=1 编译并启动无线任务
  *   BOOT_APP_WIRELESS_ROLE_TX=0 RX/Master；=1 TX/Slave
- * 工程排除：TX 时排除 wireless_rx.c，RX 时排除 wireless_tx.c
+ *   BOOT_APP_MVWIRE_EN=1 链接 libwireless2 + Association + SBC
  */
 #ifndef BOOT_APP_WIRELESS_EN
 #define BOOT_APP_WIRELESS_EN         1
 #endif
 #ifndef BOOT_APP_WIRELESS_ROLE_TX
 #define BOOT_APP_WIRELESS_ROLE_TX    0
+#endif
+#ifndef BOOT_APP_MVWIRE_EN
+#define BOOT_APP_MVWIRE_EN           1
+#endif
+
+/* 编解码通道：与 1532 Turnkey 角色镜像 */
+#define ENCODE_QUALITY       AUDIO_QUALITY
+#define DECODE_QUALITY       AUDIO_QUALITY
+#if BOOT_APP_WIRELESS_ROLE_TX
+#define ENCODE_CH            PACKET_AUDIO_CH
+#define DECODE_CH            0
+#define WIRELESS_SDK_ROLE    2 /* MVWIRE2_SLAVER_ROLE */
+#define ROLE_TAG             slaver
+#else
+#define ENCODE_CH            0
+#define DECODE_CH            PACKET_AUDIO_CH
+#define WIRELESS_SDK_ROLE    1 /* MVWIRE2_MASTER_ROLE */
+#define ROLE_TAG             master
 #endif
 
 /* 多项式阶数 */

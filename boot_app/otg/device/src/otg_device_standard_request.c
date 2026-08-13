@@ -14,6 +14,7 @@
 #include <string.h>
 #include "type.h"
 #include "debug.h"
+#include "chip_info.h"
 #include "otg_device_hcd.h"
 #include "otg_device_standard_request.h"
 #include "otg_device_descriptor.h"
@@ -64,6 +65,25 @@ uint8_t *gDeviceString_Index;
 extern UsbAudio UsbAudioSpeaker;
 extern UsbAudio UsbAudioMic;
 
+/*
+ * Windows binds COM ports by VID+PID+iSerialNumber. A fixed serial makes
+ * multiple boards look like one device. Derive from Chip_IDGet() (64-bit).
+ */
+static char s_usb_serial[17];
+
+static void UsbSerial_FromChipId(void)
+{
+	static const char hex[] = "0123456789ABCDEF";
+	uint64_t id = 0;
+	int i;
+
+	Chip_IDGet(&id);
+	for (i = 0; i < 16; i++)
+		s_usb_serial[i] = hex[(id >> ((15 - i) * 4)) & 0xFu];
+	s_usb_serial[16] = '\0';
+	gDeviceString_SerialNumber = s_usb_serial;
+}
+
 void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid)
 {
 	
@@ -86,7 +106,8 @@ void OTG_DeviceModeSel(uint8_t Mode,uint16_t UsbVid,uint16_t UsbPid)
 	}
 
  	gDeviceString_Manu 		        = "BanGO";
-	gDeviceString_SerialNumber      = "20250405";
+	UsbSerial_FromChipId();
+	DBG("[USB] iSerialNumber=%s\n", gDeviceString_SerialNumber);
 }
 
 

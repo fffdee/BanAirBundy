@@ -9,6 +9,7 @@
 #include "type.h"
 #include "debug.h"
 #include "usb_audio_api.h"
+#include "audio_driver_api.h"
 
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
 
@@ -16,7 +17,10 @@ static uint8_t UsbAudioSpeaker_PCMBuffer[USB_FIFO_LEN];
 #ifdef CFG_RES_AUDIO_USB_OUT_EN
 static uint8_t UsbAudioMic_PCMBuffer[USB_FIFO_LEN];
 #endif
-static uint32_t s_drain_buf[ONE_MS_SAMPLE * PACKET_CHANNELS_NUM];
+static int16_t s_speaker_buf[ONE_MS_SAMPLE * PACKET_CHANNELS_NUM];
+#ifdef CFG_RES_AUDIO_USB_OUT_EN
+static int16_t s_mic_silence[ONE_MS_SAMPLE * MIC_CHANNELS_NUM];
+#endif
 
 /* Referenced by otg_device_audio.c UsbAudioTimer1msProcess() */
 uint32_t usb_speaker_enable = 0;
@@ -88,10 +92,17 @@ void AudioCoreSourceChange(uint8_t Channels, uint32_t SampleRate)
 void UsbAudioSpeakerStreamProcess(void)
 {
 #ifdef CFG_RES_AUDIO_USB_IN_EN
-	/* Drain ISO speaker FIFO (replace with DAC feed when ready). */
+	uint16_t frames;
+
+	/* PC USB Speaker is stereo PCM16. Queue it for the shared DAC0 mixer. */
 	while (UsbAudioSpeakerDataLenGet() >= ONE_MS_SAMPLE) {
-		UsbAudioSpeakerDataGet(s_drain_buf, ONE_MS_SAMPLE);
+		frames = UsbAudioSpeakerDataGet(s_speaker_buf, ONE_MS_SAMPLE);
+		if (!frames)
+			break;
+		WlAudioOutput_PushUsb(s_speaker_buf,
+				     (uint16_t)(frames * PACKET_CHANNELS_NUM));
 	}
+	WlAudioOutput_Process();
 #endif
 }
 
@@ -100,8 +111,8 @@ void UsbAudioMicStreamProcess(void)
 #ifdef CFG_RES_AUDIO_USB_OUT_EN
 	/* Feed silence to mic ISO path until ADC is wired. */
 	if (UsbAudioMicSpaceLenGet() >= ONE_MS_SAMPLE) {
-		memset(s_drain_buf, 0, sizeof(s_drain_buf));
-		UsbAudioMicDataSet(s_drain_buf, ONE_MS_SAMPLE);
+		memset(s_mic_silence, 0, sizeof(s_mic_silence));
+		UsbAudioMicDataSet(s_mic_silence, ONE_MS_SAMPLE);
 	}
 #endif
 }
