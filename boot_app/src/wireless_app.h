@@ -11,18 +11,6 @@
 extern "C" {
 #endif
 
-#ifndef BOOT_APP_WIRELESS_EN
-#define BOOT_APP_WIRELESS_EN  0
-#endif
-
-/*
- * 0 = RX / Master (扫描连接 TX)
- * 1 = TX / Slave  (广播等待 RX)
- */
-#ifndef BOOT_APP_WIRELESS_ROLE_TX
-#define BOOT_APP_WIRELESS_ROLE_TX  0
-#endif
-
 #if BOOT_APP_WIRELESS_EN
 
 /**

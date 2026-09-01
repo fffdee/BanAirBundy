@@ -17,7 +17,7 @@ extern "C" {
 
 #define CFG_APP_USB_AUDIO_MODE_EN
 
-/* Composite: USB Speaker + CDC (change to AUDIO_MIC_CDC for mic+speaker+CDC) */
+/* USB mode is owned by app_config.h; default here only protects stand-alone use. */
 #ifndef CFG_PARA_USB_MODE
 #define CFG_PARA_USB_MODE           AUDIO_CDC
 #endif

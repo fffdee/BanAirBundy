@@ -25,27 +25,24 @@ RM := rm -rf
 -include subdir.mk
 -include FreeRTOS/Source/subdir.mk
 -include FreeRTOS/Source/portable/subdir.mk
--include banux/01_hal_drivers/adc/subdir.mk
--include banux/01_hal_drivers/subdir.mk
--include banux/01_hal_drivers/sdio/subdir.mk
--include banux/01_vfs/subdir.mk
--include banux/02_device_drivers/flash/subdir.mk
--include banux/03_driver_framework/core/subdir.mk
--include banux/03_driver_framework/drivers/subdir.mk
--include banux/03_driver_framework/subdir.mk
--include banux/03_driver_framework/event/subdir.mk
--include banux/04_shell_commands/subdir.mk
--include banux/05_component/cdc_debug/subdir.mk
--include banux/05_component/firmware_upgrade/subdir.mk
--include banux/05_component/sys/subdir.mk
+-include banux/00_core/subdir.mk
+-include banux/01_driver/subdir.mk
+-include banux/02_system_components/command_line/subdir.mk
+-include banux/02_system_components/command_parser/subdir.mk
+-include banux/02_system_components/driver_framework/core/subdir.mk
+-include banux/02_system_components/driver_framework/subdir.mk
+-include banux/02_system_components/driver_framework/vfs/subdir.mk
+-include banux/02_system_components/event/subdir.mk
+-include banux/02_system_components/fatfs/app/subdir.mk
+-include banux/02_system_components/file_io/subdir.mk
+-include banux/02_system_components/internal_flash_fs/subdir.mk
+-include banux/03_application_components/firmware_upgrade/subdir.mk
 -include driver/driver_api/src/subdir.mk
 -include middleware/mv_utils/src/subdir.mk
 -include otg/device/src/subdir.mk
 -include otg/subdir.mk
 -include src/subdir.mk
 -include startup/subdir.mk
--include wireless_lib/subdir.mk
--include wireless_lib/sbc/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -93,7 +90,7 @@ all: boot_app.adx secondary-outputs
 boot_app.adx: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Andes C Linker'
-	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/driver/driver" -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/boot_app/wireless_mv/lib" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx" $(OBJS) $(USER_OBJS) $(LIBS)
+	$(CROSS_COMPILE)gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/boot_app/driver/driver" -L"/cygdrive/D/BanAirBundy/boot_app/wireless_mv/lib" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "boot_app.adx" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

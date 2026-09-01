@@ -42,5 +42,7 @@
     #define CFG_SDK_MAGIC_NUMBER	0xB0BEBDC9
 #endif
 
+#ifndef CFG_CHIP_CONFIG
 #define CFG_CHIP_CONFIG
+#endif
 #endif

@@ -26,25 +26,22 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 FreeRTOS/Source \
 FreeRTOS/Source/portable \
-banux/01_hal_drivers/adc \
-banux/01_hal_drivers \
-banux/01_hal_drivers/sdio \
-banux/01_vfs \
-banux/02_device_drivers/flash \
-banux/03_driver_framework/core \
-banux/03_driver_framework/drivers \
-banux/03_driver_framework \
-banux/03_driver_framework/event \
-banux/04_shell_commands \
-banux/05_component/cdc_debug \
-banux/05_component/firmware_upgrade \
-banux/05_component/sys \
+banux/00_core \
+banux/01_driver \
+banux/02_system_components/command_line \
+banux/02_system_components/command_parser \
+banux/02_system_components/driver_framework/core \
+banux/02_system_components/driver_framework \
+banux/02_system_components/driver_framework/vfs \
+banux/02_system_components/event \
+banux/02_system_components/fatfs/app \
+banux/02_system_components/file_io \
+banux/02_system_components/internal_flash_fs \
+banux/03_application_components/firmware_upgrade \
 driver/driver_api/src \
 middleware/mv_utils/src \
 otg/device/src \
 otg \
 src \
 startup \
-wireless_lib \
-wireless_lib/sbc \
 

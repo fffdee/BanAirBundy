@@ -8,8 +8,11 @@
 #include <string.h>
 #include "type.h"
 #include "debug.h"
+#include "app_config.h"
 #include "usb_audio_api.h"
+#if BOOT_APP_MVWIRE_EN
 #include "audio_driver_api.h"
+#endif
 
 #ifdef CFG_APP_USB_AUDIO_MODE_EN
 
@@ -99,10 +102,14 @@ void UsbAudioSpeakerStreamProcess(void)
 		frames = UsbAudioSpeakerDataGet(s_speaker_buf, ONE_MS_SAMPLE);
 		if (!frames)
 			break;
+#if BOOT_APP_MVWIRE_EN
 		WlAudioOutput_PushUsb(s_speaker_buf,
 				     (uint16_t)(frames * PACKET_CHANNELS_NUM));
+#endif
 	}
+#if BOOT_APP_MVWIRE_EN
 	WlAudioOutput_Process();
+#endif
 #endif
 }
 

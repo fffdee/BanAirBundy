@@ -118,6 +118,7 @@ void OTG_DeviceCDC_Request(void)
         case CDC_SET_CONTROL_LINE_STATE:
             UsbCDC.ControlLineState.DTR = (Setup[2] & 0x01) ? 1 : 0;
             UsbCDC.ControlLineState.RTS = (Setup[2] & 0x02) ? 1 : 0;
+            UsbCDC.IsConnected = 1;
             OTG_DeviceControlSend(&s_ep0_zlp, 0, 10);
             break;
 
@@ -316,8 +317,9 @@ bool OTG_DeviceCDC_FlushTx(void)
         return FALSE;
     }
 
-    /* No host reader yet — keep data queued; avoid libDriver "SEND ERROR". */
-    if (!UsbCDC.ControlLineState.DTR)
+    /* Some host tools open the COM port without asserting DTR.  Treat either
+     * DTR or a completed CDC line/control request as permission to flush TX. */
+    if (!UsbCDC.ControlLineState.DTR && !UsbCDC.IsConnected)
     {
         return FALSE;
     }
@@ -404,8 +406,9 @@ void OTG_DeviceCDC_Task(void)
         }
     }
 
-    /* Flush any TX queued while COM was closed (DTR was 0). */
-    if (UsbCDC.ControlLineState.DTR && UsbCDC.TxCount > 0 && !UsbCDC.TxBusy)
+    /* Flush any TX queued while COM was closed. */
+    if ((UsbCDC.ControlLineState.DTR || UsbCDC.IsConnected) &&
+        UsbCDC.TxCount > 0 && !UsbCDC.TxBusy)
         OTG_DeviceCDC_FlushTx();
 }
 

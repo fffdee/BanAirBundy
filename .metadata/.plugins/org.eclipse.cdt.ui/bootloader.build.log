@@ -1,18 +1,21 @@
-20:04:29 **** Build of configuration Debug for project bootloader ****
+16:01:01 **** Build of configuration Debug for project bootloader ****
 make all 
-Building file: ../src/main.c
+Building file: ../otg/device/src/otg_device_standard_request.c
 Invoking: Andes C Compiler
-nds32le-elf-gcc -DCFG_APP_CONFIG -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/src" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/src/firmware_upgrade" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/otg/device/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver_api/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/middleware/mv_utils/inc" -I"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/middleware/audio/inc" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.d src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:129:5: warning: null argument where non-null required (argument 1) [-Wnonnull]
-     Remap_InitTcm(0, 0, 12);
-     ^
-../src/main.c:129:5: warning: null argument where non-null required (argument 2) [-Wnonnull]
-Finished building: ../src/main.c
+nds32le-elf-gcc -DCFG_APP_CONFIG -I"/cygdrive/D/BanAirBundy/bootloader/src" -I"/cygdrive/D/BanAirBundy/bootloader/src/firmware_upgrade" -I"/cygdrive/D/BanAirBundy/bootloader/otg/device/inc" -I"/cygdrive/D/BanAirBundy/bootloader/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/bootloader/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/bootloader/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/bootloader/middleware/audio/inc" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"otg/device/src/otg_device_standard_request.d" -MT"otg/device/src/otg_device_standard_request.d otg/device/src/otg_device_standard_request.o" -o "otg/device/src/otg_device_standard_request.o" "../otg/device/src/otg_device_standard_request.c"
+In file included from ../otg/device/src/otg_device_standard_request.c:25:0:
+/cygdrive/D/BanAirBundy/bootloader/src/app_config.h:18:0: warning: "AUDIO_MAX_VOLUME" redefined
+ #define AUDIO_MAX_VOLUME        0x7FFF
+ ^
+In file included from ../otg/device/src/otg_device_standard_request.c:21:0:
+/cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_audio.h:15:0: note: this is the location of the previous definition
+Finished building: ../otg/device/src/otg_device_standard_request.c
+ #define AUDIO_MAX_VOLUME  4096
+ ^
  
 Building target: bootloader.adx
 Invoking: Andes C Linker
-nds32le-elf-gcc -Og -nostartfiles -static -L"/cygdrive/E/project_and_dataset/project/BanAirBundy/bootloader/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "bootloader.adx"  ./driver/driver_api/src/uarts_interface.o  ./otg/device/src/otg_device_cdc.o ./otg/device/src/otg_device_standard_request.o  ./otg/otg_fifo.o  ./src/firmware_upgrade/app_upgrade.o ./src/firmware_upgrade/boot_decision.o ./src/firmware_upgrade/cdc_upgrade.o  ./src/main.o ./src/usb_audio_stub.o  ./startup/crt0.o ./startup/init-default.o ./startup/interrupt.o ./startup/retarget.o   -lDriver
+nds32le-elf-gcc -Og -nostartfiles -static -L"/cygdrive/D/BanAirBundy/bootloader/driver/driver" -mcmodel=medium -ldsp -mext-dsp -T"../nds32-ae210p.ld" -Wl,--gc-sections -mvh -o "bootloader.adx"  ./driver/driver_api/src/uarts_interface.o  ./otg/device/src/otg_device_cdc.o ./otg/device/src/otg_device_standard_request.o  ./otg/otg_fifo.o  ./src/firmware_upgrade/app_upgrade.o ./src/firmware_upgrade/boot_decision.o ./src/firmware_upgrade/cdc_upgrade.o  ./src/main.o ./src/usb_audio_stub.o  ./startup/crt0.o ./startup/init-default.o ./startup/interrupt.o ./startup/retarget.o   -lDriver
 Finished building target: bootloader.adx
  
 Invoking: NM (symbol listing)
@@ -34,9 +37,9 @@ Finished building: output/bootloader.bin
 Invoking: Size (section size listing)
 nds32le-elf-size  "bootloader.adx" | tee output/.PHONY.size
    text (code + rodata)	   data	    bss	    dec	    hex	filename
-  31346 (26238 +   5108)	    328	   4900	  36574	   8ede	bootloader.adx
+  31726 (26574 +   5152)	    328	   4920	  36974	   906e	bootloader.adx
 Finished building: output/.PHONY.size
  
 
-20:04:31 Build Finished (took 1s.608ms)
+16:01:02 Build Finished (took 1s.220ms)
 

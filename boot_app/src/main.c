@@ -25,6 +25,7 @@
 #include "clock_config.h"
 #include "app_config.h"
 #include "spi_flash.h"
+#include "Banux.h"
 #include "fw_upgrade.h"
 #include "dual_partition.h"
 
@@ -33,13 +34,10 @@
 #include "otg_device_cdc.h"
 #include "usb_audio_api.h"
 #include "delay.h"
-#include "bg_event.h"
-#include "drv_init.h"
-#include "bg_shell.h"
 #include "shell_io_cdc.h"
-#include "cdc_debug.h"
-#include "sys_nv.h"
 #include "wireless_app.h"
+
+extern int BanuxDriver_RegisterAll(void);
 
 /* FreeRTOS */
 #include "FreeRTOS.h"
@@ -90,39 +88,35 @@ static uint8_t DmaChannelMap[] =
 
 static TaskHandle_t xUsbTaskHandle = NULL;
 
+static void App_BanuxLog(const char *text)
+{
+	if (text)
+		DBG("%s", text);
+}
+
 /**
  * BanUX framework bring-up for boot_app:
- * event bus + VFS/driver core + CDC Shell + CDC debug log.
+ * event bus + VFS/driver core + CDC Shell + firmware upgrade component.
  * Keep HW_DRV_USB_CDC_EN=0 so composite USB stays on otg_device_cdc.
  */
 static void App_BanuxInit(void)
 {
 	int ret;
+	const BanuxConfig_t config = {
+		App_BanuxLog,
+		ShellIO_CDC_Get(),
+		NULL,
+		BanuxDriver_RegisterAll,
+		NULL,
+		NULL,
+	};
 
-	CdcDbg_Init();
-	/* Restore log (and future sys settings) from power-loss NVM. */
-	SysNv_Init();
-	BG_Event_Init();
-
-	ret = DrvFramework_Init();
+	ret = Banux_Init(&config);
 	if (ret != 0) {
-		DBG("[BanUX] DrvFramework_Init failed: %d\n", ret);
-		CDC_DBG_BANUX("DrvFramework_Init failed: %d\r\n", ret);
+		DBG("[BanUX] Banux_Init failed: %d\n", ret);
 	} else {
-		ret = DrvFramework_RegisterAll();
-		if (ret != 0) {
-			DBG("[BanUX] DrvFramework_RegisterAll failed: %d\n", ret);
-			CDC_DBG_BANUX("DrvFramework_RegisterAll failed: %d\r\n", ret);
-		} else {
-			DBG("[BanUX] framework ready (VFS + drivers)\n");
-			CDC_DBG_BANUX("framework ready (VFS + drivers)\r\n");
-		}
+		DBG("[BanUX] framework ready, Shell IO = %s\n", Shell_GetIOName());
 	}
-
-	Shell_Init();
-	Shell_SetIO(ShellIO_CDC_Get());
-	DBG("[BanUX] Shell IO = %s\n", Shell_GetIOName());
-	CDC_DBG_BANUX("Shell IO = %s\r\n", Shell_GetIOName());
 }
 
 /**
@@ -131,7 +125,10 @@ static void App_BanuxInit(void)
  */
 static void vUsbTask(void *pvParameters)
 {
+	static uint8_t s_lastDtr = 0u;
+
 	(void)pvParameters;
+	DBG("[USB] task running\n");
 
 	for (;;) {
 		OTG_DeviceRequestProcess();
@@ -139,20 +136,24 @@ static void vUsbTask(void *pvParameters)
 		if (g_usb_configured && !UsbCDC.InitOk) {
 			OTG_DeviceCDC_Init();
 			DBG("[USB] CDC InitOk\n");
-			CDC_DBG_USB("CDC InitOk\r\n");
 		}
 
 		if (UsbCDC.InitOk) {
-			OTG_DeviceCDC_Task();
-			/* Restore persisted log only after CDC is up (waits DTR if ON). */
-			SysNv_ApplyLogDeferred();
 			/*
 			 * Shell welcome/TX needs host DTR (COM open). Sending Bulk-IN
 			 * before that makes libDriver print "SEND ERROR" and can disturb
 			 * Windows CDC open.
 			 */
-			if (UsbCDC.ControlLineState.DTR)
-				Shell_Process();
+			if (UsbCDC.ControlLineState.DTR && !s_lastDtr) {
+				OTG_DeviceCDC_FlushRxBuffer();
+				Shell_ResetInputLine();
+			}
+			s_lastDtr = UsbCDC.ControlLineState.DTR;
+
+			/* CDC data is valid independently of DTR.  Some host tools send
+			 * bulk data before asserting the modem-control line. */
+			OTG_DeviceCDC_Task();
+			Banux_Process();
 		}
 
 		if (CFG_PARA_USB_MODE != CDC_ONLY) {
@@ -165,7 +166,8 @@ static void vUsbTask(void *pvParameters)
 		if (g_usb_configured)
 			vTaskDelay(pdMS_TO_TICKS(1));
 		else
-			taskYIELD();
+			/* Do not spin at the highest task priority before enumeration. */
+			vTaskDelay(pdMS_TO_TICKS(1));
 	}
 }
 
@@ -289,12 +291,20 @@ int main(void)
 	if (App_WirelessStart() != 0)
 		DBG("[WL] App_WirelessStart failed — continue without RF\n");
 
-	xTaskCreate(vUsbTask,
-		    "USB",
-		    configMINIMAL_STACK_SIZE * 8,
-		    NULL,
-		    tskIDLE_PRIORITY + 3,
-		    &xUsbTaskHandle);
+	{
+		BaseType_t task_ret;
+
+		task_ret = xTaskCreate(vUsbTask,
+				       "USB",
+				       configMINIMAL_STACK_SIZE * 8,
+				       NULL,
+				       tskIDLE_PRIORITY + 3,
+				       &xUsbTaskHandle);
+		DBG("[USB] task create=%s handle=%p free_heap=%lu\n",
+		    task_ret == pdPASS ? "ok" : "failed",
+		    (void *)xUsbTaskHandle,
+		    (unsigned long)xPortGetFreeHeapSize());
+	}
 
 	/* FreeRTOS yield/tick switch via OS_Trap_Interrupt_SWI. */
 	NVIC_EnableIRQ(SWI_IRQn);

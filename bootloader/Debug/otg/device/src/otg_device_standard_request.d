@@ -5,6 +5,7 @@ otg/device/src/otg_device_standard_request.d otg/device/src/otg_device_standard_
  /cygdrive/D/BanAirBundy/bootloader/middleware/mv_utils/inc/type.h \
  /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/gpio.h \
  /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/timer.h \
+ /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/chip_info.h \
  /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_hcd.h \
  /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_standard_request.h \
  /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_descriptor.h \
@@ -22,6 +23,8 @@ otg/device/src/otg_device_standard_request.d otg/device/src/otg_device_standard_
 /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/gpio.h:
 
 /cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/timer.h:
+
+/cygdrive/D/BanAirBundy/bootloader/driver/driver/inc/chip_info.h:
 
 /cygdrive/D/BanAirBundy/bootloader/otg/device/inc/otg_device_hcd.h:
 
