@@ -257,6 +257,11 @@ uint8_t MvWire_GetDeviceStatus(uint8_t device_index)
 	return CONNECT_NONE;
 }
 
+uint8_t MvWire_1stFrameSyncState(uint8_t id)
+{
+	return (uint8_t)Audio_Check1stFrameAllRightStateGet((unsigned char)id);
+}
+
 /* Allow wireless_tx/rx to register app-level callbacks into stack CB. */
 void MvWire_RegisterAppConnCb(void (*conn)(uint8_t), void (*disc)(uint8_t))
 {
@@ -321,6 +326,8 @@ int MvWire_StackInit(uint8_t role_tx)
 
 	memset((uint8_t *)BB_EM_MAP_ADDR, 0, BB_EM_SIZE);
 	Wireless_common_init(&params);
+	/* Mirror official WirelessInit(): non deep-sleep, disable remote sleep cmd. */
+	wireless2_Enable_Remote_Sleep_Cmd(0);
 	MvWire_TransBufInit();
 	syncdevice2_thold = 1;
 

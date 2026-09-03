@@ -42,6 +42,11 @@ uint16_t MvWire_AssocProcess(int16_t *pcm_l, int16_t *pcm_r);
 /** Map device ConStatus into wireless_lib ConnectStatus_t values. */
 uint8_t MvWire_GetDeviceStatus(uint8_t device_index);
 
+/** 1st-frame sync state per device: 0=none, 1=counting, 2=synced.
+ *  Mirrors official Audio_Check1stFrameAllRightStateGet(); RX uses it to prime
+ *  the DAC ring on first lock (audio_main.c:543-583 equivalent). */
+uint8_t MvWire_1stFrameSyncState(uint8_t id);
+
 /** App-level connect/disconnect hooks (from Wireless_Register*Cb). */
 void MvWire_RegisterAppConnCb(void (*conn)(uint8_t), void (*disc)(uint8_t));
 

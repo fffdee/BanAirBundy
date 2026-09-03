@@ -70,6 +70,36 @@ static void rx_audio_process(void)
 	if (got == 0)
 		return;
 
+	/*
+	 * 1st-frame sync DAC priming (mirrors official wireless_audio_process,
+	 * audio_main.c:543-583). On the first schedule after a device reports
+	 * 1st-frame sync (state==2), push a short silence block into the DAC ring
+	 * to establish a stable playback-delay baseline and remove the startup
+	 * underrun/pop. The latch resets when both devices lose sync so the next
+	 * re-lock primes again. (The official AudioOutDelete fine-trim relies on
+	 * Device0_2rdPackSample set by a lib callback not wired here; the elastic
+	 * wireless ring absorbs that jitter, so the priming depth alone suffices.)
+	 */
+	{
+		static uint8_t audio_1st_data;
+		uint8_t sync0 = MvWire_1stFrameSyncState(0);
+		uint8_t sync1 = MvWire_1stFrameSyncState(1);
+
+		if ((sync0 != 2) && (sync1 != 2)) {
+			audio_1st_data = 0;
+		} else if (!audio_1st_data) {
+			uint16_t prime_frames = (sync0 == 2) ? (uint16_t)(ONE_FRAME / 8)
+							     : (uint16_t)(ONE_FRAME / 3);
+			audio_1st_data = 1;
+			memset(s_rx.dac_pcm_buf, 0,
+			       (size_t)prime_frames * 2u * sizeof(int16_t));
+			WlAudioOutput_PushWireless(s_rx.dac_pcm_buf,
+						   (uint16_t)(prime_frames * 2u));
+			DBG("[WL] 1st-frame sync: prime DAC ring %u frames\n",
+			    (unsigned)prime_frames);
+		}
+	}
+
 	/* Mono device1 → L/R duplicate (Turnkey 2_6 DECODE_CH=1). */
 	for (i = 0; i < frame_size; i++) {
 		int16_t s = s_rx.pcm_l[i];

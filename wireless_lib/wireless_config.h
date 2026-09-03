@@ -132,6 +132,19 @@ extern "C" {
 #define DAC_VOLUME_DEFAULT       0x3FFF
 #endif
 
+/*
+ * RX audio pipeline switch (root-cause D).
+ * 1 = call AudioAssociationProcess() on every Wireless_Schedule(), matching the
+ *     official wireless_audio_process(). RX MUST consume the RF FIFO and decode
+ *     SBC; otherwise 1st-frame sync never completes, so the TX<->RX audio link
+ *     keeps re-negotiating -> TX logs repeated conn/disconn and RX never enters
+ *     CONNECT_AUDIO.
+ * 0 = disabled (stack-overflow bisect only; NOT a working configuration).
+ */
+#ifndef WL_RX_ASSOC_PROCESS_EN
+#define WL_RX_ASSOC_PROCESS_EN   1
+#endif
+
 #ifdef __cplusplus
 }
 #endif
