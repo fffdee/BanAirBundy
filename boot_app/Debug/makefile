@@ -43,6 +43,8 @@ RM := rm -rf
 -include otg/subdir.mk
 -include src/subdir.mk
 -include startup/subdir.mk
+-include wireless_lib/subdir.mk
+-include wireless_lib/sbc/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

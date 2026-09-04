@@ -4,6 +4,9 @@
  * @brief   SBC encode wrap (Turnkey 2_6 mono via 1532 SBC_Encoder)
  ******************************************************************************
  */
+/* Board config first: it selects the WL_MALLOC backend (see wireless_config.h). */
+#include "app_config.h"
+
 #include "audio_codec_api.h"
 #include "wireless_config.h"
 #include "mvwire_port.h"
@@ -11,7 +14,6 @@
 #include <stdlib.h>
 
 #if BOOT_APP_MVWIRE_EN && defined(ENCODE_CH) && (ENCODE_CH == 1)
-#include "app_config.h"
 #include "sbc_encoder.h"
 #endif
 
@@ -37,7 +39,7 @@ typedef struct {
 
 void *AudioCodec_EncoderInit(uint32_t sample_rate, uint8_t channel_num, uint8_t bitpool)
 {
-	SbcEncoder_t *enc = (SbcEncoder_t *)malloc(sizeof(SbcEncoder_t));
+	SbcEncoder_t *enc = (SbcEncoder_t *)WL_MALLOC(sizeof(SbcEncoder_t));
 	if (!enc)
 		return NULL;
 
@@ -100,12 +102,12 @@ int AudioCodec_Encode(void *encoder, const int16_t *pcm_in,
 
 void AudioCodec_EncoderDeinit(void *encoder)
 {
-	free(encoder);
+	WL_FREE(encoder);
 }
 
 void *AudioCodec_DecoderInit(uint32_t sample_rate, uint8_t channel_num)
 {
-	SbcDecoder_t *dec = (SbcDecoder_t *)malloc(sizeof(SbcDecoder_t));
+	SbcDecoder_t *dec = (SbcDecoder_t *)WL_MALLOC(sizeof(SbcDecoder_t));
 	if (!dec)
 		return NULL;
 	memset(dec, 0, sizeof(*dec));
@@ -128,7 +130,7 @@ int AudioCodec_Decode(void *decoder, const uint8_t *sbc_in, uint16_t sbc_len,
 
 void AudioCodec_DecoderDeinit(void *decoder)
 {
-	free(decoder);
+	WL_FREE(decoder);
 }
 
 uint16_t AudioCodec_SbcFrameLen(uint8_t channel_mode, uint8_t sub_bands,

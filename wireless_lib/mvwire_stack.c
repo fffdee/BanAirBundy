@@ -70,6 +70,17 @@ static void (*s_app_conn_cb)(uint8_t);
 static void (*s_app_disc_cb)(uint8_t);
 static uint8_t s_role_tx;
 
+/* BT_IRQn entry counter, defined in main.c (BtIrqProbe bumps it on every RF
+ * interrupt). Printed by Wireless_DiagReport() as the decisive RF-liveness
+ * signal: climbing == radio ISR alive; stuck at 0 == baseband never started. */
+extern volatile uint32_t g_bt_irq_count;
+
+/*
+ * Part of the official WirelessStackTask() main loop (slave RSSI / power
+ * control). It is in libwireless2.a but not exported by wireless2.h.
+ */
+extern void MVWIRE2_slave_schedule(void);
+
 /* 1st-frame sync helpers (RX 2_6) */
 static unsigned char s_dev0_sync = 0;
 static unsigned char s_dev1_sync = 0;
@@ -245,6 +256,18 @@ void MVWIRE2_ConnStateDisplay(void)
 
 void MvWire_StackSchedule(void)
 {
+	/*
+	 * Vendor SDK WirelessStackTask() calls MVWIRE2_slave_schedule() ONLY
+	 * under #if defined(WIRELESS_TURNKEY1_4). For Turnkey 2_6 (this build)
+	 * the reference TX/RX binaries call ONLY MVWIRE2_ConnStateDisplay();
+	 * the objdump of wireless_mic_tx_sdk WirelessStackTask confirms the
+	 * slave_schedule branch is compiled out. Calling it here (as the old
+	 * runtime `if (s_role_tx)` did) disturbed the TX radio state machine.
+	 */
+#if defined(WIRELESS_TURNKEY1_4)
+	if (s_role_tx)
+		MVWIRE2_slave_schedule();
+#endif
 	MVWIRE2_ConnStateDisplay();
 }
 
@@ -260,6 +283,38 @@ uint8_t MvWire_GetDeviceStatus(uint8_t device_index)
 uint8_t MvWire_1stFrameSyncState(uint8_t id)
 {
 	return (uint8_t)Audio_Check1stFrameAllRightStateGet((unsigned char)id);
+}
+
+/*
+ * Read-only RF liveness report, called from the super loop about every 2s.
+ *
+ * common_init() (main CPU) always builds the sync table, so the boot log looks
+ * healthy even when the radio never links. The DECISIVE field is bt_irq: the
+ * BT_IRQn ISR entry counter (crt0.S repoints ISR_TABLE[15] to BtIrqProbe() in
+ * main.c, which counts then tail-calls the vendor rwbt_isr()).
+ *   - bt_irq climbing  => the radio baseband IS generating interrupts and the
+ *     2T1R state machine runs. A still-frozen d1/d2/sync then means "RF alive
+ *     but no link with the peer" -> both boards must be powered at once; if
+ *     they are, it is a pairing/frequency/config problem, not an ISR problem.
+ *   - bt_irq stuck at 0 => the RF ISR never fires -> the baseband was never
+ *     started (power/clock/init), a deeper fault than a missing peer.
+ * conn_mode must be 1 (auto); dev must be 1 (RX master) / 2 (TX slaver).
+ *
+ * NOTE: MVWIRE2_DBG_FUNC() was removed -- its swbb_freq_band_dbg/hosc_cap_dbg
+ * dumps are gated behind vendor dbg-enable flags that are off by default, so
+ * it prints nothing. wireless_slave_1tnr_get_conn_state() was also removed --
+ * it is a 1T1R API returning a meaningless constant in this 2T1R build.
+ */
+void Wireless_DiagReport(void)
+{
+	DBG("[RF] role=%s dev=%u conn_mode=%u bt_irq=%lu d1=%u d2=%u sync0=%u sync1=%u\n",
+	    s_role_tx ? "TX/slave" : "RX/master",
+	    (unsigned)MVWIRE2_DeviceGet(),
+	    (unsigned)MVWIRE2_2T1R_Get_Conn_Mode(),
+	    (unsigned long)g_bt_irq_count,
+	    (unsigned)device1.ConStatus, (unsigned)device2.ConStatus,
+	    (unsigned)Audio_Check1stFrameAllRightStateGet(0),
+	    (unsigned)Audio_Check1stFrameAllRightStateGet(1));
 }
 
 /* Allow wireless_tx/rx to register app-level callbacks into stack CB. */
@@ -325,14 +380,38 @@ int MvWire_StackInit(uint8_t role_tx)
 #endif
 
 	memset((uint8_t *)BB_EM_MAP_ADDR, 0, BB_EM_SIZE);
+	/*
+	 * Wireless_common_init() ALONE brings up the RF. It internally runs the
+	 * init-func pointer that WIRELESS_FUNCTION()/wireless2_2_X_initfuncset()
+	 * registered just above -> Swbb2t1r_MasterInit()/SlaverInit(): power up
+	 * RF, load BB, register the BT-isr callback and build the sync table
+	 * (the "Table:/m_sync_word" (RX) / "s0_fixed_word" (TX) print).
+	 *
+	 * Do NOT call MVWIRE2_Init() here. The official unified SDK has ZERO
+	 * MVWIRE2_Init() call-sites in every .c (verified). MVWIRE2_Init() is a
+	 * thin wrapper that re-invokes that SAME init-func pointer (see its
+	 * objdump: lwi.gp $r0,[gp-77936]; jral5 $r0). Calling it after
+	 * common_init re-inits the RF state machine a 2nd time -> sync table
+	 * printed TWICE, master never scans / slave never advertises
+	 * (s_pair_st=0, dev id=-1), so TX and RX never connect.
+	 */
 	Wireless_common_init(&params);
 	/* Mirror official WirelessInit(): non deep-sleep, disable remote sleep cmd. */
 	wireless2_Enable_Remote_Sleep_Cmd(0);
 	MvWire_TransBufInit();
 	syncdevice2_thold = 1;
 
+	/*
+	 * The whole 2T1R state machine (sync / pairing / connect) runs in
+	 * rwbt_isr -> MVWIRE2_irq -> bt_irq_2t1r_*, i.e. inside BT_IRQn.
+	 * The stack library never touches NVIC itself, so the line has to be
+	 * unmasked here or both sides stay silent.
+	 */
+	NVIC_DisableIRQ(BT_IRQn);
 	NVIC_SetPriority(BT_IRQn, 0);
-	DBG("[WL] MvWire stack init role=%s\n", role_tx ? "TX/Slave" : "RX/Master");
+	NVIC_EnableIRQ(BT_IRQn);
+	DBG("[WL] MvWire stack init role=%s BT_IRQ enabled\n",
+	    role_tx ? "TX/Slave" : "RX/Master");
 	return 0;
 }
 

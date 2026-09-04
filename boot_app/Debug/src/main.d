@@ -19,6 +19,7 @@ src/main.d src/main.o: ../src/main.c \
  /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/dma.h \
  /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/pmu.h \
  /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/heap.h \
+ /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/timer.h \
  /cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc/uarts_interface.h \
  /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/uarts.h \
  /cygdrive/D/BanAirBundy/boot_app/system_config/sram_config.h \
@@ -31,6 +32,7 @@ src/main.d src/main.o: ../src/main.c \
  /cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_line/bg_shell.h \
  /cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade/fw_upgrade.h \
  /cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade/dual_partition.h \
+ /cygdrive/D/BanAirBundy/boot_app/banux/app_version.h \
  /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h \
  /cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_standard_request.h \
  /cygdrive/D/BanAirBundy/boot_app/otg/device/inc/otg_device_cdc.h \
@@ -50,8 +52,7 @@ src/main.d src/main.o: ../src/main.c \
  /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/nds32_regs.h \
  /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/mpu_wrappers.h \
  /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/task.h \
- /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/list.h \
- /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/queue.h
+ /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/list.h
 
 /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/debug.h:
 
@@ -93,6 +94,8 @@ src/main.d src/main.o: ../src/main.c \
 
 /cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc/heap.h:
 
+/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/timer.h:
+
 /cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc/uarts_interface.h:
 
 /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/uarts.h:
@@ -116,6 +119,8 @@ src/main.d src/main.o: ../src/main.c \
 /cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade/fw_upgrade.h:
 
 /cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade/dual_partition.h:
+
+/cygdrive/D/BanAirBundy/boot_app/banux/app_version.h:
 
 /cygdrive/D/BanAirBundy/boot_app/driver/driver/inc/otg_device_hcd.h:
 
@@ -158,5 +163,3 @@ src/main.d src/main.o: ../src/main.c \
 /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/task.h:
 
 /cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/list.h:
-
-/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include/queue.h:

@@ -19,7 +19,7 @@
 	.align 2
 		pushm   $r0, $r1
 		mfsr    $r1, $IPSW
-		andi	$r1, $r1, #0x20c0 !使能ZOL和Cahce
+		andi	$r1, $r1, #0x20c0 !使锟斤拷ZOL锟斤拷Cahce
 		mfsr    $r0, $PSW
 		add   	$r0, $r0, $r1
 		mtsr    $r0, $PSW
@@ -76,7 +76,7 @@ ISR_TABLE:
 	.long RtcInterrupt	   //12
 	.long HosccntInterrupt //13
 	.long rwip_isr	   //14
-	.long rwbt_isr     //15
+	.long BtIrqProbe   //15  (counts BT_IRQn entries, then tail-calls rwbt_isr)
 	.long BLE_Interrupt//rwble_isr    //16
 	.long SPIM_Interrupt   //17
 	.long SPIS_Interrupt   //18

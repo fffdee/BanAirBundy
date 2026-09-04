@@ -13,6 +13,40 @@
 extern "C" {
 #endif
 
+#include <stddef.h>
+
+/*
+ * Heap backend for wireless_lib dynamic allocations (SBC encoder/decoder ctx).
+ *
+ * Bare-metal newlib has no working _sbrk here, so malloc() always returns
+ * NULL -> AudioCodec_EncoderInit() fails and Wireless_Init() returns -2.
+ * Two working backends:
+ *   WL_USE_FREERTOS_HEAP=1 -> FreeRTOS heap_5s region (pvPortMalloc/vPortFree).
+ *   WL_USE_FREERTOS_HEAP=0 -> bare-metal T_Heap (T_PortMalloc/T_PortFree from
+ *                             mv_utils/heap.c); T_HeapInit() MUST run before
+ *                             Wireless_Init(). This is the no-RTOS path.
+ * Note: app_config.h has to be included *before* this header.
+ */
+#ifndef WL_USE_FREERTOS_HEAP
+#define WL_USE_FREERTOS_HEAP        0
+#endif
+
+#if (WL_USE_FREERTOS_HEAP != 0)
+extern void *pvPortMalloc(size_t xWantedSize);
+extern void vPortFree(void *pv);
+#define WL_MALLOC(size)             pvPortMalloc(size)
+#define WL_FREE(ptr)                vPortFree(ptr)
+#else
+/* Bare-metal (no RTOS): route to the T_Heap allocator in mv_utils/heap.c.
+ * libc malloc() returns NULL on this board (no _sbrk). T_HeapInit() must have
+ * run first; it carves [_end .. BP15_HEAP_END) which sram_config.h places just
+ * below the wireless TCM region. */
+extern void *T_PortMalloc(size_t WantedSize);
+extern void  T_PortFree(void *pv);
+#define WL_MALLOC(size)             T_PortMalloc(size)
+#define WL_FREE(ptr)                T_PortFree(ptr)
+#endif
+
 #ifndef WIRELESS_TURNKEY2_6
 #define WIRELESS_TURNKEY2_6
 #endif

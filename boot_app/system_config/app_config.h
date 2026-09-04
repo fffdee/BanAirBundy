@@ -62,12 +62,22 @@
 #ifdef BOOT_APP_WIRELESS_ROLE_TX
 #undef BOOT_APP_WIRELESS_ROLE_TX
 #endif
-#define BOOT_APP_WIRELESS_ROLE_TX    1
+#define BOOT_APP_WIRELESS_ROLE_TX    0
 
 #ifdef BOOT_APP_MVWIRE_EN
 #undef BOOT_APP_MVWIRE_EN
 #endif
 #define BOOT_APP_MVWIRE_EN           BOOT_APP_WIRELESS_EN
+
+/*
+ * Bare-metal build (no FreeRTOS scheduler): wireless_lib dynamic allocations
+ * (SBC ctx) come from the T_Heap allocator (mv_utils/heap.c) via T_PortMalloc.
+ * T_HeapInit() runs in main() before Wireless_Init(). libc malloc() is NOT
+ * usable here (no _sbrk -> returns NULL -> Wireless_Init() fails with -2).
+ */
+#ifndef WL_USE_FREERTOS_HEAP
+#define WL_USE_FREERTOS_HEAP         0
+#endif
 
 /* 缂栬В鐮侀�閬擄細涓�1532 Turnkey 瑙掕壊闀滃儚 */
 #ifdef ENCODE_CH

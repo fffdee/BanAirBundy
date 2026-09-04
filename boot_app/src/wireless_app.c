@@ -1,6 +1,14 @@
 /**
  * @file  wireless_app.c
- * @brief FreeRTOS integration for wireless_lib (MVWIRE Turnkey 2_6).
+ * @brief Bare-metal integration for wireless_lib (MVWIRE Turnkey 2_6).
+ *
+ * No RTOS. App_WirelessStart() brings the RF up directly during main() init;
+ * the hard-real-time 2T1R state machine then lives in the BT_IRQn ISR at
+ * priority 0 (highest), exactly like the vendor wireless_mic_tx/rx_sdk.
+ * The super loop in main.c calls App_WirelessSchedule() -> Wireless_Schedule()
+ * for the slow-path glue (audio pump, connection display). Because that glue
+ * is cooperative and the RF timing is interrupt-driven, USB / Banux work in
+ * the same loop can never starve the radio.
  */
 #include "wireless_app.h"
 
@@ -8,21 +16,6 @@
 
 #include "wireless_api.h"
 #include "debug.h"
-#include "FreeRTOS.h"
-#include "task.h"
-
-#ifndef pdMS_TO_TICKS
-#define pdMS_TO_TICKS(xTimeInMs) \
-	((TickType_t)(((TickType_t)(xTimeInMs) * (TickType_t)configTICK_RATE_HZ) / (TickType_t)1000))
-#endif
-
-/* Static stack: avoid heap adjacency smash into TCB when Assoc/SBC deep-calls. */
-#ifndef WL_TASK_STACK_WORDS
-#define WL_TASK_STACK_WORDS  4096u
-#endif
-
-static TaskHandle_t s_wl_task;
-static StackType_t s_wl_stack[WL_TASK_STACK_WORDS];
 
 static void WirelessApp_ConfigInit(WirelessConfig_t *cfg)
 {
@@ -55,66 +48,10 @@ static void WirelessApp_OnDisconnected(uint8_t device_index)
 	}
 }
 
-static void vWirelessTask(void *pvParameters)
-{
-	WirelessConfig_t cfg;
-	int ret;
-	unsigned n = 0;
-
-	(void)pvParameters;
-
-	DBG("[WL] schedule task running (role=%s) stk=%u words (static)\n",
-	    BOOT_APP_WIRELESS_ROLE_TX ? "TX/Slave" : "RX/Master",
-	    (unsigned)WL_TASK_STACK_WORDS);
-
-	WirelessApp_ConfigInit(&cfg);
-	ret = Wireless_Init(&cfg);
-	if (ret != 0) {
-		DBG("[WL] Wireless_Init failed: %d\n", ret);
-		for (;;)
-			vTaskDelay(pdMS_TO_TICKS(1000));
-	}
-
-	Wireless_RegisterConnectedCb(WirelessApp_OnConnected);
-	Wireless_RegisterDisconnectedCb(WirelessApp_OnDisconnected);
-
-	ret = Wireless_StartPairing();
-	if (ret != 0) {
-		DBG("[WL] StartPairing failed: %d\n", ret);
-		for (;;)
-			vTaskDelay(pdMS_TO_TICKS(1000));
-	}
-
-	DBG("[WL] started role=%u sr=%u frame=%u stk=%u\n",
-	    (unsigned)cfg.role,
-	    (unsigned)cfg.sample_rate,
-	    (unsigned)cfg.frame_size,
-	    (unsigned)WL_TASK_STACK_WORDS);
-	for (;;) {
-		if (n < 3u)
-			DBG("[WL] sched #%u enter\n", n);
-
-		Wireless_Schedule();
-
-		if (n < 3u) {
-			DBG("[WL] sched #%u ok hwm=%u\n",
-			    n,
-			    (unsigned)uxTaskGetStackHighWaterMark(NULL));
-		} else if ((n % 1000u) == 0u) {
-			DBG("[WL] alive n=%u hwm=%u\n",
-			    n,
-			    (unsigned)uxTaskGetStackHighWaterMark(NULL));
-		}
-		n++;
-
-		/* Yield frequently so USB/CDC Shell stay responsive. */
-		vTaskDelay(pdMS_TO_TICKS(1));
-	}
-}
-
 int App_WirelessStart(void)
 {
 	WirelessConfig_t cfg;
+	int ret;
 
 	WirelessApp_ConfigInit(&cfg);
 
@@ -127,22 +64,48 @@ int App_WirelessStart(void)
 	    (unsigned)WIRELESS_LINK_KEY1,
 	    (unsigned)WIRELESS_LINK_KEY0);
 
+	DBG("[WL] bare-metal init (role=%s) - RF ISR on BT_IRQn prio 0\n",
+	    BOOT_APP_WIRELESS_ROLE_TX ? "TX/Slave" : "RX/Master");
+
 	/*
-	 * Use xTaskGenericCreate with a BSS stack buffer so overflow of the
-	 * deep AudioAssociation/SBC path does not immediately smash a heap TCB.
+	 * Wireless_Init() runs the whole vendor bring-up (MvWire_StackInit ->
+	 * WIRELESS_FUNCTION / DeviceRoleSet / 2T1R mode / Wireless_common_init)
+	 * and enables BT_IRQn at priority 0. Allocations come from the T_Heap
+	 * (T_HeapInit() must already have run in main()).
 	 */
-	if (xTaskGenericCreate(vWirelessTask,
-			       "WL",
-			       (uint16_t)WL_TASK_STACK_WORDS,
-			       NULL,
-			       tskIDLE_PRIORITY + 2,
-			       &s_wl_task,
-			       s_wl_stack,
-			       NULL) != pdPASS) {
-		DBG("[WL] create task failed\n");
-		return -1;
+	ret = Wireless_Init(&cfg);
+	if (ret != 0) {
+		DBG("[WL] Wireless_Init failed: %d\n", ret);
+		return ret;
 	}
+
+	Wireless_RegisterConnectedCb(WirelessApp_OnConnected);
+	Wireless_RegisterDisconnectedCb(WirelessApp_OnDisconnected);
+
+	ret = Wireless_StartPairing();
+	if (ret != 0) {
+		DBG("[WL] StartPairing failed: %d\n", ret);
+		return ret;
+	}
+
+	DBG("[WL] started role=%u sr=%u frame=%u\n",
+	    (unsigned)cfg.role,
+	    (unsigned)cfg.sample_rate,
+	    (unsigned)cfg.frame_size);
 	return 0;
+}
+
+void App_WirelessSchedule(void)
+{
+	/* Slow-path RF glue; the real-time state machine is in the BT_IRQn ISR. */
+	Wireless_Schedule();
+}
+
+void App_WirelessDiag(void)
+{
+#if BOOT_APP_MVWIRE_EN
+	Wireless_DiagReport();
+#endif
 }
 
 #endif /* BOOT_APP_WIRELESS_EN */
