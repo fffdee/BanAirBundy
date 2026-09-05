@@ -150,6 +150,7 @@ int Wireless_Init(const WirelessConfig_t *config)
 		return -3;
 	if (MvWire_AssocInit() != 0)
 		return -4;
+	MvWireless2AdvModePairingScanEn(1);
 	MvWire_RegisterAppConnCb(rx_on_conn, rx_on_disc);
 	MvWire_AudioReadySet(1);
 #endif

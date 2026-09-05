@@ -1,4 +1,4 @@
-18:36:16 **** Build of configuration Debug for project boot_app ****
+11:29:39 **** Incremental Build of configuration Debug for project boot_app ****
 make -j20 all 
 Building file: ../FreeRTOS/Source/event_groups.c
 Invoking: Andes C Compiler
@@ -602,8 +602,16 @@ Finished building: ../startup/retarget.c
 Building file: /cygdrive/D/BanAirBundy/wireless_lib/audio_codec_api.c
 Invoking: Andes C Compiler
 nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/inc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/00_core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_driver" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_driver/library" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework/vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/file_io" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_line" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_parser" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/app" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/src" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/src/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/target" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/internal_flash_fs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"wireless_lib/audio_codec_api.d" -MT"wireless_lib/audio_codec_api.d wireless_lib/audio_codec_api.o" -o "wireless_lib/audio_codec_api.o" "/cygdrive/D/BanAirBundy/wireless_lib/audio_codec_api.c"
+In file included from /cygdrive/D/BanAirBundy/wireless_lib/audio_codec_api.c:17:0:
+/cygdrive/D/BanAirBundy/wireless_lib/sbc/sbc_encoder.h:78:0: warning: "RFAUDIO_TRANS_A" redefined
+ #define RFAUDIO_TRANS_A    ((RFAUDIO_FRAME_LEN - CRC_PACKSUB + PACKET_CRC_LEN + PACKET_CNT_LEN) * RFPACK_NAUDIO)
+ ^
+In file included from /cygdrive/D/BanAirBundy/wireless_lib/audio_codec_api.c:11:0:
+/cygdrive/D/BanAirBundy/wireless_lib/wireless_config.h:126:0: note: this is the location of the previous definition
 Finished building: /cygdrive/D/BanAirBundy/wireless_lib/audio_codec_api.c
+ #define RFAUDIO_TRANS_A          52
  
+ ^
 Building file: /cygdrive/D/BanAirBundy/wireless_lib/audio_driver_api.c
 Invoking: Andes C Compiler
 nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/inc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/00_core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_driver" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_driver/library" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework/vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/file_io" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_line" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_parser" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/app" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/src" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/src/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/target" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/internal_flash_fs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"wireless_lib/audio_driver_api.d" -MT"wireless_lib/audio_driver_api.d wireless_lib/audio_driver_api.o" -o "wireless_lib/audio_driver_api.o" "/cygdrive/D/BanAirBundy/wireless_lib/audio_driver_api.c"
@@ -617,6 +625,15 @@ Finished building: /cygdrive/D/BanAirBundy/wireless_lib/mvwire_assoc.c
 Building file: /cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c
 Invoking: Andes C Compiler
 nds32le-elf-gcc -DCFG_APP_CONFIG -DCFG_CHIP_CONFIG -I"/cygdrive/D/BanAirBundy/boot_app" -I"/cygdrive/D/BanAirBundy/boot_app/system_config" -I"/cygdrive/D/BanAirBundy/boot_app/src" -I"/cygdrive/D/BanAirBundy/boot_app/wireless_mv/include" -I"/cygdrive/D/BanAirBundy/wireless_lib" -I"/cygdrive/D/BanAirBundy/wireless_lib/sbc" -I"/cygdrive/D/BanAirBundy/boot_app/otg/device/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver_api/inc" -I"/cygdrive/D/BanAirBundy/boot_app/driver/driver/inc" -I"/cygdrive/D/BanAirBundy/boot_app/middleware/mv_utils/inc" -I"/cygdrive/D/BanAirBundy/boot_app/FreeRTOS/Source/include" -I"/cygdrive/D/BanAirBundy/boot_app/startup" -I"/cygdrive/D/BanAirBundy/boot_app/banux" -I"/cygdrive/D/BanAirBundy/boot_app/banux/inc" -I"/cygdrive/D/BanAirBundy/boot_app/banux/00_core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_driver" -I"/cygdrive/D/BanAirBundy/boot_app/banux/01_driver/library" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework/core" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/driver_framework/vfs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/file_io" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/event" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_line" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/command_parser" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/app" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/src" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/src/drivers" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/fatfs/target" -I"/cygdrive/D/BanAirBundy/boot_app/banux/02_system_components/internal_flash_fs" -I"/cygdrive/D/BanAirBundy/boot_app/banux/03_application_components/firmware_upgrade" -Og -mcmodel=medium -g3 -Wall -mcpu=d1088-spu -c -fmessage-length=0 -ldsp -mext-dsp -std=gnu99 -fsingle-precision-constant -ffunction-sections -fdata-sections -MMD -MP -MF"wireless_lib/mvwire_stack.d" -MT"wireless_lib/mvwire_stack.d wireless_lib/mvwire_stack.o" -o "wireless_lib/mvwire_stack.o" "/cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c"
+/cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c: In function 'WirelessDeviceIdInit':
+/cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c:212:2: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'long unsigned int' [-Wformat=]
+  DBG("[WL] ChipID=0x%08x", (uint32_t)ChipID);
+  ^
+/cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c:212:2: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'long unsigned int' [-Wformat=]
+/cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c:215:2: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+  DBG(" -> WirelessDeviceId=0x%08x\n", WirelessDeviceId);
+  ^
+/cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c:215:2: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
 Finished building: /cygdrive/D/BanAirBundy/wireless_lib/mvwire_stack.c
  
 Building file: /cygdrive/D/BanAirBundy/wireless_lib/mvwire_transbuf.c
@@ -758,9 +775,9 @@ Finished building: output/objdump.txt
 Invoking: Size (section size listing)
 nds32le-elf-size  "boot_app.adx" | tee output/.PHONY.size
    text (code + rodata)	   data	    bss	    dec	    hex	filename
- 121522 (100634 +  20888)	   2088	  91312	 214922	  3478a	boot_app.adx
+ 126066 (105738 +  20328)	   2056	  84308	 212430	  33dce	boot_app.adx
 Finished building: output/.PHONY.size
  
 
-18:36:33 Build Finished (took 16s.420ms)
+11:29:56 Build Finished (took 17s.537ms)
 

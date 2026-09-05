@@ -38,18 +38,60 @@ unsigned char audio_init_isready;
 uint8_t syncdevice2_thold;
 uint32_t em_start_addr = BB_EM_START_PARAMS;
 
-/* Pairing callbacks (no flash lock — open pairing like default 1532). */
-static unsigned char PairFlag_None(void) { return 0; }
-static uint32_t PairInfo_None(unsigned char Device)
+/*
+ * RAM-only pairing store (open pairing, no flash persistence).
+ *
+ * This mirrors the official TX_PairedInfoSet()/RX_PairedInfoSet() for
+ * WIRELESS_TURNKEY2_6 built *without* CFG_LOCK_PAIRED_TXRX: the vendor code
+ * still stashes the assigned id into flash_dev_param (a RAM struct) and then
+ * returns FALSE, meaning "not persisted to flash".
+ *
+ * The previous no-op callbacks are why RX could HEAR TX (valid RSSI) yet never
+ * linked: after a successful pairing handshake the stack calls
+ * PairedInfoSetFunc(id) to record the peer, then reads it back through
+ * PairInfoGetFunc(). With PairInfo_None() hard-wired to NOPAIR_WORD the stack
+ * always saw "still unpaired", so the link never advanced to CONNECT_AUDIO
+ * (d1/d2 stayed 0 and sync0/sync1 never latched).
+ *
+ * The RETURN VALUE matters as well. libwireless2.a set_flash_word() is:
+ *     movi55 $r1,#0x1
+ *     jral5  PairedInfoSetFunc
+ *     beqz38 $r0, <+0x10>       ; FALSE -> swbb_s_del_pair_info_when_disconn=1
+ *                               ; TRUE  -> ...=0
+ * i.e. FALSE = "RAM only, drop the pair info on disconnect" (self-consistent
+ * with not writing flash) and TRUE = "persisted, keep it across disconnects".
+ * Returning TRUE while storing nothing is the worst of both worlds, so we
+ * return FALSE, exactly like the vendor's non-locked builds.
+ */
+static uint32_t s_pair_info[2] = { NOPAIR_WORD, NOPAIR_WORD };
+
+static unsigned char PairFlagGet_Ram(void)
 {
-	(void)Device;
+	unsigned char mask = 0;
+
+	if (s_pair_info[0] != NOPAIR_WORD)
+		mask |= DEVICE1_MASK;
+	if (s_pair_info[1] != NOPAIR_WORD)
+		mask |= DEVICE2_MASK;
+	return mask;
+}
+
+static uint32_t PairInfoGet_Ram(unsigned char Device)
+{
+	if ((Device & DEVICE1_MASK) && (s_pair_info[0] != NOPAIR_WORD))
+		return s_pair_info[0];
+	if ((Device & DEVICE2_MASK) && (s_pair_info[1] != NOPAIR_WORD))
+		return s_pair_info[1];
 	return NOPAIR_WORD;
 }
-static bool PairInfoSet_None(uint32_t Info, unsigned char Device)
+
+static bool PairInfoSet_Ram(uint32_t Info, unsigned char Device)
 {
-	(void)Info;
-	(void)Device;
-	return TRUE;
+	if (Device & DEVICE1_MASK)
+		s_pair_info[0] = Info;
+	if (Device & DEVICE2_MASK)
+		s_pair_info[1] = Info;
+	return FALSE;	/* RAM only -> let the stack drop pair info on disconnect */
 }
 
 PairedFlagGetCallback PairedFlagGetFunc;
@@ -167,15 +209,19 @@ static void WirelessDeviceIdInit(void)
 
 	Chip_IDGet(&ChipID);
 	ChipID = (ChipID >> 32) & 0xffffffffull;
+	DBG("[WL] ChipID=0x%08x", (uint32_t)ChipID);
 	if (ChipID != 0 && ChipID != 0xffffffffull)
 		WirelessDeviceId = (uint32_t)ChipID;
+	DBG(" -> WirelessDeviceId=0x%08x\n", WirelessDeviceId);
 }
 
 static void PairingInit(void)
 {
-	PairedFlagGetFunc = PairFlag_None;
-	PairInfoGetFunc = PairInfo_None;
-	PairedInfoSetFunc = PairInfoSet_None;
+	s_pair_info[0] = NOPAIR_WORD;
+	s_pair_info[1] = NOPAIR_WORD;
+	PairedFlagGetFunc = PairFlagGet_Ram;
+	PairInfoGetFunc = PairInfoGet_Ram;
+	PairedInfoSetFunc = PairInfoSet_Ram;
 }
 
 void MvWire_AudioReadySet(uint8_t ready)
@@ -307,14 +353,37 @@ uint8_t MvWire_1stFrameSyncState(uint8_t id)
  */
 void Wireless_DiagReport(void)
 {
-	DBG("[RF] role=%s dev=%u conn_mode=%u bt_irq=%lu d1=%u d2=%u sync0=%u sync1=%u\n",
+	/*
+	 * rssi is the decisive physical-layer probe.
+	 *
+	 * wireless_2_x_Master_Pair_GetTxRssi() is a PURE global-byte read --
+	 * objdump of libwireless2.a shows the whole body is just
+	 *   lbi.gp $r0,[+#0x0];  ret5 $lp
+	 * so it has no side effect and cannot block, and is safe to poll from
+	 * the cooperative super loop.
+	 *
+	 * A value stuck at 0 (or 0xFF) means the master has NEVER heard a
+	 * slave: the fault is then PHYSICAL, not protocol/pairing -- peer not
+	 * powered at the same time, out of range, or wrong band/frequency.
+	 * A plausible RSSI means the peer IS on the air and the problem is in
+	 * pairing/sync instead.
+	 *
+	 * Do NOT use MVWIRE2_2T1R_Check_Requesting_Device() for this: its
+	 * objdump is a busy-wait (bnec/beqc spinning on an internal state
+	 * machine reaching 2), so it HANGS the super loop whenever no slave
+	 * is requesting pairing -- exactly the case we are diagnosing.
+	 */
+	int rssi = s_role_tx ? -1 : (int)wireless_2_x_Master_Pair_GetTxRssi();
+
+	DBG("[RF] role=%s dev=%u conn_mode=%u bt_irq=%lu d1=%u d2=%u sync0=%u sync1=%u rssi=%d\n",
 	    s_role_tx ? "TX/slave" : "RX/master",
 	    (unsigned)MVWIRE2_DeviceGet(),
 	    (unsigned)MVWIRE2_2T1R_Get_Conn_Mode(),
 	    (unsigned long)g_bt_irq_count,
 	    (unsigned)device1.ConStatus, (unsigned)device2.ConStatus,
 	    (unsigned)Audio_Check1stFrameAllRightStateGet(0),
-	    (unsigned)Audio_Check1stFrameAllRightStateGet(1));
+	    (unsigned)Audio_Check1stFrameAllRightStateGet(1),
+	    rssi);
 }
 
 /* Allow wireless_tx/rx to register app-level callbacks into stack CB. */
