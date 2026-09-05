@@ -7167,3 +7167,53 @@ java.lang.Exception: AICE ERROR! AICE is unplugged.
 
 !ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 11:30:20.741
 !MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-09-05 12:03:22.544
+!MESSAGE 11:33:21.550 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: AICE ERROR! AICE is unplugged.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:15:28.499
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/D/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:15:28.501
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:15:28.501
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:15:28.565
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:22:53.041
+!MESSAGE Fork ICEman command:C:\Andestech\AndeSight300RDS\ice\ICEman.exe -A -N reset-hold-script.tpl -H --port=9902:49151 --bport=9900 --tport=9901 -f "/cygdrive/D/BanAirBundy/_ICEman_/" 
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:22:53.041
+!MESSAGE Fork ICEman Working Directory:C:\Andestech\AndeSight300RDS\ice
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:22:53.041
+!MESSAGE Before exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 1 -1 2026-09-05 12:22:53.104
+!MESSAGE After exec ICEman.
+
+!ENTRY com.andestech.ide.tm.rse 4 1 2026-09-05 12:24:57.591
+!MESSAGE 12:24:30.432 ICE Error on Target [ADP-AG101P-4GB-D1088-SPU-32I]
+!STACK 0
+java.lang.Exception: AICE ERROR! AICE is unplugged.
+
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessStatus.<init>(TargetProcessStatus.java:24)
+	at com.andestech.ide.tm.rse.model.impl.TargetProcessInfo.setErrorMessage(TargetProcessInfo.java:168)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.parseLine(ProcessConsole.java:205)
+	at com.andestech.ide.tm.rse.local.console.IceProcessConsole.parseLine(IceProcessConsole.java:51)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.writeLine(ProcessConsole.java:246)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole.access$1(ProcessConsole.java:236)
+	at com.andestech.ide.tm.rse.local.console.ProcessConsole$1.run(ProcessConsole.java:72)

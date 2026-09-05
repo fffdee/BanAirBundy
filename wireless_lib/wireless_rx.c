@@ -150,7 +150,16 @@ int Wireless_Init(const WirelessConfig_t *config)
 		return -3;
 	if (MvWire_AssocInit() != 0)
 		return -4;
-	MvWireless2AdvModePairingScanEn(1);
+	/*
+	 * Do NOT call MvWireless2AdvModePairingScanEn(1) here. This build is
+	 * WIRELESS_TURNKEY2_6 auto-conn (conn_mode=1) with none of
+	 * CFG_LOCK_PAIRED_TXRX / CFG_PAIRING_SUPPORTMDOE / CFG_AUTO_PAIRING_EN
+	 * defined. In the reference SDK that API is gated behind all three and
+	 * only exists for the TURNKEY3_x token-pairing flow. Calling it after
+	 * MvWire_StackInit() re-switches the RF state machine into adv pairing
+	 * scan, so the master never accepts the auto-conn slave (d1/sync0/sync1
+	 * stay 0) and the slave flaps conn/disconn forever.
+	 */
 	MvWire_RegisterAppConnCb(rx_on_conn, rx_on_disc);
 	MvWire_AudioReadySet(1);
 #endif
